@@ -1,3 +1,5 @@
+package member;
+
 import java.sql.Date;
 
 public class Member {
@@ -5,21 +7,26 @@ public class Member {
 	String memberPW;
 	String memberName;
 	String gender;
+	String address;
 	Date birthDate;
+	String memberphoneNo;
 	int memberPoint;
 	int memberValidity;
-	//String memberType
-
-	public Member(String memberPW, String memberName, String gender, int memberPoint, int memberValidity,
-			String memberID, Date birthDate) {
+	//String memberType;
+	
+	public Member(String memberID, String memberPW, String memberName, String gender, String address, Date birthDate,
+			String memberphoneNo, int memberPoint, int memberValidity) {
+		this.memberID = memberID;
 		this.memberPW = memberPW;
 		this.memberName = memberName;
 		this.gender = gender;
+		this.address = address;
+		this.birthDate = birthDate;
+		this.memberphoneNo = memberphoneNo;
 		this.memberPoint = memberPoint;
 		this.memberValidity = memberValidity;
-		this.memberID = memberID;
-		this.birthDate = birthDate;
 	}
+	
 	public String getMemberID() {
 		return memberID;
 	}
@@ -32,8 +39,14 @@ public class Member {
 	public String getGender() {
 		return gender;
 	}
+	public String getAddress() {
+		return address;
+	}
 	public Date getBirthDate() {
 		return birthDate;
+	}
+	public String getMemberphoneNo() {
+		return memberphoneNo;
 	}
 	public int getMemberPoint() {
 		return memberPoint;
@@ -41,6 +54,6 @@ public class Member {
 	public int getMemberValidity() {
 		return memberValidity;
 	}
-
-
+	
+	
 }
