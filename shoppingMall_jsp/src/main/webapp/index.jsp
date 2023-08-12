@@ -3,29 +3,22 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>회원가입</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> 쉼 : main </title>
+    <link rel="stylesheet" href="index.css">
+    <script src="/static/js/includeHTML.js"></script>
 </head>
+
 <body>
-	JOIN<br><br>
+	<jsp:include page="/static/html/header.html" />
+	<jsp:include page="/static/html/nav.html" />
+	<jsp:include page="/static/html/article.html" />
+	<jsp:include page="/static/html/footer.html" />
 	
-	<form action="./memberJoinAction.jsp" method="post">
-	
-		ID : <input type="text" name="memberID"><br><br>
-		
-		PW : <input type="password" name="memberPW"><br><br>
-		
-		Name : <input type="text" name="memberName"><br><br>
-		
-		Gender : 
-		<input type="radio" name="gender" value="남">남&nbsp;
-		<input type="radio" name="gender" value="여">여<br><br>
-		
-		Phone : <input type="text" name="phoneNo"><br><br>
-		
-		Address : <input type="text" name="memberAddress"><br><br>
-		
-		<input type="submit" value="회원가입">
-	</form>
+    <script>
+        includeHTML();
+    </script>
 </body>
+
 </html>

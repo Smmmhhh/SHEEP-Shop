@@ -47,8 +47,7 @@
 	if(result == 1){
 		PrintWriter script = response.getWriter();
 		script.println("<script>");
-		script.println("alert('회원가입에 성공했습니다.');");
-		script.println("location.href = 'index.jsp';");
+		script.println("location.href = 'joinComp.jsp';");
 		script.println("</script>;");
 		script.close();
 		
@@ -63,6 +62,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+	
 </body>
 </html>
