@@ -1,1 +1,73 @@
-@charset "EUC-KR";
+/*-------------------------------
+  annotation Name : productDetail HTML
+  User: MHJ
+  Date: 2023-08-13
+  Time: 오후 3:00
+ --------------------------------*/
+
+/*공통 속성*/
+
+.product-details {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    margin-right: 20px; /* 이미지와 다른 내용 사이의 간격 조정 */
+}
+
+.details {
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* 각 항목 사이의 간격 조정 */
+}
+
+.details h2, h3, h4 {
+    margin: 0;
+}
+
+.quantity_button {
+    width: 35px;
+    height: 35px;
+    font-size: 14px;
+    background-color: #f0f0f0;
+    border: none;
+    cursor: pointer;
+}
+
+/*개별 속성*/
+
+#category {
+    width: 100%;
+    padding-left: 10%;
+    display: flex;
+    color: darkslategrey;
+    text-align: left;
+}
+
+#productDetail_price {
+    color: violet;
+}
+
+#quantity_input {
+    width: 30px;
+    height: 30px;
+    font-size: 14px;
+    text-align: center;
+}
+
+#delivery_fee {
+    color: grey;
+}
+
+/*미디어 쿼리*/
+
+/* 화면 가로 너비가 768px 이하일 때 */
+@media (max-width: 768px) {
+    .product-details {
+        flex-direction: column;
+    }
+}
