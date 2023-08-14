@@ -27,7 +27,7 @@
 	<!-- [3] 상품 리스트 div 생성 -->
 	<div class="productBox">
 		<!-- [3]-1 Text & List 생성 -->
-		<div class="navbar">
+		<div class="menubar">
 			<div class="text">
 				<b> '테이크아웃 용품' 검색결과 </b>
 			</div>

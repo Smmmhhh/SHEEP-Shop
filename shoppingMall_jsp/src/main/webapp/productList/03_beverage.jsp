@@ -27,7 +27,7 @@
 	<!-- [3] 상품 리스트 div 생성 -->
 	<div class="productBox">
 		<!-- [3]-1 Text & List 생성 -->
-		<div class="navbar">
+		<div class="menubar">
 			<div class="text">
 				<b> '테이크아웃 용품' 검색결과 </b>
 			</div>
@@ -70,9 +70,6 @@
 
 	<!-- [4] 푸터  -->
 	<jsp:include page="../static/html/footer.html" />
-	<script>
-        includeHTML();
-    </script>
 
 </body>
 </html>

@@ -106,6 +106,8 @@
 				<td>포인트 view</td>
 			</tr>
 		</table>
+		
+		<button id="payButton" value="결제">결제하기</button>
 
 	</div>
 
@@ -114,10 +116,6 @@
 		<jsp:include page="../static/html/footer.html" />
 	</div>
 
-	<script>
-		//없어도 되는지 다시 확인
-        includeHTML();
-    </script>
 </body>
 
 </html>

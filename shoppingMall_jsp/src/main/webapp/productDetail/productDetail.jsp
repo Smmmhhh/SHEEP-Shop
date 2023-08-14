@@ -46,9 +46,8 @@
     <!-- [4] 푸터  -->
 	<jsp:include page="../static/html/footer.html"/>
     <script>
-        includeHTML();
 
-        document.addEventListener("DOMContentLoaded", function () {
+        	document.addEventListener("DOMContentLoaded", function () {
             const quantityInput = document.getElementById("quantity_input");
             const decrementButton = document.querySelector("#decrement-button");
             const incrementButton = document.querySelector("#increment-button");
