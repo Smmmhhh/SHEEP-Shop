@@ -17,6 +17,8 @@
 	<jsp:include page="/static/html/footer.html" />
     <script>
         includeHTML();
+        article();
+        nav();
     </script>
 </body>
 </html>
