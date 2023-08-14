@@ -26,18 +26,5 @@ public class MemberDAO {
 		return -1;
 	}
 
-	public int login(String memberID, String memberPW) {
-	      String SQL = "select * from members where memberID = '"+memberID
-	            +"' and meberPW = '"+memberPW+"'";
-	      try {
-	         Connection conn = DatabaseUtil.getConnection();
-	         PreparedStatement pstmt = conn.prepareStatement(SQL);
-	         pstmt.setString(1, memberID);
-	         pstmt.setString(2, memberPW);
-	         return pstmt.executeUpdate();
-	      } catch(Exception e) {
-	         e.printStackTrace();
-	      }
-	      return -1;
-	   }
+
 }

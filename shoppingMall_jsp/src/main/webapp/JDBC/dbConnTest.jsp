@@ -5,15 +5,15 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>JDBC 커넥션 테스트</title>
+<title> JDBC 커넥션 테스트 </title>
 </head>
 <body>
 	<%
 	  // 1. 변수 4개 선언
 	  String driverName="com.mysql.jdbc.Driver";
-	  String url = "jdbc:mysql://localhost:3306/odbo";
+	  String url = "jdbc:mysql://localhost:3306/shoppingmall";
 	  String username = "root";
-	  String password = "1111";
+	  String password = "1234";
 	  Connection conn = null;
 	  try{
 		// 2. 드라이버 로딩

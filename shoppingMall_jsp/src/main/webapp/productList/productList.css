@@ -36,7 +36,7 @@ html,body {
 }
 
 /* 네비게이션 바 스타일 */
-.navbar {
+.prodNavbar {
     background-color: #b7b7fe;
     color: #fff;
     padding: 10px;
@@ -45,16 +45,16 @@ html,body {
     align-items: center;
 }
 
-.navbar ul {
+.prodNavbar ul {
     list-style: none;
     display: flex;
 }
 
-.navbar ul li {
+.prodNavbar ul li {
     margin-right: 15px;
 }
 
-.navbar a {
+.prodNavbar a {
     color: #fff;
     text-decoration: none;
     font-weight: bold;
