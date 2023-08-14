@@ -54,6 +54,4 @@ public class Member {
 	public int getMemberValidity() {
 		return memberValidity;
 	}
-	
-	
 }
