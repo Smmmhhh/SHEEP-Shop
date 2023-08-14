@@ -1,0 +1,104 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+  }
+
+  /* Header css */
+  #header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px;
+  }
+
+  #logo {
+    margin-right: 20px;
+  }
+
+  .search-box {
+    display: flex;
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 5px;
+    margin-left: 30px;
+  }
+
+  .search-select {
+    margin-right: 20px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+
+  .search-input {
+    border: none;
+    padding: 10px;
+    width: 700px;
+    margin-right: 10px;
+    border-radius: 5px;
+  }
+
+  .search-button {
+    background-color: #E6E6FA;
+    color: purple;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  .my-page {
+    margin-right: 50px;
+    text-decoration: none;
+    color: black;
+  }
+
+  /* nav css */
+  .nav {
+    display: flex;
+    /* flex-direction: row; */
+    justify-content: space-between;
+    align-items: center;
+
+  }
+
+  .bin {
+    color: white;
+    margin-left: 25px;
+  }
+
+  .page-info {
+    margin-right: 25px;
+  }
+
+  .nav .link-item {
+    margin: 0 20px;
+    text-decoration: none;
+    color: black;
+  }
+
+  .nav .hr {
+    border-width: 2px;
+    border-color: #E6E6FA;
+    margin: 0px 45px 0px 45px;
+  }
+
+  /* main css */
+  .main {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+  }
+
+  /* footer css */
+  .footer {
+  	bottom: 0;
+    background-color: #d6d4d4;
+    text-align: center;
+    padding: 20px;
+  }
+
+  .copy {
+    margin-bottom: 10px;
+  }
