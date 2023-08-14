@@ -25,26 +25,19 @@ public class MemberDAO {
 		}
 		return -1;
 	}
-	/*
-	public int login(String memberID, String memberPW, String memberName,
-			String gender, String phoneNo, String memberAddress) {
+	
+	public int login(String memberID, String memberPW) {
 		String SQL = "select * from members where memberID = '"+memberID
-				+"' AND meberPW = '"+memberPW+"'";
+				+"' and meberPW = '"+memberPW+"'";
 		try {
 			Connection conn = DatabaseUtil.getConnection();
 			PreparedStatement pstmt = conn.prepareStatement(SQL);
 			pstmt.setString(1, memberID);
 			pstmt.setString(2, memberPW);
-			pstmt.setString(3, memberName);
-			pstmt.setString(4, gender);
-			pstmt.setString(5, phoneNo);
-			pstmt.setString(6, memberAddress);
-			pstmt.setInt(7, 1000);
-			pstmt.setInt(8, 1);
 			return pstmt.executeUpdate();
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
 		return -1;
-	}*/
+	}
 }
