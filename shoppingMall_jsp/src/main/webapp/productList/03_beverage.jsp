@@ -5,6 +5,7 @@
   Time: 오후 9:33
  -------------------------------->
 
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -15,8 +16,7 @@
 <title>쉼 : 상품 리스트</title>
 <link rel="stylesheet" href="productList.css">
 <link rel="stylesheet" href="../shop_main/main.css">
-<script src="productList.js"></script>
-
+<script src="../static/js/includeHTML.js"></script>
 </head>
 
 <body>
@@ -27,9 +27,9 @@
 	<!-- [3] 상품 리스트 div 생성 -->
 	<div class="productBox">
 		<!-- [3]-1 Text & List 생성 -->
-		<div class="prodNavbar">
+		<div class="menubar">
 			<div class="text">
-				<b> </b>
+				<b> '테이크아웃 용품' 검색결과 </b>
 			</div>
 			<div class="list">
 				<ul id="menu">
@@ -43,21 +43,30 @@
 		<!-- [3]-2 ProductList 생성 -->
 		<div class="products">
 
-			<a href="#" class="product"> <img
-				src="../image/iceTakeoutCup.jpg" width="170px">
-				<div class="product-name">[쉼 페트컵] 7온스(1000개 / 1박스)</div>
+			<a href="#" class="product"> <img src="../image/smoothie.jpg"
+				width="170px">
+				<div class="product-name">[쉼 스무디] 딸기 스무디 2kg</div>
 				<div class="product-price">18,900</div>
+			</a> <a href="#" class="product"> <img src="../image/smoothie.jpg"
+				width="170px">
+				<div class="product-name">[쉼 스무디] 망고 스무디 2kg</div>
+				<div class="product-price">18,900</div>
+			</a> <a href="#" class="product"> <img src="../image/smoothie.jpg"
+				width="170px">
+				<div class="product-name">[쉼 스무디] 블루베리 스무디 2kg</div>
+				<div class="product-price">21,900</div>
+			</a> <a href="#" class="product"> <img src="../image/smoothie.jpg"
+				width="170px">
+				<div class="product-name">[쉼 스무디] 유자 스무디 2kg</div>
+				<div class="product-price">21,900</div>
+			</a> <a href="#" class="product"> <img src="../image/smoothie.jpg"
+				width="170px">
+				<div class="product-name">[쉼 스무디] 키위 스무디 2kg</div>
+				<div class="product-price">21,900</div>
+			</a>
+
 		</div>
 	</div>
-
-	<script>
-	// 상품 정보를 담을 클래스 
-	class ProdictInform{
-		String imgurl
-		ProdictInform(imgurl, productName)
-		
-	}
-	</script>
 
 	<!-- [4] 푸터  -->
 	<jsp:include page="../static/html/footer.html" />

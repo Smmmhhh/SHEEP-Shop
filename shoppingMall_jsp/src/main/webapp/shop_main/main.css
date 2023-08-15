@@ -5,144 +5,152 @@
   Time: 오후 2:00
  */
 body {
-   margin: 0;
-   padding: 0;
-   font-family: Arial, sans-serif;
+	margin: 0;
+	padding: 0;
+	font-family: Arial, sans-serif;
 }
 
 /* Header css */
 #header {
-   display: flex;
-   justify-content: space-between;
-   align-items: center;
-   padding: 5px;
+
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 5px;
 }
 
 #logo {
-   margin-right: 20px;
+	margin-right: 20px;
 }
 
 .search-box {
-   display: flex;
-   border: 1px solid #ccc;
-   padding: 10px;
-   border-radius: 5px;
-   margin-left: 30px;
-/*    position: absolute; 검색바를 중앙에 고정 */
-/*     top: 10%; 화면 세로 중앙 위치에서 시작 */
-/*     left: 50%; 화면 가로 중앙 위치에서 시작 */
-/*     transform: translate(-50%, -50%); 정중앙 위치 조정 */
+	display: flex;
+	border: 1px solid #ccc;
+	padding: 10px;
+	border-radius: 5px;
+	margin-left: 30px;
+	/*    position: absolute; 검색바를 중앙에 고정 */
+	/*     top: 10%; 화면 세로 중앙 위치에서 시작 */
+	/*     left: 50%; 화면 가로 중앙 위치에서 시작 */
+	/*     transform: translate(-50%, -50%); 정중앙 위치 조정 */
 }
 
 .search-select {
-   margin-right: 20px;
-   padding: 5px;
-   border: 1px solid #ccc;
-   border-radius: 5px;
+	margin-right: 20px;
+	padding: 5px;
+	border: 1px solid #ccc;
+	border-radius: 5px;
 }
 
 .search-input {
-   border: none;
-   padding: 10px;
-   width: 700px;
-   margin-right: 10px;
-   border-radius: 5px;
+	border: none;
+	padding: 10px;
+	width: 700px;
+	margin-right: 10px;
+	border-radius: 5px;
 }
 
 .search-button {
-   background-color: #E6E6FA;
-   color: purple;
-   border: none;
-   padding: 10px 20px;
-   border-radius: 5px;
-   cursor: pointer;
+	background-color: #E6E6FA;
+	color: purple;
+	border: none;
+	padding: 10px 20px;
+	border-radius: 5px;
+	cursor: pointer;
 }
 
 .my-page {
-   margin-right: 10px;
-   text-decoration: none;
-   color: black;
+	margin-right: 10px;
+	text-decoration: none;
+	color: black;
 }
 
 /* nav css */
 nav {
-   display: flex;
-   /* flex-direction: row; */
-   justify-content: center;
-   align-items: center;
-   padding-top: 10px;
-   padding-bottom: 10px;
+
+	display: flex;
+	/* flex-direction: row; */
+	justify-content: center;
+	align-items: center;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+nav .hr {
+	border-width: 2px;
+	border-color: black;
+	margin: 10px 45px 10px 45px;
 }
 
 .navbar {
-   width: 100%;
-   height: 80px;
-   margin: 0;
-   list-style: none;
-   display: flex;
-   justify-content: center;
-   align-items: center;
-   background:#E6E6FA;
+	width: 100%;
+	height: 80px;
+	margin: 0;
+	list-style: none;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background: #E6E6FA;
 }
 
 .navbar li a {
-   margin: 0 20px;
-   text-decoration: none;
-   color:purple;
+	margin: 0 20px;
+	text-decoration: none;
+	color: purple;
 }
 
 /* 화면 가로 너비가 992px 이하일 때 */
-@media (max-width: 992px) {
-   nav {
-      height: 300px;
-      flex-direction: column;
-      margin-bottom: 50px;
-   }
-    .navbar {
-      height: 300px;
-      flex-direction: column;
-   }
-   .navbar li {
-      text-decoration: none;
-      color:purple;
-      margin: 10px 20px;
-   }
+@media ( max-width : 992px) {
+	nav {
+		height: 300px;
+		flex-direction: column;
+		margin-bottom: 50px;
+	}
+	.navbar {
+		height: 300px;
+		flex-direction: column;
+	}
+	.navbar li {
+		text-decoration: none;
+		color: purple;
+		margin: 10px 20px;
+	}
 }
 
 /* article */
 #wrap {
-   width: 1200px;
-   margin: 0 auto;
+
+	width: 1200px;
+	margin: 0 auto;
 }
 
 #slider {
-   width: 100%;
-   height: 300px;
-   background-color: #d9d9d9;
-   overflow: hidden;
+	width: 100%;
+	height: 300px;
+	background-color: #d9d9d9;
+	overflow: hidden;
 }
 
 .sliderWrap {
-   display: flex;
+	display: flex;
 }
 
 .sliderWrap .slider {
-   position: relative;
+	position: relative;
 }
 
 .sliderWrap .slider img {
-   vertical-align: top;
+	vertical-align: top;
 }
 
 /* footer css */
 .footer {
-   bottom: 0;
-   background-color: #d6d4d4;
-   text-align: center;
-   padding: 20px;
+	bottom: 0;
+	background-color: #d6d4d4;
+	text-align: center;
+	padding: 20px;
 }
 
 .copy {
-   margin-bottom: 10px;
+	margin-bottom: 10px;
 }
-

@@ -45,6 +45,7 @@ html,body {
     align-items: center;
 }
 
+
 .prodNavbar ul {
     list-style: none;
     display: flex;
@@ -55,6 +56,7 @@ html,body {
 }
 
 .prodNavbar a {
+
     color: #fff;
     text-decoration: none;
     font-weight: bold;
