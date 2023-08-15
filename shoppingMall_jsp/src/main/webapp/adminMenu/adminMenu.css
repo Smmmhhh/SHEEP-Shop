@@ -4,46 +4,51 @@
   Date: 2023-08-13
   Time: 오후 8:00
 */
-
-*{
-    padding: 0;
-    margin: 0;
-    border: none;
-} 
-
-html,body {
-	height: 100%;	
+* {
+	padding: 0;
+	margin: 0;
+	border: none;
 }
 
-body{
-    font-size: 14px;
+html, body {
+	height: 100%;
 }
 
-.Menu-wrapper {
+body {
+	font-size: 14px;
+}
+
+.menu-wrapper {
 	display: flex;
 	justify-content: center;
 	text-align: center;
 }
 
-.MenuButton {
+.menuDiv {
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	width: 400px;
-	height: 800px;
-	margin: 50px 10px;
+	height: 700px;
+	margin: 50px 20px;
 	border: none;
 	cursor: pointer;
+	background-size: cover;
+	background-position: center;
+}
+
+.menuDiv h1 {
+	color: black;
 }
 
 #userMenu {
-	background-image: url('button-background.jpg');
+	background-image: url("../image/coffee_image_1.jpg");
 }
 
 #productMenu {
- 	background-image: url('button-background.jpg');	
+	background-image: url("../image/coffee_image_1.jpg");
 }
 
 #dataMenu {
-	background-image: url('button-background.jpg');
+	background-image: url("../image/coffee_image_1.jpg");
 }

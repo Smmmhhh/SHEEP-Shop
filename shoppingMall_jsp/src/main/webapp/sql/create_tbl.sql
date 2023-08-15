@@ -6,20 +6,18 @@ create table if not exists members(
     memberId varchar(20) primary key,
     passwd varchar(20) not null,
     memberName varchar(10),
-    birth datetime,
     gender varchar(5),
     phoneNo varchar(20),
     memberAddress varchar(50),
     memberPoint int default 0,
-    validity int not null
+    memberValidity int not null
 );
 
 -- 카테고리 테이블 생성
 
 create table if not exists categories(
-    ctgID int primary key,
-    memberID varchar(20),
-    foreign key(memberID) references members(memberID) on update cascade
+    ctgID int auto_increment primary key,
+    ctgName varchar(20) not null
 );
 
 -- 상품 테이블 생성
@@ -33,7 +31,7 @@ create table if not exists products(
     detail text,
     prodSize varchar(10),
     prodOrigin varchar(10),
-    prodDate datetime,
+    prodDate varchar(20),
     prodValidity int not null,
     foreign key(ctgID) references categories(ctgID) on update cascade
 );
@@ -82,4 +80,3 @@ create table if not exists cartProducts(
     foreign key(cartID) references carts(cartID) on update cascade,
     foreign key(prodID) references products(prodID) on update no action
 );
-

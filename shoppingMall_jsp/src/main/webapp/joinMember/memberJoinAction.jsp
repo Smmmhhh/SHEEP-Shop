@@ -47,7 +47,7 @@
 	if(result == 1){
 		PrintWriter script = response.getWriter();
 		script.println("<script>");
-		script.println("location.href = 'joinComp.jsp';");
+		script.println("location.href = 'joinMemberComp.jsp';");
 		script.println("</script>;");
 		script.close();
 		
