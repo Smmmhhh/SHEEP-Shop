@@ -50,7 +50,7 @@
     </script>
 
 	<!-- [1] Header -->
-	<jsp:include page="../static/html/header.html" />
+	<jsp:include page="../static/html/header.jsp" />
 
 	<!-- [2] Nav -->
 	<jsp:include page="../static/html/nav.html" />

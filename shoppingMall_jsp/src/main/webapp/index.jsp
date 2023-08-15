@@ -11,7 +11,7 @@
 </head>
 
 <body>
-	<jsp:include page="/static/html/header.html" />
+	<jsp:include page="/static/html/header.jsp" />
 	<jsp:include page="/static/html/nav.html" />
 	<jsp:include page="/static/html/article.html" />
 	<jsp:include page="/static/html/footer.html" />

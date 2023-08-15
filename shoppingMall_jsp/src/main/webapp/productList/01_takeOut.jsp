@@ -21,7 +21,7 @@
 
 <body>
 	<!-- [1] Header 추가 -->
-	<jsp:include page="../static/html/header.html" />
+	<jsp:include page="../static/html/header.jsp" />
 	<!-- [2] nav 추가 -->
 	<jsp:include page="../static/html/nav.html" />
 	<!-- [3] 상품 리스트 div 생성 -->
@@ -42,11 +42,10 @@
 		</div>
 		<!-- [3]-2 ProductList 생성 -->
 		<div class="products">
-
-			<a href="#" class="product"> <img
-				src="../image/iceTakeoutCup.jpg" width="170px">
-				<div class="product-name">[쉼 페트컵] 7온스(1000개 / 1박스)</div>
-				<div class="product-price">18,900</div>
+			<a href="#" class="product"> 
+			<img src="../image/iceTakeoutCup.jpg" width="170px">
+			<div class="product-name">[쉼 페트컵] 7온스(1000개 / 1박스)</div>
+			<div class="product-price">18,900</div>
 		</div>
 	</div>
 

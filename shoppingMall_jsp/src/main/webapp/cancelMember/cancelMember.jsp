@@ -6,8 +6,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>쉼 : Login</title>
-<link rel="stylesheet" href="login.css">
+<title>쉼 : Cancel</title>
+<link rel="stylesheet" href="cancelMember.css">
 <link rel="stylesheet" href="../shop_main/main.css">
 </head>
 
@@ -17,18 +17,8 @@
 	<hr style="border: none; border-top: 1px solid #ccc;">
 
 	<!-- [2] 메인(login box) -->
-	<div class="login-wrapper">
-		<div class="loginBox">
-			<h2>Login</h2>
-			<form method="post" action="loginAction.jsp" id="login-form">
-				<input type="text" name="memberID" placeholder="Id"> 
-				<input type="password" name="memberPW" placeholder="Password">
-				<input type="submit" value="Login"> 
-			</form>
-			<div id="JoinBox">
-				<a href="../joinMember/joinMember.jsp">Join</a>
-			</div>
-		</div>
+	<div class="cancle-wrapper">
+		
 	</div>
 
 	<!-- [3] 푸터  -->
