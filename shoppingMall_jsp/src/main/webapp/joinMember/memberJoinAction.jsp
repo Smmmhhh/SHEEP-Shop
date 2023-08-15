@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ page import="member.Member" %>
-<%@ page import="member.MemberDAO" %>
-<%@ page import="java.io.PrintWriter" %>
+	pageEncoding="UTF-8"%>
+<%@ page import="member.Member"%>
+<%@ page import="member.MemberDAO"%>
+<%@ page import="java.io.PrintWriter"%>
 <%
 	request.setCharacterEncoding("UTF-8");
 	String memberID = null;
@@ -53,7 +53,6 @@
 		
 		return;
 	}
-	
 %>
 <!DOCTYPE html>
 <html>
@@ -62,6 +61,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	
+
 </body>
 </html>

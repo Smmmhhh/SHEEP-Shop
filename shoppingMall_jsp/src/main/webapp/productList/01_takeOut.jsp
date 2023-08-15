@@ -5,7 +5,6 @@
   Time: 오후 9:33
  -------------------------------->
 
-
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -16,7 +15,8 @@
 <title>쉼 : 상품 리스트</title>
 <link rel="stylesheet" href="productList.css">
 <link rel="stylesheet" href="../shop_main/main.css">
-<script src="../static/js/includeHTML.js"></script>
+<script src="productList.js"></script>
+
 </head>
 
 <body>
@@ -27,9 +27,9 @@
 	<!-- [3] 상품 리스트 div 생성 -->
 	<div class="productBox">
 		<!-- [3]-1 Text & List 생성 -->
-		<div class="menubar">
+		<div class="prodNavbar">
 			<div class="text">
-				<b> '테이크아웃 용품' 검색결과 </b>
+				<b> </b>
 			</div>
 			<div class="list">
 				<ul id="menu">
@@ -47,51 +47,20 @@
 				src="../image/iceTakeoutCup.jpg" width="170px">
 				<div class="product-name">[쉼 페트컵] 7온스(1000개 / 1박스)</div>
 				<div class="product-price">18,900</div>
-			</a> <a href="#" class="product"> <img
-				src="../image/iceTakeoutCup.jpg" width="170px">
-				<div class="product-name">[쉼 페트컵] 9온스(1000개 / 1박스)</div>
-				<div class="product-price">18,900</div>
-			</a> <a href="#" class="product"> <img
-				src="../image/iceTakeoutCup.jpg" width="170px">
-				<div class="product-name">[쉼 페트컵] 12온스(1000개 / 1박스)</div>
-				<div class="product-price">21,900</div>
-			</a> <a href="#" class="product"> <img
-				src="../image/iceTakeoutCup.jpg" width="170px">
-				<div class="product-name">[쉼 페트컵] 14온스(1000개 / 1박스)</div>
-				<div class="product-price">21,900</div>
-			</a> <a href="#" class="product"> <img
-				src="../image/iceTakeoutCup.jpg" width="170px">
-				<div class="product-name">[쉼 페트컵] 16온스(1000개 / 1박스)</div>
-				<div class="product-price">21,900</div>
-			</a> <a href="#" class="product"> <img
-				src="../image/iceTakeoutCup.jpg" width="170px">
-				<div class="product-name">[쉼 페트컵] 20온스(1000개 / 1박스)</div>
-				<div class="product-price">21,900</div>
-			</a> <a href="#" class="product"> <img
-				src="../image/iceTakeoutCup.jpg" width="170px">
-				<div class="product-name">[쉼 뚜껑] 92파이 아이스롱개폐뚜껑 아이스컵 뚜껑(1000개 /
-					1박스)</div>
-				<div class="product-price">21,900</div>
-			</a> <a href="#" class="product"> <img
-				src="../image/iceTakeoutCup.jpg" width="170px">
-				<div class="product-name">[쉼 뚜껑] 92파이 무타공돔뚜껑 아이스컵 뚜껑(1000개 /
-					1박스)</div>
-				<div class="product-price">21,900</div>
-			</a> <a href="#" class="product"> <img
-				src="../image/iceTakeoutCup.jpg" width="170px">
-				<div class="product-name">[쉼 뚜껑] 92파이 중평뚜껑 아이스컵 뚜껑(1000개 /
-					1박스)</div>
-				<div class="product-price">21,900</div>
-			</a>
-
 		</div>
 	</div>
 
+	<script>
+	// 상품 정보를 담을 클래스 
+	class ProdictInform{
+		String imgurl
+		ProdictInform(imgurl, productName)
+		
+	}
+	</script>
+
 	<!-- [4] 푸터  -->
 	<jsp:include page="../static/html/footer.html" />
-	<script>
-        includeHTML();
-    </script>
 
 </body>
 </html>

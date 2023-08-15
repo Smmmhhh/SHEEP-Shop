@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>쉼 : 구매</title>
-<link rel="stylesheet" href="payment.css">
+<link rel="stylesheet" href="paymentPage.css">
 <link rel="stylesheet" href="../shop_main/main.css">
 <script src="../static/js/includeHTML.js"></script>
 
@@ -14,13 +14,14 @@
 
 <body>
 
- 	 <script>
+<!-- 	 <script>
         // 백엔드에서 가져온 데이터를 시뮬레이션한 배열
         var productsData = [
             { name: '상품1', price: 10000, quantity: 2, image: '../image/logo.png' },
-            { name: '상품2', price: 20000, quantity: 3, image: '../image/coffee_image_1.jpg' },
-            { name: '상품2', price: 20000, quantity: 3, image: '../image/coffee_image_1.jpg' }
+            { name: '상품2', price: 20000, quantity: 3, image: '../image/coffe_image_1.jpg' },
+            { name: '상품2', price: 20000, quantity: 3, image: '../image/coffe_image_1.jpg' }
         ];
+        console.log();
 
         // 백엔드로부터 가져온 데이터로 화면을 렌더링하는 함수
         function renderProducts(products) {
@@ -31,11 +32,11 @@
                 var product = products[i];
                 tableContent += `
                     <tr>
-                        <th><img src="\${product.image}" alt="\${product.name}"></th>
+                        <th><img src="${product.image}" alt="${product.name}"></th>
                         <td>
-                            <div><strong>제품명:</strong> \${product.name} </div>
-                            <div><strong>가격:</strong> \${product.price}원</div>
-                            <div><strong>수량:</strong> \${product.quantity}</div>
+                            <div><strong>제품명:</strong> ${product.name}</div>
+                            <div><strong>가격:</strong> ${product.price}원</div>
+                            <div><strong>수량:</strong> ${product.quantity}</div>
                         </td>
                     </tr>`;
             }
@@ -47,7 +48,7 @@
         window.addEventListener('DOMContentLoaded', function() {
             renderProducts(productsData); // 백엔드로부터 가져온 데이터를 화면에 렌더링
         });
-    </script>
+    </script> -->
 
 	<!-- [1] Header -->
 	<jsp:include page="../static/html/header.html" />
@@ -106,14 +107,18 @@
 				<td>포인트 view</td>
 			</tr>
 		</table>
-		<button id="payButton" value="결제">결제하기</button>
+
 	</div>
 
 	<!-- [4] 푸터  -->
 	<div class="footerDiv">
 		<jsp:include page="../static/html/footer.html" />
 	</div>
-  
+
+	<script>
+		//없어도 되는지 다시 확인
+        includeHTML();
+    </script>
 </body>
 
 </html>

@@ -25,7 +25,7 @@ public class MemberDAO {
 		}
 		return -1;
 	}
-	
+
 	public int login(String memberID, String memberPW) {
 		String SQL = "select * from members where memberID = '"+memberID
 				+"' and meberPW = '"+memberPW+"'";
@@ -40,4 +40,5 @@ public class MemberDAO {
 		}
 		return -1;
 	}
+
 }

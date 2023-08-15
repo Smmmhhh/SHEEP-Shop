@@ -12,6 +12,7 @@ body {
 
 /* Header css */
 #header {
+
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
@@ -66,6 +67,7 @@ body {
 
 /* nav css */
 nav {
+
 	display: flex;
 	/* flex-direction: row; */
 	justify-content: center;
@@ -117,6 +119,7 @@ nav .hr {
 
 /* article */
 #wrap {
+
 	width: 1200px;
 	margin: 0 auto;
 }
