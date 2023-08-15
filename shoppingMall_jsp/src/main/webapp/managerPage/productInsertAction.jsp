@@ -4,70 +4,82 @@
 <%@ page import="product.ProductDAO"%>
 <%@ page import="java.io.PrintWriter"%>
 <%
-
 request.setCharacterEncoding("UTF-8");
-String prodName = null;
-int prodPrice = 0;
-int prodStock = 0;
-String prodDetail = null;
-String prodSize = null;
-String prodOrigin = null;
-String prodDate = null;
 
-if (request.getParameter("prodName") != null) {
+int prodCtgID = Integer.MIN_VALUE;
+String prodName = "";
+int prodPrice = Integer.MIN_VALUE;
+int prodStock = Integer.MIN_VALUE;
+String prodDetail = "";
+String prodSize = "";
+String prodOrigin = "";
+String prodDate = "";
+
+if (request.getParameter("prodCtgID") != "") {
+	prodCtgID = Integer.parseInt(request.getParameter("prodCtgID"));
+}
+if (request.getParameter("prodName") != "") {
 	prodName = (String) request.getParameter("prodName");
 }
-if (request.getParameter("prodPrice") != null) {
+if (request.getParameter("prodPrice") != "") {
 	prodPrice = Integer.parseInt(request.getParameter("prodPrice"));
-	
 }
-if (request.getParameter("prodStock") != null) {
+if (request.getParameter("prodStock") != "") {
 	prodStock = Integer.parseInt(request.getParameter("prodStock"));
 }
-if (request.getParameter("prodSize") != null) {
+if (request.getParameter("prodDetail") != "") {
+	prodDetail = (String) request.getParameter("prodDetail");
+}
+if (request.getParameter("prodSize") != "") {
 	prodSize = (String) request.getParameter("prodSize");
 }
-if (request.getParameter("prodOrigin") != null) {
+if (request.getParameter("prodOrigin") != "") {
 	prodOrigin = (String) request.getParameter("prodOrigin");
 }
-if (request.getParameter("prodDate") != null) {
+if (request.getParameter("prodDate") != "") {
 	prodDate = (String) request.getParameter("prodDate");
 }
-
-
-if (prodName == null || prodPrice > 0 || prodStock > 0 || prodSize == null || prodOrigin == null
-		|| prodDate == null) {
+// abnormal Case
+if (prodPrice == Integer.MIN_VALUE || prodPrice == 0) {
 	PrintWriter script = response.getWriter();
 	script.println("<script>");
-	script.println("alert('입력이 안 된 사항이 있습니다.');");
+	script.println("alert('상품가격 0보다 크게 입력해주세요.');");
 	script.println("history.back();");
-	script.println("</script>;");
+	script.println("</script>");
 	script.close();
 	return;
-}
+} 
+if (prodName == "") {
+	PrintWriter script = response.getWriter();
+	script.println("<script>");
+	script.println("alert('상품 이름을 입력해 주세요.');");
+	script.println("history.back();");
+	script.println("</script>");
+	script.close();
+	return;
+} 
 
-
+// normal Case 시퀀스 진행
 ProductDAO productDAO = new ProductDAO();
-int result = productDAO.prodInsert(prodName, prodPrice, prodStock, 
-		prodDetail, prodSize, prodOrigin);
+int result = productDAO.prodInsert(prodCtgID, prodName, prodPrice, prodStock, prodDetail, prodSize, prodOrigin, prodDate);
 
 if (result == 1) {
 	PrintWriter script = response.getWriter();
 	script.println("<script>");
-	script.println("location.href = 'joinMemberComp.jsp';");
-	script.println("</script>;");
+	script.println("alert('상품등록이 완료되었습니다.');");
+	script.println("</script>");
 	script.close();
-
+	
 	return;
 } else {
-	out.println("</script>; asdasdsad");
+	out.println("실패 result = " + result);
 }
 %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>쉼 : 상품등록</title>
 </head>
 <body>
 

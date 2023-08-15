@@ -23,9 +23,9 @@
         <!-- [3]-1 메인 사이드 -->
         <div class="mainSide">
             <h1> 상품관리 </h1>
-            <a href="" class="managerEdit-item"> 상품등록 </a><br>
-            <a href="" class="managerEdit-item"> 상품수정 </a><br>
-            <a href="" class="managerEdit-item"> 상품삭제 </a><br>
+			<a href="productInsert.jsp" class="managerEdit-item"> 상품등록 </a><br> 
+			<a href="productEdit.jsp" class="managerEdit-item"> 상품수정 </a><br> 
+			<a href="productdelete.jsp" class="managerEdit-item"> 상품삭제 </a><br>
         </div>
         <!-- [3]-2 메인 센터 -->
         <div class="mainCenter">

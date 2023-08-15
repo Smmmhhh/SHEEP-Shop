@@ -1,93 +1,101 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<!-------------------------------
+  annotation Name : productInsert jsp
+  User: SMH
+  Date: 2023-08-15
+  Time: ì˜¤í›„ 5:10
+ -------------------------------->
+
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
-<title>Insert title here</title>
+<meta charset="UTF-8">
+<title>ì‰¼ : ìƒí’ˆë“±ë¡</title>
+<link rel="stylesheet" href="../shop_main/main.css">
+<link rel="stylesheet" href="productInsert.css">
 </head>
 <body>
+	<!-- [1] Header ì¶”ê°€ -->
+	<jsp:include page="../static/html/header.html" />
+	<!-- [2] nav ì¶”ê°€ -->
+	<jsp:include page="../static/html/nav.html" />
 
-	<form action="productInsertAction.jsp" method="post" class="member">
-		<!-- [1] »óÇ° ÀÔ·Â -->
-
-		<!-- 1. »óÇ°ÀÌ¸§ -->
-		<div class="field">
-			<b>»óÇ°ÀÌ¸§</b> <span class="placeholder"><input type="text"
-				name="prodName"></span>
-		</div>
-		<!-- 2. Ä«Å×°í¸®´Â ÄŞº¸¹Ú½º·Î ³ª¿Í¾ßÇÔ -->
-		<div class="field">
-			<div class="category-box">
-				<b>Ä«Å×°í¸®</b><br> <select id="categorySelect"
-					class="category-select">
-					<option value="1">»óÇ° Ä«Å×°í¸®</option>
-					<option value="2">Å×ÀÌÆ®¾Æ¿ô ¿ëÇ°</option>
-					<option value="3">Ä¿ÇÇ/¿øµÎ</option>
-					<option value="4">½Ã·´/¼Ò½º/ÆÄ¿ì´õ</option>
-					<option value="5">½º¹«µğ/¿¡ÀÌµå/º£ÀÌ½º</option>
-					<option value="6">¿ìÀ¯/ÈÖÇÎÅ©¸²/Åº»ê</option>
-					<option value="7">Ä¿ÇÇ¿ëÇ°/¸Ó½Å</option>
-				</select> <input type="text" id="selectedCategory" readonly>
-			</div>
-
+	<!-- [3] ë©”ì¸ -->
+	<div id="main">
+		<!-- [3]-1 ë©”ì¸ ì‚¬ì´ë“œ -->
+		<div class="mainSide">
+			<h1>ìƒí’ˆê´€ë¦¬</h1>
+			<a href="productInsert.jsp" class="managerEdit-item"> ìƒí’ˆë“±ë¡ </a><br> 
+			<a href="productEdit.jsp" class="managerEdit-item"> ìƒí’ˆìˆ˜ì • </a><br> 
+			<a href="productdelete.jsp" class="managerEdit-item"> ìƒí’ˆì‚­ì œ </a><br>
 		</div>
 
-		<!-- 3. °¡°İ -->
-		<div class="field">
-			<b>°¡°İ</b> <input type="text" name="prodPrice">
+		<div class="mainCenter">
+			<form action="productInsertAction.jsp" method="post" class="member">
+				<!-- [3] ìƒí’ˆ ì…ë ¥ -->
+
+				<!-- 1. ìƒí’ˆì´ë¦„ -->
+				<div class="field">
+					<b>ìƒí’ˆì´ë¦„</b> <span class="placeholder"><input type="text"
+						name="prodName"></span>
+				</div>
+				<!-- 2. ì¹´í…Œê³ ë¦¬ëŠ” select íƒœê·¸ ì‚¬ìš© -->
+				<div class="field">
+					<div class="category-box">
+						<b>ì¹´í…Œê³ ë¦¬</b><br> <select id="categorySelect"
+							class="category-select" name="prodCtgID">
+							<option value="1">í…Œì´í¬ì•„ì›ƒ ìš©í’ˆ</option>
+							<option value="2">ì»¤í”¼/ì›ë‘</option>
+							<option value="3">ì‹œëŸ½/ì†ŒìŠ¤/íŒŒìš°ë”</option>
+							<option value="4">ìŠ¤ë¬´ë””/ì—ì´ë“œ/ë² ì´ìŠ¤</option>
+							<option value="5">ìš°ìœ /íœ˜í•‘í¬ë¦¼/íƒ„ì‚°</option>
+							<option value="6">ì»¤í”¼ìš©í’ˆ/ë¨¸ì‹ </option>
+						</select> <input type="text" id="prodCtgID" readonly>
+					</div>
+
+				</div>
+
+				<!-- 3. ê°€ê²© -->
+				<div class="field">
+					<b>ê°€ê²©</b> <input type="text" name="prodPrice">
+				</div>
+				<!-- 4. ì¬ê³  -->
+				<div class="field">
+					<b>ì¬ê³ </b> <input type="text" name="prodStock">
+				</div>
+				>
+
+				<!-- 5. ì„¤ëª… -->
+				<div class="field">
+					<b>ì„¤ëª…</b> <input type="text" name="prodDetail">
+				</div>
+				>
+
+				<!-- 6. ì‚¬ì´ì¦ˆ -->
+				<div class="field">
+					<b>ì‚¬ì´ì¦ˆ</b> <input type="text" name="prodSize">
+				</div>
+				>
+
+				<!-- 7. ì›ì‚°ì§€ -->
+				<div class="field">
+					<b>ì›ì‚°ì§€</b> <input type="text" name="prodOrigin">
+				</div>
+
+				<!-- 8. ì œì¡°ì¼ì -->
+				<div class="field">
+					<b>ì œì¡°ì¼ì</b> <input type="text" name="prodDate">
+				</div>
+
+				<!-- ê°€ì…í•˜ê¸° ë²„íŠ¼ -->
+				<input type="submit" value="ë“±ë¡í•˜ê¸°">
+			</form>
 		</div>
-		<!-- 4. Àç°í -->
-		<div class="field">
-			<b>Àç°í</b> <input type="text" name="prodStock">
-		</div>
-		>
+	</div>
 
-		<!-- 5. ¼³¸í -->
-		<div class="field">
-			<b>¼³¸í</b> <input type="text" name="prodText">
-		</div>
-		>
-
-		<!-- 6. »çÀÌÁî -->
-		<div class="field">
-			<b>»çÀÌÁî</b> <input type="text" name="prodSize">
-		</div>
-		>
-
-		<!-- 7. ¿ø»êÁö -->
-		<div class="field">
-			<b>¿ø»êÁö</b> <input type="text" name="prodOrigin">
-		</div>
-
-		<!-- 8. Á¦Á¶ÀÏÀÚ -->
-		<div class="field">
-			<b>Á¦Á¶ÀÏÀÚ</b> <input type="text" name="prodDate">
-		</div>
-
-		<!-- °¡ÀÔÇÏ±â ¹öÆ° -->
-		<input type="submit" value="µî·ÏÇÏ±â">
-
-		<!-- [2]. ÇªÅÍ -->
-
-
-		<!-- ÇªÅÍ Ãß°¡ÇØ¾ßÇÔ -->
-	</form>
-
-	<script>
-        // ¼±ÅÃµÈ Ç×¸ñÀ» Ç¥½ÃÇÒ input ¿ä¼Ò¿Í select ¿ä¼Ò °¡Á®¿À±â
-        var selectedCategoryInput = document.getElementById("selectedCategory");
-        var categorySelect = document.getElementsByClassName("category-select")[0];
-
-        // select ¿ä¼ÒÀÇ º¯°æ ÀÌº¥Æ® ¸®½º³Ê Ãß°¡
-        categorySelect.addEventListener("change", function () {
-            // ¼±ÅÃµÈ ¿É¼ÇÀÇ °ªÀ» °¡Á®¿Í¼­ input ¿ä¼Ò¿¡ Ç¥½Ã
-            selectedCategoryInput.value = categorySelect.options[categorySelect.selectedIndex].text;
-            console.log(selectedCategoryInput.value);
-        });
-
-    </script>
-
+	<!-- [4] í‘¸í„°  -->
+	<jsp:include page="../static/html/footer.html" />
 
 </body>
 </html>
