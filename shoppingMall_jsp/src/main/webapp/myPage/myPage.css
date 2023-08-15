@@ -1,42 +1,60 @@
 /* 
-  annotation Name : MyPage Css
-  User: KJS
-  Date: 2023-08-14
-  Time: 오후 2:22
- */
- 
+	annotation Name : myPage css
+    User: KJS
+    Date: 2023-08-15
+    Time: 오후 6:45
+*/
+
+.wrap2{
+	margin:0;
+	padding:0;
+	display: flex;
+	justify-content: center;
+}
+
+.wrap{
+	margin:0;
+ 	padding:0;
+}
+
+.my_box { text-align:center; }
+
+.order_box { line-height:40px; }
+
 /* 나의 정보(my info) */
 .myinfo_bar{
     display: flex;
-    margin-left: 10px;
+    height: 50px;
     margin-top: 10px;
 }
 
 .myinfo_box{
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 200px;
     text-align: center;
-    margin: 10px;
     border: 1px solid purple;
     background-color: #E6E6FA;
+    margin-right: 10px;
 }
 
 .mypoint{
-    
-    width: 1000px;
-    margin: 10px;
+    display: flex;
+    align-items: center;
+    width: 800px;
+    padding-left: 10px;
     border: 1px solid purple;
 }
 
 /* mypage box div */
 
 .my_box {
-    text-align: center;
-    padding: 20px;
+    text-align: center;   
     width:200px;
     height:480px;
-    float:left;
-    margin-top: 20px;
-    
+  
+    margin-top: 30px;
 }
 
 .myshop{
@@ -49,20 +67,22 @@
     height:150px;
     border: 1px solid purple;
     margin-bottom: 20px;
-    
 }
 
 .myinfo{
     height:150px;
     border: 1px solid purple;
-    
 }
 
 .order_box{
     width: 70%;
     text-align: left;
-    float: left;
     padding: 20px;
+}
+
+a{
+    text-decoration: none;
+    color: black;
 }
 
 /* 메인-order_search */
@@ -77,24 +97,22 @@ h3{
     
 }
 .ordersearch-input {
-    width: 70%;
+    width: 800px;
     padding: 8px;
     border: 1px solid purple;
     border-radius: 4px;
 }
 
-.ordersearch-button {
-    color: purple;
-    border: none;
-    border-radius: 4px;
-    padding: 8px 12px;
-    cursor: pointer;
+.ordesearch-button {
+    width: 70px;
+    margin-left: 10px;
 }
+
 
 /* 메인-order_list */
 
-.table {
-    width: 70%; /* 내용의 너비를 고정합니다 */
+.order_list {
+    width: 800px; /* 내용의 너비를 고정합니다 */
 }
 
 .InfoTable {
@@ -125,18 +143,23 @@ h3{
     height:150px;
 }
 
-
-
 #buyInfoTable img{
     height: 100%;
-    
 }
 
-/* footer */ 
-footer {
-    clear:both;
+.return-button {
+background-color: #E6E6FA;
+color: purple;
+border: none;
+padding: 10px 20px;
+border-radius: 5px;
+cursor: pointer;
 }
 
-.my_box, footer { text-align:center; }
-footer { line-height:50px; }
-.order_box { line-height:40px; }
+.second_wrap{
+	display:flex;
+	width:100%;
+	padding:0;
+	margin:0;
+}
+
