@@ -12,7 +12,6 @@ public class ProductDAO {
 		try {
 			Connection conn = DatabaseUtil.getConnection();
 			PreparedStatement pstmt = conn.prepareStatement(SQL);
-			//pstmt.setInt(1, 0);
 			pstmt.setInt(1, prodCtgID);
 			pstmt.setString(2, prodName);
 			pstmt.setInt(3, prodPrice);
