@@ -1,10 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="java.util.Date"%>
+    
 <%
-    // 세션을 종료합니다.
+
+	String memberID = (String) session.getAttribute("memberID");
+	Date currentDate = new Date();
+	if(memberID!=null)
+		System.out.println(memberID+"님이 로그아웃했습니다.["+currentDate+"]");
+
+	// 세션을 종료합니다.
     session.invalidate();
 
- 	System.out.println("로그아웃");
 %>
 
 <script type="text/javascript">

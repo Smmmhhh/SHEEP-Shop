@@ -1,16 +1,18 @@
 /* 
-	annotation Name : memberFix css
+   annotation Name : memberFix css
     User: KJS
     Date: 2023-08-15
     Time: 오후 6:48
 */
- 
+
+.second_wrap {
+   	padding: 0;
+   	margin: 0;
+   	display: flex;
+   	justify-content: center;
+}
+
 .wrap{
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width:1500px;
 }
 
 /*  pagebox */
@@ -25,7 +27,6 @@
 
 .InfoTable {
     border-collapse: collapse; /* 경계선이 겹치지 않도록 설정 */
-    width: 100%;
     margin: 20px 0;
 }
 
@@ -36,7 +37,7 @@
 }
 
 .InfoTable th {
-    width: 700px;
+   	width: 100px;
     text-align: center;
 }
 
@@ -45,7 +46,7 @@
     justify-content: center;
 }
 
-.curid, .chgid, .curpw, .chgpw, .chkpw, .curadd, .chgadd{
+.curpw, .chgpw, .chkpw, .curadd, .chgadd, .curphoneNo, .chgphoneNo{
     display: flex;
     padding: 10px;
     width: 800px;
@@ -77,14 +78,20 @@ input[type="password"] {
 }
 
 div[class*="info"] { 
-    width: 400px;
+    width: 500px;
     background-color: #E6E6FA;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 /* 확인 */
-.con_button {
+.confirmButton_div {
+	margin-bottom: 20px;
     display: flex;
     justify-content: center;
+}
+
+#confirmButton {
+	width: 150px;
+	height: 50px;
 }
