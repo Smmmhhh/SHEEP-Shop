@@ -46,7 +46,7 @@ if (prodName == null || prodPrice > 0 || prodStock > 0 || prodSize == null || pr
 	return;
 }
 
-
+/*
 ProductDAO productDAO = new ProductDAO();
 int result = productDAO.prodInsert(prodName, prodPrice, prodStock, 
 		prodDetail, prodSize, prodOrigin);
@@ -61,7 +61,7 @@ if (result == 1) {
 	return;
 } else {
 	out.println("</script>; asdasdsad");
-}
+}*/
 %>
 <!DOCTYPE html>
 <html>

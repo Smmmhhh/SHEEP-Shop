@@ -17,19 +17,20 @@
 		<button class="search-button">검색</button>
 	</div>
 	<div class="mypage-section" style="width: auto">
-		<a href="마이페이지_링크.html" class="my-page">마이페이지</a> <span
-			class="my-page"> | </span> <a href="#" class="my-page"
-			id="loginButton">로그인</a>
+		<a href="../myPage/myPage.jsp" class="main-button">마이페이지</a> 
+		<span class="my-page"> | </span> 
+		<a href="../login/login.jsp" class="main-button" id="loginButton">로그인</a>
 	</div>
 
 	<script>
 		// JavaScript 코드
 		const loginButton = document.getElementById('loginButton');
 
+		
 		loginButton.addEventListener('click', function() {
-			if (loginButton.textContent === '로그인') {
+			if (loginButton.textContent == '로그아웃') {
 				// 로그인 상태일 때, 로그아웃으로 변경
-				loginButton.textContent = '로그아웃';
+				loginButton.textContent = '로그인';
 				// 로그인 후에 수행할 작업 추가
 				// 예: 사용자 세션 유지, 로그인 정보 업데이트 등
 			} else {
