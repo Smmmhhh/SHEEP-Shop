@@ -100,5 +100,6 @@
 
    <!-- [5] 푸터  -->
    <jsp:include page="../static/html/footer.html" />
+
 </body>
 </html>
