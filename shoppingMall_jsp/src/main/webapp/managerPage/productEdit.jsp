@@ -1,124 +1,154 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ page import="product.Product"%>
+<%@ page import="product.ProductDAO"%>
+<%@ page import="java.io.PrintWriter"%>
+<%@ page import="java.util.ArrayList"%>
+<%@ page import="java.util.List"%>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>½°(°ü¸®ÀÚ) : »óÇ° ¼öÁ¤</title>
-<link rel="stylesheet" href="productEdit.css">
+<title>ì‰¼(ê´€ë¦¬ì) : ìƒí’ˆ ìˆ˜ì •</title>
+<!-- <link rel="stylesheet" href="productEdit.css"> -->
 <link rel="stylesheet" href="../shop_main/main.css">
 
 </head>
 
 <body>
-	<!-- [1] Header Ãß°¡ -->
+	<!-- [1] Header ì¶”ê°€  -->
 	<jsp:include page="../static/html/header.jsp" />
-	<!-- [2] nav Ãß°¡ -->
+	<!-- [2] nav ì¶”ê°€ -->
 	<jsp:include page="../static/html/nav.html" />
 
-	<!-- [3] ¸ŞÀÎ -->
+	<!-- [3] ë©”ì¸ -->
 	<div id="main">
-		<!-- [3]-1 ¸ŞÀÎ »çÀÌµå -->
+		<!-- [3]-1 ë©”ì¸ ì‚¬ì´ë“œ -->
 		<div class="mainSide">
-			<h1>»óÇ°°ü¸®</h1>
-			<a href="" class="managerEdit-item"> »óÇ°µî·Ï </a><br> <a href=""
-				class="managerEdit-item"> »óÇ°¼öÁ¤ </a><br> <a href=""
-				class="managerEdit-item"> »óÇ°»èÁ¦ </a><br>
+			<h1>ìƒí’ˆê´€ë¦¬</h1>
+			<a href="productInsert.jsp" class="managerEdit-item"> ìƒí’ˆë“±ë¡ </a><br>
+			<a href="productEdit.jsp" class="managerEdit-item"> ìƒí’ˆìˆ˜ì • </a><br>
+			<a href="productdelete.jsp" class="managerEdit-item"> ìƒí’ˆì‚­ì œ </a><br>
 		</div>
-		<!-- [3]-2 ¸ŞÀÎ ¼¾ÅÍ -->
+
+		<!-- [3]-2 ë©”ì¸ ì„¼í„° -->
 		<div class="mainCenter">
+
+			<!-- 1. ìƒí’ˆ í…Œì´ë¸” ë¦¬ìŠ¤íŠ¸-->
+			<div class="productListBox">ìƒí’ˆ ë¦¬ìŠ¤íŠ¸</div>
+			<table class="InfoTable" id="prodInfoTable">
+				<!-- ë™ì ìœ¼ë¡œ ìƒì„±ëœ í–‰ì´ ì—¬ê¸°ì— ì¶”ê°€ë  ê²ƒì…ë‹ˆë‹¤. -->
+			</table>
+
+			<!-- 2. ìƒí’ˆ í•­ëª© select -->
 			<div class="editBox">
-				<b> ¼öÁ¤ÇÒ Ç×¸ñÀ» ¼±ÅÃÇÏ¼¼¿ä </b>
+				<b> ìˆ˜ì •í•  í•­ëª©ì„ ì„ íƒí•˜ì„¸ìš” </b>
 
 				<div class="search-box">
-					<select class="prodSelect" style="width: 200px; height: 50px;">
-						<option>¼±ÅÃÇÏ¼¼¿ä!</option>
-						<option value="prodName">»óÇ°ÀÌ¸§</option>
-						<option value="prodCategory">Ä«Å×°í¸®</option>
-						<option value="prodPrice">°¡°İ</option>
-						<option value="prodStock">Àç°í</option>
-						<option value="prodText">¼³¸í</option>
-						<option value="prodSize">»çÀÌÁî</option>
-						<option value="prodOrigin">¿ø»êÁö</option>
-						<option value="prodDate">Á¦Á¶ÀÏÀÚ</option>
+					<select class="prodSelect" style="width: auto; height: auto;">
+						<option>ì„ íƒí•˜ì„¸ìš”!</option>
+						<option value="prodName">ìƒí’ˆì´ë¦„</option>
+						<option value="prodCategory">ì¹´í…Œê³ ë¦¬</option>
+						<option value="prodPrice">ê°€ê²©</option>
+						<option value="prodStock">ì¬ê³ </option>
+						<option value="prodText">ì„¤ëª…</option>
+						<option value="prodSize">ì‚¬ì´ì¦ˆ</option>
+						<option value="prodOrigin">ì›ì‚°ì§€</option>
+						<option value="prodDate">ì œì¡°ì¼ì</option>
 					</select>
 				</div>
 			</div>
-
-			<div class="search-edit" style="width: auto; height: 50px;">
-				¼±ÅÃÇÏ¼¼¿ä!</div>
-			<div class="editInputdiv">
-				<form class="editInput" action="ÀÔ·Â" method="post">
-					<input name="prodEdit">
-					<!-- typeÀº ÀÚ¹Ù½ºÅ©¸³Æ®¿¡¼­ ÁöÁ¤ÇØÁÜ -->
-				</form>
-
-				<button type="submit" formmethod="post"
-					style="height: 100px; width: 100px;">¼öÁ¤ÇÏ±â</button>
-			</div>
 		</div>
+
+		<!-- 3. ì„ íƒëœ ìƒí’ˆê³¼ ìƒí’ˆ í•­ëª©ì„ input -->
+		<form action="ì¶”ê°€í•´ì•¼í•¨" method="post" class="form_product_edit">
+			<!-- 1. ìƒí’ˆì´ë¦„ -->
+			<div class="field">
+				<b>ìƒí’ˆì´ë¦„</b> <input type="text" name="selectProdName">
+			</div>
+			<!-- 2. ìˆ˜ì •í•­ëª© -->
+			<div class="field">
+				<b>ìˆ˜ì •í•­ëª©</b> <input type="text" name="prodItem">
+			</div>
+			<!-- 3. ìˆ˜ì •ë‚´ìš© -->
+			<div class="field">
+				<b>ìˆ˜ì •ë‚´ìš©</b> <input type="text" name="prodEdit">
+			</div>
+
+			<button type="submit" formmethod="post"
+				style="height: auto; width: 100px;">ìˆ˜ì •í•˜ê¸°</button>
+		</form>
+
 	</div>
 
-	<!-- [4] ÇªÅÍ  -->
+	<!-- [4] í‘¸í„°  -->
 	<jsp:include page="../static/html/footer.html" />
 
+	<%
+	List<Product> productList = new ArrayList<>();
+	ProductDAO productDAO = new ProductDAO();
+	productList = productDAO.getProductList();
 
-	<!-- ½ºÅ©¸³Æ® -->
+	// 	for(Product e : productList){
+	// 		System.out.println(e.getProdName() + " " +  e.getProdPrice());
+	// 	}
+	%>
+	<!-- ìŠ¤í¬ë¦½íŠ¸ -->
 	<script>
+// <-------- ìƒí’ˆ ë¦¬ìŠ¤íŠ¸ë¥¼ ë°±ì—”ë“œì—ì„œ ì˜¤ëŠ” ì½”ë“œ -------->
+		// ë°±ì—”ë“œì—ì„œ ê°€ì ¸ì˜¨ ë°ì´í„°ë¥¼ ë„˜ê²¨ì£¼ê¸°
+ 		    var productsData = [
+		        <%for (Product product : productList) {%>
+		            {
+		                name: '<%=product.getProdName()%>',
+		                price: '<%=product.getProdPrice()%>'
+		            },
+		        <%}%>
+		    ]; 
+			
+		// ë°±ì—”ë“œë¡œë¶€í„° ê°€ì ¸ì˜¨ ë°ì´í„°ë¡œ í™”ë©´ì„ ë Œë”ë§í•˜ëŠ” í•¨ìˆ˜
+		function renderProducts(products) {
 
-        //search-box 
-        function showEdit() {
-            var selectElement = document.getElementsByClassName("prodSelect")[0];
-            var selectedValue = selectElement.value;
-            //console.log("¼±ÅÃµÈ °ª: " + selectElement);
-            //console.log("¼±ÅÃµÈ °ª: " + selectedValue);
+			var prodTable = document.querySelector('#prodInfoTable');
+			var tableContent = '';
 
-            // search-edit ÅØ½ºÆ® º¯°æ
-            var searchText = document.querySelector(".search-edit");
-            //searchText.textContent = selectedValue;
-            //console.log("¼±ÅÃµÈ °ª: " + searchText);
+			for (var i = 0; i < products.length; i++) {
+				var product = products[i];
+	            tableContent += '<tr>' +
+                '<td>' + product.name + '</td>' +
+                '<td>' + product.price + '</td>' +
+                '<td>' + 
+                    '<button class="selectButton" onclick="selectProductName(<%= product.name %>)">ì„ íƒí•˜ê¸°</button>' +
+                '</td>' +
+            '</tr>';
+			}
+			prodTable.innerHTML = tableContent;
+		}
 
-            if (selectedValue == "prodName") {
-                searchText.textContent = "»óÇ°ÀÌ¸§";
-            } else if (selectedValue == "prodCategory") {
-                searchText.textContent = "Ä«Å×°í¸®";
-            } else if (selectedValue == "prodPrice") {
-                searchText.textContent = "°¡°İ";
-            } else if (selectedValue == "prodStock") {
-                searchText.textContent = "Àç°í";
-            } else if (selectedValue == "prodText") {
-                searchText.textContent = "¼³¸í";
-            } else if (selectedValue == "prodSize") {
-                searchText.textContent = "»çÀÌÁî";
-            } else if (selectedValue == "prodOrigin") {
-                searchText.textContent = "¿ø»êÁö";
-            } else {
-                searchText.textContent = "Á¦Á¶ÀÏÀÚ";
-            }
-        }
 
-        // select ÅÂ±×ÀÇ °ªÀÌ º¯°æµÉ ¶§¸¶´Ù showEdit ÇÔ¼ö¸¦ È£Ãâ
-        var selectElement = document.getElementsByClassName("prodSelect")[0];
-        selectElement.addEventListener("change", showEdit); //showEdit È£Ãâ
-        selectElement.addEventListener("change", inputTypech); //inputTypech È£Ãâ
-        
-        //ÀÔ·Â¿¡ µû¶ó inputÅÂ±× ¼Ó¼º º¯°æ
-        function inputTypech() {
-            var inputType = document.getElementsByClassName("editInput");
-            var selectElement = document.getElementsByClassName("prodSelect")[0];
-            var selectValue = selectElement.value;
-            
-            if(selectValue == "prodPrice"){
-                inputType.inputType = "number";
-            }else {
-                inputType.inputType = "text";
-            }
-            console.log(inputType.inputType);
-        }
+ 		
+ 	    function selectProductName(productName) {
+ /* 			console.log(productName);
+ 			var test = document.querySelector(".editInput[name='prodEdit']");
+ 			console.log(test);
+ 			test = productName;
+ 			console.log(test); */
+ 			var selectProdNameInput = document.querySelector("input[name='selectProdName']");
+ 		    selectProdNameInput.value = productName;
+//  	        document.querySelector(".editInput[name='prodEdit']").value = productName;
+ 	        
 
-    </script>
+ 	    }
+ 	    window.addEventListener('DOMContentLoaded', function() {
+ 	        renderProducts(productsData); // ë°±ì—”ë“œë¡œë¶€í„° ê°€ì ¸ì˜¨ ë°ì´í„°ë¥¼ í™”ë©´ì— ë Œë”ë§
+ 	    });
+ 	    
+
+	</script>
 
 
 </body>

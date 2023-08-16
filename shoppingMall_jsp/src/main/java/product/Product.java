@@ -1,6 +1,7 @@
 package product;
 
 public class Product {
+	int ProdID;
 	int prodCtgID;
 	String prodName;
 	int prodPrice;
@@ -9,10 +10,12 @@ public class Product {
 	String prodSize;
 	String prodOrigin;
 	String prodDate;
-
-	Product(int prodCtgID, String prodName, int prodPrice, int prodStock, String prodDetail, String prodSize,
-			String prodOrigin, String prodDate) {
-
+	int prodValidity;
+	
+	//전체 생성자 
+	Product(int ProdID, int prodCtgID, String prodName, int prodPrice, int prodStock, String prodDetail, String prodSize,
+			String prodOrigin, String prodDate, int prodValidity) {
+		this.ProdID = ProdID;
 		this.prodCtgID = prodCtgID;
 		this.prodName = prodName;
 		this.prodPrice = prodPrice;
@@ -21,6 +24,18 @@ public class Product {
 		this.prodSize = prodSize;
 		this.prodOrigin = prodOrigin;
 		this.prodDate = prodDate;
+		this.prodValidity = prodValidity;
+	}
+	
+	// 제품id, 제품이름 생성자
+	Product(String prodName, int prodPrice) {
+		this.prodName = prodName;
+		this.prodPrice = prodPrice;
+	}
+	
+	
+	public int ProdID() {
+		return ProdID;
 	}
 
 	public int getProdCtgID() {
@@ -53,6 +68,10 @@ public class Product {
 
 	public String getProdDate() {
 		return prodDate;
+	}
+	
+	public int prodValidity() {
+		return prodValidity;
 	}
 
 }
