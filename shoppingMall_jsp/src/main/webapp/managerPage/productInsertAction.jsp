@@ -74,6 +74,7 @@ if (result == 1) {
 } else {
 	out.println("실패 result = " + result);
 }
+
 %>
 <!DOCTYPE html>
 <html>

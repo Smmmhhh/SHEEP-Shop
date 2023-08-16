@@ -59,7 +59,7 @@ body {
 	cursor: pointer;
 }
 
-.my-page {
+.main-button {
 	margin-right: 10px;
 	text-decoration: none;
 	color: black;
@@ -72,7 +72,7 @@ nav {
 	/* flex-direction: row; */
 	justify-content: center;
 	align-items: center;
-	padding-top: 10px;
+	padding-top: 5px;
 	padding-bottom: 10px;
 }
 
@@ -112,7 +112,6 @@ nav .hr {
 	}
 	.navbar li {
 		text-decoration: none;
-		color: purple;
 		margin: 10px 20px;
 	}
 }
