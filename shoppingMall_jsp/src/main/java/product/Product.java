@@ -28,13 +28,13 @@ public class Product {
 	}
 	
 	// 제품id, 제품이름 생성자
-	Product(String prodName, int prodPrice) {
+	Product(int ProdID, String prodName) {
+		this.ProdID = ProdID;
 		this.prodName = prodName;
-		this.prodPrice = prodPrice;
 	}
 	
 	
-	public int ProdID() {
+	public int getProdID() {
 		return ProdID;
 	}
 
