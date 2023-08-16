@@ -5,6 +5,8 @@
 <%
     HttpSession sess = request.getSession();
 	String memberID = (String) sess.getAttribute("memberID");
+	if(memberID!=null)
+		System.out.println(memberID+" 접속중");
 %>
 
 <header id="header">

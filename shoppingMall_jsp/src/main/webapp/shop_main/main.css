@@ -118,8 +118,7 @@ nav .hr {
 
 /* article */
 #wrap {
-
-	width: 1200px;
+	width: 900px;
 	margin: 0 auto;
 }
 
@@ -139,7 +138,7 @@ nav .hr {
 }
 
 .sliderWrap .slider img {
-	vertical-align: top;
+	
 }
 
 /* footer css */
