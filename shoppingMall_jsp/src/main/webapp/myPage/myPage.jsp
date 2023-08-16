@@ -12,50 +12,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>쉼 : Mypage</title>
+<title>쉼 : MyPage</title>
 <link rel="stylesheet" href="myPage.css">
 <link rel="stylesheet" href="../shop_main/main.css">
-<script src="../static/js/includeHTML.js"></script>
 </head>
 
 <body>
-
-	 <div>
-        <%-- 다른 파일의 table 요소를 추출하여 출력하기 --%>
-        <%
-            // 파일을 읽어서 원하는 부분을 추출하여 출력
-            String content = ""; // 파일 내용을 저장할 변수
-            try {
-                java.net.URL url = new java.net.URL("../payment/payment.jsp");
-                java.net.URLConnection connection = url.openConnection();
-                java.io.BufferedReader reader = new java.io.BufferedReader(
-                        new java.io.InputStreamReader(connection.getInputStream()));
-                boolean startExtraction = false; // 추출을 시작할지 여부를 나타내는 변수
-                String inputLine;
-                while ((inputLine = reader.readLine()) != null) {
-                    if (inputLine.contains("<table")) {
-                        startExtraction = true; // 추출 시작
-                    }
-                    if (startExtraction) {
-                        content += inputLine; // 추출한 부분을 content 변수에 추가
-                    }
-                    if (inputLine.contains("</table>")) {
-                        break; // 추출 종료
-                    }
-                }
-                reader.close();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-            
-            // 추출한 부분 출력
-            out.print(content);
-        %>
-    </div>
-
-
 	<!-- [1] Header -->
-	<jsp:include page="../static/html/header.html" />
+	<jsp:include page="../static/html/header.jsp" />
 	<hr style="border: none; border-top: 1px solid #ccc;">
 
 	<!-- [2] 나의 정보(my info) -->
@@ -63,13 +27,13 @@
 		<div class="wrap">
 			<div class="myinfo_bar">
 				<div class="myinfo_box">
-					<h3>My 정보</h3>
+					<h2>My 정보</h2>
 				</div>
 				<div class="mypoint">
 					<h3>보유 포인트</h3>
 				</div>
 			</div>
-			<!-- [3] mypage box div -->
+			<!-- [3] myPage box div -->
 			<div class="second_wrap">
 				<div class="my_box">
 					<div class="myshop">
@@ -78,31 +42,26 @@
 							<a href="myPage.html" target="_blank">주문목록 조회</a>
 						</h3>
 						<h3>
-							<a href="#" target="_blank">반품 조회
+							<a href="#" target="_blank">반품 조회</a>
 						</h3>
-						</a>
 					</div>
 					<div class="myact">
 						<h2>My 활동</h2>
 						<h3>
-							<a href="#" target="_blank">장바구니
+							<a href="#" target="_blank">장바구니</a>
 						</h3>
-						</a>
 						<h3>
-							<a href="#" target="_blank">1:1 문의하기
+							<a href="#" target="_blank">1:1 문의하기</a>
 						</h3>
-						</a>
 					</div>
 					<div class="myinfo">
 						<h2>My 정보</h2>
 						<h3>
-							<a href="#" target="_blank">개인정보 수정
+							<a href="../memberCheck/memberCheck.jsp">개인정보 수정</a>
 						</h3>
-						</a>
 						<h3>
-							<a href="#" target="_blank">포인트 충전하기
+							<a href="#" target="_blank">포인트 충전하기</a>
 						</h3>
-						</a>
 					</div>
 				</div>
 				<!-- [4] 메인(order_box div-->
@@ -123,9 +82,7 @@
 
 	<!-- [6] footer  -->
 	<jsp:include page="../static/html/footer.html" />
-	<script>
-        includeHTML();
-    </script>
+
 </body>
 
 </html>

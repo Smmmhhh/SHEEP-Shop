@@ -9,7 +9,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>쉼 : Login</title>
+<title>회원 정보 확인</title>
 </head>
 <body>
 
@@ -41,15 +41,10 @@
 	boolean result = memberDAO.login(memberID, memberPW);
 		
 	if(result){
-		HttpSession sess = request.getSession(false);
-		sess.setAttribute("memberID", memberID);
-				
-		Date currentDate = new Date();
-		System.out.println(memberID+"님이 로그인했습니다.["+currentDate+"]");
-		
 		PrintWriter script = response.getWriter();
 		script.println("<script>");
-		script.println("location.href = '../shop_main/main.jsp';");
+		script.println("alert('회원정보를 확인했습니다.');");
+		script.println("location.href = '../memberFix/memberFix.jsp';");
 		script.println("</script>;");
 		script.close();
 		

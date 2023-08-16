@@ -27,7 +27,7 @@ h2{
     align-items: center;
 }
 
-.view_id, input[type="password"]{
+.checkInput{
     width:500px;
     height: 50px;
     border: 2px solid purple;
