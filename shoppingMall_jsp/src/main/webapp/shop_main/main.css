@@ -12,7 +12,6 @@ body {
 
 /* Header css */
 #header {
-
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
@@ -118,7 +117,7 @@ nav .hr {
 
 /* article */
 #wrap {
-	width: 900px;
+	width: 1200px;
 	margin: 0 auto;
 }
 
@@ -143,6 +142,7 @@ nav .hr {
 
 /* footer css */
 .footer {
+
 	bottom: 0;
 	background-color: #d6d4d4;
 	text-align: center;
