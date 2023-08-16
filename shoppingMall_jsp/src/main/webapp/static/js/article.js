@@ -1,3 +1,4 @@
+
 $(function(){
     let currentIndex = 0;   //현재 이미지
     $(".sliderWrap").append($("#slider").first().clone(true));  //첫번째 이미지를 복사, 마지막에 추가
@@ -35,3 +36,4 @@ window.onload = function(){
         }
     }, 3000);
 }
+
