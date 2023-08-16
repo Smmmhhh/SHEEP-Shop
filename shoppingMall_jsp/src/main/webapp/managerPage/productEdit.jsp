@@ -6,21 +6,20 @@
 <%@ page import="java.util.ArrayList"%>
 <%@ page import="java.util.List"%>
 
+<%
+request.setCharacterEncoding("UTF-8");
+%>
 
 <!DOCTYPE html>
-<html lang="en">
-
+<html>
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>쉼(관리자) : 상품 수정</title>
-<!-- <link rel="stylesheet" href="productEdit.css"> -->
+<title>쉼 : 제품 수정</title>
 <link rel="stylesheet" href="../shop_main/main.css">
-
+<link rel="stylesheet" href="productInsert.css">
 </head>
-
 <body>
-	<!-- [1] Header 추가  -->
+	<!-- [1] Header 추가 -->
 	<jsp:include page="../static/html/header.jsp" />
 	<!-- [2] nav 추가 -->
 	<jsp:include page="../static/html/nav.html" />
@@ -31,126 +30,109 @@
 		<div class="mainSide">
 			<h1>상품관리</h1>
 			<a href="productInsert.jsp" class="managerEdit-item"> 상품등록 </a><br>
-			<a href="productEdit.jsp" class="managerEdit-item"> 상품수정 </a><br>
+			<a href="productEditSelect.jsp" class="managerEdit-item"> 상품수정 </a><br>
 			<a href="productdelete.jsp" class="managerEdit-item"> 상품삭제 </a><br>
 		</div>
 
-		<!-- [3]-2 메인 센터 -->
 		<div class="mainCenter">
-
-			<!-- 1. 상품 테이블 리스트-->
-			<div class="productListBox">상품 리스트</div>
-			<table class="InfoTable" id="prodInfoTable">
-				<!-- 동적으로 생성된 행이 여기에 추가될 것입니다. -->
-			</table>
-
-			<!-- 2. 상품 항목 select -->
-			<div class="editBox">
-				<b> 수정할 항목을 선택하세요 </b>
-
-				<div class="search-box">
-					<select class="prodSelect" style="width: auto; height: auto;">
-						<option>선택하세요!</option>
-						<option value="prodName">상품이름</option>
-						<option value="prodCategory">카테고리</option>
-						<option value="prodPrice">가격</option>
-						<option value="prodStock">재고</option>
-						<option value="prodText">설명</option>
-						<option value="prodSize">사이즈</option>
-						<option value="prodOrigin">원산지</option>
-						<option value="prodDate">제조일자</option>
-					</select>
+			<form action="productEditAction.jsp" method="post" class="member">
+				<!-- [3] 선택된 상품 가져오기 -->
+				<%
+				// productEditSelect.jsp 에서 prodId 받아오기
+				int prodID = Integer.MIN_VALUE;
+			
+				if (request.getParameter("selectedProduct") != "") {
+					prodID = Integer.parseInt(request.getParameter("selectedProduct"));
+				}
+				
+				// prodId 를 이용해서 상품 이름 가져오기
+				ProductDAO productDAO = new ProductDAO();
+				String prodName = productDAO.getProdName(prodID);
+				%>
+				<!-- 0. 상품id  -->
+				<div class="field">
+					<div class="field">
+						<b>상품ID = <%=prodID%></b> <input type="hidden" value="<%=prodID%>" name="prodID">
+					</div>
 				</div>
-			</div>
+
+				<!-- 1. 상품이름 -->
+				<div class="field">
+					<h3><%=prodName%>
+						수정하기
+					</h3>
+					<div class="field">
+						<b>상품이름</b> <input type="text" name="prodName">
+					</div>
+				</div>
+				<!-- 2. 카테고리는 select 태그 사용 -->
+				<div class="field">
+					<div class="category-box">
+						<b>카테고리</b><br> <select id="categorySelect"
+							class="category-select" name="prodCtgID">
+							<option value="1">테이크아웃 용품</option>
+							<option value="2">커피/원두</option>
+							<option value="3">시럽/소스/파우더</option>
+							<option value="4">스무디/에이드/베이스</option>
+							<option value="5">우유/휘핑크림/탄산</option>
+							<option value="6">커피용품/머신</option>
+						</select>
+						<!-- 선택된 카테고리 값을 hidden input 필드에 저장 -->
+						<input type="hidden" name="selectedCategory" value = 1 id="selectedCategory">
+					</div>
+				</div>
+
+				<!-- 3. 가격 -->
+				<div class="field">
+					<b>가격</b> <input type="text" name="prodPrice">
+				</div>
+				<!-- 4. 재고 -->
+				<div class="field">
+					<b>재고</b> <input type="text" name="prodStock">
+				</div>
+				>
+
+				<!-- 5. 설명 -->
+				<div class="field">
+					<b>설명</b> <input type="text" name="prodDetail">
+				</div>
+				>
+
+				<!-- 6. 사이즈 -->
+				<div class="field">
+					<b>사이즈</b> <input type="text" name="prodSize">
+				</div>
+				>
+
+				<!-- 7. 원산지 -->
+				<div class="field">
+					<b>원산지</b> <input type="text" name="prodOrigin">
+				</div>
+
+				<!-- 8. 제조일자 -->
+				<div class="field">
+					<b>제조일자</b> <input type="text" name="prodDate">
+				</div>
+
+				<!-- 가입하기 버튼 -->
+				<input type="submit" value="수정하기">
+			</form>
 		</div>
-
-		<!-- 3. 선택된 상품과 상품 항목을 input -->
-		<form action="추가해야함" method="post" class="form_product_edit">
-			<!-- 1. 상품이름 -->
-			<div class="field">
-				<b>상품이름</b> <input type="text" name="selectProdName">
-			</div>
-			<!-- 2. 수정항목 -->
-			<div class="field">
-				<b>수정항목</b> <input type="text" name="prodItem">
-			</div>
-			<!-- 3. 수정내용 -->
-			<div class="field">
-				<b>수정내용</b> <input type="text" name="prodEdit">
-			</div>
-
-			<button type="submit" formmethod="post"
-				style="height: auto; width: 100px;">수정하기</button>
-		</form>
-
 	</div>
 
 	<!-- [4] 푸터  -->
 	<jsp:include page="../static/html/footer.html" />
 
-	<%
-	List<Product> productList = new ArrayList<>();
-	ProductDAO productDAO = new ProductDAO();
-	productList = productDAO.getProductList();
-
-	// 	for(Product e : productList){
-	// 		System.out.println(e.getProdName() + " " +  e.getProdPrice());
-	// 	}
-	%>
-	<!-- 스크립트 -->
 	<script>
-// <-------- 상품 리스트를 백엔드에서 오는 코드 -------->
-		// 백엔드에서 가져온 데이터를 넘겨주기
- 		    var productsData = [
-		        <%for (Product product : productList) {%>
-		            {
-		                name: '<%=product.getProdName()%>',
-		                price: '<%=product.getProdPrice()%>'
-		            },
-		        <%}%>
-		    ]; 
-			
-		// 백엔드로부터 가져온 데이터로 화면을 렌더링하는 함수
-		function renderProducts(products) {
-
-			var prodTable = document.querySelector('#prodInfoTable');
-			var tableContent = '';
-
-			for (var i = 0; i < products.length; i++) {
-				var product = products[i];
-	            tableContent += '<tr>' +
-                '<td>' + product.name + '</td>' +
-                '<td>' + product.price + '</td>' +
-                '<td>' + 
-                    '<button class="selectButton" onclick="selectProductName(<%= product.name %>)">선택하기</button>' +
-                '</td>' +
-            '</tr>';
-			}
-			prodTable.innerHTML = tableContent;
-		}
+	//select한 값 넘겨주기 
+    var categorySelect = document.getElementById('categorySelect');
+    var selectedCategoryInput = document.getElementById('selectedCategory');
 
 
- 		
- 	    function selectProductName(productName) {
- /* 			console.log(productName);
- 			var test = document.querySelector(".editInput[name='prodEdit']");
- 			console.log(test);
- 			test = productName;
- 			console.log(test); */
- 			var selectProdNameInput = document.querySelector("input[name='selectProdName']");
- 		    selectProdNameInput.value = productName;
-//  	        document.querySelector(".editInput[name='prodEdit']").value = productName;
- 	        
-
- 	    }
- 	    window.addEventListener('DOMContentLoaded', function() {
- 	        renderProducts(productsData); // 백엔드로부터 가져온 데이터를 화면에 렌더링
- 	    });
- 	    
-
+    categorySelect.addEventListener('change', function() {
+        selectedCategoryInput.value = categorySelect.value;
+        //console.log(selectedCategoryInput.value);
+    });
 	</script>
-
-
 </body>
-
 </html>

@@ -1,0 +1,119 @@
+/* 
+  annotation Name : buyCheck Css
+  User: KJS
+  Date: 2023-08-16
+  Time: 오후 6:17
+ */
+ 
+/*전체 요소(wrap)*/
+.second_wrap{
+    display:flex;
+    justify-content: center;
+}
+
+/* 페이지 정보 */
+
+.buybox{
+    width: 200px;
+    text-align: center;
+    margin: 10px;
+}
+
+/* 페이지 링크 박스 */
+
+.allbox {
+    text-align: center;
+    width:200px;
+    height:500px;
+    float:left;
+    margin-top: 58px;
+}
+
+div[class*="my_"]{
+    height:150px;
+    border: 1px solid purple;
+    margin-bottom: 20px;
+}
+
+.order_box{
+
+    text-align: left;
+    float: left;
+    padding: 20px;
+    line-height:40px;
+}
+
+a{
+    text-decoration: none;
+    color: black;
+}
+
+/* 메인-order_search */
+
+h3{
+    margin-top: 0px;
+    margin-bottom:0px;
+}
+
+.order_search {
+    display: flex;
+    
+}
+.ordersearch-input {
+    width: 700px;
+    padding: 8px;
+    border: 1px solid purple;
+    border-radius: 4px;
+}
+
+.ordesearch-button {
+    width: 70px;
+    margin-left: 10px;
+}
+
+/* 메인-order_list */
+
+.order_list {
+    width: 800px; /* 내용의 너비를 고정합니다 */
+}
+
+.InfoTable {
+    border-collapse: collapse; /* 경계선이 겹치지 않도록 설정 */
+    width: 100%;
+    margin: 10px 0;
+}
+
+.InfoTable th,td {
+    border: 1px solid lightgray; /* 셀 경계선 스타일 지정 */
+    padding: 8px; /* 셀 안의 여백 설정 */
+    text-align: left;
+}
+
+.InfoTable th {
+    width: 15%;
+    text-align: center;
+}
+
+#userInfoTable tr,#payInfoTable tr {
+	text-align: center;
+    height: 50px;
+}
+
+#buyInfoTable tr {
+	width: 150px;
+    height:150px;
+}
+
+#buyInfoTable img{
+    height: 100px;
+    width: 100px;
+}
+
+.return-button {
+background-color: #E6E6FA;
+color: purple;
+border: none;
+padding: 10px 20px;
+border-radius: 5px;
+cursor: pointer;
+}

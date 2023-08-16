@@ -6,8 +6,9 @@
 <%
 request.setCharacterEncoding("UTF-8");
 
-int prodCtgID = Integer.MIN_VALUE;
+int prodID = Integer.MIN_VALUE;
 String prodName = "";
+int selectedCategory = Integer.MIN_VALUE;
 int prodPrice = Integer.MIN_VALUE;
 int prodStock = Integer.MIN_VALUE;
 String prodDetail = "";
@@ -15,12 +16,18 @@ String prodSize = "";
 String prodOrigin = "";
 String prodDate = "";
 
-if (request.getParameter("prodCtgID") != "") {
-	prodCtgID = Integer.parseInt(request.getParameter("prodCtgID"));
+if (request.getParameter("prodID") != "") {
+	prodID = Integer.parseInt(request.getParameter("prodID"));
 }
+
 if (request.getParameter("prodName") != "") {
 	prodName = (String) request.getParameter("prodName");
 }
+
+if (request.getParameter("selectedCategory") != "") {
+	selectedCategory = Integer.parseInt(request.getParameter("selectedCategory"));
+}
+
 if (request.getParameter("prodPrice") != "") {
 	prodPrice = Integer.parseInt(request.getParameter("prodPrice"));
 }
@@ -48,40 +55,31 @@ if (prodPrice == Integer.MIN_VALUE || prodPrice == 0) {
 	script.println("</script>");
 	script.close();
 	return;
-} 
-if (prodName == "") {
-	PrintWriter script = response.getWriter();
-	script.println("<script>");
-	script.println("alert('상품 이름을 입력해 주세요.');");
-	script.println("history.back();");
-	script.println("</script>");
-	script.close();
-	return;
-} 
+}
 
 // normal Case 시퀀스 진행
 ProductDAO productDAO = new ProductDAO();
-int result = productDAO.prodInsert(prodCtgID, prodName, prodPrice, prodStock, prodDetail, prodSize, prodOrigin, prodDate);
+int result = productDAO.updateProductEdit(prodName, selectedCategory, prodPrice, prodStock, prodDetail, prodSize, prodOrigin,
+		prodDate, prodID);
 
 if (result == 1) {
 	PrintWriter script = response.getWriter();
 	script.println("<script>");
-	script.println("alert('상품등록이 완료되었습니다.');");
-	script.println("location.href = 'productInsert.jsp';");
+	script.println("alert('상품수정이 완료되었습니다.');");
+	script.println("location.href = 'productEditSelect.jsp';");
 	script.println("</script>");
 	script.close();
-	
+
 	return;
 } else {
 	out.println("실패 result = " + result);
 }
-
 %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>쉼 : 상품등록</title>
+<title>쉼 : 상품수정</title>
 </head>
 <body>
 

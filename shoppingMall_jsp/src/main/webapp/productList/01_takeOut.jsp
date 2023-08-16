@@ -49,14 +49,6 @@
 		</div>
 	</div>
 
-	<script>
-	// 상품 정보를 담을 클래스 
-	class ProdictInform{
-		String imgurl
-		ProdictInform(imgurl, productName)
-		
-	}
-	</script>
 
 	<!-- [4] 푸터  -->
 	<jsp:include page="../static/html/footer.html" />

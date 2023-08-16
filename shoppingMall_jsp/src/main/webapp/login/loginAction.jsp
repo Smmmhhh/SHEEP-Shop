@@ -16,7 +16,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Login</title>
+<title>쉼 : Login</title>
 </head>
 <body>
 

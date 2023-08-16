@@ -26,9 +26,9 @@
 		<!-- [3]-1 메인 사이드 -->
 		<div class="mainSide">
 			<h1>상품관리</h1>
-			<a href="productInsert.jsp" class="managerEdit-item"> 상품등록 </a><br> 
-			<a href="productEdit.jsp" class="managerEdit-item"> 상품수정 </a><br> 
-			<a href="productdelete.jsp" class="managerEdit-item"> 상품삭제 </a><br>
+			<a href="productInsert.jsp" class="managerEdit-item"> 상품등록 </a><br>
+			<a href="productEditSelect.jsp" class="managerEdit-item"> 상품수정 </a><br>
+			<a href="productDelete.jsp" class="managerEdit-item"> 상품삭제 </a><br>
 		</div>
 
 		<div class="mainCenter">
@@ -51,9 +51,11 @@
 							<option value="4">스무디/에이드/베이스</option>
 							<option value="5">우유/휘핑크림/탄산</option>
 							<option value="6">커피용품/머신</option>
-						</select> <input type="text" id="prodCtgID" readonly>
+						</select>
+						<!-- 선택된 카테고리 값을 hidden input 필드에 저장 -->
+						<input type="hidden" name="selectedCategory" value=1
+							id="selectedCategory">
 					</div>
-
 				</div>
 
 				<!-- 3. 가격 -->
@@ -96,6 +98,19 @@
 
 	<!-- [4] 푸터  -->
 	<jsp:include page="../static/html/footer.html" />
+
+	<script>
+		// 라디오 버튼 선택 시 수정하기 버튼 활성화
+		var radioButtons = document
+				.querySelectorAll('input[name="selectedProduct"]');
+		var editButton = document.getElementById('editButton');
+
+		radioButtons.forEach(function(radioButton) {
+			radioButton.addEventListener('change', function() {
+				editButton.disabled = !radioButton.checked;
+			});
+		});
+	</script>
 
 </body>
 </html>
