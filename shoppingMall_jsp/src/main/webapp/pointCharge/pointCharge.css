@@ -1,0 +1,175 @@
+/* 
+	annotation Name : pointCharge css
+    User: KJS
+    Date: 2023-08-16
+    Time: 오후 3:03
+*/
+
+/*전체 요소(wrap)*/
+.second_wrap{
+	display: flex;
+	justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+}
+
+
+.my_box{ text-align:center; }
+.order_box { line-height:40px; }
+
+/* 나의 정보(my info) */
+.myinfo_bar{
+    display: flex;
+    height: 50px;
+    margin-top: 10px;
+}
+
+.myinfo_box{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 200px;
+    text-align: center;
+    border: 1px solid purple;
+    background-color: #E6E6FA;
+    margin-left: 10px;
+}
+
+.point_man{
+    display: flex;
+    align-items: center;
+    width: 800px;
+    padding-left: 10px;
+ 
+}
+
+/* mypage box div */
+
+.my_box {
+    text-align: center;
+    margin: 10px;
+    width:200px;
+    height:480px;
+    float:left;
+    margin-top: 30px;
+}
+
+.myshop{
+    height:150px;
+    border: 1px solid purple;
+    margin-bottom: 20px;
+}
+
+.myact{
+    height:150px;
+    border: 1px solid purple;
+    margin-bottom: 20px;
+}
+
+.myinfo{
+    height:150px;
+    border: 1px solid purple;
+}
+
+.order_box{
+    width: 70%;
+    text-align: left;
+    float: left;
+    padding: 20px;
+}
+
+a{
+    text-decoration: none;
+    color: black;
+}
+
+/* 메인- pointbar */
+
+.point_bar{
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+    margin: 30px;
+    padding: 10px;
+    border: 1px solid purple;
+
+}
+
+.viewpoint{    
+    margin-left: 30px;
+}
+
+.chargr_botten{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+ /* 스타일 시트 내용: 모달 스타일 */
+ .modal {
+    display: none; /* 초기에는 모달을 숨김 */
+    position: fixed; /* 고정 위치로 설정 */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* 반투명한 검은 배경색 */
+}
+
+.modal-content {
+    background-color: white;
+    width: 300px;
+    margin: 200px auto; /* 화면 중앙에 위치하도록 마진 설정 */
+    padding: 20px;
+    border-radius: 5px;
+}
+
+p{
+    border: 1px solid gray;
+    padding: 10px;
+}
+
+.close {
+   	float: right;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+input[type="text"]{
+    height: 30px;
+}
+
+input[type="submit"]{
+	
+}
+
+/* 버튼 스타일 */
+button {
+    padding: 10px 20px;
+    background-color: #E6E6FA;/* 파란색 배경 */
+    color: purple;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: hsl(240, 88%, 84%);; /* 마우스 호버 시 더 진한 파란색 배경 */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
