@@ -13,7 +13,9 @@
 
 <body>
     <!-- [1] Header 추가 -->
+
 	<jsp:include page="../static/html/header.jsp"/>
+
     <!-- [2] nav 추가 -->
 	<jsp:include page="../static/html/nav.html"/>
 
@@ -41,10 +43,11 @@
 
             <p class="description">법랑 머그의 쉐입을 한 세라믹 머그로서, 트렌디한 감성의 디자인이 결합된 355ml 상품입니다.</p>
         </div>
-        
+     
         <div>
         	<button id="">결제</button>
         </div>
+
     </div>
 
     <!-- [4] 푸터  -->

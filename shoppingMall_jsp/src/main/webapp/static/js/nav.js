@@ -1,4 +1,5 @@
 window.onload = function() {
+
 	var linkItems = document.querySelectorAll('.link-item');
 	linkItems.forEach(function(item) {
 		item.addEventListener('mouseenter', function() {

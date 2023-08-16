@@ -14,5 +14,6 @@
 	<jsp:include page="/static/html/nav.html" />
 	<jsp:include page="/static/html/article.html" />
 	<jsp:include page="/static/html/footer.html" />
+
 </body>
 </html>

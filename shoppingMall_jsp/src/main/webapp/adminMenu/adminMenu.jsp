@@ -15,7 +15,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>쉼 : 관리자메뉴</title>
 <link rel="stylesheet" href="adminMenu.css">
-
 <link rel="stylesheet" href="../shop_main/main.css">
 </head>
 
@@ -40,6 +39,7 @@
 
 	<!-- [3] 푸터  -->
 	<jsp:include page="../static/html/footer.html"/>
+
 </body>
 
 </html>

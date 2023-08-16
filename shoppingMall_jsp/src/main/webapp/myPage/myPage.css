@@ -1,0 +1,165 @@
+/* 
+	annotation Name : myPage css
+    User: KJS
+    Date: 2023-08-15
+    Time: 오후 6:45
+*/
+
+.wrap2{
+	margin:0;
+	padding:0;
+	display: flex;
+	justify-content: center;
+}
+
+.wrap{
+	margin:0;
+ 	padding:0;
+}
+
+.my_box { text-align:center; }
+
+.order_box { line-height:40px; }
+
+/* 나의 정보(my info) */
+.myinfo_bar{
+    display: flex;
+    height: 50px;
+    margin-top: 10px;
+}
+
+.myinfo_box{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 200px;
+    text-align: center;
+    border: 1px solid purple;
+    background-color: #E6E6FA;
+    margin-right: 10px;
+}
+
+.mypoint{
+    display: flex;
+    align-items: center;
+    width: 800px;
+    padding-left: 10px;
+    border: 1px solid purple;
+}
+
+/* mypage box div */
+
+.my_box {
+    text-align: center;   
+    width:200px;
+    height:480px;
+  
+    margin-top: 30px;
+}
+
+.myshop{
+    height:150px;
+    border: 1px solid purple;
+    margin-bottom: 20px;
+}
+
+.myact{
+    height:150px;
+    border: 1px solid purple;
+    margin-bottom: 20px;
+}
+
+.myinfo{
+    height:150px;
+    border: 1px solid purple;
+}
+
+.order_box{
+    width: 70%;
+    text-align: left;
+    padding: 20px;
+}
+
+a{
+    text-decoration: none;
+    color: black;
+}
+
+/* 메인-order_search */
+
+h3{
+    margin-top: 0px;
+    margin-bottom:0px;
+}
+
+.order_search {
+    display: flex;
+    
+}
+.ordersearch-input {
+    width: 800px;
+    padding: 8px;
+    border: 1px solid purple;
+    border-radius: 4px;
+}
+
+.ordesearch-button {
+    width: 70px;
+    margin-left: 10px;
+}
+
+
+/* 메인-order_list */
+
+.order_list {
+    width: 800px; /* 내용의 너비를 고정합니다 */
+}
+
+.InfoTable {
+    border-collapse: collapse; /* 경계선이 겹치지 않도록 설정 */
+    width: 100%;
+    margin: 10px 0;
+}
+
+.InfoTable th,td {
+    border: 1px solid lightgray; /* 셀 경계선 스타일 지정 */
+    padding: 8px; /* 셀 안의 여백 설정 */
+    text-align: left;
+}
+
+.InfoTable th {
+    width: 15%;
+    text-align: center;
+}
+
+
+#userInfoTable tr,#payInfoTable tr {
+	text-align: center;
+    height: 50px;
+}
+
+#buyInfoTable tr {
+	width: 150px;
+    height:150px;
+}
+
+#buyInfoTable img{
+    height: 100%;
+}
+
+.return-button {
+background-color: #E6E6FA;
+color: purple;
+border: none;
+padding: 10px 20px;
+border-radius: 5px;
+cursor: pointer;
+}
+
+.second_wrap{
+	display:flex;
+	width:100%;
+	padding:0;
+	margin:0;
+}
+

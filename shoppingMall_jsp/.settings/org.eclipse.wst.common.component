@@ -8,5 +8,5 @@
         <property name="context-root" value="shoppingMall_jsp"/>
         <property name="java-output-path" value="/shoppingMall_jsp/build/classes"/>
     </wb-module>
-                    
+
 </project-modules>
