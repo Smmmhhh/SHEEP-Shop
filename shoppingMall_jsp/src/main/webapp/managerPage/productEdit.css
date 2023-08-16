@@ -1,0 +1,100 @@
+/* 전체 페이지 스타일 */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+/* 메인 영역 스타일 */
+#main {
+    display: flex;
+    align-items: flex-start;
+    padding: 20px;
+}
+
+/* 메인 사이드 영역 스타일 */
+.mainSide {
+    flex: 1;
+    padding-right: 20px;
+    border-right: 1px solid #ccc;
+}
+
+.mainSide h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.managerEdit-item {
+    display: block;
+    margin-bottom: 10px;
+    color: #007bff;
+    text-decoration: none;
+}
+
+/* 메인 센터 영역 스타일 */
+.mainCenter {
+    flex: 3;
+    padding-left: 20px;
+}
+
+.productListBox {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.editBox {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.search-box {
+    margin-bottom: 10px;
+}
+
+.editInputdiv {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.editInput {
+    flex: 1;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+/* InfoTable 스타일 */
+.InfoTable {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.InfoTable th,
+.InfoTable td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: center;
+}
+
+/* 스크립트에서 사용되는 스타일 */
+.search-edit {
+    background-color: #f4f4f4;
+    padding: 10px;
+    font-weight: bold;
+}
+
+/* 푸터 스타일 */
+.footerDiv {
+    margin-top: 20px;
+    background-color: #f4f4f4;
+    padding: 20px 0;
+    text-align: center;
+}
+
+/* Header 및 Nav 스타일은 main.css 파일을 활용 */

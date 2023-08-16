@@ -1,37 +1,37 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ page import="member.Member" %>
-<%@ page import="member.MemberDAO" %>
-<%@ page import="java.io.PrintWriter" %>
+	pageEncoding="UTF-8"%>
+<%@ page import="member.Member"%>
+<%@ page import="member.MemberDAO"%>
+<%@ page import="java.io.PrintWriter"%>
 <%
 	request.setCharacterEncoding("UTF-8");
-	String memberID = null;
-	String memberPW = null;
-	String memberName = null;
-	String gender = null;
-	String phoneNo = null;
-	String memberAddress = null;
+	String memberID = "";
+	String memberPW = "";
+	String memberName = "";
+	String gender = "";
+	String phoneNo = "";
+	String memberAddress = "";
 	
-	if(request.getParameter("memberID")!=null){
+	if(request.getParameter("memberID")!=""){
 		memberID = (String) request.getParameter("memberID");
 	}
-	if(request.getParameter("memberPW")!=null){
+	if(request.getParameter("memberPW")!=""){
 		memberPW = (String) request.getParameter("memberPW");
 	}
-	if(request.getParameter("memberName")!=null){
+	if(request.getParameter("memberName")!=""){
 		memberName = (String) request.getParameter("memberName");
 	}
-	if(request.getParameter("gender")!=null){
+	if(request.getParameter("gender")!=""){
 		gender = (String) request.getParameter("gender");
 	}
-	if(request.getParameter("phoneNo")!=null){
+	if(request.getParameter("phoneNo")!=""){
 		phoneNo = (String) request.getParameter("phoneNo");
 	}
-	if(request.getParameter("memberAddress")!=null){
+	if(request.getParameter("memberAddress")!=""){
 		memberAddress = (String) request.getParameter("memberAddress");
 	}
-	if(memberID == null || memberPW == null || memberName == null ||
-			gender == null || phoneNo == null || memberAddress == null ){	
+	if(memberID == "" || memberPW == "" || memberName == "" ||
+			gender == "" || phoneNo == "" || memberAddress == "" ){	
 		PrintWriter script = response.getWriter();
 		script.println("<script>");
 		script.println("alert('입력이 안 된 사항이 있습니다.');");
@@ -53,15 +53,14 @@
 		
 		return;
 	}
-	
 %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Join</title>
 </head>
 <body>
-	
+
 </body>
 </html>

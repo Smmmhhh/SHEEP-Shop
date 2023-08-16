@@ -43,4 +43,9 @@
 #buyInfoTable img{
     width: 50%;
     height: 80%;
+
+#payButton{
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }

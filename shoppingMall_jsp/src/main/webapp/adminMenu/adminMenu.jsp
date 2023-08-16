@@ -15,33 +15,31 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>쉼 : 관리자메뉴</title>
 <link rel="stylesheet" href="adminMenu.css">
-<link rel="stylesheet" href="../index.css">
-<script src="../static/js/includeHTML.js"></script>
+<link rel="stylesheet" href="../shop_main/main.css">
 </head>
 
 <body>
+
 	<!-- [1] Header 추가 -->
 	<jsp:include page="../static/html/adminHeader.html"/>
 	<hr style="border: none; border-top: 1px solid #ccc;">
 
 	<!-- [2] 메인(login box) -->
 	<div class="menu-wrapper">
-		<button class="menuButton" id="userMenu">
+		<div class="menuDiv" id="userMenu">
 			<h1>회원 관리</h1>
-		</button>
-		<button class="menuButton" id="productMenu">
+		</div>
+		<div class="menuDiv" id="productMenu">
 			<h1>상품 관리</h1>
-		</button>
-		<button class="menuButton" id="dataMenu">
+		</div>
+		<div class="menuDiv" id="dataMenu">
 			<h1>쇼핑몰 데이터</h1>
-		</button>
+		</div>
 	</div>
 
 	<!-- [3] 푸터  -->
 	<jsp:include page="../static/html/footer.html"/>
-	<script>
-        includeHTML();
-    </script>
+
 </body>
 
 </html>
