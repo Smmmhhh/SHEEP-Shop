@@ -17,7 +17,7 @@
 </head>
 <body>
 	<!-- [1] Header 추가 -->
-	<jsp:include page="../static/html/header.html" />
+	<jsp:include page="../static/html/header.jsp" />
 	<!-- [2] nav 추가 -->
 	<jsp:include page="../static/html/nav.html" />
 

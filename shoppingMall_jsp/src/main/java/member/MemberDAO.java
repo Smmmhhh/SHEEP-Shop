@@ -83,9 +83,9 @@ public class MemberDAO {
 	}
 	
 	//회원 정보 수정
-	public int update(String memberID, String memberPresentPW, String memberNewPW, String phoneNo, String memberAddress) {
+	public int updateMemberInfo(String memberID, String memberNewPW, String phoneNo, String memberAddress) {
 		String SQL = "update members set passwd = ?, phoneNo = ?, memberAddress = ? "
-				+ "where memberID = ? and passwd = ? and memberValidity = 1";
+				+ "where memberID = ? and memberValidity = 1";
 		
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -93,11 +93,10 @@ public class MemberDAO {
 		try {
 			conn = DatabaseUtil.getConnection();
 			pstmt = conn.prepareStatement(SQL);
-			pstmt.setString(1, memberPresentPW);
+			pstmt.setString(1, memberNewPW);
 			pstmt.setString(2, phoneNo);
 			pstmt.setString(3, memberAddress);
 			pstmt.setString(4, memberID);
-			pstmt.setString(5, memberNewPW);
 			
 			return pstmt.executeUpdate();
 		
@@ -119,7 +118,6 @@ public class MemberDAO {
 		return -1;
 	}
 
-	
 	
 	//회원 탈퇴 validity=0으로 설정
 	public int cancel(String memberID, String memberPW) {
