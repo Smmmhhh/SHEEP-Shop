@@ -1,28 +1,34 @@
 package member;
 
-import java.sql.Date;
-
 public class Member {
 	String memberID;
 	String memberPW;
 	String memberName;
 	String gender;
-	String address;
-	Date birthDate;
-	String memberphoneNo;
+	String memberAddress;
+	String memberPhoneNo;
 	int memberPoint;
 	int memberValidity;
 	//String memberType;
+		
+	public Member(String memberID, String memberName, String gender, String memberAddress,
+			String memberPhoneNo, int memberPoint) {
+		this.memberID = memberID;
+		this.memberName = memberName;
+		this.gender = gender;
+		this.memberAddress = memberAddress;
+		this.memberPhoneNo = memberPhoneNo;
+		this.memberPoint = memberPoint;
+	}
 	
-	public Member(String memberID, String memberPW, String memberName, String gender, String address, Date birthDate,
-			String memberphoneNo, int memberPoint, int memberValidity) {
+	public Member(String memberID, String memberPW, String memberName, String gender, String memberAddress,
+			String memberPhoneNo, int memberPoint, int memberValidity) {
 		this.memberID = memberID;
 		this.memberPW = memberPW;
 		this.memberName = memberName;
 		this.gender = gender;
-		this.address = address;
-		this.birthDate = birthDate;
-		this.memberphoneNo = memberphoneNo;
+		this.memberAddress = memberAddress;
+		this.memberPhoneNo = memberPhoneNo;
 		this.memberPoint = memberPoint;
 		this.memberValidity = memberValidity;
 	}
@@ -39,14 +45,11 @@ public class Member {
 	public String getGender() {
 		return gender;
 	}
-	public String getAddress() {
-		return address;
+	public String getMemberAddress() {
+		return memberAddress;
 	}
-	public Date getBirthDate() {
-		return birthDate;
-	}
-	public String getMemberphoneNo() {
-		return memberphoneNo;
+	public String getMemberPhoneNo() {
+		return memberPhoneNo;
 	}
 	public int getMemberPoint() {
 		return memberPoint;

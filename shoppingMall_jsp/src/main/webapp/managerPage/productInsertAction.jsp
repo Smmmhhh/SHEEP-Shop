@@ -67,6 +67,7 @@ if (result == 1) {
 	PrintWriter script = response.getWriter();
 	script.println("<script>");
 	script.println("alert('상품등록이 완료되었습니다.');");
+	script.println("location.href = 'productInsert.jsp';");
 	script.println("</script>");
 	script.close();
 	

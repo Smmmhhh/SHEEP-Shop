@@ -5,6 +5,8 @@
 <%
     HttpSession sess = request.getSession();
 	String memberID = (String) sess.getAttribute("memberID");
+	if(memberID!=null)
+		System.out.println(memberID+" 접속중");
 %>
 
 <header id="header">
@@ -28,7 +30,7 @@
     <div class="mypage-section" style="width: auto">
        <%-- 세션 상태에 따라 버튼 보여주기 --%>
         <% if (memberID != null) { %>
-            <a href="../myPage/mypage.jsp" class="main-button" id="myPageButton">마이페이지</a> 
+            <a href="../myPage/myPage.jsp" class="main-button" id="myPageButton">마이페이지</a> 
             <span class="my-page"> | </span> 
             <a href="../login/logout.jsp" class="main-button" id="loginButton">로그아웃</a>
         <% } else { %>
