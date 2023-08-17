@@ -4,48 +4,86 @@
   Date: 2023-08-12
   Time: 오후 5:55
 */
-
-.table {
-    width: 800px; /* 내용의 너비를 고정합니다 */
-   	margin: 30px auto; /* 가운데 정렬합니다 */
+.buyTable {
+	width: 800px; /* 내용의 너비를 고정합니다 */
+	margin: 30px auto; /* 가운데 정렬합니다 */
+	padding: 10px;
 }
 
 .InfoTable {
-    border-collapse: collapse; /* 경계선이 겹치지 않도록 설정 */
-    width: 100%;
-    margin: 20px 0;
+	border-collapse: collapse; /* 경계선이 겹치지 않도록 설정 */
+	width: 100%;
+	margin: 20px 0;
 }
 
-.InfoTable th,td {
-    border: 1px solid lightgray; /* 셀 경계선 스타일 지정 */
-    padding: 8px; /* 셀 안의 여백 설정 */
-    text-align: left;
+.InfoTable th, td {
+	border: 1px solid lightgray; /* 셀 경계선 스타일 지정 */
+	padding: 8px; /* 셀 안의 여백 설정 */
+	text-align: left;
 }
 
 .InfoTable th {
-    width: 15%;
-    text-align: center;
-}
-
-.infoTitle {
-}
-
-#userInfoTable tr,#payInfoTable tr {
+	width: 15%;
 	text-align: center;
-    height: 50px;
+}
+
+#userInfoTable tr, #payInfoTable tr {
+	text-align: center;
+	height: 50px;
+}
+
+#buyInfoTable {
+	border: none;
+	padding: 10px;
 }
 
 #buyInfoTable tr {
 	width: 150px;
-    height:150px;
+	height: 100px;
 }
 
-#buyInfoTable img{
-    width: 50%;
-    height: 80%;
+#buyInfoTable tr{
+	border-top: 1px solid lightgray;
+	border-bottom: 1px solid lightgray;
+	height: 150px;
 }
-#payButton{
+
+#buyInfoTable td, #buyInfoTable th {
+	border: none;
+}
+
+#buyInfoTable th {
+	width: 200px;
+}
+
+#buyInfoTable img {
+	width: 80px;
+	height: width*0.8;
+}
+
+.buttonWrap {
 	display: flex;
 	justify-content: center;
+}
+
+#payButton {
+	font-size: 16px;
+	width: 100px;
+	border: none;
+	padding: 10px;
+}
+
+.prodInfo {
+	margin: 20px;
+}
+
+.inputBox {
+	display: flex;
 	align-items: center;
+}
+
+.inputBox input{
+	height: 20px;
+	font-size: 16px;
+	margin: 10px;
 }

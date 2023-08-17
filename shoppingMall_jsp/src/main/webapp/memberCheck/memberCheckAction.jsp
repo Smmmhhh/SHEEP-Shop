@@ -13,7 +13,6 @@
 <%@ page import="java.util.Date"%>
 
 <%
-
 	String memberID = (String) session.getAttribute("memberID");
 	if(memberID==null){
 		PrintWriter script = response.getWriter();

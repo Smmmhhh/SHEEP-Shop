@@ -35,61 +35,24 @@
 	<hr style="border: none; border-top: 1px solid #ccc;">
 
 	<!-- [2] 나의 정보(my info) -->
-	<div class="wrap2">
-		<div class="wrap">
-			<div class="myinfo_bar">
-				<div class="myinfo_box">
-					<h2>My 정보</h2>
-				</div>
-				<div class="mypoint">
-					<h3>보유 포인트</h3>
-				</div>
-			</div>
+	<div class="secondWrap">
 			<!-- [3] myPage box div -->
-			<div class="second_wrap">
-				<div class="my_box">
-					<div class="myshop">
-						<h2>My 쇼핑</h2>
-						<h3>
-							<a href="myPage.html" target="_blank">주문목록 조회</a>
-						</h3>
-						<h3>
-							<a href="#" target="_blank">반품 조회</a>
-						</h3>
-					</div>
-					<div class="myact">
-						<h2>My 활동</h2>
-						<h3>
-							<a href="#" target="_blank">장바구니</a>
-						</h3>
-						<h3>
-							<a href="#" target="_blank">1:1 문의하기</a>
-						</h3>
-					</div>
-					<div class="myinfo">
-						<h2>My 정보</h2>
-						<h3>
-							<a href="../memberCheck/memberCheck.jsp">개인정보 수정</a>
-						</h3>
-						<h3>
-							<a href="#" target="_blank">포인트 충전하기</a>
-						</h3>
-					</div>
-				</div>
+			<div class="secondWrap">
+				<jsp:include page="../static/html/myPageMenu.html" />
+
 				<!-- [4] 메인(order_box div-->
-				<div class="order_box">
+				<div class="orderBox">
 					<!-- [4]-1 order_search -->
-					<h3>주문 목록</h3>
-					<div class="order_search">
-						<input type="text" class="ordersearch-input"
+					<h3 id = "orderListTitle">주문 목록</h3>
+					<div class="orderSearch">
+						<input type="text" class="orderSearchInput"
 							placeholder="주문한 상품을 검색하세요." required>
-						<button type="submit" class="ordesearch-button">검색</button>
+						<button type="submit" class="orderSearchButton">검색</button>
 					</div>
 					<!-- [4]-2 order_list-->
-				
+
 				</div>
 			</div>
-		</div>
 	</div>
 
 	<!-- [6] footer  -->

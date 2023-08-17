@@ -151,5 +151,51 @@ public class MemberDAO {
 		
 		return -1;
 	}
+	
+	//User 정보 받아오기
+	public Member selGetUserInfo(String memberID) {
+		String SQL = "select * from members where memberID = ? and memberValidity = 1";
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		
+		Member member = null;
+		
+		try {
+			conn = DatabaseUtil.getConnection();
+			pstmt = conn.prepareStatement(SQL);
+			pstmt.setString(1, memberID);
+			
+			ResultSet rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				String userName = rs.getString("memberName");
+				String gender = rs.getString("gender");
+				String address = rs.getString("memberAddress");
+				String phoneNo= rs.getString("phoneNo");
+				int point = rs.getInt("memberPoint");
+				
+				member = new Member(memberID, userName, gender, address, phoneNo, point);
+			}
+			
+			return member;
+		
+		} catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+	            if (pstmt != null) {
+	                pstmt.close();
+	            }
+	            if (conn != null) {
+	                conn.close();
+	            }
+	        } catch (SQLException se) {
+	            se.printStackTrace();
+	        }
+		}
+		
+		return member;
+	}
 
 }
