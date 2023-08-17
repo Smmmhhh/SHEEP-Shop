@@ -24,7 +24,7 @@
 	<!-- [1] Header 추가  -->
 	<jsp:include page="../static/html/header.jsp" />
 	<!-- [2] nav 추가 -->
-	<jsp:include page="../static/html/nav.html" />
+	<jsp:include page="../static/html/nav.jsp" />
 
 	<!-- [3] 메인 -->
 	<div id="main">
@@ -43,6 +43,7 @@
 			<div class="productListBox">상품 리스트</div>
 			<br> <b>수정할 상품을 선택하세요.</b>
 			<%
+			// 제품 리스트 가져오기
 			List<Product> productList = new ArrayList<>();
 			ProductDAO productDAO = new ProductDAO();
 			productList = productDAO.getProductList();

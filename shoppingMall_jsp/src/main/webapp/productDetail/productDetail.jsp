@@ -16,60 +16,56 @@
 <link rel="stylesheet" href="productDetail.css">
 <link rel="stylesheet" href="../shop_main/main.css">
 </head>
-
 <body>
-	<!-- [1] Header 추가 -->
+  <%
+	//productList.jsp 에서 상품ID 가져오기 
+	int prodID = Integer.parseInt(request.getParameter("prodID"));
 
-	<jsp:include page="../static/html/header.jsp" />
+	// prodID를 이용해서 현재 product Information가져오기
+	ProductDAO productDAO = new ProductDAO();
+	Product product = productDAO.selGetProdInfrom(prodID);
+	%>
+    <!-- [1] Header 추가 -->
 
-	<!-- [2] nav 추가 -->
-	<jsp:include page="../static/html/nav.html" />
+	<jsp:include page="../static/html/header.jsp"/>
 
-	<!-- [3] 상품 상세 내용 div 생성 -->
-	<div id="category">
-		<h3>테이크아웃 용품</h3>
-	</div>
-	<div class="product-details">
-		<div>
-			<img src="../image/starbucks_mug1.jpg" alt="상품 이미지">
-		</div>
-		<div class="details">
-			<h2>그린 사이렌 도트 머그 355ml</h2>
-			<hr style="border: none; margin: 10px 0; border-top: 2px solid black">
+    <!-- [2] nav 추가 -->
+	<jsp:include page="../static/html/nav.jsp"/>
 
-			<h3 id="productDetail_price">20,000원</h3>
+    <!-- [3] 상품 상세 내용 div 생성 -->
+    <div id="category">
+        <h3>테이크아웃 용품</h3>
+    </div>
+    <div class="product-details">
+        <div>
+            <img src="../image/starbucks_mug1.jpg" alt="상품 이미지">
+        </div>
+        <div class="details">
+            <h2>그린 사이렌 도트 머그 355ml</h2>
+            <hr style="border: none ; margin: 10px 0 ;border-top:2px solid black">
 
-			<h4 id="delivery_fee">└ 배송비 : 무료</h4>
+            <h3 id="productDetail_price">20,000원</h3>
 
-			<div class="quantity">
-				<button class="quantity_button" id="decrement-button">-</button>
-				<input type="text" id="quantity_input" name="quantity" value="1">
-				<button class="quantity_button" id="increment-button">+</button>
-			</div>
+            <h4 id="delivery_fee">└ 배송비 : 무료</h4>
 
-			<p class="description">법랑 머그의 쉐입을 한 세라믹 머그로서, 트렌디한 감성의 디자인이 결합된
-				355ml 상품입니다.</p>
-			<div class="payButtonDiv">
-				<button id="cartButton">장바구니 담기</button>
-				<button id="payButton"
-					onclick="location.href='../payment/payment.jsp'">바로 결제</button>
-			</div>
-		</div>
+            <div class="quantity">
+                <button class="quantity_button" id="decrement-button">-</button>
+                <input type="text" id="quantity_input" name="quantity" value="1">
+                <button class="quantity_button" id="increment-button">+</button>
+            </div>
 
-	</div>
+            <p class="description">법랑 머그의 쉐입을 한 세라믹 머그로서, 트렌디한 감성의 디자인이 결합된 355ml 상품입니다.</p>
+        </div>
+     
+        <div>
+        	<button id="">결제</button>
+        </div>
 
-	<div class="modal-overlay" id="modal">
-		<div class="modal-content">
-			<p>상품을 장바구니에 담았습니다.</p>
-			<button class="modal-button" id="moveCart" onclick="location.href='../cart/cart.jsp'">장바구니로 이동</button>
-			<button class="modal-button" id="closeButton">쇼핑 계속하기</button>
-		</div>
-	</div>
+    </div>
 
-
-	<!-- [4] 푸터  -->
-	<jsp:include page="../static/html/footer.html" />
-	<script>
+    <!-- [4] 푸터  -->
+	<jsp:include page="../static/html/footer.html"/>
+    <script>
 	
 		//모달창 띄우기
 		document.getElementById("cartButton").addEventListener("click", function() {
@@ -123,6 +119,5 @@
 					}
 				});
 	</script>
-
 </body>
 </html>

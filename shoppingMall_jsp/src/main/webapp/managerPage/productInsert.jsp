@@ -19,7 +19,7 @@
 	<!-- [1] Header 추가 -->
 	<jsp:include page="../static/html/header.jsp" />
 	<!-- [2] nav 추가 -->
-	<jsp:include page="../static/html/nav.html" />
+	<jsp:include page="../static/html/nav.jsp" />
 
 	<!-- [3] 메인 -->
 	<div id="main">
@@ -47,8 +47,8 @@
 							class="category-select" name="prodCtgID">
 							<option value="1">테이크아웃 용품</option>
 							<option value="2">커피/원두</option>
-							<option value="3">시럽/소스/파우더</option>
-							<option value="4">스무디/에이드/베이스</option>
+							<option value="3">스무디/에이드/베이스</option>
+							<option value="4">시럽/소스/파우더</option>
 							<option value="5">우유/휘핑크림/탄산</option>
 							<option value="6">커피용품/머신</option>
 						</select>

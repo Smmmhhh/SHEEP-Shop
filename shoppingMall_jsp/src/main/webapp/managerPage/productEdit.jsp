@@ -20,9 +20,9 @@ request.setCharacterEncoding("UTF-8");
 </head>
 <body>
 	<!-- [1] Header 추가 -->
-	<jsp:include page="../static/html/header.html" />
+	<jsp:include page="../static/html/header.jsp" />
 	<!-- [2] nav 추가 -->
-	<jsp:include page="../static/html/nav.html" />
+	<jsp:include page="../static/html/nav.jsp" />
 
 	<!-- [3] 메인 -->
 	<div id="main">
@@ -47,7 +47,7 @@ request.setCharacterEncoding("UTF-8");
 				
 				// prodId 를 이용해서 상품 이름 가져오기
 				ProductDAO productDAO = new ProductDAO();
-				String prodName = productDAO.getProdName(prodID);
+				String prodName = productDAO.selGetProdInfrom(prodID).getProdName();
 				%>
 				<!-- 0. 상품id  -->
 				<div class="field">
@@ -72,14 +72,16 @@ request.setCharacterEncoding("UTF-8");
 							class="category-select" name="prodCtgID">
 							<option value="1">테이크아웃 용품</option>
 							<option value="2">커피/원두</option>
-							<option value="3">시럽/소스/파우더</option>
-							<option value="4">스무디/에이드/베이스</option>
+							<option value="3">스무디/에이드/베이스</option>
+							<option value="4">시럽/소스/파우더</option>
 							<option value="5">우유/휘핑크림/탄산</option>
 							<option value="6">커피용품/머신</option>
 						</select>
 						<!-- 선택된 카테고리 값을 hidden input 필드에 저장 -->
 						<input type="hidden" name="selectedCategory" value = 1 id="selectedCategory">
 					</div>
+					<!-- 2-2 현재 카테고리 번호 input -->
+					<input type="hidden" name="currCategory" value=<%=productDAO.selGetProdInfrom(prodID).getProdCtgID()%> >
 				</div>
 
 				<!-- 3. 가격 -->
