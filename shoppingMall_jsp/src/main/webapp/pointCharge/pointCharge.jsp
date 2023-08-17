@@ -16,8 +16,6 @@
 <title>쉼 : 포인트충전</title>
 <link rel="stylesheet" href="pointCharge.css">
 <link rel="stylesheet" href="../shop_main/main.css">
-<script src="/static/js/includeHTML.js"></script>
-
 </head>
 
 <body>
@@ -25,84 +23,86 @@
 	<jsp:include page="../static/html/header.jsp" />
 	<hr style="border: none; border-top: 1px solid #ccc;">
 
-	<div class="second_wrap">
+	<div class="secondWrap">
 		<div class="wrap">
 			<!-- [2] 나의 정보(my info) -->
-			<div class="myinfo_bar">
-				<div class="myinfo_box">
+			<div class="myInfoBar">
+				<div class="myInfoBox">
 					<h3>My 정보</h3>
 				</div>
-				<div class="point_man">
+				<div class="pointMan">
 					<h3>포인트 관리</h3>
 				</div>
 			</div>
 			<!-- [3] my_box div -->
-			<div class="my_box">
-				<div class="myshop">
+			<div class="myBox">
+				<div class="myShop">
 					<h2>My 쇼핑</h2>
 					<h3>
 						<a href="myPage.html" target="_blank">주문목록 조회</a>
 					</h3>
 					<h3>
-						<a href="#" target="_blank">반품 조회 
+						<a href="#" target="_blank">반품 조회 </a>
 					</h3>
-					</a>
 				</div>
-				<div class="myact">
+				<div class="myAct">
 					<h2>My 활동</h2>
 					<h3>
-						<a href="#" target="_blank">장바구니 
+						<a href="#" target="_blank">장바구니</a>
 					</h3>
-					</a>
 					<h3>
-						<a href="#" target="_blank">1:1 문의하기 
+						<a href="#" target="_blank">1:1 문의하기</a>
+
 					</h3>
-					</a>
 				</div>
-				<div class="myinfo">
+				<div class="myInfo">
 					<h2>My 정보</h2>
 					<h3>
-						<a href="#" target="_blank">개인정보 수정 
+						<a href="#" target="_blank">개인정보 수정</a>
 					</h3>
-					</a>
 					<h3>
-						<a href="#" target="_blank">포인트 충전하기 
+						<a href="#" target="_blank">포인트 충전하기</a>
 					</h3>
-					</a>
 				</div>
 			</div>
 
 			<!-- [4] 메인(point_bar)-->
-			<div class="point_bar">
-				<div class="getpoint">
+			<div class="pointBar">
+				<div class="getPoint">
 					<h3>보유 포인트</h3>
 				</div>
-				<div class="viewpoint">
+				<div class="viewPoint">
 					<h3>0000</h3>
 				</div>
 				<!-- 알림창을 띄우는 버튼 -->
-				<button id="pointcharge_button">충전하기</button>
-
+				<div class="buttonWrap">
+					<button id="pointChargeButton">충전하기</button>
+				</div>
 				<!-- 커스텀 알림창 모달 -->
-				<div id="pointcharge_modal" class="modal">
-					<div class="modal-content">
-						<span class="close">&times;</span>
-						<!-- 모달 창 닫기(X) 버튼 -->
-						<h2>포인트 충전</h2>
-						<div class="line_modal">
-							<hr>
-						</div>
-						<form action="pointCharge.jsp" method="post">
-							<h3>충전금액을 입력해 주세요.</h3>
-							<input type="text" name="money" placeholder="입력">
-							<div class="line_modal">
+				<div id="pointChargeModal" class="modal">
+					<div id="wrapModal">
+						<div class="modalContent">
+							<span id="closeButton">&times;</span>
+							<!-- 모달 창 닫기(X) 버튼 -->
+							<h2>포인트 충전</h2>
+							<div class="lineModal">
 								<hr>
 							</div>
-							<h3>결제카드</h3>
-							<p>**카드&nbsp;&nbsp;&nbsp;0000-0000-0000-0000</p>
-							<input type="submit" name="charge" value="충전하기"
-								class="finish_button">
-						</form>
+							<form class="fromSubmit" action="pointCharge.jsp" method="post">
+								<div>
+								<h3>충전금액을 입력해 주세요.</h3>
+								<input type="text" name="money" placeholder="입력">
+								<div class="lineModal">
+									<hr>
+								</div>
+								<h3>결제카드</h3>
+								<p>**카드&nbsp;&nbsp;&nbsp;0000-0000-0000-0000</p>
+								</div>
+								<div class="buttonWrap">
+								<input type="submit" name="charge" value="충전하기" id="finishButton">
+								</div>
+							</form>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -117,10 +117,10 @@
 		// HTML 문서 내 요소들을 JavaScript로 조작하는 부분
 
 		// 버튼과 모달 요소들을 변수에 할당
-		var customAlertButton = document.getElementById("pointcharge_button");
-		var customAlertModal = document.getElementById("pointcharge_modal");
-		var customAlertSubmitButton = document.querySelector(".finish_button");
-		var customAlertCloseButton = document.querySelector(".close");
+		var customAlertButton = document.getElementById("pointChargeButton");
+		var customAlertModal = document.getElementById("pointChargeModal");
+		var customAlertSubmitButton = document.querySelector("#finishButton");
+		var customAlertCloseButton = document.querySelector("#closeButton");
 
 		// "Show Custom Alert" 버튼을 클릭하면 모달 알림창을 보이도록 이벤트 리스너 추가
 		customAlertButton.addEventListener("click", function() {

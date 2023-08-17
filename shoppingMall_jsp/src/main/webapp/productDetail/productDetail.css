@@ -106,7 +106,7 @@ img {
 	margin: 10px;
 	padding: 5px 10px;
 	border: none;
-	background-color: #2286ff;
+	background-color: rgb(128, 128, 192);
 	color: white;
 	cursor: pointer;
 }

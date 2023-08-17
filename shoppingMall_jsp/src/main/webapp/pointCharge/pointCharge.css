@@ -6,7 +6,7 @@
 */
 
 /*전체 요소(wrap)*/
-.second_wrap{
+.secondWrap{
 	display: flex;
 	justify-content: center;
     align-items: center;
@@ -14,17 +14,17 @@
 }
 
 
-.my_box{ text-align:center; }
-.order_box { line-height:40px; }
+.myBox{ text-align:center; }
+.orderBox { line-height:40px; }
 
 /* 나의 정보(my info) */
-.myinfo_bar{
+.myInfoBar{
     display: flex;
     height: 50px;
     margin-top: 10px;
 }
 
-.myinfo_box{
+.myInfoBox{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -35,17 +35,16 @@
     margin-left: 10px;
 }
 
-.point_man{
+.pointMan{
     display: flex;
     align-items: center;
     width: 800px;
     padding-left: 10px;
- 
 }
 
 /* mypage box div */
 
-.my_box {
+.myBox {
     text-align: center;
     margin: 10px;
     width:200px;
@@ -54,24 +53,24 @@
     margin-top: 30px;
 }
 
-.myshop{
+.myShop{
     height:150px;
     border: 1px solid purple;
     margin-bottom: 20px;
 }
 
-.myact{
+.myAct{
     height:150px;
     border: 1px solid purple;
     margin-bottom: 20px;
 }
 
-.myinfo{
+.myInfo{
     height:150px;
     border: 1px solid purple;
 }
 
-.order_box{
+.orderBox{
     width: 70%;
     text-align: left;
     float: left;
@@ -85,7 +84,7 @@ a{
 
 /* 메인- pointbar */
 
-.point_bar{
+.pointBar{
     display: flex;
     justify-content:space-between;
     align-items: center;
@@ -95,11 +94,11 @@ a{
 
 }
 
-.viewpoint{    
+.viewPoint{    
     margin-left: 30px;
 }
 
-.chargr_botten{
+.pointChargeButton{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -116,12 +115,20 @@ a{
     background-color: rgba(0, 0, 0, 0.5); /* 반투명한 검은 배경색 */
 }
 
-.modal-content {
+.modalContent {
     background-color: white;
-    width: 300px;
-    margin: 200px auto; /* 화면 중앙에 위치하도록 마진 설정 */
+    width: 400px;
+    height: 350px;
+    margin: 0; /* 화면 중앙에 위치하도록 마진 설정 */
     padding: 20px;
     border-radius: 5px;
+}
+
+#wrapModal {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100%;
 }
 
 p{
@@ -129,7 +136,7 @@ p{
     padding: 10px;
 }
 
-.close {
+#closeButton {
    	float: right;
     font-size: 20px;
     font-weight: bold;
@@ -138,15 +145,16 @@ p{
 
 input[type="text"]{
     height: 30px;
+    margin-bottom: 10px;
 }
 
-input[type="submit"]{
-	
+#finishButton {
+	margin-top: 10px;
 }
 
 /* 버튼 스타일 */
 button {
-    padding: 10px 20px;
+	padding: 10px 20px;
     background-color: #E6E6FA;/* 파란색 배경 */
     color: purple;
     border: none;
@@ -158,18 +166,7 @@ button:hover {
     background-color: hsl(240, 88%, 84%);; /* 마우스 호버 시 더 진한 파란색 배경 */
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+.buttonWrap {
+	display: flex;
+	justify-content: center;
+}
