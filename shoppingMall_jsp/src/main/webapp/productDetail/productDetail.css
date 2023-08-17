@@ -16,16 +16,17 @@ html, body {
 	align-items: center;
 }
 
-img {
-	max-width: 100%;
-	height: auto;
-	margin-right: 20px; /* 이미지와 다른 내용 사이의 간격 조정 */
+#prodDetailImg {
+	width: 400px;
+	height: 440px;
+	margin: 20px 20px 0 0;
 }
 
 .details {
 	display: flex;
 	flex-direction: column;
 	gap: 10px; /* 각 항목 사이의 간격 조정 */
+	width: 661px;
 }
 
 .details h2, h3, h4 {
@@ -109,6 +110,10 @@ img {
 	background-color: rgb(128, 128, 192);
 	color: white;
 	cursor: pointer;
+}
+
+.description {
+	margin: 20px 0;
 }
 
 /*미디어 쿼리*/
