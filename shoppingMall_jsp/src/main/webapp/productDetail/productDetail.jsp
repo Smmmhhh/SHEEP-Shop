@@ -10,14 +10,13 @@
     <link rel="stylesheet" href="../shop_main/main.css">
     <script src="../static/js/includeHTML.js"></script>
 </head>
-
 <body>
     <!-- [1] Header 추가 -->
 
 	<jsp:include page="../static/html/header.jsp"/>
 
     <!-- [2] nav 추가 -->
-	<jsp:include page="../static/html/nav.html"/>
+	<jsp:include page="../static/html/nav.jsp"/>
 
     <!-- [3] 상품 상세 내용 div 생성 -->
     <div id="category">

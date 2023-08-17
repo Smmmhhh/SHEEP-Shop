@@ -62,7 +62,7 @@
 	<jsp:include page="../static/html/header.jsp" />
 
 	<!-- [2] Nav -->
-	<jsp:include page="../static/html/nav.html" />
+	<jsp:include page="../static/html/nav.jsp" />
 
 	<!-- [3] Main(buy Page) -->
 	<div class="table">

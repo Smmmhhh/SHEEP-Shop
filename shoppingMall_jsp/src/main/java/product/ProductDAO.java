@@ -54,27 +54,25 @@ public class ProductDAO {
 	}
 
 	public List<Product> getProductList() {
+		String SQL = "select prodID, ctgID, prodName from products where prodValidity=1";
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 
 		// list 선언
 		List<Product> productList = new ArrayList<>();
-		String SQL = "select prodID, prodName from products where prodValidity=?";
 
 		try {
 			conn = DatabaseUtil.getConnection();
 			pstmt = conn.prepareStatement(SQL);
-
-			pstmt.setInt(1, 1);
-
 			rs = pstmt.executeQuery();
 
 			while (rs.next()) {
 				int ProdID = rs.getInt("prodID");
+				int prodCtgID = rs.getInt("ctgID");
 				String prodName = rs.getString("prodName");
 
-				Product product = new Product(ProdID, prodName);
+				Product product = new Product(ProdID, prodCtgID, prodName);
 				productList.add(product);
 			}
 
@@ -98,25 +96,35 @@ public class ProductDAO {
 		}
 		return productList;
 	}
-
-	public String getProdName(int prodID) {
+	//상품 정보 가져오기
+	public Product selGetProdInfrom(int InputProdID) {
 
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		String prodName = null;
-
+		Product product = null;
 		try {
 			conn = DatabaseUtil.getConnection();
-			String SQL = "select prodName from products where prodID = ?";
+			String SQL = "select * from products where prodID = ? AND prodValidity=1";
 			pstmt = conn.prepareStatement(SQL);
-			pstmt.setInt(1, prodID);
+			pstmt.setInt(1, InputProdID);
 			rs = pstmt.executeQuery();
 
 			if (rs.next()) {
-				prodName = rs.getString("prodName");
+				int prodID = rs.getInt("ProdID");
+				int ctgID = rs.getInt("ctgID");
+				String prodName = rs.getString("prodName");
+				int price = rs.getInt("price");
+				int stock = rs.getInt("stock");
+				String detail = rs.getString("detail");
+				String prodSize = rs.getString("prodSize");
+				String prodOrigin = rs.getString("prodOrigin");
+				String prodDate = rs.getString("prodDate");
+				
+				product = new Product(prodID, ctgID, prodName, price, stock, detail, 
+						prodSize, prodOrigin, prodDate, 1);
 			}
-
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -135,8 +143,8 @@ public class ProductDAO {
 				se.printStackTrace();
 			}
 		}
-
-		return prodName;
+		
+		return product;
 
 	}
 
@@ -209,6 +217,62 @@ public class ProductDAO {
 			}
 		}
 		return -1;
+	}
+
+	// Category별 List Method
+	public List<Product> selectGetCtgPrud(int cthID) {
+
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+
+		List<Product> productList = new ArrayList<>();
+
+		try {
+			conn = DatabaseUtil.getConnection();
+			String SQL = "select prodID, ctgID, prodName, price, stock, detail, prodSize, prodOrigin, prodDate \r\n"
+					+ "from products where ctgID = ? AND prodValidity = 1;";
+			pstmt = conn.prepareStatement(SQL);
+			pstmt.setInt(1, cthID);
+			rs = pstmt.executeQuery();
+
+			while (rs.next()) {
+				int ProdID = rs.getInt("prodID");
+				int prodCtgID = rs.getInt("ctgID");
+				String prodName = rs.getString("prodName");
+				int prodPrice = rs.getInt("price");
+				int prodStock = rs.getInt("stock");
+				String prodDetail = rs.getString("detail");
+				String prodSize = rs.getString("prodSize");
+				String prodOrigin = rs.getString("prodOrigin");
+				String prodDate = rs.getString("prodDate");
+				
+				Product product = new Product(ProdID, prodCtgID, prodName, prodPrice, prodStock, prodDetail, prodSize,
+						prodOrigin, prodDate, 1);
+				productList.add(product);
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			// Database와 연결 후 반드시 해제시켜주기
+			try {
+				if (rs != null) {
+					rs.close(); // ResultSet을 닫음
+				}
+				if (pstmt != null) {
+					pstmt.close();
+				}
+				if (conn != null) {
+					conn.close();
+				}
+			} catch (SQLException se) {
+				se.printStackTrace();
+			}
+		}
+
+		return productList;
+
 	}
 
 }
