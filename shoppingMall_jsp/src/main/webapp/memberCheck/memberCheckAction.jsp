@@ -1,9 +1,26 @@
+<!--
+	annotation Name : memberCheckAction jsp
+    User: MHJ
+    Date: 2023-08-16
+    Time: 오후 5:20
+ -->
+ 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page import="member.Member"%>
 <%@ page import="member.MemberDAO"%>
 <%@ page import="java.io.PrintWriter"%>
 <%@ page import="java.util.Date"%>
+
+<%
+	String memberID = (String) session.getAttribute("memberID");
+	if(memberID==null){
+		PrintWriter script = response.getWriter();
+		script.println("<script>");
+		script.println("location.href = '../login/login.jsp';");
+		script.println("</script>");
+	}
+%>
 
 <!DOCTYPE html>
 <html>
@@ -17,7 +34,6 @@
 </html>
 <%
 	request.setCharacterEncoding("UTF-8");
-	String memberID = "";
 	String memberPW = "";
 	
 	if(request.getParameter("memberID")!=null){

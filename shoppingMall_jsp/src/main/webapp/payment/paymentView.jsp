@@ -1,50 +1,23 @@
 <!--   
-  annotation Name : payment jsp
+  annotation Name : paymentView jsp
   User: MHJ
   Date: 2023-08-17
-  Time: 오후 4:30
+  Time: 오전 11:00
 -->
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <%@ page import="java.io.PrintWriter"%>
-<%@ page import="member.Member"%>
-<%@ page import="member.MemberDAO"%>
+<%@ page import="java.util.Date"%>
 
 <%
 	String memberID = (String) session.getAttribute("memberID");
-	
 	if (memberID == null) {
 		PrintWriter script = response.getWriter();
 		script.println("<script>");
 		script.println("location.href = '../login/login.jsp';");
 		script.println("</script>");
-	}
-	
-	MemberDAO memberDAO = new MemberDAO();
-	Member member = memberDAO.selGetUserInfo(memberID);
-	
-	String memberName = "";
-	String memberPhoneNo = "";
-	String memberAddress = "";
-	int memberPoint = 0;
-	
-	if (member != null) {
-	
-		memberName = member.getMemberName();
-		memberPhoneNo = member.getMemberPhoneNo();
-		memberAddress = member.getMemberAddress();
-		memberPoint = member.getMemberPoint();
-	
-	} else {
-		PrintWriter script = response.getWriter();
-		script.println("<script>");
-		script.println("alert('고객 정보를 가져오는 데 실패하였습니다!');");
-		script.println("history.back();");
-		script.println("</script>;");
-		script.close();
-		return;
 	}
 %>
 
@@ -52,7 +25,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>쉼 : 주문자 정보 입력</title>
+<title>쉼 : 구매 정보 확인</title>
 <link rel="stylesheet" href="payment.css">
 <link rel="stylesheet" href="../shop_main/main.css">
 
@@ -61,31 +34,6 @@
 <body>
 
 	<script>
-		// 체크박스 작업
-		document.addEventListener('DOMContentLoaded', function() {
-			const checkboxPH = document.getElementById('samePhoneNo');
-			const inputFieldPH = document.getElementById('phoneNoInput');
-
-			checkboxPH.addEventListener('change', function() {
-				if (checkboxPH.checked) {
-					inputFieldPH.value = '<%= memberPhoneNo %>';
-				} else {
-					inputFieldPH.value = '';
-				}
-			});
-			
-			const checkboxAD = document.getElementById('sameAddress');
-			const inputFieldAD = document.getElementById('addressInput');
-
-			checkboxAD.addEventListener('change', function() {
-				if (checkboxAD.checked) {
-					inputFieldAD.value = '<%= memberAddress %>';
-				} else {
-					inputFieldAD.value = '';
-				}
-			});
-		});
-
 		// 백엔드에서 가져온 데이터를 시뮬레이션한 배열
 		var productsData = [ {
 			name : '상품1',
@@ -141,44 +89,29 @@
 	<!-- [3] Main(buy Page) -->
 	<div class="buyTable">
 		<!-- 3-1 유저정보 테이블 -->
+		<div class="InfoTitle">구매자 정보</div>
+		<table class="InfoTable" id="userInfoTable">
+			<%-- <tr>
+				<th>이름</th>
+				<td><%=memberName%></td>
+			</tr>
 
-		<form action="paymentAction.jsp" method="post">
-			<div class="InfoTitle">구매자 정보</div>
-			<table class="InfoTable" id="userInfoTable">
-				<tr>
-					<th>이름</th>
-					<td><%=memberName%></td>
-				</tr>
+			<tr>
+				<th>아이디</th>
+				<td><%=memberID%></td>
+			</tr>
 
-				<tr>
-					<th>아이디</th>
-					<td><%=memberID%></td>
-				</tr>
-
-				<tr>
-					<th>휴대폰 번호</th>
-					<td>
-						<div class = "inputBox" style="padding: 0;">
-							<input type="text" id="phoneNoText" value="<%= memberPhoneNo %>" readonly>
-							<input type="text" id="phoneNoInput" value="전화번호 입력">
-							<input type="checkbox" id="samePhoneNo">기존 전화 번호와 동일
-						</div>
-					</td>
-				</tr>
-
-				<tr>
-					<th>배송지</th>
-					<td>
-						<div class = "inputBox" style="padding: 0;">
-							<input type="text" id="phoneNoText" value="<%= memberAddress %>" readonly>						
-							<input type="text" id="addressInput" value="주소 입력">
-							<input type="checkbox" id="sameAddress">기본 배송지와 동일
-						</div>
-					</td>
-				</tr>
-
-			</table>
-		</form>
+			<tr>
+				<th>휴대폰 번호</th>
+				<td><%=memberPhoneNo%></td>
+			</tr>
+			
+			<tr>
+				<th>배송지</th>
+				<td><%=memberAddress%></td>
+			</tr>
+ --%>
+		</table>
 
 		<!-- 3-2 구매품목 테이블 -->
 		<div class="InfoTitle">구매품목</div>
@@ -189,6 +122,10 @@
 		<!-- 3-3 결제정보 테이블 -->
 		<div class="InfoTitle">결제정보</div>
 		<table class="InfoTable" id="payInfoTable">
+			<tr>
+				<th>총 삼품 가격</th>
+				<td>상품가격 view</td>
+			</tr>
 
 			<tr>
 				<th>배송비</th>
@@ -202,12 +139,12 @@
 
 			<tr>
 				<th>보유 포인트</th>
-				<td><%=memberPoint%></td>
+				<td>포인트 view</td>
 			</tr>
 		</table>
 		<div class="buttonWrap">
 			<button id="payButton" value="결제"
-				onclick="location.href='../payment/paymentAction.jsp'">결제</button>
+				onclick="location.href='../payment/paymentComp.jsp'">결제</button>
 		</div>
 	</div>
 

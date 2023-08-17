@@ -1,3 +1,10 @@
+<!--
+	annotation Name : productDetail jsp
+    User: MHJ
+    Date: 2023-08-14
+    Time: 오후 1:00
+ -->
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page import="java.io.PrintWriter"%>
@@ -17,16 +24,8 @@
 <script src="../static/js/includeHTML.js"></script>
 </head>
 <body>
-	<%
-	//productList.jsp 에서 상품ID 가져오기 
-	int prodID = Integer.parseInt(request.getParameter("prodID"));
-
-	// prodID를 이용해서 현재 product Information가져오기
-	ProductDAO productDAO = new ProductDAO();
-	Product product = productDAO.selGetProdInfrom(prodID);
-	
-	%>
-
+</head>
+<body>
 	<!-- [1] Header 추가 -->
 	<jsp:include page="../static/html/header.jsp" />
 
@@ -50,7 +49,6 @@
 			<hr style="border: none; margin: 10px 0; border-top: 2px solid black">
 
 			<h3 id="productDetail_price">20,000원</h3>
-
 			<h4 id="delivery_fee">└ 배송비 : 무료</h4>
 
 			<div class="quantity">
@@ -72,6 +70,20 @@
 	<!-- [4] 푸터  -->
 	<jsp:include page="../static/html/footer.html" />
 	<script>
+		//모달창 띄우기
+		document.getElementById("cartButton").addEventListener("click",
+				function() {
+					var modal = document.getElementById("modal");
+					modal.style.display = "flex";
+				});
+
+		document.getElementById("closeButton").addEventListener("click",
+				function() {
+					var modal = document.getElementById("modal");
+					modal.style.display = "none";
+				});
+
+		//수량 증감 버튼 동작 함수
 		document.addEventListener("DOMContentLoaded",
 				function() {
 					const quantityInput = document
@@ -104,6 +116,7 @@
 						quantityInput.value = currentQuantity;
 					}
 
+					// 수량 증감 입력 유효성 검사
 					function validateQuantityInput() {
 						let inputValue = quantityInput.value;
 						inputValue = inputValue.replace(/\D/g, ''); // 숫자 이외의 문자 제거

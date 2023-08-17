@@ -60,9 +60,11 @@
 }
 
 #JoinBox{
+	display: flex;
+	justify-content: right;
 	margin-top: 30px;
 }
 
 #JoinBox a{
-	font-size: 18px;
+	font-size: 20px;
 }
