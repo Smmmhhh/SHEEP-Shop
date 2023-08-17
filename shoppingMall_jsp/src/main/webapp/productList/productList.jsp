@@ -72,10 +72,11 @@
 			for (int i = 0; i < productList.size(); i++) {
 			%>
 			<a href="../productDetail/productDetail.jsp?prodID=<%=productList.get(i).getProdID()%>" class="product"> 
-			<img src="../image/<%=productList.get(i).getProdCtgID()%>_<%=productList.get(i).getProdID()%>.jpg">
-				<div class="product-name"><%=productList.get(i).getProdName()%></div>
-				<div class="product-price"><%=new DecimalFormat().format(productList.get(i).getProdPrice())%></div>
+				<img src="../image/<%=productList.get(i).getProdCtgID()%>_<%=productList.get(i).getProdID()%>.jpg">
+			<div class="product-name"><%=productList.get(i).getProdName()%></div>
+				<div class="product-price"><%=new DecimalFormat().format(productList.get(i).getProdPrice())%></div>	
 			</a>
+			
 			<%
 			}
 			%>

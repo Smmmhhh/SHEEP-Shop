@@ -84,14 +84,14 @@
 	<jsp:include page="../static/html/header.jsp" />
 
 	<!-- [2] Nav -->
-	<jsp:include page="../static/html/nav.html" />
+	<jsp:include page="../static/html/nav.jsp" />
 
 	<!-- [3] Main(buy Page) -->
 	<div class="buyTable">
 		<!-- 3-1 유저정보 테이블 -->
 		<div class="InfoTitle">구매자 정보</div>
 		<table class="InfoTable" id="userInfoTable">
-			<%-- <tr>
+			<tr>
 				<th>이름</th>
 				<td><%=memberName%></td>
 			</tr>
@@ -110,7 +110,7 @@
 				<th>배송지</th>
 				<td><%=memberAddress%></td>
 			</tr>
- --%>
+			
 		</table>
 
 		<!-- 3-2 구매품목 테이블 -->
