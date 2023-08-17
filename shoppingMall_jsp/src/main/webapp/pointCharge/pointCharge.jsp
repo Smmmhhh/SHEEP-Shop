@@ -15,6 +15,7 @@
 <meta charset="UTF-8">
 <title>쉼 : 포인트충전</title>
 <link rel="stylesheet" href="pointCharge.css">
+<link rel="stylesheet" href="../myPage/myPage.css">
 <link rel="stylesheet" href="../shop_main/main.css">
 </head>
 
@@ -34,37 +35,7 @@
 					<h3>포인트 관리</h3>
 				</div>
 			</div>
-			<!-- [3] my_box div -->
-			<div class="myBox">
-				<div class="myShop">
-					<h2>My 쇼핑</h2>
-					<h3>
-						<a href="myPage.html" target="_blank">주문목록 조회</a>
-					</h3>
-					<h3>
-						<a href="#" target="_blank">반품 조회 </a>
-					</h3>
-				</div>
-				<div class="myAct">
-					<h2>My 활동</h2>
-					<h3>
-						<a href="#" target="_blank">장바구니</a>
-					</h3>
-					<h3>
-						<a href="#" target="_blank">1:1 문의하기</a>
-
-					</h3>
-				</div>
-				<div class="myInfo">
-					<h2>My 정보</h2>
-					<h3>
-						<a href="#" target="_blank">개인정보 수정</a>
-					</h3>
-					<h3>
-						<a href="#" target="_blank">포인트 충전하기</a>
-					</h3>
-				</div>
-			</div>
+			<jsp:include page="../static/html/myPageMenu.html" />
 
 			<!-- [4] 메인(point_bar)-->
 			<div class="pointBar">

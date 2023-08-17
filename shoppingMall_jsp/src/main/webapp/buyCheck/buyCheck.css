@@ -1,119 +1,81 @@
-/* 
-  annotation Name : buyCheck Css
-  User: KJS
-  Date: 2023-08-16
-  Time: 오후 6:17
- */
- 
-/*전체 요소(wrap)*/
-.second_wrap{
-    display:flex;
-    justify-content: center;
-}
+/* buyCheck.css */
+/* 주문목록 조회 페이지 전용 스타일 */
 
-/* 페이지 정보 */
+/* buyBox 스타일 */
 
-.buybox{
-    width: 200px;
-    text-align: center;
-    margin: 10px;
-}
-
-/* 페이지 링크 박스 */
-
-.allbox {
-    text-align: center;
-    width:200px;
-    height:500px;
-    float:left;
-    margin-top: 58px;
-}
-
-div[class*="my_"]{
-    height:150px;
-    border: 1px solid purple;
-    margin-bottom: 20px;
-}
-
-.order_box{
-
-    text-align: left;
-    float: left;
-    padding: 20px;
-    line-height:40px;
-}
-
-a{
-    text-decoration: none;
-    color: black;
-}
-
-/* 메인-order_search */
-
-h3{
-    margin-top: 0px;
-    margin-bottom:0px;
-}
-
-.order_search {
-    display: flex;
-    
-}
-.ordersearch-input {
-    width: 700px;
-    padding: 8px;
-    border: 1px solid purple;
-    border-radius: 4px;
-}
-
-.ordesearch-button {
-    width: 70px;
-    margin-left: 10px;
-}
-
-/* 메인-order_list */
-
-.order_list {
-    width: 800px; /* 내용의 너비를 고정합니다 */
-}
-
-.InfoTable {
-    border-collapse: collapse; /* 경계선이 겹치지 않도록 설정 */
-    width: 100%;
-    margin: 10px 0;
-}
-
-.InfoTable th,td {
-    border: 1px solid lightgray; /* 셀 경계선 스타일 지정 */
-    padding: 8px; /* 셀 안의 여백 설정 */
-    text-align: left;
-}
-
-.InfoTable th {
-    width: 15%;
-    text-align: center;
-}
-
-#userInfoTable tr,#payInfoTable tr {
+.buyBox {
 	text-align: center;
-    height: 50px;
+	margin: 0;
+	padding: 0;
 }
 
-#buyInfoTable tr {
-	width: 150px;
-    height:150px;
+/* orderContainer 스타일 */
+.orderContainer {
+	display: flex;
+	align-items: flex-start;
+	justify-content: space-between;
+	margin-top: 20px;
 }
 
-#buyInfoTable img{
-    height: 100px;
-    width: 100px;
+/* myPageMenu 스타일 */
+.myPageMenu {
+	flex: 0 0 calc(33.33% - 20px);
+	border: 1px solid #ddd;
+	padding: 10px;
+	margin-right: 20px;
 }
 
-.return-button {
-background-color: #E6E6FA;
-color: purple;
-border: none;
-padding: 10px 20px;
-border-radius: 5px;
-cursor: pointer;
+/* orderBox 스타일 */
+.orderBox {
+	border: none;
+	padding: 10px;
+	margin-left: 50px;
+}
+
+/* orderSearch 스타일 */
+.orderSearch {
+	display: flex;
+	align-items: center;
+	margin-bottom: 10px;
+}
+
+.orderSearchInput {
+	padding: 5px;
+	margin-right: 10px;
+	margin-bottom: 20px;
+}
+
+.orderSearchButton {
+	padding: 5px 10px;
+	background-color: #333;
+	color: #fff;
+	border: none;
+	cursor: pointer;
+}
+
+/* InfoTable 스타일 */
+.InfoTable {
+	width: 100%;
+	border-collapse: collapse;
+}
+
+.InfoTable th, .InfoTable td {
+	padding: 10px;
+	border-bottom: 1px solid #ddd;
+}
+
+.InfoTable th img {
+	max-width: 50px;
+	max-height: 50px;
+}
+
+.wrap {
+	display: flex;
+	flex-direction: column;
+}
+
+.test {
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }

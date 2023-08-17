@@ -13,10 +13,6 @@
     margin: 20px 0;
 }
 
-
-.myBox{ text-align:center; }
-.orderBox { line-height:40px; }
-
 /* 나의 정보(my info) */
 .myInfoBar{
     display: flex;
@@ -71,6 +67,7 @@
 }
 
 .orderBox{
+	line-height:40px;
     width: 70%;
     text-align: left;
     float: left;

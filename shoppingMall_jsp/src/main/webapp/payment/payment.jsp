@@ -8,7 +8,6 @@
 <title>쉼 : 구매</title>
 <link rel="stylesheet" href="payment.css">
 <link rel="stylesheet" href="../shop_main/main.css">
-<script src="../static/js/includeHTML.js"></script>
 
 </head>
 
@@ -35,18 +34,21 @@
 
 		// 백엔드로부터 가져온 데이터로 화면을 렌더링하는 함수
 		function renderProducts(products) {
+			
 			var buyTable = document.querySelector('#buyInfoTable');
 			var tableContent = '';
 
 			for (var i = 0; i < products.length; i++) {
 				var product = products[i];
-				tableContent += '<tr>'
+				tableContent += 
+						'<tr>'
 						+ '<th><img src="' + product.image + '" alt="' + product.name + '"></th>'
-						+ '<td>' + '<div><strong>제품명:</strong> ' + product.name
-						+ ' </div>' + '<div><strong>가격:</strong> '
-						+ product.price + '원</div>'
-						+ '<div><strong>수량:</strong> ' + product.quantity
-						+ '</div>' + '</td>' + '</tr>';
+							+ '<td>' 
+								+ '<div class="prodInfo"><strong>제품명:</strong> ' + product.name + ' </div>' 
+								+ '<div class="prodInfo"><strong>가격:</strong> ' + product.price + '원</div>'
+								+ '<div class="prodInfo"><strong>수량:</strong> ' + product.quantity + '</div>'
+							+ '</td>' 
+						+ '</tr>';
 			}
 
 			buyTable.innerHTML = tableContent;
@@ -65,7 +67,7 @@
 	<jsp:include page="../static/html/nav.html" />
 
 	<!-- [3] Main(buy Page) -->
-	<div class="table">
+	<div class="buyTable">
 		<!-- 3-1 유저정보 테이블 -->
 		<div class="InfoTitle">구매자 정보</div>
 		<table class="InfoTable" id="userInfoTable">
@@ -115,16 +117,16 @@
 				<td>포인트 view</td>
 			</tr>
 		</table>
-
-		<button id="payButton" value="결제">결제하기</button>
+		<div class="buttonWrap">
+			<button id="payButton" value="결제">결제</button>
+		</div>
 	</div>
 
 	<!-- [4] 푸터  -->
 	<div class="footerDiv">
 		<jsp:include page="../static/html/footer.html" />
 	</div>
-
-
+	
 </body>
 
 </html>
