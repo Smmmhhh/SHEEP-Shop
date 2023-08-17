@@ -7,7 +7,7 @@
 
 .table {
     width: 800px; /* 내용의 너비를 고정합니다 */
-   	margin: 30px auto; /* 가운데 정렬합니다 */
+      margin: 30px auto; /* 가운데 정렬합니다 */
 }
 
 .InfoTable {
@@ -31,21 +31,21 @@
 }
 
 #userInfoTable tr,#payInfoTable tr {
-	text-align: center;
+   text-align: center;
     height: 50px;
 }
 
 #buyInfoTable tr {
-	width: 150px;
+   width: 150px;
     height:150px;
 }
 
 #buyInfoTable img{
     width: 50%;
     height: 80%;
-
+}
 #payButton{
-	display: flex;
-	justify-content: center;
-	align-items: center;
+   display: flex;
+   justify-content: center;
+   align-items: center;
 }
