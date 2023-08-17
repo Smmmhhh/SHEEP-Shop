@@ -1,23 +1,19 @@
 /* 
-	annotation Name : memberFix css
+   annotation Name : memberFix css
     User: KJS
     Date: 2023-08-15
     Time: 오후 6:48
 */
+
 .second_wrap {
-    position: absolute;
-    top: 0; /* 기존에는 top: 50%; 로 설정되어 있었습니다. */
-    bottom: 0; /* 아래로 확장하도록 설정 */
-    left: 50%;
-    transform: translate(-50%, 0);
+   	padding: 0;
+   	margin: 0;
+   	display: flex;
+   	justify-content: center;
 }
- 
+
+
 .wrap{
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width:1500px;
 }
 
 /*  pagebox */
@@ -32,7 +28,6 @@
 
 .InfoTable {
     border-collapse: collapse; /* 경계선이 겹치지 않도록 설정 */
-    width: 100%;
     margin: 20px 0;
 }
 
@@ -43,7 +38,7 @@
 }
 
 .InfoTable th {
-    width: 700px;
+   	width: 100px;
     text-align: center;
 }
 
@@ -91,7 +86,13 @@ div[class*="info"] {
     align-items: center;
 }
 /* 확인 */
-.con_button {
+.confirmButton_div {
+	margin-bottom: 20px;
     display: flex;
     justify-content: center;
+}
+
+#confirmButton {
+	width: 150px;
+	height: 50px;
 }

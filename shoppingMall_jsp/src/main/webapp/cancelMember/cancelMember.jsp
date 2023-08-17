@@ -1,24 +1,43 @@
+<!--   
+  annotation Name : cancelMember jsp
+  User: MHJ
+  Date: 2023-08-16
+  Time: 오후 3:00
+-->
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	
+<%
+	String memberID = (String) session.getAttribute("memberID");
+%>
 <!DOCTYPE html>
 <html>
 
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>쉼 : Cancel</title>
+<title>쉼 : 회원 탈퇴</title>
 <link rel="stylesheet" href="cancelMember.css">
 <link rel="stylesheet" href="../shop_main/main.css">
 </head>
 
 <body>
+
 	<!-- [1] Header 추가 -->
 	<jsp:include page="../static/html/header.jsp" />
 	<hr style="border: none; border-top: 1px solid #ccc;">
 
-	<!-- [2] 메인(login box) -->
-	<div class="cancle-wrapper">
-		
+	<!-- [2] 메인(cancel box) -->
+	<div class="cancel-wrapper">
+		<div class="cancel-Box">
+			<h2>회원 탈퇴</h2>
+			<form method="post" action="cancelAction.jsp" id="cancel-form">
+				<input type="text" name="memberID" value="<%= memberID %>" placeholder="Id" readonly> 
+				<input type="password" name="memberPW" placeholder="Password">
+				<input type="submit" value="탈퇴하기"> 
+			</form>
+		</div>
 	</div>
 
 	<!-- [3] 푸터  -->

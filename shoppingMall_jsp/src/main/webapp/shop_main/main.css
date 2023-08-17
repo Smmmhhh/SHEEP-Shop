@@ -4,7 +4,7 @@
   Date: 2023-08-12
   Time: 오후 2:00
  */
-body {
+html,body {
 	margin: 0;
 	padding: 0;
 	font-family: Arial, sans-serif;
@@ -66,7 +66,7 @@ body {
 
 /* nav css */
 nav {
-
+	width:100%;
 	display: flex;
 	/* flex-direction: row; */
 	justify-content: center;
@@ -85,6 +85,7 @@ nav .hr {
 	width: 100%;
 	height: 80px;
 	margin: 0;
+	padding: 0;
 	list-style: none;
 	display: flex;
 	justify-content: center;
@@ -137,7 +138,7 @@ nav .hr {
 }
 
 .sliderWrap .slider img {
-	vertical-align: top;
+	
 }
 
 /* footer css */

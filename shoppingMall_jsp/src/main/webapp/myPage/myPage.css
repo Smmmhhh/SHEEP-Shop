@@ -5,8 +5,9 @@
     Time: 오후 6:45
 */
 
-.wrap2{
-	margin:0;
+.secondWrap{
+	margin: 20px 0;
+	width: 100%;
 	padding:0;
 	display: flex;
 	justify-content: center;
@@ -17,18 +18,21 @@
  	padding:0;
 }
 
-.my_box { text-align:center; }
+.myBox { 
+	padding: 0;
+	text-align:center; 
+}
 
-.order_box { line-height:40px; }
+.orderBox { line-height:40px; }
 
 /* 나의 정보(my info) */
-.myinfo_bar{
+.myInfoBar{
     display: flex;
     height: 50px;
     margin-top: 10px;
 }
 
-.myinfo_box{
+.myInfoBox{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -39,7 +43,7 @@
     margin-right: 10px;
 }
 
-.mypoint{
+.myPoint{
     display: flex;
     align-items: center;
     width: 800px;
@@ -49,35 +53,37 @@
 
 /* mypage box div */
 
-.my_box {
+.myBox {
     text-align: center;   
     width:200px;
-    height:480px;
-  
-    margin-top: 30px;
+    height:490px;
 }
 
-.myshop{
+.myMenu {
+	height: 150px;
+}
+
+#myShop{
     height:150px;
     border: 1px solid purple;
     margin-bottom: 20px;
 }
 
-.myact{
+#myAct{
     height:150px;
     border: 1px solid purple;
     margin-bottom: 20px;
 }
 
-.myinfo{
+#myInfo{
     height:150px;
     border: 1px solid purple;
 }
 
-.order_box{
-    width: 70%;
+.orderBox{
+    width: 800px;
     text-align: left;
-    padding: 20px;
+    padding-left: 20px;
 }
 
 a{
@@ -88,30 +94,37 @@ a{
 /* 메인-order_search */
 
 h3{
+	padding: 0;
     margin-top: 0px;
     margin-bottom:0px;
 }
 
-.order_search {
-    display: flex;
-    
+#orderListTitle {
+	padding-top: 0;
 }
-.ordersearch-input {
-    width: 800px;
+
+.orderSearch {
+	margin: 0;
+    padding: 0;
+	display: flex;
+}
+
+.orderSearchInput {
+    width: 700px;
+    height: 30px;
     padding: 8px;
     border: 1px solid purple;
     border-radius: 4px;
 }
 
-.ordesearch-button {
+.orderSearchButton {
     width: 70px;
     margin-left: 10px;
 }
 
-
 /* 메인-order_list */
 
-.order_list {
+.orderList {
     width: 800px; /* 내용의 너비를 고정합니다 */
 }
 
@@ -147,7 +160,7 @@ h3{
     height: 100%;
 }
 
-.return-button {
+.returnButton {
 background-color: #E6E6FA;
 color: purple;
 border: none;
@@ -155,11 +168,3 @@ padding: 10px 20px;
 border-radius: 5px;
 cursor: pointer;
 }
-
-.second_wrap{
-	display:flex;
-	width:100%;
-	padding:0;
-	margin:0;
-}
-

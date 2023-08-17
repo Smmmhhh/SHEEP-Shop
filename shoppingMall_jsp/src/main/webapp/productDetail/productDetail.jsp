@@ -1,23 +1,36 @@
+<!--
+	annotation Name : productDetail jsp
+    User: MHJ
+    Date: 2023-08-14
+    Time: 오후 1:00
+ -->
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>쉼 : 상품 개별 페이지</title>
-    <link rel="stylesheet" href="productDetail.css">
-    <link rel="stylesheet" href="../shop_main/main.css">
-    <script src="../static/js/includeHTML.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>쉼 : 상품 개별 페이지</title>
+<link rel="stylesheet" href="productDetail.css">
+<link rel="stylesheet" href="../shop_main/main.css">
 </head>
-
 <body>
+  <%
+	//productList.jsp 에서 상품ID 가져오기 
+	int prodID = Integer.parseInt(request.getParameter("prodID"));
+
+	// prodID를 이용해서 현재 product Information가져오기
+	ProductDAO productDAO = new ProductDAO();
+	Product product = productDAO.selGetProdInfrom(prodID);
+	%>
     <!-- [1] Header 추가 -->
 
 	<jsp:include page="../static/html/header.jsp"/>
 
     <!-- [2] nav 추가 -->
-	<jsp:include page="../static/html/nav.html"/>
+	<jsp:include page="../static/html/nav.jsp"/>
 
     <!-- [3] 상품 상세 내용 div 생성 -->
     <div id="category">
@@ -53,43 +66,58 @@
     <!-- [4] 푸터  -->
 	<jsp:include page="../static/html/footer.html"/>
     <script>
+	
+		//모달창 띄우기
+		document.getElementById("cartButton").addEventListener("click", function() {
+		  var modal = document.getElementById("modal");
+		  modal.style.display = "flex";
+		});
 
-        	document.addEventListener("DOMContentLoaded", function () {
-            const quantityInput = document.getElementById("quantity_input");
-            const decrementButton = document.querySelector("#decrement-button");
-            const incrementButton = document.querySelector("#increment-button");
+		document.getElementById("closeButton").addEventListener("click", function() {
+		  var modal = document.getElementById("modal");
+		  modal.style.display = "none";
+		});
+		
+		//수량 증감 버튼 동작 함수
+		document.addEventListener("DOMContentLoaded",
+				function() {
+					const quantityInput = document
+							.getElementById("quantity_input");
+					const decrementButton = document
+							.querySelector("#decrement-button");
+					const incrementButton = document
+							.querySelector("#increment-button");
 
-            decrementButton.addEventListener("click", function () {
-                updateQuantity(-1);
-            });
+					decrementButton.addEventListener("click", function() {
+						updateQuantity(-1);
+					});
 
-            incrementButton.addEventListener("click", function () {
-                updateQuantity(1);
-            });
+					incrementButton.addEventListener("click", function() {
+						updateQuantity(1);
+					});
 
-            quantityInput.addEventListener("input", function () {
-                validateQuantityInput();
-            });
+					quantityInput.addEventListener("input", function() {
+						validateQuantityInput();
+					});
 
-            function updateQuantity(change) {
-                let currentQuantity = parseInt(quantityInput.value);
-                currentQuantity += change;
+					function updateQuantity(change) {
+						let currentQuantity = parseInt(quantityInput.value);
+						currentQuantity += change;
 
-                if (currentQuantity < 1) {
-                    currentQuantity = 1;
-                }
+						if (currentQuantity < 1) {
+							currentQuantity = 1;
+						}
 
-                quantityInput.value = currentQuantity;
-            }
+						quantityInput.value = currentQuantity;
+					}
 
-            function validateQuantityInput() {
-                let inputValue = quantityInput.value;
-                inputValue = inputValue.replace(/\D/g, ''); // 숫자 이외의 문자 제거
-                quantityInput.value = inputValue;
-            }
-        });
-
-    </script>
-
+					// 수량 증감 입력 유효성 검사
+					function validateQuantityInput() {
+						let inputValue = quantityInput.value;
+						inputValue = inputValue.replace(/\D/g, ''); // 숫자 이외의 문자 제거
+						quantityInput.value = inputValue;
+					}
+				});
+	</script>
 </body>
 </html>
