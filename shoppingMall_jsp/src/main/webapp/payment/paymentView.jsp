@@ -93,22 +93,22 @@
 		<table class="InfoTable" id="userInfoTable">
 			<tr>
 				<th>이름</th>
-				<td><%=memberName%></td>
+				<%-- <td><%=memberName%></td> --%>
 			</tr>
 
 			<tr>
 				<th>아이디</th>
-				<td><%=memberID%></td>
+				<%-- <td><%=memberID%></td> --%>
 			</tr>
 
 			<tr>
 				<th>휴대폰 번호</th>
-				<td><%=memberPhoneNo%></td>
+				<%-- <td><%=memberPhoneNo%></td> --%>
 			</tr>
 			
 			<tr>
 				<th>배송지</th>
-				<td><%=memberAddress%></td>
+				<%-- <td><%=memberAddress%></td> --%>
 			</tr>
 			
 		</table>

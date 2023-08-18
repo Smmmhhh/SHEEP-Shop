@@ -19,7 +19,7 @@
 <title>paymentAction</title>
 </head>
 <body>
-
+	결제 액션 페이지 입니다. 
 </body>
 </html>
 <%
@@ -34,7 +34,7 @@
 		
 		PrintWriter script = response.getWriter();
 		script.println("<script>");
-		script.println("location.href = '../payment.jsp';");
+		script.println("location.href = 'paymentView.jsp';");
 		script.println("</script>;");
 		script.close();
 		

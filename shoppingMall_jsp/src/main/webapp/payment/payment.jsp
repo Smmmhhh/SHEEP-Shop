@@ -11,8 +11,12 @@
 <%@ page import="java.io.PrintWriter"%>
 <%@ page import="member.Member"%>
 <%@ page import="member.MemberDAO"%>
+<%@ page import="product.Product"%>
+<%@ page import="product.ProductDAO"%>
+<%@ page import="java.text.DecimalFormat"%>
 
 <%
+// 유저 session //
 String memberID = (String) session.getAttribute("memberID");
 
 if (memberID == null) {
@@ -59,79 +63,24 @@ if (member != null) {
 </head>
 
 <body>
-
-	<script>
-		// 체크박스 작업
-		document.addEventListener('DOMContentLoaded', function() {
-			const checkboxPH = document.getElementById('samePhoneNo');
-			const inputFieldPH = document.getElementById('phoneNoInput');
-
-			checkboxPH.addEventListener('change', function() {
-				if (checkboxPH.checked) {
-					inputFieldPH.value = '<%=memberPhoneNo%>';
-				} else {
-					inputFieldPH.value = '';
-				}
-			});
-			
-			const checkboxAD = document.getElementById('sameAddress');
-			const inputFieldAD = document.getElementById('addressInput');
-
-			checkboxAD.addEventListener('change', function() {
-				if (checkboxAD.checked) {
-					inputFieldAD.value = '<%=memberAddress%>
-		';
-				} else {
-					inputFieldAD.value = '';
-				}
-			});
-		});
-
-		// 백엔드에서 가져온 데이터를 시뮬레이션한 배열
-		var productsData = [ {
-			name : '상품1',
-			price : 10000,
-			quantity : 2,
-			image : '../image/logo.png'
-		}, {
-			name : '상품2',
-			price : 20000,
-			quantity : 3,
-			image : '../image/coffee_image_1.jpg'
-		}, {
-			name : '상품3',
-			price : 20000,
-			quantity : 3,
-			image : '../image/coffee_image_1.jpg'
-		} ];
-
-		// 백엔드로부터 가져온 데이터로 화면을 렌더링하는 함수
-		function renderProducts(products) {
-
-			var buyTable = document.querySelector('#buyInfoTable');
-			var tableContent = '';
-
-			for (var i = 0; i < products.length; i++) {
-				var product = products[i];
-				tableContent += '<tr>'
-						+ '<th><img src="' + product.image + '" alt="' + product.name + '"></th>'
-						+ '<td>'
-						+ '<div class="prodInfo"><strong>제품명:</strong> '
-						+ product.name + ' </div>'
-						+ '<div class="prodInfo"><strong>가격:</strong> '
-						+ product.price + '원</div>'
-						+ '<div class="prodInfo"><strong>수량:</strong> '
-						+ product.quantity + '</div>' + '</td>' + '</tr>';
-			}
-
-			buyTable.innerHTML = tableContent;
-		}
-
-		// 화면이 로드되었을 때 실행
-		window.addEventListener('DOMContentLoaded', function() {
-			renderProducts(productsData); // 백엔드로부터 가져온 데이터를 화면에 렌더링
-		});
-	</script>
+	<%
+	String paymentMethod = (String) request.getParameter("paymentMethod");
+	int prodID = 0;
+	int prodQuantity = 0;
+	
+	System.out.println(paymentMethod);
+	
+	if (paymentMethod.equals("direct")) {
+		//상품id & 수량 받아오기
+		prodID = Integer.parseInt(request.getParameter("prodID"));
+		prodQuantity = Integer.parseInt(request.getParameter("prodQuantity"));
+		System.out.println("바로결제하기에서 넘어왔습니다. ");
+	} else if (paymentMethod.equals("cart")) {
+		System.out.println("장바구니에서 넘어왔습니다. ");
+	}
+	System.out.println(prodID);
+	System.out.println(prodQuantity);
+	%>
 
 	<!-- [1] Header -->
 	<jsp:include page="../static/html/header.jsp" />
@@ -183,9 +132,30 @@ if (member != null) {
 			</table>
 
 			<!-- 3-2 구매품목 테이블 -->
+			<%
+			ProductDAO produtDAO = new ProductDAO();
+			Product product = produtDAO.selGetProdInfrom(prodID);
+			%>
 			<div class="InfoTitle">구매품목</div>
 			<table class="InfoTable" id="buyInfoTable">
-				<!-- 동적으로 생성된 행이 여기에 추가될 것입니다. -->
+
+				<tr>
+					<td>이미지</td>
+					<td>상품명</td>
+					<td>수량</td>
+					<td>가격</td>
+					<td>총 가격</td>
+				</tr>
+
+				<tr>
+					<td><img
+						src="../image/<%=product.getProdCtgID()%>_<%=product.getProdID()%>.jpg"></td>
+					<td><%=product.getProdName()%></td>
+					<td><%=prodQuantity%></td>
+					<td><%=new DecimalFormat().format(product.getProdPrice())%></td>
+					<td><%=new DecimalFormat().format(product.getProdPrice() * prodQuantity)%></td>
+				</tr>
+
 			</table>
 
 			<!-- 3-3 결제정보 테이블 -->
@@ -199,7 +169,7 @@ if (member != null) {
 
 				<tr>
 					<th>총 결제 금액</th>
-					<td>결제금액 view</td>
+					<td><%=new DecimalFormat().format(product.getProdPrice() * prodQuantity)%></td>
 				</tr>
 
 				<tr>
@@ -208,8 +178,7 @@ if (member != null) {
 				</tr>
 			</table>
 			<div class="buttonWrap">
-				<button id="payButton" value="결제"
-					onclick="location.href='../payment/paymentAction.jsp'">결제</button>
+				<input type="submit" id="payButton" value="확인">
 			</div>
 		</form>
 
@@ -219,6 +188,47 @@ if (member != null) {
 	<div class="footerDiv">
 		<jsp:include page="../static/html/footer.html" />
 	</div>
+
+	<script>
+		// 체크박스 작업
+		document.addEventListener('DOMContentLoaded', function() {
+			const checkboxPH = document.getElementById('samePhoneNo');
+			const inputFieldPH = document.getElementById('phoneNoInput');
+
+			checkboxPH.addEventListener('change', function() {
+				if (checkboxPH.checked) {
+					inputFieldPH.value = '<%=memberPhoneNo%>';
+				} else {
+					inputFieldPH.value = '';
+				}
+			});
+			
+			const checkboxAD = document.getElementById('sameAddress');
+			const inputFieldAD = document.getElementById('addressInput');
+
+			checkboxAD.addEventListener('change', function() {
+				if (checkboxAD.checked) {
+					inputFieldAD.value = '<%=memberAddress%>';
+				} else {
+					inputFieldAD.value = '';
+				}
+			});
+		});
+		
+		//결제시 포인트 금액이 총 결제금액보다 적을 때 예외처리
+		const payButton = document.getElementById('payButton');
+		payButton.addEventListener('click', function() {
+			if(<%=memberPoint%> < <%=product.getProdPrice() * prodQuantity%>{
+				  alert("보유 포인트가 부족합니다.");
+			}else {
+				location.href = 'paymentAction.jsp';
+			}
+		});
+		
+		
+	</script>
+
+
 
 </body>
 
