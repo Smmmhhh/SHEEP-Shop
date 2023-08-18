@@ -54,11 +54,43 @@ public class CategoryDAO {
 		}
 		return categoryList;
 	}
-	
-	public int selectCategoryID() {
-		return 0;
+
+	public String selectCtgName(int ctgID) {
+		String SQL = "select ctgName from categories where ctgID = ?";
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String ctgName = null;
 		
+		try {
+			conn = DatabaseUtil.getConnection();
+			pstmt = conn.prepareStatement(SQL);
+			pstmt.setInt(1, ctgID);
+			rs = pstmt.executeQuery();
+
+			if (rs.next()) {
+				ctgName = rs.getString("ctgName");
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			// Database와 연결 후 반드시 해제시켜주기
+			try {
+				if (rs != null) {
+					rs.close(); // ResultSet을 닫음
+				}
+				if (pstmt != null) {
+					pstmt.close();
+				}
+				if (conn != null) {
+					conn.close();
+				}
+			} catch (SQLException se) {
+				se.printStackTrace();
+			}
+		}
+		return ctgName;
 	}
-	
 
 }

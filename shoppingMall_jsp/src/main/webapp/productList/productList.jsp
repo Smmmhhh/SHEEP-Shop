@@ -66,7 +66,6 @@
 		productList = productDAO.selectGetCtgPrud(cthID);
 		%>
 		<div class="products">
-
 			<%
 			// 제품 리스트의 수량만큼 product 생성
 			for (int i = 0; i < productList.size(); i++) {
@@ -83,8 +82,6 @@
 
 		</div>
 	</div>
-
-
 	<!-- [4] 푸터  -->
 	<jsp:include page="../static/html/footer.html" />
 
