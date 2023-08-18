@@ -34,7 +34,7 @@
 		
 		PrintWriter script = response.getWriter();
 		script.println("<script>");
-		script.println("location.href = '../payment.jsp';");
+		script.println("location.href = 'paymentView.jsp';");
 		script.println("</script>;");
 		script.close();
 		
