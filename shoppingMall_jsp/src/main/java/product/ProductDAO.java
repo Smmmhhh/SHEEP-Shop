@@ -97,7 +97,7 @@ public class ProductDAO {
 		return productList;
 	}
 	//상품 정보 가져오기
-	public Product selGetProdInfrom(int InputProdID) {
+	public Product selGetProdInfrom(int inputProdID) {
 
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -107,7 +107,7 @@ public class ProductDAO {
 			conn = DatabaseUtil.getConnection();
 			String SQL = "select * from products where prodID = ? AND prodValidity=1";
 			pstmt = conn.prepareStatement(SQL);
-			pstmt.setInt(1, InputProdID);
+			pstmt.setInt(1, inputProdID);
 			rs = pstmt.executeQuery();
 
 			if (rs.next()) {

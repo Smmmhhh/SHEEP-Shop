@@ -4,9 +4,9 @@
     
 <%
     HttpSession sess = request.getSession();
-	String memberID = (String) sess.getAttribute("memberID");
-	if(memberID!=null)
-		System.out.println(memberID+" 접속중");
+   String memberID = (String) sess.getAttribute("memberID");
+   if(memberID!=null)
+      System.out.println(memberID+" 접속중");
 %>
 
 <header id="header">
@@ -34,7 +34,7 @@
             <span class="my-page"> | </span> 
             <a href="../login/logout.jsp" class="main-button" id="loginButton">로그아웃</a>
         <% } else { %>
-        	<a href="../login/login.jsp" class="main-button" id="myPageButton">마이페이지</a> 
+           <a href="../login/login.jsp" class="main-button" id="myPageButton">마이페이지</a> 
             <span class="my-page"> | </span> 
             <a href="../login/login.jsp" class="main-button" id="loginButton">로그인</a>
         <% } %>

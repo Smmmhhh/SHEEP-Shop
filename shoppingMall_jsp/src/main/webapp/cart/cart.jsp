@@ -6,6 +6,8 @@
 <%@ page import="java.io.PrintWriter"%>
 <%@ page import="java.util.ArrayList"%>
 <%@ page import="java.util.List"%>
+<%@ page import="cart.Cart"%>
+<%@ page import="cart.CartDAO"%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -20,7 +22,10 @@
 
 <body>
 	<%
-String memberID = (String) session.getAttribute("memberID");
+	String memberID = (String) session.getAttribute("memberID");
+	request.getParameter("ProdID");
+	request.getParameter("memberID");
+	request.getParameter("cartQuantity");
 
 if (memberID == null) {
    PrintWriter script = response.getWriter();
@@ -35,8 +40,8 @@ if (memberID == null) {
    
 }
 
-
-
+CartDAO cartDAO = new CartDAO();
+List<Cart> cartList = cartDAO.getCartList(memberID);
 
 %>
 
@@ -203,30 +208,13 @@ if (memberID == null) {
     }
 });
         
-     // 백엔드에서 가져온 데이터를 시뮬레이션한 배열
-		var productsData = [ {
-			name : '상품1',
-			price : 10000,
-			quantity : 2,
-			image : '../image/logo.png'
-		}, {
-			name : '상품2',
-			price : 20000,
-			quantity : 3,
-			image : '../image/coffee_image_1.jpg'
-		}, {
-			name : '상품3',
-			price : 20000,
-			quantity : 3,
-			image : '../image/coffee_image_1.jpg'
-		} ];
 	// 백엔드로부터 가져온 데이터로 화면을 렌더링하는 함수
 	function renderProducts(products){
     	var cartTable = document.querySelector('.cart_table');
    		var tableContent = '';
    		
-   		for(var i = 0; i < products.length; i++){
-   			var product = products[i];
+   		for(var i = 0; i <cartList.size(); i++){
+   			var cart = cartList[i];
    			tableContent += '<tr>'
    				+ '<th><input type="checkbox" name="cartProduct" value="cartNo1"></th>'
                 + '<td><img src="' + product.image + '" alt="상품 이미지" width="100px" height="100px"></td>'

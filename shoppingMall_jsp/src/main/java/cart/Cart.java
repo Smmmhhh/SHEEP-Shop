@@ -1,39 +1,36 @@
 package cart;
+import testInter.testInterface; 
 
-public class Cart {
-	int cartProdID;
-	int ProdID;
-	String userID;
+public class Cart implements testInterface{
+	int cartID;
+	int prodID;
+	String memberID;
 	int cartQuantity;
-	int cartValidity;
+	
 	
 	//전체 생성자 
-	Cart(int cartProdID, int ProdID, String userID, int cartQuantity, int cartValidity) {
-		this.cartProdID = cartProdID;
-		this.ProdID = ProdID;
-		this.userID = userID;
+	Cart(int cartID, int ProdID, String memberID, int cartQuantity) {
+		this.cartID = cartID;
+		this.prodID = ProdID;
+		this.memberID = memberID;
 		this.cartQuantity = cartQuantity;
-		this.cartValidity = cartValidity;
+		
 	}
 	
-	public int getcartProdID() {
-		return cartProdID;
+	public int getcartID() {
+		return cartID;
 	}
 
 	public int getProdID() {
-		return ProdID;
+		return prodID;
 	}
 
 	public String getuserID() {
-		return userID;
+		return memberID;
 	}
 
 	public int getcartQuantity() {
 		return cartQuantity;
-	}
-
-	public int getcartValidity() {
-		return cartValidity;
 	}
 
 }
