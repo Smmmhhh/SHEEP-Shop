@@ -13,39 +13,39 @@
 <%@ page import="member.MemberDAO"%>
 
 <%
-	String memberID = (String) session.getAttribute("memberID");
-	
-	if (memberID == null) {
-		PrintWriter script = response.getWriter();
-		script.println("<script>");
-		script.println("location.href = '../login/login.jsp';");
-		script.println("</script>");
-	}
-	
-	MemberDAO memberDAO = new MemberDAO();
-	Member member = memberDAO.selGetUserInfo(memberID);
-	
-	String memberName = "";
-	String memberPhoneNo = "";
-	String memberAddress = "";
-	int memberPoint = 0;
-	
-	if (member != null) {
-	
-		memberName = member.getMemberName();
-		memberPhoneNo = member.getMemberPhoneNo();
-		memberAddress = member.getMemberAddress();
-		memberPoint = member.getMemberPoint();
-	
-	} else {
-		PrintWriter script = response.getWriter();
-		script.println("<script>");
-		script.println("alert('고객 정보를 가져오는 데 실패하였습니다!');");
-		script.println("history.back();");
-		script.println("</script>;");
-		script.close();
-		return;
-	}
+String memberID = (String) session.getAttribute("memberID");
+
+if (memberID == null) {
+	PrintWriter script = response.getWriter();
+	script.println("<script>");
+	script.println("location.href = '../login/login.jsp';");
+	script.println("</script>");
+}
+
+MemberDAO memberDAO = new MemberDAO();
+Member member = memberDAO.selGetUserInfo(memberID);
+
+String memberName = "";
+String memberPhoneNo = "";
+String memberAddress = "";
+int memberPoint = 0;
+
+if (member != null) {
+
+	memberName = member.getMemberName();
+	memberPhoneNo = member.getMemberPhoneNo();
+	memberAddress = member.getMemberAddress();
+	memberPoint = member.getMemberPoint();
+
+} else {
+	PrintWriter script = response.getWriter();
+	script.println("<script>");
+	script.println("alert('고객 정보를 가져오는 데 실패하였습니다!');");
+	script.println("history.back();");
+	script.println("</script>;");
+	script.close();
+	return;
+}
 %>
 
 <html>
@@ -68,7 +68,7 @@
 
 			checkboxPH.addEventListener('change', function() {
 				if (checkboxPH.checked) {
-					inputFieldPH.value = '<%= memberPhoneNo %>';
+					inputFieldPH.value = '<%=memberPhoneNo%>';
 				} else {
 					inputFieldPH.value = '';
 				}
@@ -79,7 +79,8 @@
 
 			checkboxAD.addEventListener('change', function() {
 				if (checkboxAD.checked) {
-					inputFieldAD.value = '<%= memberAddress %>';
+					inputFieldAD.value = '<%=memberAddress%>
+		';
 				} else {
 					inputFieldAD.value = '';
 				}
@@ -158,10 +159,11 @@
 				<tr>
 					<th>휴대폰 번호</th>
 					<td>
-						<div class = "inputBox" style="padding: 0;">
-							<input type="text" id="phoneNoText" value="<%= memberPhoneNo %>" readonly>
-							<input type="text" id="phoneNoInput" value="전화번호 입력">
-							<input type="checkbox" id="samePhoneNo">기존 전화 번호와 동일
+						<div class="inputBox" style="padding: 0;">
+							<input type="text" id="phoneNoText" value="<%=memberPhoneNo%>"
+								readonly> <input type="text" id="phoneNoInput"
+								value="전화번호 입력"> <input type="checkbox" id="samePhoneNo">기존
+							전화 번호와 동일
 						</div>
 					</td>
 				</tr>
@@ -169,46 +171,48 @@
 				<tr>
 					<th>배송지</th>
 					<td>
-						<div class = "inputBox" style="padding: 0;">
-							<input type="text" id="phoneNoText" value="<%= memberAddress %>" readonly>						
-							<input type="text" id="addressInput" value="주소 입력">
-							<input type="checkbox" id="sameAddress">기본 배송지와 동일
+						<div class="inputBox" style="padding: 0;">
+							<input type="text" id="phoneNoText" value="<%=memberAddress%>"
+								readonly> <input type="text" id="addressInput"
+								value="주소 입력"> <input type="checkbox" id="sameAddress">기본
+							배송지와 동일
 						</div>
 					</td>
 				</tr>
 
 			</table>
+
+			<!-- 3-2 구매품목 테이블 -->
+			<div class="InfoTitle">구매품목</div>
+			<table class="InfoTable" id="buyInfoTable">
+				<!-- 동적으로 생성된 행이 여기에 추가될 것입니다. -->
+			</table>
+
+			<!-- 3-3 결제정보 테이블 -->
+			<div class="InfoTitle">결제정보</div>
+			<table class="InfoTable" id="payInfoTable">
+
+				<tr>
+					<th>배송비</th>
+					<td>무료</td>
+				</tr>
+
+				<tr>
+					<th>총 결제 금액</th>
+					<td>결제금액 view</td>
+				</tr>
+
+				<tr>
+					<th>보유 포인트</th>
+					<td><%=memberPoint%></td>
+				</tr>
+			</table>
+			<div class="buttonWrap">
+				<button id="payButton" value="결제"
+					onclick="location.href='../payment/paymentAction.jsp'">결제</button>
+			</div>
 		</form>
 
-		<!-- 3-2 구매품목 테이블 -->
-		<div class="InfoTitle">구매품목</div>
-		<table class="InfoTable" id="buyInfoTable">
-			<!-- 동적으로 생성된 행이 여기에 추가될 것입니다. -->
-		</table>
-
-		<!-- 3-3 결제정보 테이블 -->
-		<div class="InfoTitle">결제정보</div>
-		<table class="InfoTable" id="payInfoTable">
-
-			<tr>
-				<th>배송비</th>
-				<td>무료</td>
-			</tr>
-
-			<tr>
-				<th>총 결제 금액</th>
-				<td>결제금액 view</td>
-			</tr>
-
-			<tr>
-				<th>보유 포인트</th>
-				<td><%=memberPoint%></td>
-			</tr>
-		</table>
-		<div class="buttonWrap">
-			<button id="payButton" value="결제"
-				onclick="location.href='../payment/paymentAction.jsp'">결제</button>
-		</div>
 	</div>
 
 	<!-- [4] 푸터  -->

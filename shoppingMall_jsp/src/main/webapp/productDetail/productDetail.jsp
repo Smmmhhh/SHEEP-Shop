@@ -24,8 +24,10 @@
 <title>쉼 : 상품 개별 페이지</title>
 <link rel="stylesheet" href="productDetail.css">
 <link rel="stylesheet" href="../shop_main/main.css">
+
 </head>
 <body>
+
 </head>
 <body>
 	<%
