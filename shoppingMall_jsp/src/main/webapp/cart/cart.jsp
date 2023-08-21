@@ -6,6 +6,8 @@
 <%@ page import="java.io.PrintWriter"%>
 <%@ page import="java.util.ArrayList"%>
 <%@ page import="java.util.List"%>
+<%@ page import="cart.Cart"%>
+<%@ page import="cart.CartDAO"%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -21,6 +23,9 @@
 <body>
 	<%
 	String memberID = (String) session.getAttribute("memberID");
+	request.getParameter("ProdID");
+	request.getParameter("memberID");
+	request.getParameter("cartQuantity");
 
 	if (memberID == null) {
 		PrintWriter script = response.getWriter();
@@ -28,13 +33,8 @@
 		script.println("location.href = '../login/login.jsp';");
 		script.println("</script>");
 
-		List<Product> list = new ArrayList<>();
-
-		ProductDAO productDAO = new ProductDAO();
-		list = productDAO.getProductList();
-
-	}
-	%>
+CartDAO cartDAO = new CartDAO();
+List<Cart> cartList = cartDAO.getCartList(memberID);
 
 	<!-- [1] header-->
 	<jsp:include page="../static/html/header.jsp" />
@@ -206,5 +206,6 @@
 			renderProducts(productsData);
 		});
 	</script>
+
 </body>
 </html>

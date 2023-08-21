@@ -54,7 +54,8 @@
    String ctgName = CategoryDAO.selectCtgName(product.getProdCtgID());
    %>
    <!-- [3]-1 상품 상세페이지 내용작성 -->
-   <div id="cate    gory">
+
+   <div id="category">
       <h3><%=ctgName%></h3>
    </div>
    <div class="product-details">
@@ -100,7 +101,7 @@
       <div class="modal-content">
          <p>상품을 장바구니에 담았습니다.</p>
 
-         <form action="../cart/cart.jsp" method="post">
+         <form action="../cart/cartInsertAction.jsp" method="post">
             <input type="submit" class="modal-button" id="moveCart" value="장바구니로 이동"> 
             <input type="hidden" id="cart_ProdID" name="cartProdID" value=<%=product.getProdID()%>> 
             <input type="hidden" id="cart_ProdQuantity" name="cartProdQuantity" value="1">
