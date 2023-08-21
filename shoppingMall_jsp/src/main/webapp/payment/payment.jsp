@@ -132,9 +132,14 @@ if (member != null) {
 			</table>
 
 			<!-- 3-2 구매품목 테이블 -->
+			<!-- 단일상품 결제 시 -->
 			<%
 			ProductDAO produtDAO = new ProductDAO();
 			Product product = produtDAO.selGetProdInfrom(prodID);
+			%>
+			
+			<%
+			if (paymentMethod.equals("direct")) {
 			%>
 			<div class="InfoTitle">구매품목</div>
 			<table class="InfoTable" id="buyInfoTable">
@@ -157,6 +162,7 @@ if (member != null) {
 				</tr>
 
 			</table>
+			
 
 			<!-- 3-3 결제정보 테이블 -->
 			<div class="InfoTitle">결제정보</div>
@@ -180,6 +186,17 @@ if (member != null) {
 			<div class="buttonWrap">
 				<input type="submit" id="payButton" value="확인">
 			</div>
+			
+			<%
+			} else {
+			%>
+			
+			장바구니 입니다.
+			<%
+			}
+			%>
+			
+			
 		</form>
 
 	</div>

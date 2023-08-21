@@ -220,7 +220,7 @@ public class ProductDAO {
 	}
 
 	// Category별 List Method
-	public List<Product> selectGetCtgPrud(int cthID) {
+	public List<Product> selectGetCtgProd(int cthID) {
 
 		Connection conn = null;
 		PreparedStatement pstmt = null;

@@ -3,16 +3,15 @@ package order;
 public class Order {
 
 	int oderID;
-	int memberID;
+	String memberID;
 	String odderAddress;
 	String orderPhoneNo;
 	int totalPrice;
 	String oderDate;
 	int oderValidity;
 
-	public Order(int oderID, int memberID, String odderAddress, String orderPhoneNo, int totalPrice, String oderDate,
+	public Order(int oderID, String memberID, String odderAddress, String orderPhoneNo, int totalPrice, String oderDate,
 			int oderValidity) {
-		super();
 		this.oderID = oderID;
 		this.memberID = memberID;
 		this.odderAddress = odderAddress;
@@ -26,7 +25,7 @@ public class Order {
 		return oderID;
 	}
 
-	public int getMemberID() {
+	public String getMemberID() {
 		return memberID;
 	}
 
