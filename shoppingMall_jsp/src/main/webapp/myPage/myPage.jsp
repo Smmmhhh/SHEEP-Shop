@@ -10,7 +10,6 @@
 <%@ page import="java.io.PrintWriter"%>
 
 <%
-
 	String memberID = (String) session.getAttribute("memberID");
 	if(memberID==null){
 		PrintWriter script = response.getWriter();
