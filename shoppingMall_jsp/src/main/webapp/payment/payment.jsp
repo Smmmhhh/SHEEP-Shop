@@ -63,6 +63,7 @@ if (member != null) {
 </head>
 
 <body>
+<<<<<<< HEAD
 	<%
 	String paymentMethod = (String) request.getParameter("paymentMethod");
 	int prodID = 0;
@@ -81,6 +82,80 @@ if (member != null) {
 	System.out.println(prodID);
 	System.out.println(prodQuantity);
 	%>
+=======
+
+	<script>
+		// 체크박스 작업
+		document.addEventListener('DOMContentLoaded', function() {
+			const checkboxPH = document.getElementById('samePhoneNo');
+			const inputFieldPH = document.getElementById('phoneNoInput');
+
+			checkboxPH.addEventListener('change', function() {
+				if (checkboxPH.checked) {
+					inputFieldPH.value = '<%=memberPhoneNo%>';
+				} else {
+					inputFieldPH.value = '';
+				}
+			});
+			
+			const checkboxAD = document.getElementById('sameAddress');
+			const inputFieldAD = document.getElementById('addressInput');
+
+			checkboxAD.addEventListener('change', function() {
+				if (checkboxAD.checked) {
+					inputFieldAD.value = '<%=memberAddress%>';
+				} else {
+					inputFieldAD.value = '';
+				}
+			});
+		});
+
+		// 백엔드에서 가져온 데이터를 시뮬레이션한 배열
+		var productsData = [ {
+			name : '상품1',
+			price : 10000,
+			quantity : 2,
+			image : '../image/logo.png'
+		}, {
+			name : '상품2',
+			price : 20000,
+			quantity : 3,
+			image : '../image/coffee_image_1.jpg'
+		}, {
+			name : '상품3',
+			price : 20000,
+			quantity : 3,
+			image : '../image/coffee_image_1.jpg'
+		} ];
+
+		// 백엔드로부터 가져온 데이터로 화면을 렌더링하는 함수
+		function renderProducts(products) {
+
+			var buyTable = document.querySelector('#buyInfoTable');
+			var tableContent = '';
+
+			for (var i = 0; i < products.length; i++) {
+				var product = products[i];
+				tableContent += '<tr>'
+						+ '<th><img src="' + product.image + '" alt="' + product.name + '"></th>'
+						+ '<td>'
+						+ '<div class="prodInfo"><strong>제품명:</strong> '
+						+ product.name + ' </div>'
+						+ '<div class="prodInfo"><strong>가격:</strong> '
+						+ product.price + '원</div>'
+						+ '<div class="prodInfo"><strong>수량:</strong> '
+						+ product.quantity + '</div>' + '</td>' + '</tr>';
+			}
+
+			buyTable.innerHTML = tableContent;
+		}
+
+		// 화면이 로드되었을 때 실행
+		window.addEventListener('DOMContentLoaded', function() {
+			renderProducts(productsData); // 백엔드로부터 가져온 데이터를 화면에 렌더링
+		});
+	</script>
+>>>>>>> 93025e5bf47ad8b118d748aed56bbfcbfae7b327
 
 	<!-- [1] Header -->
 	<jsp:include page="../static/html/header.jsp" />
@@ -96,13 +171,13 @@ if (member != null) {
 			<div class="InfoTitle">구매자 정보</div>
 			<table class="InfoTable" id="userInfoTable">
 				<tr>
-					<th>이름</th>
-					<td><%=memberName%></td>
-				</tr>
-
-				<tr>
 					<th>아이디</th>
 					<td><%=memberID%></td>
+				</tr>
+				
+				<tr>
+					<th>이름</th>
+					<td><%=memberName%></td>
 				</tr>
 
 				<tr>
@@ -111,7 +186,7 @@ if (member != null) {
 						<div class="inputBox" style="padding: 0;">
 							<input type="text" id="phoneNoText" value="<%=memberPhoneNo%>"
 								readonly> <input type="text" id="phoneNoInput"
-								value="전화번호 입력"> <input type="checkbox" id="samePhoneNo">기존
+								placeholder="전화번호 입력"> <input type="checkbox" id="samePhoneNo">주문자
 							전화 번호와 동일
 						</div>
 					</td>
@@ -123,7 +198,7 @@ if (member != null) {
 						<div class="inputBox" style="padding: 0;">
 							<input type="text" id="phoneNoText" value="<%=memberAddress%>"
 								readonly> <input type="text" id="addressInput"
-								value="주소 입력"> <input type="checkbox" id="sameAddress">기본
+								placeholder="주소 입력"> <input type="checkbox" id="sameAddress">주문자
 							배송지와 동일
 						</div>
 					</td>

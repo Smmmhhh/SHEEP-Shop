@@ -13,7 +13,7 @@ public class Product {
 	int prodValidity;
 	
 	//전체 생성자 
-	Product(int ProdID, int prodCtgID, String prodName, int prodPrice, int prodStock, String prodDetail, String prodSize,
+	public Product(int ProdID, int prodCtgID, String prodName, int prodPrice, int prodStock, String prodDetail, String prodSize,
 			String prodOrigin, String prodDate, int prodValidity) {
 		this.ProdID = ProdID;
 		this.prodCtgID = prodCtgID;

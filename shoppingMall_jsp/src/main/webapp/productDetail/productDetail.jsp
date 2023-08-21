@@ -88,7 +88,7 @@
 					<input class="paySelectButton" id="payButton" type="submit" value="바로 결제"> 
 					<input type="hidden" id="buttonProdID" name="prodID" value=<%=product.getProdID()%>> 
 					<input type="hidden" id="buttonProdQuantity" name="prodQuantity" value="1">
-					<input type="hidden" name="paymentMethod" value="direct">
+					
 					
 				</form>
 			</div>

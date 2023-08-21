@@ -6,6 +6,8 @@
 <%@ page import="java.io.PrintWriter"%>
 <%@ page import="java.util.ArrayList"%>
 <%@ page import="java.util.List"%>
+<%@ page import="cart.Cart"%>
+<%@ page import="cart.CartDAO"%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -82,7 +84,8 @@
 
    <!-- [5] 푸터  -->
    <jsp:include page="../static/html/footer.html" />
-
+CartDAO cartDAO = new CartDAO();
+List<Cart> cartList = cartDAO.getCartList(memberID);
 
    <script>
       // 백엔드에서 가져온 데이터를 시뮬레이션한 배열
@@ -198,5 +201,6 @@
          renderProducts(productsData);
       });
    </script>
+
 </body>
 </html>
