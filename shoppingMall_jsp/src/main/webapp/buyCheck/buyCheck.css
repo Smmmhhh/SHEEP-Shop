@@ -1,0 +1,81 @@
+/* buyCheck.css */
+/* 주문목록 조회 페이지 전용 스타일 */
+
+/* buyBox 스타일 */
+
+.buyBox {
+	text-align: center;
+	margin: 0;
+	padding: 0;
+}
+
+/* orderContainer 스타일 */
+.orderContainer {
+	display: flex;
+	align-items: flex-start;
+	justify-content: space-between;
+	margin-top: 20px;
+}
+
+/* myPageMenu 스타일 */
+.myPageMenu {
+	flex: 0 0 calc(33.33% - 20px);
+	border: 1px solid #ddd;
+	padding: 10px;
+	margin-right: 20px;
+}
+
+/* orderBox 스타일 */
+.orderBox {
+	border: none;
+	padding: 10px;
+	margin-left: 50px;
+}
+
+/* orderSearch 스타일 */
+.orderSearch {
+	display: flex;
+	align-items: center;
+	margin-bottom: 10px;
+}
+
+.orderSearchInput {
+	padding: 5px;
+	margin-right: 10px;
+	margin-bottom: 20px;
+}
+
+.orderSearchButton {
+	padding: 5px 10px;
+	background-color: #333;
+	color: #fff;
+	border: none;
+	cursor: pointer;
+}
+
+/* InfoTable 스타일 */
+.InfoTable {
+	width: 100%;
+	border-collapse: collapse;
+}
+
+.InfoTable th, .InfoTable td {
+	padding: 10px;
+	border-bottom: 1px solid #ddd;
+}
+
+.InfoTable th img {
+	max-width: 50px;
+	max-height: 50px;
+}
+
+.wrap {
+	display: flex;
+	flex-direction: column;
+}
+
+.test {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}

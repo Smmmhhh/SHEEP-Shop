@@ -1,0 +1,37 @@
+<!-------------------------------
+  annotation Name : Article HTML
+  User: KJS
+  Date: 2023-08-12
+  Time: 오후 2:25
+ -------------------------------->
+ <!DOCTYPE html>
+<html lang="ko">
+<div class="wrapSlide">
+	<div class="slider-container">
+    <div class="slider">
+       	<img src="../image/slide1.jpg" alt="Image 1">
+        <img src="../image/slide2.jpg" alt="Image 2">
+        <img src="../image/slide3.jpg" alt="Image 3">
+    </div>
+   	<div class="fixed-text">Take a break</div>      
+</div>
+</div>
+    <script>
+		const slides = document.querySelector('.slider');
+		let counter = 0;
+		
+		function slide() {
+		    if (counter >= slides.children.length - 1) {
+		        counter = 0;
+		    } else {
+		        counter++;
+		    }
+		
+		    slides.style.transform = `translateX(${-counter * 1000}px)`;
+		}
+		
+		setInterval(slide, 3500);
+
+	</script>
+</body>
+</html>

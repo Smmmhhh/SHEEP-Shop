@@ -1,0 +1,50 @@
+.second_wrap {
+	display: flex;
+	justify-content: center;
+	margin: 20px 0;
+}
+
+.page_info {
+	width: 300px;
+	text-align: center;
+	border: 2px solid #E6E6FA;
+}
+
+.check_id, .check_pw {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+h2 {
+	width: 200px;
+	height: 50px;
+	background-color: #E6E6FA;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.checkInput {
+	width: 500px;
+	height: 50px;
+	border: 2px solid purple;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	margin: 0 10px;
+}
+
+.button-group {
+	display: flex;
+	justify-content: center;
+	padding: 20px 0;
+}
+
+.button {
+	width: 100px;
+	height: 50px;
+	border-radius: 6px;
+	border: none;
+}

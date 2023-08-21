@@ -1,0 +1,169 @@
+/* 
+	annotation Name : pointCharge css
+    User: KJS
+    Date: 2023-08-16
+    Time: 오후 3:03
+*/
+
+/*전체 요소(wrap)*/
+.secondWrap{
+	display: flex;
+	justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+}
+
+/* 나의 정보(my info) */
+.myInfoBar{
+    display: flex;
+    height: 50px;
+    margin-top: 10px;
+}
+
+.myInfoBox{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 200px;
+    text-align: center;
+    border: 1px solid purple;
+    background-color: #E6E6FA;
+    margin-left: 10px;
+}
+
+.pointMan{
+    display: flex;
+    align-items: center;
+    width: 800px;
+    padding-left: 10px;
+}
+
+/* mypage box div */
+
+.myBox {
+    text-align: center;
+    margin: 10px;
+    width:200px;
+    height:480px;
+    float:left;
+    margin-top: 30px;
+}
+
+.myShop{
+    height:150px;
+    border: 1px solid purple;
+    margin-bottom: 20px;
+}
+
+.myAct{
+    height:150px;
+    border: 1px solid purple;
+    margin-bottom: 20px;
+}
+
+.myInfo{
+    height:150px;
+    border: 1px solid purple;
+}
+
+.orderBox{
+	line-height:40px;
+    width: 70%;
+    text-align: left;
+    float: left;
+    padding: 20px;
+}
+
+a{
+    text-decoration: none;
+    color: black;
+}
+
+/* 메인- pointbar */
+
+.pointBar{
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+    margin: 30px;
+    padding: 10px;
+    border: 1px solid purple;
+
+}
+
+.viewPoint{    
+    margin-left: 30px;
+}
+
+.pointChargeButton{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+ /* 스타일 시트 내용: 모달 스타일 */
+ .modal {
+    display: none; /* 초기에는 모달을 숨김 */
+    position: fixed; /* 고정 위치로 설정 */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* 반투명한 검은 배경색 */
+}
+
+.modalContent {
+    background-color: white;
+    width: 400px;
+    height: 350px;
+    margin: 0; /* 화면 중앙에 위치하도록 마진 설정 */
+    padding: 20px;
+    border-radius: 5px;
+}
+
+#wrapModal {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100%;
+}
+
+p{
+    border: 1px solid gray;
+    padding: 10px;
+}
+
+#closeButton {
+   	float: right;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+input[type="text"]{
+    height: 30px;
+    margin-bottom: 10px;
+}
+
+#finishButton {
+	margin-top: 10px;
+}
+
+/* 버튼 스타일 */
+button {
+	padding: 10px 20px;
+    background-color: #E6E6FA;/* 파란색 배경 */
+    color: purple;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: hsl(240, 88%, 84%);; /* 마우스 호버 시 더 진한 파란색 배경 */
+}
+
+.buttonWrap {
+	display: flex;
+	justify-content: center;
+}
