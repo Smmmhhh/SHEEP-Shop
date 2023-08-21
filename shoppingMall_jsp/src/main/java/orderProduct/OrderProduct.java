@@ -8,7 +8,6 @@ public class OrderProduct {
 	int orderProdValidity;
 	
 	public OrderProduct(int orderProdID, int orderID, int prodID, int orderQuantity, int orderProdValidity) {
-		super();
 		this.orderProdID = orderProdID;
 		this.orderID = orderID;
 		this.prodID = prodID;

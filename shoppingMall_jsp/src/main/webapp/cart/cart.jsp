@@ -86,29 +86,37 @@
 
 	<script>
 		// 백엔드에서 가져온 데이터를 시뮬레이션한 배열
-		var productsData = [ {
-			name : '상품1',
-			price : 10000,
-			quantity : 2,
-			image : '../image/logo.png'
-		}, {
-			name : '상품2',
-			price : 20000,
-			quantity : 3,
-			image : '../image/coffee_image_1.jpg'
-		}, {
-			name : '상품3',
-			price : 20000,
-			quantity : 3,
-			image : '../image/coffee_image_1.jpg'
-		} ];
+	
+// 		var productsData = [ {
+// 			name : '상품1',
+// 			price : 10000,
+// 			quantity : 2,
+// 			image : '../image/logo.png'
+// 		}, {
+// 			name : '상품2',
+// 			price : 20000,
+// 			quantity : 3,
+// 			image : '../image/coffee_image_1.jpg'
+// 		}, {
+// 			name : '상품3',
+// 			price : 20000,
+// 			quantity : 3,
+// 			image : '../image/coffee_image_1.jpg'
+// 		} ];
 
+		<%
+		// 현재 장바구니&상품정보 리스트 가져오기
+// 			List<Composition> cartList = new ArrayList<>();
+// 			CompositionDAO compDAO = new CompositionDAO();
+// 			cartList = compDAO.selectCartList(memberID);
+		%>
+		
 		// 백엔드로부터 가져온 데이터로 화면을 렌더링하는 함수
-		function renderProducts(products) {
+		function renderProducts(cartList) {
 			var cartTable = document.querySelector('.cart_table');
 			var tableContent = '';
 
-			for (var i = 0; i < products.length; i++) {
+			for (var i = 0; i < compList.size(); i++) {
 				var product = products[i];
 				tableContent += '<tr>'
 						+ '<th><input type="checkbox" class="cartProduct"></th>'

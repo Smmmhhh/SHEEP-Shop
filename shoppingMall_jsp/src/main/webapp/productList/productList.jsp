@@ -63,7 +63,7 @@
 		// 현재 카테고리 제품 리스트 가져오기
 		List<Product> productList = new ArrayList<>();
 		ProductDAO productDAO = new ProductDAO();
-		productList = productDAO.selectGetCtgPrud(cthID);
+		productList = productDAO.selectGetCtgProd(cthID);
 		%>
 		<div class="products">
 			<%

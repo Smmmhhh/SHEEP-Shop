@@ -79,8 +79,7 @@ if (member != null) {
 
 			checkboxAD.addEventListener('change', function() {
 				if (checkboxAD.checked) {
-					inputFieldAD.value = '<%=memberAddress%>
-		';
+					inputFieldAD.value = '<%=memberAddress%>';
 				} else {
 					inputFieldAD.value = '';
 				}
