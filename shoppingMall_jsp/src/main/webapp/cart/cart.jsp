@@ -72,8 +72,8 @@
 
 	<script>
 
-		<%
-		// 현재 장바구니&상품정보 리스트 가져오기
+		<%		
+			// 현재 장바구니&상품정보 리스트 가져오기
 			List<Composition> cartList = new ArrayList<>();
 			CompositionDAO compDAO = new CompositionDAO();
 			cartList = compDAO.selectCartList(memberID);
