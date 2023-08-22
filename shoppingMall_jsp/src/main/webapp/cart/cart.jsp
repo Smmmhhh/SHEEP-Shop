@@ -6,8 +6,8 @@
 <%@ page import="java.io.PrintWriter"%>
 <%@ page import="java.util.ArrayList"%>
 <%@ page import="java.util.List"%>
-<%@ page import="cart.Cart"%>
-<%@ page import="cart.CartDAO"%>
+<%@ page import="composition.Composition"%>
+<%@ page import="composition.CompositionDAO"%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -21,20 +21,6 @@
 </head>
 
 <body>
-	<%
-	String memberID = (String) session.getAttribute("memberID");
-	request.getParameter("ProdID");
-	request.getParameter("memberID");
-	request.getParameter("cartQuantity");
-
-	if (memberID == null) {
-		PrintWriter script = response.getWriter();
-		script.println("<script>");
-		script.println("location.href = '../login/login.jsp';");
-		script.println("</script>");
-
-CartDAO cartDAO = new CartDAO();
-List<Cart> cartList = cartDAO.getCartList(memberID);
 
 	<!-- [1] header-->
 	<jsp:include page="../static/html/header.jsp" />
@@ -85,30 +71,12 @@ List<Cart> cartList = cartDAO.getCartList(memberID);
 
 
 	<script>
-		// 백엔드에서 가져온 데이터를 시뮬레이션한 배열
-	
-// 		var productsData = [ {
-// 			name : '상품1',
-// 			price : 10000,
-// 			quantity : 2,
-// 			image : '../image/logo.png'
-// 		}, {
-// 			name : '상품2',
-// 			price : 20000,
-// 			quantity : 3,
-// 			image : '../image/coffee_image_1.jpg'
-// 		}, {
-// 			name : '상품3',
-// 			price : 20000,
-// 			quantity : 3,
-// 			image : '../image/coffee_image_1.jpg'
-// 		} ];
 
 		<%
 		// 현재 장바구니&상품정보 리스트 가져오기
-// 			List<Composition> cartList = new ArrayList<>();
-// 			CompositionDAO compDAO = new CompositionDAO();
-// 			cartList = compDAO.selectCartList(memberID);
+			List<Composition> cartList = new ArrayList<>();
+			CompositionDAO compDAO = new CompositionDAO();
+			cartList = compDAO.selectCartList(memberID);
 		%>
 		
 		// 백엔드로부터 가져온 데이터로 화면을 렌더링하는 함수
