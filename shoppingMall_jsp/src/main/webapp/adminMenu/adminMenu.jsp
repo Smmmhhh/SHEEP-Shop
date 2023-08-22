@@ -21,7 +21,7 @@
 <body>
 
 	<!-- [1] Header 추가 -->
-	<jsp:include page="../static/html/adminHeader.html"/>
+	<jsp:include page="../static/html/adminHeader.jsp"/>
 	<hr style="border: none; border-top: 1px solid #ccc;">
 
 	<!-- [2] 메인(login box) -->
