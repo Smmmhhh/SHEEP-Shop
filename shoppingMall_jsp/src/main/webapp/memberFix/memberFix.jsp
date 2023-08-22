@@ -20,7 +20,7 @@
 <body>
 
    <!-- header -->
-   <jsp:include page="../static/html/adminHeader.html" />
+   <jsp:include page="../static/html/noSearchHeader.html" />
    <hr style="border: none; border-top: 1px solid #ccc;">
 
    <form action="memberFixAction.jsp" method="post">

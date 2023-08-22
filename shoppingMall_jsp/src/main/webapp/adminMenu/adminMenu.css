@@ -31,26 +31,28 @@ body {
 	justify-content: center;
 	align-items: center;
 	width: 400px;
-	height: 700px;
+	height: 400px;
 	margin: 50px 20px;
 	border: none;
 	cursor: pointer;
 	background-size: cover;
 	background-position: center;
+	opacity: 0.8;
 }
 
 .menuDiv h1 {
-	color: black;
+	color: grey;
+	background-color: white;
 }
 
 #userMenu {
-	background-image: url("../image/coffee_image_1.jpg");
+	background-image: url("../image/customer.png");
 }
 
 #productMenu {
-	background-image: url("../image/coffee_image_1.jpg");
+	background-image: url("../image/dairy-products.png");
 }
 
 #dataMenu {
-	background-image: url("../image/coffee_image_1.jpg");
+	background-image: url("../image/line-chart.png");
 }
