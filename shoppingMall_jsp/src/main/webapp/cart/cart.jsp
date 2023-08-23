@@ -1,13 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
-<%@ page import="product.Product"%>
-<%@ page import="product.ProductDAO"%>
+<%@ page import="composition.Composition"%>
+<%@ page import="composition.CompositionDAO"%>
 <%@ page import="java.io.PrintWriter"%>
 <%@ page import="java.util.ArrayList"%>
 <%@ page import="java.util.List"%>
-<%@ page import="cart.Cart"%>
-<%@ page import="cart.CartDAO"%>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -17,33 +16,19 @@
 <title>쉼 : 장바구니</title>
 <link rel="stylesheet" href="cart.css">
 <link rel="stylesheet" href="../shop_main/main.css">
-<script src="../static/js/includeHTML.js"></script>
 </head>
 
 <body>
 	<%
 	String memberID = (String) session.getAttribute("memberID");
-	request.getParameter("ProdID");
-	request.getParameter("memberID");
-	request.getParameter("cartQuantity");
 
-if (memberID == null) {
-   PrintWriter script = response.getWriter();
-   script.println("<script>");
-   script.println("location.href = '../login/login.jsp';");
-   script.println("</script>");
-   
-   List<Product> list = new ArrayList<>();
-   
-   ProductDAO productDAO = new ProductDAO();
-   list = productDAO.getProductList();
-   
-}
-
-CartDAO cartDAO = new CartDAO();
-List<Cart> cartList = cartDAO.getCartList(memberID);
-
-%>
+	if (memberID == null) {
+		PrintWriter script = response.getWriter();
+		script.println("<script>");
+		script.println("location.href = '../login/login.jsp';");
+		script.println("</script>");
+	}	
+	%>
 
 	<div class="second_wrap">
 		<div class="wrap">
@@ -101,19 +86,75 @@ List<Cart> cartList = cartDAO.getCartList(memberID);
 								</div>
 								<button class="delete_button" id="delete">삭제하기</button>
 							</div>
+							<!-- 장바구니 목록 동적 생성 -->
+							<%
+							List<Composition> cartList = new ArrayList<>();
+							
+							CompositionDAO compositionDAO = new CompositionDAO();
+							
+							cartList = compositionDAO.getCompositionList(memberID);
+							
+							for (Composition e : cartList) {
+								System.out.println(e.getCart().getcartID());
+							}
+							%>
 							<legend>장바구니 목록</legend>
 							<div class="cart_table">
 								<table>
-
+									<%
+									for (int i = 0; i < cartList.size(); i++) {
+										
+										int ctgID = cartList.get(i).getProduct().getProdCtgID();
+										int prodID = cartList.get(i).getProduct().getProdID();
+									%>
+									<tr>
+										<th><input type="checkbox" name="cartProduct"
+											value="cartNo1"></th>
+										<td><img src="../image/<%=ctgID%>_<%=prodID%>.jpg"
+											alt="상품 이미지" width="100px" height="100px"></td>
+										<td>
+											<div>상품명</div>
+											<div><%=cartList.get(i).getProduct().getProdName()%></div>
+										</td>
+										<td>
+											<div class="cart_quantity">
+												<div>수량</div>
+												<button class="quantity_button" name="decrement-button">-</button>
+												<input type="text" class="quantity_input" name="quantity"
+													value="<%=cartList.get(i).getCart().getcartQuantity()%>">
+												<button class="quantity_button" name="increment-button">+</button>
+											</div>
+										</td>
+										<td>
+											<div class="cart_price">
+												<div>가격</div>
+												<div><%=cartList.get(i).getProduct().getProdPrice()%></div>
+											</div>
+										</td>
+									</tr>
+									<%
+									}
+									%>
 								</table>
+							</div>
+							<div class="total">
+								<h2>총 상품가격</h2>
+								<h2 id="totalPrice">
+									<%
+								    int total = 0;
+								    for (int i = 0; i < cartList.size(); i++) {
+								        int quantity = cartList.get(i).getCart().getcartQuantity();
+								        int price = cartList.get(i).getProduct().getProdPrice();
+								        total += quantity * price;
+								    }
+								    out.print(total);
+								    %>
+								</h2>
+							</div>
 
-								<div class="total">
-									<h2>총 상품가격</h2>
-									<h2 id="totalPrice">0</h2>
-								</div>
-								<div class="buy_submit">
-									<input type="submit" name="buy" value="구매하기">
-								</div>
+							<div class="buy_submit">
+								<input type="submit" name="buy" value="구매하기">
+							</div>
 						</fieldset>
 					</div>
 				</form>
@@ -128,120 +169,125 @@ List<Cart> cartList = cartDAO.getCartList(memberID);
 
 
 	<script>
-         // [1] 전체 선택하기
+		// [1] 전체 선택하기
 
-         // 전체 선택 버튼 요소 가져오기
-        const selectAllCheckbox = document.querySelector('.selectAll');
+		// 전체 선택 버튼 요소 가져오기
+		const selectAllCheckbox = document.querySelector('.selectAll');
 
-        // 아이템 체크박스들의 NodeList 가져오기
-        const itemCheckboxes = document.querySelectorAll('input[name="cartProduct"]');
+		// 아이템 체크박스들의 NodeList 가져오기
+		const itemCheckboxes = document
+				.querySelectorAll('input[name="cartProduct"]');
 
-        // 전체 선택 버튼 클릭 시 이벤트 처리
-        selectAllCheckbox.addEventListener('click', function () {
-            const isChecked = selectAllCheckbox.checked;
+		// 전체 선택 버튼 클릭 시 이벤트 처리
+		selectAllCheckbox.addEventListener('click', function() {
+			const isChecked = selectAllCheckbox.checked;
 
-            // 아이템 체크박스들의 상태 변경
-            itemCheckboxes.forEach(function (checkbox) {
-                checkbox.checked = isChecked;
-            });
-        });
-        
-       
-        // [2] 선택된 상품만 삭제하기
-        const deleteButton = document.querySelector("#delete"); // 삭제 버튼 요소 가져오기
+			// 아이템 체크박스들의 상태 변경
+			itemCheckboxes.forEach(function(checkbox) {
+				checkbox.checked = isChecked;
+			});
+		});
 
-        deleteButton.addEventListener('click', function(event) {
-            event.preventDefault(); // 기본 동작 방지 (폼 제출 방지)
+		// [2] 선택된 상품만 삭제하기
+		const deleteButton = document.querySelector("#delete"); // 삭제 버튼 요소 가져오기
 
-            // 선택된 체크박스 확인하여 삭제 처리
-            itemCheckboxes.forEach(function (checkbox) {
-                if (checkbox.checked) {
-                    const row = checkbox.closest('tr'); // 선택된 체크박스의 가장 가까운 <tr> 요소 가져오기
-                    row.remove(); // 해당 행 삭제
-                }
-            });
-        });
+		deleteButton.addEventListener('click', function(event) {
+			event.preventDefault(); // 기본 동작 방지 (폼 제출 방지)
 
-        // [3] quantity_button 클릭시 수량 변화
-        document.addEventListener("DOMContentLoaded", function () {
-    // 페이지가 로드되면 실행되는 코드
+			// 선택된 체크박스 확인하여 삭제 처리
+			itemCheckboxes.forEach(function(checkbox) {
+				if (checkbox.checked) {
+					const row = checkbox.closest('tr'); // 선택된 체크박스의 가장 가까운 <tr> 요소 가져오기
+					row.remove(); // 해당 행 삭제
+				}
+			});
+		});
 
-    // quantity_input 요소 가져오기
-    const quantityInput = document.getElementById("quantity_input");
-    
-    // decrement-button, increment-button 요소 가져오기
-    const decrementButton = document.querySelector(".decrement-button");
-    const incrementButton = document.querySelector(".increment-button");
+		// [3] quantity_button 클릭시 수량 변화
+		document.addEventListener("DOMContentLoaded",
+				function() {
+					// 페이지가 로드되면 실행되는 코드
 
-    // decrement-button 클릭 시
-    decrementButton.addEventListener("click", function () {
-        updateQuantity(-1); // 수량을 -1로 업데이트
-    });
+					// quantity_input 요소 가져오기
+					const quantityInput = document
+							.getElementById("quantity_input");
 
-    // increment-button 클릭 시
-    incrementButton.addEventListener("click", function () {
-        updateQuantity(1); // 수량을 +1로 업데이트
-    });
+					// decrement-button, increment-button 요소 가져오기
+					const decrementButton = document
+							.querySelector(".decrement-button");
+					const incrementButton = document
+							.querySelector(".increment-button");
 
-    // quantity_input 입력 시
-    quantityInput.addEventListener("input", function () {
-        validateQuantityInput(); // 입력값을 유효성 검사하여 업데이트
-    });
+					// decrement-button 클릭 시
+					decrementButton.addEventListener("click", function() {
+						updateQuantity(-1); // 수량을 -1로 업데이트
+					});
 
-    // 수량 업데이트 함수
-    function updateQuantity(change) {
-        let currentQuantity = parseInt(quantityInput.value); // 현재 수량 가져오기
-        currentQuantity += change; // 변경된 값만큼 추가
+					// increment-button 클릭 시
+					incrementButton.addEventListener("click", function() {
+						updateQuantity(1); // 수량을 +1로 업데이트
+					});
 
-        if (currentQuantity < 1) {
-            currentQuantity = 1; // 최소값보다 작으면 1로 설정
-        }
+					// quantity_input 입력 시
+					quantityInput.addEventListener("input", function() {
+						validateQuantityInput(); // 입력값을 유효성 검사하여 업데이트
+					});
 
-        quantityInput.value = currentQuantity; // 변경된 수량을 입력란에 설정
-    }
+					// 수량 업데이트 함수
+					function updateQuantity(change) {
+						let currentQuantity = parseInt(quantityInput.value); // 현재 수량 가져오기
+						currentQuantity += change; // 변경된 값만큼 추가
 
-    // 입력값 유효성 검사 함수
-    function validateQuantityInput() {
-        let inputValue = quantityInput.value;
-        inputValue = inputValue.replace(/\D/g, ''); // 숫자 이외의 문자 제거
-        quantityInput.value = inputValue; // 유효성 검사된 값으로 입력란 업데이트
-    }
-});
-        
-	// 백엔드로부터 가져온 데이터로 화면을 렌더링하는 함수
-	function renderProducts(products){
-    	var cartTable = document.querySelector('.cart_table');
-   		var tableContent = '';
-   		
-   		for(var i = 0; i <cartList.size(); i++){
-   			var cart = cartList[i];
-   			tableContent += '<tr>'
-   				+ '<th><input type="checkbox" name="cartProduct" value="cartNo1"></th>'
-                + '<td><img src="' + product.image + '" alt="상품 이미지" width="100px" height="100px"></td>'
-                + '<td>' + '<div>상품명 ' + product.name + '</div>'
-                + '</td>'
-                + '<td>'
-                + '<div class="cart_quantity">'
-                + '<div>수량</div>'
-                + '<button class="quantity_button" name="decrement-button">-</button>'
-                + '<input type="text" class="quantity_input" name="quantity" value="' + product.quantity + '">'
-                + '<button class="quantity_button" name="increment-button">+</button>'
-                + '</div>' + '</td>'
-                + '<td>'
-                + '<div class="cart_price">'
-                + '<div>가격</div>'
-                + '<div>' + product.price + '</div>'
-                + '</div>' + '</td>' + '</tr>';
-   		}
+						if (currentQuantity < 1) {
+							currentQuantity = 1; // 최소값보다 작으면 1로 설정
+						}
 
-   		cartTable.innerHTML = tableContent;
-	}
+						quantityInput.value = currentQuantity; // 변경된 수량을 입력란에 설정
+					}
 
-	// 화면이 로드되었을 때 실행
-	window.addEventListener('DOMContentLoaded', function() {
-		renderProducts(productsData); // 백엔드로부터 가져온 데이터를 화면에 렌더링
-	});
+					// 입력값 유효성 검사 함수
+					function validateQuantityInput() {
+						let inputValue = quantityInput.value;
+						inputValue = inputValue.replace(/\D/g, ''); // 숫자 이외의 문자 제거
+						quantityInput.value = inputValue; // 유효성 검사된 값으로 입력란 업데이트
+					}
+				});
 
- </script>
+		/* 백엔드로부터 가져온 데이터로 화면을 렌더링하는 함수
+		function renderProducts(products) {
+			var cartTable = document.querySelector('.cart_table');
+			var tableContent = '';
+
+			for (int i = 0; i < cartList.size(); i++) {
+				int cart = cartList.get(i);
+			
+				tableContent += '<tr>'
+						+ '<th><input type="checkbox" name="cartProduct" value="cartNo1"></th>'
+						+ '<td><img src="' + product.image + '" alt="상품 이미지" width="100px" height="100px"></td>'
+						+ '<td>'
+						+ '<div>상품명 '
+						+ product.name
+						+ '</div>'
+						+ '</td>'
+						+ '<td>'
+						+ '<div class="cart_quantity">'
+						+ '<div>수량</div>'
+						+ '<button class="quantity_button" name="decrement-button">-</button>'
+						+ '<input type="text" class="quantity_input" name="quantity" value="' + product.quantity + '">'
+						+ '<button class="quantity_button" name="increment-button">+</button>'
+						+ '</div>' + '</td>' + '<td>'
+						+ '<div class="cart_price">' + '<div>가격</div>'
+						+ '<div>' + product.price + '</div>' + '</div>'
+						+ '</td>' + '</tr>';
+			}
+
+			cartTable.innerHTML = tableContent;
+		}
+
+		 화면이 로드되었을 때 실행
+		window.addEventListener('DOMContentLoaded', function() {
+			renderProducts(productsData); // 백엔드로부터 가져온 데이터를 화면에 렌더링
+		}); */
+	</script>
 </body>
 </html>

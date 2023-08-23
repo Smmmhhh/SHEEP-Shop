@@ -14,4 +14,14 @@ public class Composition {
 		this.cart = cart;
 		this.product = product;
 	}
+
+	public Cart getCart() {
+		return cart;
+	}
+
+	public Product getProduct() {
+		return product;
+	}
+	
+	
 }

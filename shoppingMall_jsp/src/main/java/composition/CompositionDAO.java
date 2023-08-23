@@ -12,44 +12,44 @@ import util.DatabaseUtil;
 
 public class CompositionDAO {
 
-	static public List<Composition> getCompositionList(String memberID){
-		String SQL = "select * from carts C inner join products p on C.prodID = P.prodID where C.memberID = ?" ;
-		
+	public List<Composition> getCompositionList(String memberID) {
+		String SQL = "select * from carts C inner join products P on C.prodID = P.prodID where C.memberID = ?";
+
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 
 		List<Composition> compositionList = new ArrayList<>();
-		
+
 		try {
 			conn = DatabaseUtil.getConnection();
 			pstmt = conn.prepareStatement(SQL);
 			pstmt.setString(1, memberID);
 			rs = pstmt.executeQuery();
-		
+
 			while (rs.next()) {
 				int prodID = rs.getInt("prodID");
-				int prodCtgID = rs.getInt("prodCtgID");
+				int prodCtgID = rs.getInt("ctgID");
 				String prodName = rs.getString("prodName");
-				int prodPrice = rs.getInt("prodPrice");
-				int prodStock = rs.getInt("prodStock");
-				String prodDetail = rs.getString("prodDetail");
+				int prodPrice = rs.getInt("Price");
+				int prodQuantity = rs.getInt("stock");
+				String prodDetail = rs.getString("detail");
 				String prodSize = rs.getString("prodSize");
 				String prodOrigin = rs.getString("prodOrigin");
 				String prodDate = rs.getString("prodDate");
 				int prodValidity = rs.getInt("prodValidity");
-			
+
 				int cartID = rs.getInt("cartID");
+		
 				int cartQuantity = rs.getInt("cartQuantity");
 
-						
-				Product product = new Product(prodID, prodCtgID, prodName, prodPrice, prodStock,
-						prodDetail, prodSize, prodOrigin, prodDate, prodValidity);
-				
-				Cart cart = new Cart(cartID, prodID, memberID, cartQuantity); 
-				
+				Product product = new Product(prodID, prodCtgID, prodName, prodPrice, prodQuantity, prodDetail,
+						prodSize, prodOrigin, prodDate, prodValidity);
+
+				Cart cart = new Cart(cartID, prodID, memberID, cartQuantity);
+
 				Composition composition = new Composition(cart, product);
-			
+
 				compositionList.add(composition);
 			}
 		} catch (Exception e) {
