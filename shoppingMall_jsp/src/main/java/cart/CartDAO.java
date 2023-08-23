@@ -57,8 +57,8 @@ public class CartDAO {
 	}
 	
 	// 장바구니 상품 넣기
-	public int cartInsert(int prodID, String memberID, int cartQuantity) {
-		String SQL = "insert into carts values (?,?,?,?,?)";
+	public int cartInsert(String memberID, int prodID, int Quantity) {
+		String SQL = "insert into carts values (?,?,?,?)";
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		try {
@@ -66,9 +66,9 @@ public class CartDAO {
 			pstmt = conn.prepareStatement(SQL);
 			
 			pstmt.setString(1, null);
-			pstmt.setInt(2, prodID);
-			pstmt.setString(3, memberID);
-			pstmt.setInt(4, cartQuantity);
+			pstmt.setString(2, memberID);
+			pstmt.setInt(3, prodID);
+			pstmt.setInt(4, Quantity);
 			
 			return pstmt.executeUpdate();
 			
@@ -91,8 +91,8 @@ public class CartDAO {
 	}
 	
 	// 장바구니 수량 수정하기
-		public int updatecartProdEdit(int cartQuantity, int memberID) {
-			String SQL = "UPDATE carts SET cartQuantity = ? WHERE memberID = ?";
+		public int updatecartProdEdit(int cartQuantity, String memberID, int prodID) {
+			String SQL = "update carts set cartQuantity = ? where memberID = ? and prodID = ?";
 			Connection conn = null;
 			PreparedStatement pstmt = null;
 			try {
@@ -100,7 +100,8 @@ public class CartDAO {
 				pstmt = conn.prepareStatement(SQL);
 				
 				pstmt.setInt(1, cartQuantity);
-				pstmt.setInt(2, memberID);
+				pstmt.setString(2, memberID);
+				pstmt.setInt(3, prodID);
 				
 				return pstmt.executeUpdate();
 
