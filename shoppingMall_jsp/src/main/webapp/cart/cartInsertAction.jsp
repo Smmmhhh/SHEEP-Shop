@@ -30,10 +30,10 @@
 	CartDAO cartDAO = new CartDAO();
 	int result = cartDAO.cartInsert(cartProdID, memberID, cartProdQuantity);
 	
-	if (result == 1){}
+	
 	
 %>	
-<!DOCTYPE html>0
+<!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">

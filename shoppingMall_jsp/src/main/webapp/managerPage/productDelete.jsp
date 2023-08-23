@@ -15,7 +15,6 @@
 <title>쉼(관리자) : 상품 수정</title>
 <link rel="stylesheet" href="productDelete.css">
 <link rel="stylesheet" href="../shop_main/main.css">
-<script src="../static/js/includeHTML.js"></script>
 </head>
 
 <body>

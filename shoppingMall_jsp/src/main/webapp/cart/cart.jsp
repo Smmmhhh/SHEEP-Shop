@@ -27,7 +27,7 @@
 		script.println("<script>");
 		script.println("location.href = '../login/login.jsp';");
 		script.println("</script>");
-	}	
+	}
 	%>
 
 	<div class="second_wrap">
@@ -84,16 +84,19 @@
 								<div class="all_checkbox">
 									<input type="checkbox" class="selectAll">전체 선택
 								</div>
-								<button class="delete_button" id="delete">삭제하기</button>
+								<form action="cartDeleteAction.jsp" method="post">
+									<input type="submit" name="delete" value="삭제하기">
+								</form>
 							</div>
+													
 							<!-- 장바구니 목록 동적 생성 -->
 							<%
 							List<Composition> cartList = new ArrayList<>();
-							
+
 							CompositionDAO compositionDAO = new CompositionDAO();
-							
+
 							cartList = compositionDAO.getCompositionList(memberID);
-							
+
 							for (Composition e : cartList) {
 								System.out.println(e.getCart().getcartID());
 							}
@@ -103,7 +106,7 @@
 								<table>
 									<%
 									for (int i = 0; i < cartList.size(); i++) {
-										
+
 										int ctgID = cartList.get(i).getProduct().getProdCtgID();
 										int prodID = cartList.get(i).getProduct().getProdID();
 									%>
@@ -141,14 +144,14 @@
 								<h2>총 상품가격</h2>
 								<h2 id="totalPrice">
 									<%
-								    int total = 0;
-								    for (int i = 0; i < cartList.size(); i++) {
-								        int quantity = cartList.get(i).getCart().getcartQuantity();
-								        int price = cartList.get(i).getProduct().getProdPrice();
-								        total += quantity * price;
-								    }
-								    out.print(total);
-								    %>
+									int total = 0;
+									for (int i = 0; i < cartList.size(); i++) {
+										int quantity = cartList.get(i).getCart().getcartQuantity();
+										int price = cartList.get(i).getProduct().getProdPrice();
+										total += quantity * price;
+									}
+									out.print(total);
+									%>
 								</h2>
 							</div>
 
@@ -253,6 +256,37 @@
 					}
 				});
 
+		// total 값을 계산하고 업데이트하는 함수
+	    function updateTotal() {
+	        const cartList = <%=cartList%>; // JSP에서 받아온 cartList 값을 사용
+
+	        let total = 0;
+
+	        for (let i = 0; i < cartList.length; i++) {
+	            const quantity = parseInt(document.querySelectorAll(".quantity_input")[i].value);
+	            const price = cartList[i].product.prodPrice;
+	            total += quantity * price;
+	        }
+
+	        const totalPriceElement = document.getElementById("totalPrice");
+	        totalPriceElement.textContent = total;
+	    }
+
+	    // 수량 변경 버튼들의 NodeList 가져오기
+	    const quantityButtons = document.querySelectorAll(".quantity_button");
+
+	    // 수량 변경 버튼 클릭 시 이벤트 처리
+	    quantityButtons.forEach(function(button) {
+	        button.addEventListener("click", function() {
+	            updateTotal(); // 수량이 변경될 때마다 total 값을 업데이트
+	        });
+	    });
+
+	    // 페이지 로드 시 초기 total 값 계산 및 업데이트
+	    window.addEventListener("DOMContentLoaded", function() {
+	        updateTotal();
+	    });
+	    
 		/* 백엔드로부터 가져온 데이터로 화면을 렌더링하는 함수
 		function renderProducts(products) {
 			var cartTable = document.querySelector('.cart_table');

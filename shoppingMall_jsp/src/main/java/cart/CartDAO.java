@@ -66,8 +66,8 @@ public class CartDAO {
 			pstmt = conn.prepareStatement(SQL);
 			
 			pstmt.setString(1, null);
-			pstmt.setInt(2, prodID);
-			pstmt.setString(3, memberID);
+			pstmt.setString(2, memberID);
+			pstmt.setInt(3, prodID);
 			pstmt.setInt(4, cartQuantity);
 			
 			return pstmt.executeUpdate();
@@ -91,7 +91,7 @@ public class CartDAO {
 	}
 	
 	// 장바구니 수량 수정하기
-		public int updatecartProdEdit(int cartQuantity, int memberID) {
+		public int updatecartProdEdit(int cartQuantity, String memberID) {
 			String SQL = "UPDATE carts SET cartQuantity = ? WHERE memberID = ?";
 			Connection conn = null;
 			PreparedStatement pstmt = null;
@@ -100,7 +100,7 @@ public class CartDAO {
 				pstmt = conn.prepareStatement(SQL);
 				
 				pstmt.setInt(1, cartQuantity);
-				pstmt.setInt(2, memberID);
+				pstmt.setString(2, memberID);
 				
 				return pstmt.executeUpdate();
 
@@ -123,15 +123,16 @@ public class CartDAO {
 		}
 	 
 		// 장바구니 상품 삭제하기
-		public int cartProductdelete(int memberID) {
-			String SQL = "DELETE FROM carts WHERE memberID = ?";
+		public int cartProductDelete(String memberID, int prodID) {
+			String SQL = "DELETE FROM carts WHERE memberID = ? AND prodID = ?";
 			Connection conn = null;
 			PreparedStatement pstmt = null;
 			try {
 				conn = DatabaseUtil.getConnection();
 				pstmt = conn.prepareStatement(SQL);
 
-				pstmt.setInt(1, memberID);
+				pstmt.setString(1, memberID);
+				pstmt.setInt(2, prodID);
 				return pstmt.executeUpdate();
 
 			} catch (Exception e) {
