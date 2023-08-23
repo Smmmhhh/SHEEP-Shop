@@ -17,33 +17,34 @@
 </head>
 <body>
 	<!-- [1] Header 추가 -->
-	<jsp:include page="../static/html/header.jsp" />
-	<!-- [2] nav 추가 -->
-	<jsp:include page="../static/html/nav.jsp" />
+	<jsp:include page="../static/html/adminHeader.jsp" />
+	<hr style="border: none; border-top: 1px solid #ccc;">
 
-	<!-- [3] 메인 -->
-	<div id="main">
-		<!-- [3]-1 메인 사이드 -->
-		<div class="mainSide">
-			<h1>상품관리</h1>
+	<div class="mainSide">
 			<a href="productInsert.jsp" class="managerEdit-item"> 상품등록 </a><br>
 			<a href="productEditSelect.jsp" class="managerEdit-item"> 상품수정 </a><br>
 			<a href="productDelete.jsp" class="managerEdit-item"> 상품삭제 </a><br>
-		</div>
-
-		<div class="mainCenter">
-			<form action="productInsertAction.jsp" method="post" class="member">
-				<!-- [3] 상품 입력 -->
-
-				<!-- 1. 상품이름 -->
-				<div class="field">
-					<b>상품이름</b> <span class="placeholder"><input type="text"
-						name="prodName"></span>
-				</div>
-				<!-- 2. 카테고리는 select 태그 사용 -->
-				<div class="field">
-					<div class="category-box">
-						<b>카테고리</b><br> <select id="categorySelect"
+	</div>
+   <form action="productInsertAction.jsp" method="post">
+      <div class="second_wrap">
+      
+         <div class="wrap">
+   
+            <!-- [2] pageBox -->
+            <div class="pagebox">
+               <h1>상품정보 등록</h1>
+            </div>
+      
+            <table class="InfoTable" id="pwTable">
+               <tr>
+                  <td>
+                     <div class="curpw">
+                        <div class="curpw-info">상품이름</div>
+                        <input type="text" name="curtext" placeholder="상품명 입력">
+                     </div>
+                     <div class="chgpw">
+                        <div class="chgpw-info">카테고리</div>
+                        <select id="categorySelect"
 							class="category-select" name="prodCtgID">
 							<option value="1">테이크아웃 용품</option>
 							<option value="2">커피/원두</option>
@@ -55,62 +56,45 @@
 						<!-- 선택된 카테고리 값을 hidden input 필드에 저장 -->
 						<input type="hidden" name="selectedCategory" value=1
 							id="selectedCategory">
-					</div>
-				</div>
+                     </div>
+                     <div class="chkpw">
+                        <div class="chkpw-info">가격</div>
+                        <input type="text" name="confirmtext" placeholder="가격 입력">
+                     </div>
+                     <div class="curpw">
+                        <div class="curpw-info">재고</div>
+                        <input type="text" name="curtext" placeholder="재고 입력">
+                     </div>
+                     <div class="curpw">
+                        <div class="curpw-info">설명</div>
+                        <input type="text" name="curtext" placeholder="설명 입력">
+                     </div>
+                     <div class="curpw">
+                        <div class="curpw-info">사이즈</div>
+                        <input type="text" name="curtext" placeholder="사이즈 입력">
+                     </div>
+                     <div class="curpw">
+                        <div class="curpw-info">원산지</div>
+                        <input type="text" name="curtext" placeholder="원산지 입력">
+                     </div>
+                     <div class="curpw">
+                        <div class="curpw-info">제조일자</div>
+                        <input type="text" name="curtext" placeholder="제조일자 입력">
+                     </div>
+                  </td>
+               </tr>
+            </table>
+   
+            <!-- [4] 확인 -->
+            <div class="confirmButton_div">
+               <input type="submit" value="확인" id="confirmButton">
+            </div>
+         </div>
+      </div>   
+   </form>
 
-				<!-- 3. 가격 -->
-				<div class="field">
-					<b>가격</b> <input type="text" name="prodPrice">
-				</div>
-				<!-- 4. 재고 -->
-				<div class="field">
-					<b>재고</b> <input type="text" name="prodStock">
-				</div>
-				>
-
-				<!-- 5. 설명 -->
-				<div class="field">
-					<b>설명</b> <input type="text" name="prodDetail">
-				</div>
-				>
-
-				<!-- 6. 사이즈 -->
-				<div class="field">
-					<b>사이즈</b> <input type="text" name="prodSize">
-				</div>
-				>
-
-				<!-- 7. 원산지 -->
-				<div class="field">
-					<b>원산지</b> <input type="text" name="prodOrigin">
-				</div>
-
-				<!-- 8. 제조일자 -->
-				<div class="field">
-					<b>제조일자</b> <input type="text" name="prodDate">
-				</div>
-
-				<!-- 가입하기 버튼 -->
-				<input type="submit" value="등록하기">
-			</form>
-		</div>
-	</div>
-
-	<!-- [4] 푸터  -->
-	<jsp:include page="../static/html/footer.html" />
-
-	<script>
-		// 라디오 버튼 선택 시 수정하기 버튼 활성화
-		var radioButtons = document
-				.querySelectorAll('input[name="selectedProduct"]');
-		var editButton = document.getElementById('editButton');
-
-		radioButtons.forEach(function(radioButton) {
-			radioButton.addEventListener('change', function() {
-				editButton.disabled = !radioButton.checked;
-			});
-		});
-	</script>
+   <!-- [5] 푸터  -->
+   <jsp:include page="../static/html/footer.html" />
 
 </body>
 </html>

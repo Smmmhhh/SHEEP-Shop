@@ -11,7 +11,7 @@
 
 <header id="header">
   <div class="logo-container">
-    <a href="index.jsp" id="logo">
+    <a href="../adminLogin/adminLogin.jsp" id="logo">
       <img src="../image/logo.png" alt="로고" height="80px" width="300px">
     </a>
   </div>

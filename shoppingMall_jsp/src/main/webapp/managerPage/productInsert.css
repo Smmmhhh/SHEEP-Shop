@@ -1,54 +1,112 @@
-body {
-    margin: 0;
-    padding: 0;
+/* 
+   annotation Name : memberFix css
+    User: KJS
+    Date: 2023-08-15
+    Time: 오후 6:48
+*/
+
+.second_wrap {
+   	padding: 0;
+   	margin: 0;
+   	display: flex;
+   	justify-content: center;
 }
 
-/* main Css */
-#main {
+.wrap{
+}
+
+/*  pagebox */
+.pagebox{
+    width:300px;
+    text-align: center;
+    margin: 20px 0;
+}
+
+/* member_table */
+
+.InfoTable {
+    border-collapse: collapse; /* 경계선이 겹치지 않도록 설정 */
+    margin: 20px 0;
+}
+
+.InfoTable th,td {
+    border: 1px solid lightgray; /* 셀 경계선 스타일 지정 */
+    padding: 8px; /* 셀 안의 여백 설정 */
+    text-align: left;
+}
+
+.InfoTable th {
+   	width: 100px;
+    text-align: center;
+}
+
+.InfoTable th input {
     display: flex;
-    align-items: flex-start;
+    justify-content: center;
 }
 
-/* mainSide Css */
+.curpw, .chgpw, .chkpw, .curadd, .chgadd, .curphoneNo, .chgphoneNo{
+    display: flex;
+    padding: 10px;
+    width: 800px;
+}
+
+/* "input" 요소에 적용할 스타일 */
+ input[type="text"] {
+    border: 1px solid gray;
+    width: 100%; /* 너비 조정 */
+    margin-left: 20px;
+    padding: 10px;
+    text-align: center;
+}
+
+.view_box{
+    border: 1px solid gray;
+    width: 100%;
+    margin-left: 20px;
+    padding: 5px;
+    text-align: center;
+}
+
+div[class*="info"] { 
+    width: 500px;
+    background-color: #E6E6FA;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+/* 확인 */
+.confirmButton_div {
+	margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+#confirmButton {
+	width: 150px;
+	height: 50px;
+}
+
+#categorySelect {
+	width: 100%; /* 너비 조정 */
+	height: 36.67px;
+    margin-left: 20px;
+    padding: 10px;
+    text-align: center;
+}
+
 .mainSide {
-    flex: 0 0 10%; /* 왼쪽 사이드바의 너비 */
-    padding: 20px;
-    border: 5px solid #b7b7fe; 
-    margin: 20px 0px 20px 5px;    /* nav와 main side의 마진 */
+	display: flex;
+	justify-content: center;
+	margin: 0;
 }
 
 .managerEdit-item {
-    text-decoration: none;
-    color: black;
-    font-size: 20px;
-    line-height: 30px;
-}
-
-.managerEdit-item:hover {
-    color: royalblue; /* 링크에 마우스를 올렸을 때 색상 변경 */
-}
-
-/* mainCenter Css */
-.mainCenter {
-    flex: 1; /* 가운데 영역의 너비 */
-    display: flex;
-    /* justify-content: center; */
-    align-items: center;
-}
-
-.editBox {
-    display: flex;
-    width: auto;    
-    border: 2px solid black;
-    margin: 30px;
-    float: left;
-}
-
-.editBox > b {
-    padding: 5px;
-    font-size: 25px;
-}
-
-.search-box {
-    margin: auto;
+	display: flex;
+	align-items: center;
+	font-size: 18px;
+	font-weight: bold;
+	color: black;
+	text-decoration: none;
+	margin: 10px;
 }

@@ -20,9 +20,8 @@ request.setCharacterEncoding("UTF-8");
 </head>
 <body>
 	<!-- [1] Header 추가 -->
-	<jsp:include page="../static/html/header.jsp" />
-	<!-- [2] nav 추가 -->
-	<jsp:include page="../static/html/nav.jsp" />
+	<jsp:include page="../static/html/adminHeader.jsp" />
+	<hr style="border: none; border-top: 1px solid #ccc;">
 
 	<!-- [3] 메인 -->
 	<div id="main">

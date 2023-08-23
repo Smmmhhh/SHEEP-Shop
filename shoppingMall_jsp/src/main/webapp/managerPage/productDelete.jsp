@@ -15,14 +15,12 @@
 <title>쉼(관리자) : 상품 수정</title>
 <link rel="stylesheet" href="productDelete.css">
 <link rel="stylesheet" href="../shop_main/main.css">
-<script src="../static/js/includeHTML.js"></script>
 </head>
 
 <body>
 	<!-- [1] Header 추가 -->
-	<jsp:include page="../static/html/header.jsp" />
-	<!-- [2] nav 추가 -->
-	<jsp:include page="../static/html/nav.jsp" />
+	<jsp:include page="../static/html/adminHeader.jsp" />
+	<hr style="border: none; border-top: 1px solid #ccc;">
 
 	<!-- [3] 메인 -->
 	<div id="main">
@@ -87,6 +85,7 @@
 					<%if (!isRadioSelected) {%> disabled <%}%>>삭제하기</button>
 			</form>
 
+		</div>
 		</div>
 
 		<!-- [4] 푸터  -->
