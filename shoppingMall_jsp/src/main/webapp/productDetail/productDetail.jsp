@@ -156,7 +156,7 @@
 					// 버튼 +시 수량 증가
 					function updateQuantity(change) {
 						const buttonProdQuantity = document
-								.getElementById("directButtonProdQuantity");
+								.getElementById("directProdQuantity");
 						const cartProdQuantity = document
 								.getElementById("cartButtonProdQuantity");
 						let currentQuantity = parseInt(quantityInput.value);

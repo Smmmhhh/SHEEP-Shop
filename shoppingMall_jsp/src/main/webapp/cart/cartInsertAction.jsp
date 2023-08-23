@@ -31,7 +31,7 @@
 
 	if(request.getParameter("prodQuantity") != ""){
 		ProdQuantity = Integer.parseInt(request.getParameter("prodQuantity"));
-		//System.out.println(ProdQuantity);
+		//System.out.println(ProdQuantity); 	
 	}
 	
 	if(request.getParameter("buttonMethod") != ""){
@@ -74,21 +74,23 @@ if(inspection) {
 }
 
 // 쿼리문 실행결과
+String redirectURL = null;
+
 if (result == 1 && buttonMethod == 0){			// 쿼리문 성공 && 장바구니 버튼일 때
 	PrintWriter script = response.getWriter();
 	script.println("<script>");
 	//script.println("alert('장바구니에 추가되었습니다.');");
-	script.println("location.replace();");			// 이전 페이지 돌려주기
+	script.println("history.back();");			// 이전 페이지 돌려주기
 	script.println("</script>");
 	script.close();
 } else if(result == 1 && buttonMethod == 1){
+	redirectURL = "../payment/payment.jsp?prodID=" + ProdID + "&buttonMethod=" + buttonMethod;
 	PrintWriter script = response.getWriter();
 	script.println("<script>");
-	script.println("location.href = '../payment/payment.jsp';");		//결제페이지로 이동
-	script.println("</script>;");
+	script.println("location.href = '" + redirectURL + "';");
+	script.println("</script>");
 	script.close();
 }
-
 %>
 
 <!DOCTYPE html>
@@ -97,6 +99,7 @@ if (result == 1 && buttonMethod == 0){			// 쿼리문 성공 && 장바구니 버
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
-<body><
+<body>
+
 </body>
 </html>
