@@ -31,6 +31,18 @@
 </head>
 <body>
 	<%
+	// 유저 session //
+	String memberID = (String) session.getAttribute("memberID");
+
+	if (memberID == null) {
+		PrintWriter script = response.getWriter();
+		script.println("<script>");
+		script.println("location.href = '../login/login.jsp';");
+		script.println("</script>");
+	}
+	%>
+
+	<%
 	//productList.jsp 에서 상품ID 가져오기 
 	int prodID = Integer.parseInt(request.getParameter("prodID"));
 

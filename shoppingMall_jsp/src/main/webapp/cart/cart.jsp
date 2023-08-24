@@ -29,13 +29,14 @@
       script.println("<script>");
       script.println("location.href = '../login/login.jsp';");
       script.println("</script>");
-
+   }
+	%>
+	
+	<%
       List<Product> list = new ArrayList<>();
 
       ProductDAO productDAO = new ProductDAO();
       list = productDAO.getProductList();
-
-   }
    %>
 
 	<!-- [1] header-->

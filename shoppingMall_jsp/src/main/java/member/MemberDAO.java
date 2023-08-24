@@ -84,7 +84,7 @@ public class MemberDAO {
 	
 	//회원 정보 수정
 	public int updateMemberInfo(String memberID, String memberNewPW, String phoneNo, String memberAddress) {
-		String SQL = "update members set passwd = ?, phoneNo = ?, memberAddress = ? "
+		String SQL = "update members set passwd = ?, phoneNo = ?, memberAddress = ?, memberPoint = ?,"
 				+ "where memberID = ? and memberValidity = 1";
 		
 		Connection conn = null;

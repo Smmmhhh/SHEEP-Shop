@@ -84,7 +84,7 @@ if (result == 1 && buttonMethod == 0){			// 쿼리문 성공 && 장바구니 버
 	script.println("</script>");
 	script.close();
 } else if(result == 1 && buttonMethod == 1){
-	redirectURL = "../payment/payment.jsp?prodID=" + ProdID + "&buttonMethod=" + buttonMethod;
+	redirectURL = "../payment/payment.jsp?prodID=" + ProdID + "&prodQuantity=" + ProdQuantity + "&buttonMethod=" + buttonMethod;
 	PrintWriter script = response.getWriter();
 	script.println("<script>");
 	script.println("location.href = '" + redirectURL + "';");

@@ -13,7 +13,8 @@ import util.DatabaseUtil;
 public class CompositionDAO {
 
 	public List<Composition> getCompositionList(String memberID){
-		String SQL = "select * from carts C inner join products p on C.prodID = P.prodID where C.memberID = ?" ;
+		String SQL = "select * from carts C inner join products P on C.prodID = P.prodID "
+				+ "where C.memberID = ?" ;
 		
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -74,7 +75,7 @@ public class CompositionDAO {
 	}
 	
 	public Composition getCompositionList(String memberID, int getprodID){
-		String SQL = "select * from carts C inner join products p on C.prodID = P.prodID "
+		String SQL = "select * from carts C inner join products P on C.prodID = P.prodID "
 				+ "where C.memberID =? and C.prodID = ?" ;
 		
 		Connection conn = null;
