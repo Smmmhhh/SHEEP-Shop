@@ -8,7 +8,7 @@ public class Cart{
 	
 	
 	//전체 생성자 
-	public Cart(int cartID, int ProdID, String memberID, int cartQuantity) {
+	public Cart(int cartID, int prodID, String memberID, int cartQuantity) {
 		this.cartID = cartID;
 		this.prodID = prodID;
 		this.memberID = memberID;
@@ -16,7 +16,7 @@ public class Cart{
 		
 	}
 	
-	public int getcartID() {
+	public int getCartID() {
 		return cartID;
 	}
 
@@ -24,11 +24,11 @@ public class Cart{
 		return prodID;
 	}
 
-	public String getuserID() {
+	public String getUserID() {
 		return memberID;
 	}
 
-	public int getcartQuantity() {
+	public int getCartQuantity() {
 		return cartQuantity;
 	}
 

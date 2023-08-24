@@ -1,100 +1,142 @@
-/* 전체 페이지 스타일 */
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f4f4f4;
+/* 
+   annotation Name : memberFix css
+    User: KJS
+    Date: 2023-08-15
+    Time: 오후 6:48
+*/
+
+.second_wrap {
+   	padding: 0;
+   	margin: 0;
+   	display: flex;
+   	justify-content: center;
 }
 
-/* 메인 영역 스타일 */
-#main {
+.wrap{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+/*  pagebox */
+.pagebox{
+    width:300px;
+    text-align: center;
+    margin: 20px 0;
+}
+
+/* member_table */
+
+.InfoTable {
+    border-collapse: collapse; /* 경계선이 겹치지 않도록 설정 */
+    margin: 20px 0;
+}
+
+.InfoTable th,td {
+    border: 1px solid lightgray; /* 셀 경계선 스타일 지정 */
+    padding: 8px; /* 셀 안의 여백 설정 */
+    text-align: left;
+}
+
+.InfoTable th {
+   	width: 100px;
+    text-align: center;
+}
+
+.InfoTable th input {
     display: flex;
-    align-items: flex-start;
-    padding: 20px;
+    justify-content: center;
 }
 
-/* 메인 사이드 영역 스타일 */
+.radioField {
+	text-align: center;
+	width: 30px;
+}
+
+.numField {
+	width: 30px;
+}
+
+.infoField {
+   	width: 300px;
+    text-align: center;
+}
+
+.curpw, .chgpw, .chkpw, .curadd, .chgadd, .curphoneNo, .chgphoneNo{
+    display: flex;
+    padding: 10px;
+    width: 800px;
+}
+
+/* "input" 요소에 적용할 스타일 */
+ input[type="text"] {
+    border: 1px solid gray;
+    width: 100%; /* 너비 조정 */
+    margin-left: 20px;
+    padding: 10px;
+    text-align: center;
+}
+
+input[type="radio"] {
+    display: inline-block; /* 라디오 버튼을 가로로 나란히 배치 */
+    vertical-align: middle; /* 라디오 버튼을 수직 가운데로 정렬 */
+ }
+
+.view_box{
+    border: 1px solid gray;
+    width: 100%;
+    margin-left: 20px;
+    padding: 5px;
+    text-align: center;
+}
+
+div[class*="info"] { 
+    width: 500px;
+    background-color: #E6E6FA;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+/* 확인 */
+.confirmButton_div {
+	margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+#editButton {
+	width: 150px;
+	height: 50px;
+}
+
+#categorySelect {
+	width: 100%; /* 너비 조정 */
+	height: 36.67px;
+    margin-left: 20px;
+    padding: 10px;
+    text-align: center;
+}
+
+.mainCenter {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
 .mainSide {
-    flex: 1;
-    padding-right: 20px;
-    border-right: 1px solid #ccc;
-}
-
-.mainSide h1 {
-    font-size: 24px;
-    margin-bottom: 20px;
+	display: flex;
+	justify-content: center;
+	margin: 0;
 }
 
 .managerEdit-item {
-    display: block;
-    margin-bottom: 10px;
-    color: #007bff;
-    text-decoration: none;
+	display: flex;
+	align-items: center;
+	font-size: 18px;
+	font-weight: bold;
+	color: grey;
+	text-decoration: none;
+	margin: 10px;
 }
 
-/* 메인 센터 영역 스타일 */
-.mainCenter {
-    flex: 3;
-    padding-left: 20px;
-}
-
-.productListBox {
-    font-size: 24px;
-    margin-bottom: 20px;
-}
-
-.editBox {
-    margin-top: 20px;
-    padding: 20px;
-    background-color: #fff;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
-
-.search-box {
-    margin-bottom: 10px;
-}
-
-.editInputdiv {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.editInput {
-    flex: 1;
-    padding: 5px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
-
-/* InfoTable 스타일 */
-.InfoTable {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-}
-
-.InfoTable th,
-.InfoTable td {
-    border: 1px solid #ccc;
-    padding: 10px;
-    text-align: center;
-}
-
-/* 스크립트에서 사용되는 스타일 */
-.search-edit {
-    background-color: #f4f4f4;
-    padding: 10px;
-    font-weight: bold;
-}
-
-/* 푸터 스타일 */
-.footerDiv {
-    margin-top: 20px;
-    background-color: #f4f4f4;
-    padding: 20px 0;
-    text-align: center;
-}
-
-/* Header 및 Nav 스타일은 main.css 파일을 활용 */

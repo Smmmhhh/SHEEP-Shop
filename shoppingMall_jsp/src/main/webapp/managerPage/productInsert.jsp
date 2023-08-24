@@ -11,7 +11,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>쉼 : 상품등록</title>
+<title>쉼(관리자) : 상품 등록</title>
 <link rel="stylesheet" href="../shop_main/main.css">
 <link rel="stylesheet" href="productInsert.css">
 </head>
@@ -21,8 +21,8 @@
 	<hr style="border: none; border-top: 1px solid #ccc;">
 
 	<div class="mainSide">
-			<a href="productInsert.jsp" class="managerEdit-item"> 상품등록 </a><br>
 			<a href="productEditSelect.jsp" class="managerEdit-item"> 상품수정 </a><br>
+			<a href="productInsert.jsp" class="managerEdit-item" style="font-size: 30px; color: black"> 상품등록 </a><br>
 			<a href="productDelete.jsp" class="managerEdit-item"> 상품삭제 </a><br>
 	</div>
    <form action="productInsertAction.jsp" method="post">
@@ -31,9 +31,6 @@
          <div class="wrap">
    
             <!-- [2] pageBox -->
-            <div class="pagebox">
-               <h1>상품정보 등록</h1>
-            </div>
       
             <table class="InfoTable" id="pwTable">
                <tr>
