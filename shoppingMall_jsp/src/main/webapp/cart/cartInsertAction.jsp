@@ -12,26 +12,26 @@
 		script.println("location.href = '../login/login.jsp';");
 		script.println("</script>");
 	}
-%>
-
-<%
+	
 	request.setCharacterEncoding("UTF-8");
+
 	int cartProdID = Integer.MIN_VALUE;
 	int cartProdQuantity = Integer.MIN_VALUE;
 	
-	if(request.getParameter("cartProdID") != ""){
-		cartProdID = Integer.parseInt(request.getParameter("cartProdID"));
-		System.out.println(cartProdID);
+	if(request.getParameter("prodID") != ""){
+		cartProdID = Integer.parseInt(request.getParameter("prodID"));
 	}
 
-	if(request.getParameter("cartProdQuantity") != ""){
-		cartProdQuantity = Integer.parseInt(request.getParameter("cartProdQuantity"));
+	if(request.getParameter("prodQuantity") != ""){
+		cartProdQuantity = Integer.parseInt(request.getParameter("prodQuantity"));
 	}
 	
 	
 	CartDAO cartDAO = new CartDAO();
 	int result = cartDAO.cartInsert(cartProdID, memberID, cartProdQuantity);
-		
+	
+	
+	
 %>	
 <!DOCTYPE html>
 <html>
@@ -40,6 +40,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<
+	
 </body>
 </html>

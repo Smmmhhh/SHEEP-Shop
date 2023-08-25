@@ -27,11 +27,12 @@ a {
 }
 
 /* 메인(cart_list) */
-.option_box {
-	display: flex;
-	justify-content: space-between;
-	margin: 10px 0;
-	padding: 0;
+
+.option_box, .total {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px;
+
 }
 
 .delete_submit {
@@ -115,6 +116,11 @@ th {
 	justify-content: center;
 	align-items: center;
 	margin: 10px;
+}
+
+button {
+	width:80px;
+	height: 30px;
 }
 
 .total {
