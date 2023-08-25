@@ -16,7 +16,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>쉼 : 결제Action</title>
+<title>쉼 : 포인트 충전 action</title>
 </head>
 <body>
 <%
@@ -101,6 +101,22 @@
 	if (request.getParameter("address") != "") {
 		address = request.getParameter("address");
 		//System.out.println(address);
+	}
+	
+	int afterMoney = pointCharge + memberPoint;
+	
+	// 충전금액 UPDATE 시켜주기
+	int result = memberDAO.updateMemberInfo(memberID, afterMoney);
+	if(result == 1){
+		PrintWriter script = response.getWriter();
+		// 버튼메소드 추가 
+		String redirectURL = "../payment/paymentConfirm.jsp?prodID=" + prodID + "&prodQuantity=" 
+		+ prodQuantity + "&buttonMethod=" + buttonMethod +"&phoneNo=" + phoneNo + "&address=" + address;
+		script.println("<script>");
+		script.println("alert('포인트가 충전되었습니다!');");
+		script.println("location.href = '" + redirectURL + "';");			// 이전 페이지 돌려주기
+		script.println("</script>");
+		script.close();
 	}
 	%>
 	

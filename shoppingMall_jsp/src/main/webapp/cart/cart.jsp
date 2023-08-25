@@ -1,3 +1,6 @@
+
+<%@page import="product.ProductDAO"%>
+<%@page import="product.Product"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
@@ -28,17 +31,30 @@
       }
    </script>
 	<%
-	String memberID = (String) session.getAttribute("memberID");
+   String memberID = (String) session.getAttribute("memberID");
 
-	if (memberID == null) {
-		PrintWriter script = response.getWriter();
-		script.println("<script>");
-		script.println("location.href = '../login/login.jsp';");
-		script.println("</script>");
-	}
+   if (memberID == null) {
+      PrintWriter script = response.getWriter();
+      script.println("<script>");
+      script.println("location.href = '../login/login.jsp';");
+      script.println("</script>");
+   }
 	%>
+	
+	<%
+      List<Product> list = new ArrayList<>();
 
-	<div class="second_wrap">
+      ProductDAO productDAO = new ProductDAO();
+      list = productDAO.getProductList();
+   %>
+
+	<!-- [1] header-->
+	<jsp:include page="../static/html/header.jsp" />
+	<hr style="border: none; border-top: 1px solid #ccc;">
+
+	<!-- [2] 페이지정보 -->
+	<div class="secondWrap">
+
 		<div class="wrap">
 			<!-- [1] header-->
 			<jsp:include page="../static/html/header.jsp" />
@@ -85,7 +101,7 @@
 			cartList = compositionDAO.getCompositionList(memberID);
 
 			for (Composition e : cartList) {
-				System.out.println(e.getCart().getcartID());
+				System.out.println(e.getCart().getCartID());
 			}
 			%>
 
@@ -95,6 +111,7 @@
 
 				<div class="catr_list">
 					<fieldset>
+							<legend>장바구니 목록</legend>
 
 						<form id="myForm" method="post">
 							<div class="option_box">
@@ -107,7 +124,6 @@
 							</div>
 							<!-- 장바구니 목록 동적 생성 -->
 
-							<legend>장바구니 목록</legend>
 							<div class="cart_table">
 								<table>
 									<%
@@ -115,7 +131,7 @@
 										int ctgID = cartList.get(i).getProduct().getProdCtgID();
 										int prodID = cartList.get(i).getProduct().getProdID();
 										int ProdPrice = cartList.get(i).getProduct().getProdPrice();
-										int cartQuantity = cartList.get(i).getCart().getcartQuantity();
+										int cartQuantity = cartList.get(i).getCart().getCartQuantity();
 									%>
 									<tr>
 										<th><input type="checkbox" name="cartProduct"
@@ -182,15 +198,18 @@
 			</div>
 		</div>
 	</div>
-
-
-
+	<div class="second_wrap">
+		<form action="../payment/payment.jsp" method="post">
+			<input type="submit" value="버튼">
+			<input type="hidden" name="buttonMethod" value="0">
+		</form>
+	</div>
+  
 	<!-- [5] 푸터  -->
 	<jsp:include page="../static/html/footer.html" />
 
-
 	<script>
-	
+
 	// total 값을 계산하고 업데이트하는 함수
 	function updateTotal() {
 	    const cartList = <%=cartList%>; // JSP에서 받아온 cartList 값을 사용
@@ -222,7 +241,7 @@
 	    updateTotal();
 	});
 
-      
+
       // [2] 선택된 상품만 삭제하기
       const deleteButton = document.querySelector("#delete"); // 삭제 버튼 요소 가져오기
 
@@ -322,7 +341,6 @@
          updateTotal();
       });
    </script>
-
 
 </body>
 </html>

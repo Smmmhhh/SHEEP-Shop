@@ -16,7 +16,7 @@ public class Cart{
 		
 	}
 	
-	public int getcartID() {
+	public int getCartID() {
 		return cartID;
 	}
 
@@ -24,11 +24,11 @@ public class Cart{
 		return prodID;
 	}
 
-	public String getuserID() {
+	public String getUserID() {
 		return memberID;
 	}
 
-	public int getcartQuantity() {
+	public int getCartQuantity() {
 		return cartQuantity;
 	}
 

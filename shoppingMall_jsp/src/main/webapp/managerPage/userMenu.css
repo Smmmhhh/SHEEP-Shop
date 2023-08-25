@@ -53,14 +53,24 @@
 	width: 30px;
 }
 
-.numField {
+.idField {
 	text-align: center;
-	width: 30px;
+	width: 100px;
 }
 
-.infoField {
+.nameField {
+	text-align: center;
+	width: 100px;
+}
+
+.phoneField {
+	text-align: center;
+   	width: 250px;
+}
+
+.addressField {
+	text-align: center;
    	width: 500px;
-    text-align: center;
 }
 
 .curpw, .chgpw, .chkpw, .curadd, .chgadd, .curphoneNo, .chgphoneNo{

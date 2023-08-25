@@ -43,7 +43,7 @@ if (request.getParameter("prodDate") != "") {
 if (prodPrice == Integer.MIN_VALUE || prodPrice == 0) {
 	PrintWriter script = response.getWriter();
 	script.println("<script>");
-	script.println("alert('상품가격 0보다 크게 입력해주세요.');");
+	script.println("alert('상품가격을 0보다 크게 입력해주세요.');");
 	script.println("history.back();");
 	script.println("</script>");
 	script.close();
@@ -52,7 +52,7 @@ if (prodPrice == Integer.MIN_VALUE || prodPrice == 0) {
 if (prodName == "") {
 	PrintWriter script = response.getWriter();
 	script.println("<script>");
-	script.println("alert('상품 이름을 입력해 주세요.');");
+	script.println("alert('상품명을 입력해 주세요.');");
 	script.println("history.back();");
 	script.println("</script>");
 	script.close();

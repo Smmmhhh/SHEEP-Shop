@@ -1,26 +1,26 @@
 /* 
-	annotation Name : myPage css
+   annotation Name : myPage css
     User: KJS
     Date: 2023-08-15
     Time: 오후 6:45
 */
 
 .secondWrap{
-	margin: 20px 0;
-	width: 100%;
-	padding:0;
-	display: flex;
-	justify-content: center;
+   margin: 20px 0;
+   width: 100%;
+   padding:0;
+   display: flex;
+   justify-content: center;
 }
 
 .wrap{
-	margin:0;
- 	padding:0;
+   margin:0;
+    padding:0;
 }
 
 .myBox { 
-	padding: 0;
-	text-align:center; 
+   padding: 0;
+   text-align:center; 
 }
 
 .orderBox { line-height:40px; }
@@ -60,7 +60,7 @@
 }
 
 .myMenu {
-	height: 150px;
+   height: 150px;
 }
 
 #myShop{
@@ -94,19 +94,19 @@ a{
 /* 메인-order_search */
 
 h3{
-	padding: 0;
+   padding: 0;
     margin-top: 0px;
     margin-bottom:0px;
 }
 
 #orderListTitle {
-	padding-top: 0;
+   padding-top: 0;
 }
 
 .orderSearch {
-	margin: 0;
+   margin: 0;
     padding: 0;
-	display: flex;
+   display: flex;
 }
 
 .orderSearchInput {
@@ -147,12 +147,12 @@ h3{
 
 
 #userInfoTable tr,#payInfoTable tr {
-	text-align: center;
+   text-align: center;
     height: 50px;
 }
 
 #buyInfoTable tr {
-	width: 150px;
+   width: 150px;
     height:150px;
 }
 
@@ -168,3 +168,16 @@ padding: 10px 20px;
 border-radius: 5px;
 cursor: pointer;
 }
+
+.test {
+<<<<<<< HEAD
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+=======
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+>>>>>>> 93025e5bf47ad8b118d748aed56bbfcbfae7b327
