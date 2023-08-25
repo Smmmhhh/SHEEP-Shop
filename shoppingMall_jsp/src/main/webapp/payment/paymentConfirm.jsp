@@ -29,7 +29,9 @@
 <link rel="stylesheet" href="../shop_main/main.css">
 </head>
 <body>
-<%request.setCharacterEncoding("UTF-8");%>   
+	<%
+	request.setCharacterEncoding("UTF-8");
+	%>
 	<%
 	// 유저 session //
 	String memberID = (String) session.getAttribute("memberID");
@@ -231,7 +233,6 @@
 			<div class="buttonWrap">
 				<input type="submit" id="payButton" value="결제하기">
 			</div>
-
 		</form>
 
 	</div>
@@ -248,7 +249,9 @@
 				<div class="lineModal">
 					<hr>
 				</div>
-				<form action="paymentAction.jsp" class="fromSubmit" method="post">
+				<form
+					action="pointChargeAction.jsp?&prodID=<%=prodID%>&prodQuantity=<%=prodQuantity%>&buttonMethod=<%=buttonMethod%>&phoneNo=<%=phoneNo%>&address=<%=address%>"
+					class="fromSubmit" method="post">
 					<div>
 						<h3>충전금액을 입력해 주세요.</h3>
 						<input type="text" name="money" placeholder="입력">
@@ -257,7 +260,8 @@
 						</div>
 						<!-- 카드번호 정규식 추가해야함 -->
 						<h3>결제카드</h3>
-						<input type="text" name="paymentCart" placeholder="카드번호를 입력하세요." style=width:300px>
+						<input type="text" name="paymentCard" placeholder="카드번호를 입력하세요."
+							style="width: 300px">
 					</div>
 					<div class="buttonWrap">
 						<input type="submit" name="charge" value="충전하기" id="finishButton">
