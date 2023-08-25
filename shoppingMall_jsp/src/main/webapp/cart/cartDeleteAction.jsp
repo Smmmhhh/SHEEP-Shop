@@ -17,19 +17,35 @@
 	
 	int prodID = Integer.MIN_VALUE;
 	
-	if(request.getParameter("prodID") != ""){
-		prodID = Integer.parseInt(request.getParameter("prodID"));
-	}
-
 	CartDAO cartDAO = new CartDAO();
-	int result = cartDAO.cartProductDelete(memberID, prodID);
+
+	String[] products = request.getParameterValues("cartProduct");
 	
+	System.out.println("개수"+products.length);
+	
+	if(!products.equals("")){
+		for(String product : products){
+			prodID = Integer.parseInt(product);
+			
+			int result = cartDAO.cartProductDelete(memberID, prodID);
+			
+			if(result == 1){
+				PrintWriter script = response.getWriter();
+				script.println("<script>");
+				script.println("location.href = 'cart.jsp';");
+				script.println("</script>;");
+				script.close();
+				
+				return;
+			}
+		}	
+	}
 %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>쉼 : 장바구니 삭제</title>
 </head>
 <body>
 

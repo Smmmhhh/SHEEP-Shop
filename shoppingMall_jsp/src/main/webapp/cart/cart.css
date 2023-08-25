@@ -32,7 +32,7 @@ a{
 
 /* 메인(cart_list) */
 
-.option_box{
+.option_box, .total {
     display: flex;
     justify-content: space-between;
     margin: 10px;
@@ -91,8 +91,9 @@ border: none;
 cursor: pointer;
 }
 
-.buy_button{
-    display: flex;
-    justify-content: center;
+button {
+	width:80px;
+	height: 30px;
 }
+
 
