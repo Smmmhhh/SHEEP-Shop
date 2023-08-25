@@ -29,17 +29,30 @@
       }
    </script>
 	<%
-	String memberID = (String) session.getAttribute("memberID");
+   String memberID = (String) session.getAttribute("memberID");
 
-	if (memberID == null) {
-		PrintWriter script = response.getWriter();
-		script.println("<script>");
-		script.println("location.href = '../login/login.jsp';");
-		script.println("</script>");
-	}
+   if (memberID == null) {
+      PrintWriter script = response.getWriter();
+      script.println("<script>");
+      script.println("location.href = '../login/login.jsp';");
+      script.println("</script>");
+   }
 	%>
+	
+	<%
+      List<Product> list = new ArrayList<>();
 
-	<div class="second_wrap">
+      ProductDAO productDAO = new ProductDAO();
+      list = productDAO.getProductList();
+   %>
+
+	<!-- [1] header-->
+	<jsp:include page="../static/html/header.jsp" />
+	<hr style="border: none; border-top: 1px solid #ccc;">
+
+	<!-- [2] 페이지정보 -->
+	<div class="secondWrap">
+
 		<div class="wrap">
 			<!-- [1] header-->
 			<jsp:include page="../static/html/header.jsp" />
@@ -183,15 +196,17 @@
 			</div>
 		</div>
 	</div>
-
-
-
+	<div class="second_wrap">
+		<form action="../payment/payment.jsp" method="post">
+			<input type="submit" value="버튼">
+			<input type="hidden" name="buttonMethod" value="0">
+		</form>
+	</div>
+  
 	<!-- [5] 푸터  -->
 	<jsp:include page="../static/html/footer.html" />
 
-
 	<script>
-      
       // [2] 선택된 상품만 삭제하기
       const deleteButton = document.querySelector("#delete"); // 삭제 버튼 요소 가져오기
 
@@ -291,7 +306,6 @@
          updateTotal();
       });
    </script>
-
 
 </body>
 </html>

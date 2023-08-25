@@ -84,9 +84,9 @@ public class MemberDAO {
 		return false;
 	}
 	
-	//회원 정보 수정
+	//회원 정보 수정(패스워드 수정)
 	public int updateMemberInfo(String memberID, String memberNewPW, String phoneNo, String memberAddress) {
-		String SQL = "update members set passwd = ?, phoneNo = ?, memberAddress = ? "
+		String SQL = "update members set passwd = ?, phoneNo = ?, memberAddress = ?, memberPoint = ?,"
 				+ "where memberID = ? and memberValidity = 1";
 		
 		Connection conn = null;
@@ -99,6 +99,41 @@ public class MemberDAO {
 			pstmt.setString(2, phoneNo);
 			pstmt.setString(3, memberAddress);
 			pstmt.setString(4, memberID);
+			
+			return pstmt.executeUpdate();
+		
+		} catch( Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+	            if (pstmt != null) {
+	                pstmt.close();
+	            }
+	            if (conn != null) {
+	                conn.close();
+	            }
+	        } catch (SQLException se) {
+	            se.printStackTrace();
+	        }
+		}
+		
+		return -1;
+	}
+	
+	//회원 정보 수정(포인트 충전)
+	public int updateMemberInfo(String memberID, int money) {
+		String SQL = "update members set memberPoint = ? "
+				+ "where memberID = ? and memberValidity = 1";
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		
+		try {
+			conn = DatabaseUtil.getConnection();
+			pstmt = conn.prepareStatement(SQL);
+			pstmt.setInt(1, money);
+			pstmt.setString(2, memberID);
+
 			
 			return pstmt.executeUpdate();
 		

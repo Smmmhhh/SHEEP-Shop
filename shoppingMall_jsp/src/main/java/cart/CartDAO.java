@@ -9,7 +9,7 @@ import java.util.List;
 import util.DatabaseUtil;
 
 public class CartDAO {
-	
+
 	// List 선언
 	public List<Cart> getCartList(String memberID){
 		String SQL = "select * FROM carts WHERE memberID = ?" ;
@@ -57,8 +57,8 @@ public class CartDAO {
 	}
 	
 	// 장바구니 상품 넣기
-	public int cartInsert(int prodID, String memberID, int cartQuantity) {
-		String SQL = "insert into carts values (?,?,?,?,?)";
+	public int cartInsert(String memberID, int prodID, int Quantity) {
+		String SQL = "insert into carts values (?,?,?,?)";
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		try {
@@ -68,8 +68,9 @@ public class CartDAO {
 			pstmt.setString(1, null);
 			pstmt.setString(2, memberID);
 			pstmt.setInt(3, prodID);
-			pstmt.setInt(4, cartQuantity);
-			
+			pstmt.setInt(4, Quantity);
+
+	
 			return pstmt.executeUpdate();
 			
 		} catch (Exception e) {
@@ -91,8 +92,9 @@ public class CartDAO {
 	}
 	
 	// 장바구니 수량 수정하기
-		public int updatecartProdEdit(int cartQuantity, String memberID) {
-			String SQL = "UPDATE carts SET cartQuantity = ? WHERE memberID = ?";
+		public int updatecartProdEdit(int cartQuantity, String memberID, int prodID) {
+			String SQL = "update carts set cartQuantity = ? where memberID = ? and prodID = ?";
+
 			Connection conn = null;
 			PreparedStatement pstmt = null;
 			try {
@@ -101,7 +103,8 @@ public class CartDAO {
 				
 				pstmt.setInt(1, cartQuantity);
 				pstmt.setString(2, memberID);
-				
+				pstmt.setInt(3, prodID);
+
 				return pstmt.executeUpdate();
 
 			} catch (Exception e) {
@@ -152,5 +155,5 @@ public class CartDAO {
 			}
 			return -1;
 		}
-
+		
 }

@@ -1,4 +1,3 @@
-
 <!-------------------------------
   annotation Name : pointCharge jsp
   User: KJS

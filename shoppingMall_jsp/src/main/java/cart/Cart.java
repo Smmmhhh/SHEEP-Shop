@@ -10,7 +10,7 @@ public class Cart{
 	//전체 생성자 
 	public Cart(int cartID, int prodID, String memberID, int cartQuantity) {
 		this.cartID = cartID;
-		this.prodID = prodID;
+		this.prodID = ProdID;
 		this.memberID = memberID;
 		this.cartQuantity = cartQuantity;
 		
