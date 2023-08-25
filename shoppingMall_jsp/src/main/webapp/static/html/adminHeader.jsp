@@ -23,4 +23,20 @@
             <a href="../adminLogin/adminLogin.jsp" class="main-button" id="loginButton">로그인</a>
         <% } %>
     </div>
+    <script>
+        var button = document.getElementById("logo");
+        var timer;
+
+        // 버튼을 누를 때 타이머 시작
+        button.addEventListener("mousedown", function() {
+            timer = setTimeout(function() {
+                window.location.href = "../shop_main/main.jsp";
+            }, 3000); // 3000 밀리초는 3초
+        });
+
+        // 버튼에서 손을 뗄 때 타이머 초기화
+        button.addEventListener("mouseup", function() {
+            clearTimeout(timer);
+        });
+    </script>
 </header>

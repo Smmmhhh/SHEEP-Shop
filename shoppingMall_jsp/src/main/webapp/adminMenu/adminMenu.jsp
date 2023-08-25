@@ -58,7 +58,7 @@
 	
 	    // div를 클릭할 때 이동할 URL로 리다이렉션
 	    clickableUserMenu.addEventListener("click", function() {
-	        window.location.href = "../userMenu/userMenu.jsp";
+	        window.location.href = "../managerPage/userMenu.jsp";
     	});
 	    
 	    var clickableProdMenu = document.getElementById("productMenu");
@@ -72,7 +72,7 @@
 		
 	    // div를 클릭할 때 이동할 URL로 리다이렉션
 	    clickableDataMenu.addEventListener("click", function() {
-	        window.location.href = "../dataMenu/dataMenu.jsp";
+	        window.location.href = "../managerPage/dataMenu.jsp";
     	});
 	</script>
 

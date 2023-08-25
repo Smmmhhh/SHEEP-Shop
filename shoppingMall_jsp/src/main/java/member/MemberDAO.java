@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import util.DatabaseUtil;
 
@@ -152,6 +154,38 @@ public class MemberDAO {
 		return -1;
 	}
 	
+	//관리자 회원 삭제 validity=0으로 설정
+		public int deleteMember(String memberID) {
+			String SQL = "update members set memberValidity= 0 where memberID = ? and memberValidity = 1";
+			
+			Connection conn = null;
+			PreparedStatement pstmt = null;
+			
+			try {
+				conn = DatabaseUtil.getConnection();
+				pstmt = conn.prepareStatement(SQL);
+				pstmt.setString(1, memberID);
+				
+				return pstmt.executeUpdate();
+			
+			} catch( Exception e) {
+				e.printStackTrace();
+			} finally {
+				try {
+		            if (pstmt != null) {
+		                pstmt.close();
+		            }
+		            if (conn != null) {
+		                conn.close();
+		            }
+		        } catch (SQLException se) {
+		            se.printStackTrace();
+		        }
+			}
+			
+			return -1;
+		}
+	
 	//User 정보 받아오기
 	public Member selGetUserInfo(String memberID) {
 		String SQL = "select * from members where memberID = ? and memberValidity = 1";
@@ -197,5 +231,56 @@ public class MemberDAO {
 		
 		return member;
 	}
+	
+	//User 정보 받아오기
+		public List<Member> selGetUserList() {
+			String SQL = "select * from members where memberValidity = 1";
+			
+			Connection conn = null;
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			
+			List<Member> memberList = new ArrayList<>();
+			Member member = null;
+			
+			try {
+				conn = DatabaseUtil.getConnection();
+				pstmt = conn.prepareStatement(SQL);
+				rs = pstmt.executeQuery();
+								
+				while(rs.next()) {
+					String memberID = rs.getString("memberID");
+					String userName = rs.getString("memberName");
+					String gender = rs.getString("gender");
+					String address = rs.getString("memberAddress");
+					String phoneNo= rs.getString("phoneNo");
+					int point = rs.getInt("memberPoint");
+					
+					member = new Member(memberID, userName, gender, address, phoneNo, point);
+					memberList.add(member);
+				}
+							
+			} catch(Exception e) {
+				e.printStackTrace();
+			} finally {
+				// Database와 연결 후 반드시 해제시켜주기
+				try {
+					if (rs != null) {
+						rs.close(); // ResultSet을 닫음
+					}
+					if (pstmt != null) {
+						pstmt.close();
+					}
+					if (conn != null) {
+						conn.close();
+					}
+				} catch (SQLException se) {
+					se.printStackTrace();
+				}
+			}
+			
+			return memberList;
+		}
+
 
 }
