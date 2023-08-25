@@ -1,33 +1,29 @@
-.second_wrap{
-    display:flex;
-    justify-content: center;
+.second_wrap {
+	display: flex;
+	justify-content: center;
 }
 
-/*  페이지정보 */
-.cart_font{
-    width: 200px;
-    text-align: center;
-    margin: 10px;
+.all_checkbox {
+	float: left;
+	margin-top: 50px 0;
+	padding: 0 1px;
 }
 
-/* 페이지 링크 박스 */
-.allbox {
-    text-align: center;
-    width:200px;
-    height:500px;
-    float:left;
-    margin-top: 50px;
+.cartBox {
+	text-align: center;
+	margin: 0;
+	padding: 0;
 }
 
-div[class*="my_"]{
-    height:150px;
-    border: 1px solid purple;
-    margin-bottom: 20px;
+div[class*="my_"] {
+	height: 150px;
+	border: 1px solid purple;
+	margin-bottom: 20px;
 }
 
-a{
-    text-decoration: none;
-    color: black;
+a {
+	text-decoration: none;
+	color: black;
 }
 
 /* 메인(cart_list) */
@@ -36,59 +32,90 @@ a{
     display: flex;
     justify-content: space-between;
     margin: 10px;
+
 }
 
-.delete_submit{
-    display: flex;
-    justify-content: flex-end;
-    margin: 10px;
- }
-
-.catr_list{
-    margin: 40px 10px;
+.delete_submit {
+	display: flex;
+	justify-content: flex-end;
+	margin: 10px;
 }
 
-.cart_box{
-    width: 1000px; 
-    overflow: auto; /* 내용이 넘칠 경우 스크롤바 추가 */
+.catr_list {
+	margin: 40px 10px;
+}
+
+.cart_box {
+	width: 1000px;
+	overflow: auto; /* 내용이 넘칠 경우 스크롤바 추가 */
 }
 
 table {
-    border-collapse: collapse;
-    border: none;
+	border-collapse: collapse;
+	border: none;
 }
 
-tr{
-    border-top: 1px solid lightgray;;
-    border-bottom: 1px solid lightgray;
-    width: 500px;
+tr {
+	border-top: 1px solid lightgray;;
+	border-bottom: 1px solid lightgray;
+	width: 500px;
 }
 
-td {    
-    width: 300px;
-    height: 110px;
-    border: none;
-
+td {
+	width: 150px;
+	height: 110px;
+	border: none;
 }
 
-th{
-    width: 30px;
+th {
+	width: 30px;
 }
 
-#quantity_input {
-width: 30px;
-height: 30px;
-font-size: 14px;
-text-align: center;
+.quantity_input {
+	width: 30px;
+	height: 30px;
+	font-size: 14px;
+	text-align: center;
 }
 
 .quantity_button {
-width: 35px;
-height: 35px;
-font-size: 14px;
-background-color: #f0f0f0;
-border: none;
-cursor: pointer;
+	width: 35px;
+	height: 35px;
+	font-size: 14px;
+	background-color: #f0f0f0;
+	border: none;
+	cursor: pointer;
+}
+
+.buy_submit {
+	display: flex;
+	justify-content: center;
+}
+
+.buy_button {
+	display: flex;
+	justify-content: center;
+}
+
+.cartProduct {
+	margin-right: 20px;
+}
+
+.listBox {
+	margin: 0;
+	padding: 0;
+}
+
+.selectAll {
+	margin-right: 8px;
+}
+
+.wrapBox{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	margin: 10px;
 }
 
 button {
@@ -96,4 +123,15 @@ button {
 	height: 30px;
 }
 
+.total {
+	width: 600px;
+	text-align: right;
+	margin-top: 20px;
+}
 
+#orderButton {
+	width: 100px;
+	padding: 5px;
+	margin: 30px;
+	border: none;
+}

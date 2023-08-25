@@ -40,9 +40,8 @@
 }
 
 .orderSearchInput {
-	padding: 5px;
+	padding: 2px;
 	margin-right: 10px;
-	margin-bottom: 20px;
 }
 
 .orderSearchButton {
@@ -72,10 +71,4 @@
 .wrap {
 	display: flex;
 	flex-direction: column;
-}
-
-.test {
-	display: flex;
-	justify-content: center;
-	align-items: center;
 }

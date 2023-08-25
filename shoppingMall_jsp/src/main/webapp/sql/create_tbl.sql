@@ -51,11 +51,13 @@ create table if not exists orders(
 -- 장바구니 테이블 생성
 
 create table if not exists carts(
-    cartID int primary key,
-    memberID varchar(20),
-    cartValidity int not null,
-    foreign key(memberID) references members(memberID) on update cascade
-);
+	cartID int auto_increment primary key,
+	memberID varchar(20),
+	prodID int,
+	cartQuantity int,
+	foreign key(memberID) references members(memberID) on update cascade,
+	foreign key(prodID) references products(prodID) on update cascade);
+
 
 -- 주문상품 테이블 생성
 
@@ -66,17 +68,5 @@ create table if not exists orderProducts(
     orderQuantity int not null,
     orderProdValidity int not null,
     foreign key(orderID) references orders(orderID) on update cascade,
-    foreign key(prodID) references products(prodID) on update no action
-);
-
--- 장바구니상품 테이블 생성
-
-create table if not exists cartProducts(
-    cartProdID int auto_increment primary key,
-    cartID int,
-    prodID int,
-    cartQuantity int not null,
-    cartProdValidity int not null,
-    foreign key(cartID) references carts(cartID) on update cascade,
     foreign key(prodID) references products(prodID) on update no action
 );

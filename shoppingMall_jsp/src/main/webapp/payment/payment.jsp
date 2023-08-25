@@ -79,8 +79,7 @@ if (member != null) {
 
 			checkboxAD.addEventListener('change', function() {
 				if (checkboxAD.checked) {
-					inputFieldAD.value = '<%=memberAddress%>
-		';
+					inputFieldAD.value = '<%=memberAddress%>';
 				} else {
 					inputFieldAD.value = '';
 				}
@@ -147,13 +146,13 @@ if (member != null) {
 			<div class="InfoTitle">구매자 정보</div>
 			<table class="InfoTable" id="userInfoTable">
 				<tr>
-					<th>이름</th>
-					<td><%=memberName%></td>
-				</tr>
-
-				<tr>
 					<th>아이디</th>
 					<td><%=memberID%></td>
+				</tr>
+				
+				<tr>
+					<th>이름</th>
+					<td><%=memberName%></td>
 				</tr>
 
 				<tr>
@@ -162,7 +161,7 @@ if (member != null) {
 						<div class="inputBox" style="padding: 0;">
 							<input type="text" id="phoneNoText" value="<%=memberPhoneNo%>"
 								readonly> <input type="text" id="phoneNoInput"
-								value="전화번호 입력"> <input type="checkbox" id="samePhoneNo">기존
+								placeholder="전화번호 입력"> <input type="checkbox" id="samePhoneNo">주문자
 							전화 번호와 동일
 						</div>
 					</td>
@@ -174,7 +173,7 @@ if (member != null) {
 						<div class="inputBox" style="padding: 0;">
 							<input type="text" id="phoneNoText" value="<%=memberAddress%>"
 								readonly> <input type="text" id="addressInput"
-								value="주소 입력"> <input type="checkbox" id="sameAddress">기본
+								placeholder="주소 입력"> <input type="checkbox" id="sameAddress">주문자
 							배송지와 동일
 						</div>
 					</td>

@@ -54,6 +54,7 @@
    String ctgName = CategoryDAO.selectCtgName(product.getProdCtgID());
    %>
    <!-- [3]-1 상품 상세페이지 내용작성 -->
+
    <div id="category">
       <h3><%=ctgName%></h3>
    </div>
@@ -114,7 +115,6 @@
    <!-- [4] 푸터  -->
    <jsp:include page="../static/html/footer.html" />
 
-
    <script>
       //모달창 띄우기
       document.getElementById("cartButton").addEventListener("click",
@@ -171,7 +171,6 @@
             });
       
    </script>
-
 
 </body>
 </html>

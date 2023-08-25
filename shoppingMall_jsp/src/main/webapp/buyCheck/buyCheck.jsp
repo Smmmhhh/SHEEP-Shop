@@ -22,10 +22,9 @@
 	<!-- [1] header-->
 	<jsp:include page="../static/html/header.jsp" />
 	<hr style="border: none; border-top: 1px solid #ccc;">
-
+	
+	<!-- [2] 페이지정보 -->
 	<div class="secondWrap">
-		<!-- [2] 페이지정보 -->
-
 		<div class="wrap">
 			<div class="buyBox">
 				<h2>주문목록 조회</h2>
@@ -37,7 +36,6 @@
 				<!-- [4] 메인(order_box div-->
 				<div class="orderBox">
 					<!-- [4]-1 order_search -->
-					<h3>주문 목록</h3>
 					<div class="orderSearch">
 						<input type="text" class="orderSearchInput"
 							placeholder="주문한 상품을 검색하세요." required>
@@ -59,6 +57,7 @@
 	</div>
 
 	<script>
+	
 		// 백엔드에서 가져온 데이터를 시뮬레이션한 배열
 		var productsData = [ {
 			name : '상품1',

@@ -5,12 +5,12 @@
   Time: 오후 3:00
 -->
 
+<%@page import="java.io.PrintWriter"%>
+<%@page import="member.Member"%>
+<%@page import="member.MemberDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 	
-<%
-	String memberID = (String) session.getAttribute("memberID");
-%>
 <!DOCTYPE html>
 <html>
 
@@ -23,6 +23,17 @@
 </head>
 
 <body>
+
+<%
+	request.setCharacterEncoding("UTF-8");
+	String memberID = (String) session.getAttribute("memberID");
+	if(memberID==null){
+		PrintWriter script = response.getWriter();
+		script.println("<script>");
+		script.println("location.href = '../login/login.jsp';");
+		script.println("</script>");
+	}
+%>
 
 	<!-- [1] Header 추가 -->
 	<jsp:include page="../static/html/header.jsp" />
