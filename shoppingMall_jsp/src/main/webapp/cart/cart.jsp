@@ -1,11 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-   pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 
 <%@ page import="product.Product"%>
 <%@ page import="product.ProductDAO"%>
 <%@ page import="java.io.PrintWriter"%>
 <%@ page import="java.util.ArrayList"%>
 <%@ page import="java.util.List"%>
+<%@ page import="cart.Cart"%>
+<%@ page import="cart.CartDAO"%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -19,7 +21,7 @@
 </head>
 
 <body>
-   <%
+	<%
    String memberID = (String) session.getAttribute("memberID");
 
    if (memberID == null) {
@@ -27,64 +29,64 @@
       script.println("<script>");
       script.println("location.href = '../login/login.jsp';");
       script.println("</script>");
-
+   }
+	%>
+	
+	<%
       List<Product> list = new ArrayList<>();
 
       ProductDAO productDAO = new ProductDAO();
       list = productDAO.getProductList();
-
-   }
    %>
 
-   <!-- [1] header-->
-   <jsp:include page="../static/html/header.jsp" />
-   <hr style="border: none; border-top: 1px solid #ccc;">
+	<!-- [1] header-->
+	<jsp:include page="../static/html/header.jsp" />
+	<hr style="border: none; border-top: 1px solid #ccc;">
 
-   <!-- [2] 페이지정보 -->
-   <div class="secondWrap">
-      <div class="wrap">
-         <div class="cartBox">
-            <h2>장바구니</h2>
-         </div>
-         <div class="test">
+	<!-- [2] 페이지정보 -->
+	<div class="secondWrap">
+		<div class="wrap">
+			<div class="cartBox">
+				<h2>장바구니</h2>
+			</div>
+			<div class="test">
 
-            <!-- [3] 메뉴 -->
-            <jsp:include page="../static/html/myPageMenu.html" />
+				<!-- [3] 메뉴 -->
+				<jsp:include page="../static/html/myPageMenu.html" />
 
-            <!-- [4] 메인(cart_list) -->
-            <div class="cart_box">
-               <div class="cart_list">
-                  <div class="wrapBox">
-                     <div class="listBox">
-                        <div class="option_box">
-                           <div class="all_checkbox">
-                              <input type="checkbox" class="selectAll">전체 선택
-                           </div>
-                           <button class="delete_button" id="delete">삭제</button>
-                        </div>
-                        <table class="cart_table">
+				<!-- [4] 메인(cart_list) -->
+				<div class="cart_box">
+					<div class="cart_list">
+						<div class="wrapBox">
+							<div class="listBox">
+								<div class="option_box">
+									<div class="all_checkbox">
+										<input type="checkbox" class="selectAll">전체 선택
+									</div>
+									<button class="delete_button" id="delete">삭제</button>
+								</div>
+								<table class="cart_table">
 
-                        </table>
-                     </div>
-                     <div class="total">총 상품가격 : 0</div>
-                  </div>
-               </div>
-            </div>
-         </div>
-      </div>
-   </div>
-   <div class="second_wrap">
-      <form action="../payment/payment.jsp" method="post">
-         <input id="orderButton" type="submit" value="주문">
-         <input type="hidden" name="paymentMethod" value="cart">
-      </form>
-   </div>
+								</table>
+							</div>
+							<div class="total">총 상품가격 : 0</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="second_wrap">
+		<form action="../payment/payment.jsp" method="post">
+			<input type="submit" value="버튼">
+			<input type="hidden" name="buttonMethod" value="0">
+		</form>
+	</div>
 
-   <!-- [5] 푸터  -->
-   <jsp:include page="../static/html/footer.html" />
+	<!-- [5] 푸터  -->
+	<jsp:include page="../static/html/footer.html" />
 
-
-   <script>
+	<script>
       // 백엔드에서 가져온 데이터를 시뮬레이션한 배열
       var productsData = [ {
          name : '상품1',
@@ -198,5 +200,6 @@
          renderProducts(productsData);
       });
    </script>
+
 </body>
 </html>

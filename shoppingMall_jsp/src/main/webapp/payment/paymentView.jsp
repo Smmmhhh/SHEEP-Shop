@@ -10,6 +10,8 @@
 <!DOCTYPE html>
 <%@ page import="java.io.PrintWriter"%>
 <%@ page import="java.util.Date"%>
+<%@ page import="cart.Cart"%>
+<%@ page import="cart.CartDAO"%>
 
 <%
 	String memberID = (String) session.getAttribute("memberID");
@@ -34,6 +36,8 @@
 <body>
 
 	<script>
+	
+		
 		// 백엔드에서 가져온 데이터를 시뮬레이션한 배열
 		var productsData = [ {
 			name : '상품1',

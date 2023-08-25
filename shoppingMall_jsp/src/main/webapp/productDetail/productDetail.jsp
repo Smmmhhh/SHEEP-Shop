@@ -31,6 +31,18 @@
 </head>
 <body>
 	<%
+	// 유저 session //
+	String memberID = (String) session.getAttribute("memberID");
+
+	if (memberID == null) {
+		PrintWriter script = response.getWriter();
+		script.println("<script>");
+		script.println("location.href = '../login/login.jsp';");
+		script.println("</script>");
+	}
+	%>
+
+	<%
 	//productList.jsp 에서 상품ID 가져오기 
 	int prodID = Integer.parseInt(request.getParameter("prodID"));
 
@@ -54,7 +66,7 @@
 	String ctgName = CategoryDAO.selectCtgName(product.getProdCtgID());
 	%>
 	<!-- [3]-1 상품 상세페이지 내용작성 -->
-	<div id="cate 	gory">
+	<div id="category">
 		<h3><%=ctgName%></h3>
 	</div>
 	<div class="product-details">
@@ -80,30 +92,36 @@
 
 			<h4 class="description"><%=product.getProdDetail()%></h4>
 
-			<!-- [3]-2 바로결제 -->
+			<!-- [3]-2 결제버튼 -->
 			<div class="payButtonDiv">
 
-				<button class="paySelectButton" id="cartButton">장바구니 담기</button>
-				<form action="../payment/payment.jsp" method="post">
+				<form action="../cart/cartInsertAction.jsp" method="post">
+					<input class="paySelectButton" id="cartButton" type="submit" value="장바구니 담기"> 
+					<input type="hidden" id="carrButtonProdID" name="prodID" value=<%=product.getProdID()%>> 
+					<input type="hidden" id="cartButtonProdQuantity" name="prodQuantity" value="1">
+					<input type="hidden" name="buttonMethod" value="0">
+<!-- 				<button class="paySelectButton" id="cartButton">장바구니 담기</button> -->
+				</form>
+				
+				<form action="../cart/cartInsertAction.jsp" method="post">
 					<input class="paySelectButton" id="payButton" type="submit" value="바로 결제"> 
 					<input type="hidden" id="buttonProdID" name="prodID" value=<%=product.getProdID()%>> 
-					<input type="hidden" id="buttonProdQuantity" name="prodQuantity" value="1">
-					<input type="hidden" name="paymentMethod" value="direct">
-					
+					<input type="hidden" id="directProdQuantity" name="prodQuantity" value="1">
+					<input type="hidden" name="buttonMethod" value="1">
 				</form>
 			</div>
 		</div>
 
 	</div>
 
-	<!-- [3]-3 장바구니담기 -->
+	<!-- [3]-3 장바구니담기 (내일 수정해야함) -->
 	<div class="modal-overlay" id="modal">
 		<div class="modal-content">
 			<p>상품을 장바구니에 담았습니다.</p>
-
+			
 			<form action="../cart/cart.jsp" method="post">
 				<input type="submit" class="modal-button" id="moveCart" value="장바구니로 이동"> 
-				<input type="hidden" id="cart_ProdID" name="cartProdID" value=<%=product.getProdID()%>> 
+				<input type="hidden" id="cart_ProdID" name="cartProdID" value=<%=product.getProdID()%>>
 			</form>
 
 			<button class="modal-button" id="closeButton">쇼핑 계속하기</button>
@@ -116,7 +134,7 @@
 
 
 	<script>
-		//모달창 띄우기
+		//상품 cart Insert 성공 시 모달창 띄우기(구현해야함)
 		document.getElementById("cartButton").addEventListener("click",
 				function() {
 					var modal = document.getElementById("modal");
@@ -146,21 +164,23 @@
 					quantityInput.addEventListener("input", function() {
 						validateQuantityInput();
 					});
-					
+
 					// 버튼 +시 수량 증가
 					function updateQuantity(change) {
-						const buttonProdQuantity = document.getElementById("buttonProdQuantity");
-						const cartProdQuantity = document.getElementById("cart_ProdQuantity");
+						const buttonProdQuantity = document
+								.getElementById("directProdQuantity");
+						const cartProdQuantity = document
+								.getElementById("cartButtonProdQuantity");
 						let currentQuantity = parseInt(quantityInput.value);
 						currentQuantity += change;
-						
+
 						if (currentQuantity < 1) {
 							currentQuantity = 1;
 						}
 						quantityInput.value = currentQuantity;
-						buttonProdQuantity.value = currentQuantity;	//제품 수량 input태그 prodQuantity로 값 전달
+						buttonProdQuantity.value = currentQuantity; //제품 수량 input태그 prodQuantity로 값 전달
 						cartProdQuantity.value = currentQuantity;
-						
+
 					}
 					// 수량 증감 입력 유효성 검사
 					function validateQuantityInput() {
@@ -169,7 +189,6 @@
 						quantityInput.value = inputValue;
 					}
 				});
-		
 	</script>
 
 
