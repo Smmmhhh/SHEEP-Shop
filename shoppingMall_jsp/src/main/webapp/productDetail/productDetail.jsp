@@ -115,7 +115,6 @@
    <!-- [4] 푸터  -->
    <jsp:include page="../static/html/footer.html" />
 
-
    <script>
       //모달창 띄우기
       document.getElementById("cartButton").addEventListener("click",

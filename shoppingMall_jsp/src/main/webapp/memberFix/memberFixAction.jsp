@@ -56,6 +56,7 @@
 		script.close();
 		return;
 	}
+	
 	if(!newPassword.equals(confirmPassword)){
 		PrintWriter script = response.getWriter();
 		script.println("<script>");
