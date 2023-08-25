@@ -11,7 +11,7 @@ import product.Product;
 import util.DatabaseUtil;
 
 public class CompositionDAO {
-
+  
 	public List<Composition> getCompositionList(String memberID){
 		String SQL = "select * from carts C inner join products P on C.prodID = P.prodID "
 				+ "where C.memberID = ?" ;

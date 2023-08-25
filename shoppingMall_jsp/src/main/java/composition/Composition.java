@@ -24,5 +24,4 @@ public class Composition {
 	public Product getProduct() {
 		return product;
 	}
-	
 }

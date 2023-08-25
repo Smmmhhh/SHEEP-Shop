@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
 	pageEncoding="EUC-KR"%>
-<%@ page import="product.Product"%>
-<%@ page import="product.ProductDAO"%>
+<%@ page import="member.Member"%>
+<%@ page import="member.MemberDAO"%>
 <%@ page import="java.io.PrintWriter"%>
 <%@ page import="java.util.ArrayList"%>
 <%@ page import="java.util.List"%>
@@ -12,8 +12,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>쉼(관리자) : 상품 삭제</title>
-<link rel="stylesheet" href="productDelete.css">
+<title>쉼(관리자) : 회원 삭제</title>
+<link rel="stylesheet" href="userMenu.css">
 <link rel="stylesheet" href="../shop_main/main.css">
 </head>
 
@@ -26,36 +26,38 @@
 	<div id="main">
 		<!-- [3]-1 메인 사이드 -->
 		<div class="mainSide">
-			<a href="productInsert.jsp" class="managerEdit-item"> 상품등록 </a><br>
-			<a href="productDelete.jsp" class="managerEdit-item" style="font-size: 30px; color: black"> 상품삭제 </a><br>
-			<a href="productEditSelect.jsp" class="managerEdit-item"> 상품수정 </a><br>
+			<a href="userMenu.jsp" class="managerEdit-item" style="font-size: 30px; color: black"> 회원 리스트 </a><br>
 		</div>
 		<!-- [3]-2 메인 센터 -->
 		<div class="mainCenter">
 			<!-- 1. 상품 테이블 리스트-->
 			<%
-			List<Product> productList = new ArrayList<>();
-			ProductDAO productDAO = new ProductDAO();
-			productList = productDAO.getProductList();
+				List<Member> memberList = new ArrayList<>();
+				MemberDAO memberDAO = new MemberDAO();
+				memberList = memberDAO.selGetUserList();
 			%>
-			<form action="productDeleteAction.jsp" method="post"
-				class="form_product_edit">
+			<form action="memberDeleteAction.jsp" method="post"
+				class="form_Member_edit">
 				<div class="wrap">
 				
-				<table class="InfoTable" id="prodInfoTable">
+				<table class="InfoTable" id="MemberInfoTable">
 				
 					<tr>
 						<th>선택</th>
-						<th>상품번호</th>
-						<th>상품명</th>
+						<th>ID</th>
+						<th>이름</th>
+						<th>전화번호</th>
+						<th>주소</th>
 					</tr>
 					<%
-					for (int i = 0; i < productList.size(); i++) {
+					for (int i = 0; i < memberList.size(); i++) {
 					%>
 					<tr>
-						<td class="radioField"><input type="radio" value="<%=productList.get(i).getProdID()%>" name="selectedProduct"></td>
-						<td class="numField"><%=productList.get(i).getProdID()%></td>
-						<td class="infoField"><%=productList.get(i).getProdName()%></td>
+						<td class="radioField"><input type="radio" value="<%=memberList.get(i).getMemberID()%>" name="selectedMember"></td>
+						<td class="idField"><%=memberList.get(i).getMemberID()%></td>
+						<td class="nameField"><%=memberList.get(i).getMemberName()%></td>
+						<td class="phoneField"><%=memberList.get(i).getMemberPhoneNo()%></td>
+						<td class="addressField"><%=memberList.get(i).getMemberAddress()%></td>
 					</tr>
 					<%
 					}
@@ -63,13 +65,13 @@
 				</table>
 
 				<%
-				boolean isRadioSelected = false;
-				// 선택된 라디오 버튼의 값 가져오기
-				String selectedProductValue = request.getParameter("selectedProduct");
-				// 선택된 라디오 버튼이 있으면 isRadioSelected 값을 true로 설정
-				if (selectedProductValue != null && !selectedProductValue.isEmpty()) {
-					isRadioSelected = true;
-				}
+					boolean isRadioSelected = false;
+					// 선택된 라디오 버튼의 값 가져오기
+					String selectedMemberValue = request.getParameter("selectedMember");
+					// 선택된 라디오 버튼이 있으면 isRadioSelected 값을 true로 설정
+					if (selectedMemberValue != null && !selectedMemberValue.isEmpty()) {
+						isRadioSelected = true;
+					}
 				%>
 				<div class="second_wrap">
 				<button type="submit" formmethod="post"
@@ -88,9 +90,9 @@
 
 		<!-- 스크립트 -->
 		<script>
-			// 라디오 버튼 선택 시 삭제하기 버튼 활성화
+			// 라디오 버튼 선택 시 수정하기 버튼 활성화
 			var radioButtons = document
-					.querySelectorAll('input[name="selectedProduct"]');
+					.querySelectorAll('input[name="selectedMember"]');
 			var editButton = document.getElementById('deleteButton');
 
 			radioButtons.forEach(function(radioButton) {

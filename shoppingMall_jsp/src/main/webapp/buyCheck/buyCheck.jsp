@@ -57,6 +57,7 @@
 	</div>
 
 	<script>
+	
 		// 백엔드에서 가져온 데이터를 시뮬레이션한 배열
 		var productsData = [ {
 			name : '상품1',

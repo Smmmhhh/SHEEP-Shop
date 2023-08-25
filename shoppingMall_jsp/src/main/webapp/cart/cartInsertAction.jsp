@@ -32,20 +32,19 @@
 	if(request.getParameter("prodQuantity") != ""){
 		ProdQuantity = Integer.parseInt(request.getParameter("prodQuantity"));
 		//System.out.println(ProdQuantity); 	
+
 	}
 	
 	if(request.getParameter("buttonMethod") != ""){
 		buttonMethod = Integer.parseInt(request.getParameter("buttonMethod"));
 		//System.out.println(buttonMethod);
 	}
-	
 
 // Abnormal 상황
 //
 // 1. history.back 으로 detail page로 돌아갔을 때 바로 장바구니 담기를 하면 
 // 수량이 1로 넘어온다.
 // 2. 모달창이 먼저 나타나는 현상 
-
 
 //CartDAO 객체생성
 CartDAO cartDAO = new CartDAO();

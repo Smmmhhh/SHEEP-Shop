@@ -30,6 +30,7 @@
 <body>
 </head>
 <body>
+  
 	<%
 	// 유저 session //
 	String memberID = (String) session.getAttribute("memberID");
@@ -190,7 +191,6 @@
 					}
 				});
 	</script>
-
 
 </body>
 </html>
