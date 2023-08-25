@@ -139,7 +139,7 @@
 										<td>
 											<div class="cart_price">
 												<div>가격</div>
-												<div><%=ProdPrice%></div>
+												<div> class="priceID" <%=ProdPrice%></div>
 											</div>
 										</td>
 									</tr>
@@ -190,6 +190,38 @@
 
 
 	<script>
+	
+	// total 값을 계산하고 업데이트하는 함수
+	function updateTotal() {
+	    const cartList = <%=cartList%>; // JSP에서 받아온 cartList 값을 사용
+
+	    let total = 0;
+
+	    for (let i = 0; i < cartList.length; i++) {
+	        const quantity = parseInt(document.querySelectorAll(".quantity_input")[i].value);
+	        const price = parseInt(document.querySelectorAll(".priceID")[i].value);
+	        total += quantity * price;
+	    }
+
+	    const totalPriceElement = document.getElementById("totalPriceID");
+	    totalPriceElement.textContent = total.toLocaleString() + ' 원'; // 상품 가격을 금액 형식으로 표시
+	}
+
+	// 수량 변경 버튼들의 NodeList 가져오기
+	const quantityButtons = document.querySelectorAll(".quantity_button");
+
+	// 수량 변경 버튼 클릭 시 이벤트 처리
+	quantityButtons.forEach(function(button) {
+	    button.addEventListener("click", function() {
+	        updateTotal(); // 수량이 변경될 때마다 total 값을 업데이트
+	    });
+	});
+
+	// 페이지 로드 시 초기 total 값 계산 및 업데이트
+	window.addEventListener("DOMContentLoaded", function() {
+	    updateTotal();
+	});
+
       
       // [2] 선택된 상품만 삭제하기
       const deleteButton = document.querySelector("#delete"); // 삭제 버튼 요소 가져오기
