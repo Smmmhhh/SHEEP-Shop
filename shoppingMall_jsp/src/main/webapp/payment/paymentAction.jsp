@@ -102,8 +102,6 @@
 		address = request.getParameter("address");
 		//System.out.println(address);
 	}
-	
-
 	%>
 	
 	
