@@ -29,30 +29,17 @@
       }
    </script>
 	<%
-   String memberID = (String) session.getAttribute("memberID");
+	String memberID = (String) session.getAttribute("memberID");
 
-   if (memberID == null) {
-      PrintWriter script = response.getWriter();
-      script.println("<script>");
-      script.println("location.href = '../login/login.jsp';");
-      script.println("</script>");
-   }
+	if (memberID == null) {
+		PrintWriter script = response.getWriter();
+		script.println("<script>");
+		script.println("location.href = '../login/login.jsp';");
+		script.println("</script>");
+	}
 	%>
-	
-	<%
-      List<Product> list = new ArrayList<>();
 
-      ProductDAO productDAO = new ProductDAO();
-      list = productDAO.getProductList();
-   %>
-
-	<!-- [1] header-->
-	<jsp:include page="../static/html/header.jsp" />
-	<hr style="border: none; border-top: 1px solid #ccc;">
-
-	<!-- [2] 페이지정보 -->
-	<div class="secondWrap">
-
+	<div class="second_wrap">
 		<div class="wrap">
 			<!-- [1] header-->
 			<jsp:include page="../static/html/header.jsp" />
@@ -92,15 +79,11 @@
 				</div>
 			</div>
 			<%
-			List<Composition> cartList = new ArrayList<>();
-
-			CompositionDAO compositionDAO = new CompositionDAO();
-
-			cartList = compositionDAO.getCompositionList(memberID);
-
-			for (Composition e : cartList) {
-				System.out.println(e.getCart().getcartID());
-			}
+				List<Composition> cartList = new ArrayList<>();
+	
+				CompositionDAO compositionDAO = new CompositionDAO();
+	
+				cartList = compositionDAO.getCompositionList(memberID);
 			%>
 
 
@@ -109,6 +92,7 @@
 
 				<div class="catr_list">
 					<fieldset>
+							<legend>장바구니 목록</legend>
 
 						<form id="myForm" method="post">
 							<div class="option_box">
@@ -121,7 +105,6 @@
 							</div>
 							<!-- 장바구니 목록 동적 생성 -->
 
-							<legend>장바구니 목록</legend>
 							<div class="cart_table">
 								<table>
 									<%
@@ -129,7 +112,7 @@
 										int ctgID = cartList.get(i).getProduct().getProdCtgID();
 										int prodID = cartList.get(i).getProduct().getProdID();
 										int ProdPrice = cartList.get(i).getProduct().getProdPrice();
-										int cartQuantity = cartList.get(i).getCart().getcartQuantity();
+										int cartQuantity = cartList.get(i).getCart().getCartQuantity();
 									%>
 									<tr>
 										<th><input type="checkbox" name="cartProduct"
@@ -143,10 +126,10 @@
 										<td>
 											<div class="cart_quantity">
 												<div>수량</div>
-												<button class="quantity_button" name="decrement-button">-</button>
+												<button type="button" onclick="" class="quantity_button" name="decrement-button">-</button>
 												<input type="text" class="quantity_input" name="quantity"
 													value="<%=cartQuantity%>">
-												<button class="quantity_button" name="increment-button">+</button>
+												<button type="button" onclick="" class="quantity_button" name="increment-button">+</button>
 											</div>
 											
 										</td>
@@ -196,17 +179,12 @@
 			</div>
 		</div>
 	</div>
-	<div class="second_wrap">
-		<form action="../payment/payment.jsp" method="post">
-			<input type="submit" value="버튼">
-			<input type="hidden" name="buttonMethod" value="0">
-		</form>
-	</div>
-  
+
 	<!-- [5] 푸터  -->
 	<jsp:include page="../static/html/footer.html" />
 
 	<script>
+      
       // [2] 선택된 상품만 삭제하기
       const deleteButton = document.querySelector("#delete"); // 삭제 버튼 요소 가져오기
 
@@ -223,19 +201,16 @@
       });
    
       // [3] quantity_button 클릭시 수량 변화
+      // 페이지가 로드되면 실행되는 코드
       document.addEventListener("DOMContentLoaded",
             function() {
-               // 페이지가 로드되면 실행되는 코드
 
                // quantity_input 요소 가져오기
-               const quantityInput = document
-                     .getElementById("quantity_input");
+               const quantityInput = document.querySelector(".quantity_input");
 
                // decrement-button, increment-button 요소 가져오기
-               const decrementButton = document
-                     .querySelector(".decrement-button");
-               const incrementButton = document
-                     .querySelector(".increment-button");
+               const decrementButton = document.querySelector("#decrement-button");
+               const incrementButton = document.querySelector("#increment-button");
 
                // decrement-button 클릭 시
                decrementButton.addEventListener("click", function() {
@@ -281,8 +256,7 @@
          let total = 0;
 
          for (let i = 0; i < cartList.length; i++) {
-            const quantity = parseInt(document
-                  .querySelectorAll(".quantity_input")[i].value);
+            const quantity = parseInt(document.querySelectorAll(".quantity_input")[i].value);
             const price = cartList[i].product.prodPrice;
             total += quantity * price;
          }
@@ -306,6 +280,7 @@
          updateTotal();
       });
    </script>
+
 
 </body>
 </html>
