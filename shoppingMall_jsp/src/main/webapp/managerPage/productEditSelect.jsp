@@ -26,7 +26,6 @@
 <title>쉼(관리자) : 상품 수정</title>
 <link rel="stylesheet" href="productEditSelect.css">
 <link rel="stylesheet" href="../shop_main/main.css">
-
 </head>
 
 <body>
@@ -63,7 +62,7 @@
 					<tr>
 						<th>선택</th>
 						<th>상품번호</th>
-						<th>상품이름</th>
+						<th>상품명</th>
 					</tr>
 					<%
 					for (int i = 0; i < productList.size(); i++) {

@@ -36,7 +36,7 @@
                <tr>
                   <td>
                      <div class="curpw">
-                        <div class="curpw-info">상품이름</div>
+                        <div class="curpw-info">상품명</div>
                         <input type="text" name="curtext" placeholder="상품명 입력">
                      </div>
                      <div class="chgpw">

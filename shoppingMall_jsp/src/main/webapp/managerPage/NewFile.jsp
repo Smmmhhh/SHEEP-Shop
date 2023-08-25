@@ -16,7 +16,7 @@ request.setCharacterEncoding("UTF-8");
 <meta charset="UTF-8">
 <title>쉼 : 제품 수정</title>
 <link rel="stylesheet" href="../shop_main/main.css">
-<link rel="stylesheet" href="productEdit.css">
+<link rel="stylesheet" href="productEditSelect.css">
 </head>
 <body>
 	<!-- [1] Header 추가 -->
@@ -45,19 +45,7 @@ request.setCharacterEncoding("UTF-8");
 					
 					// prodId 를 이용해서 상품 이름 가져오기
 					ProductDAO productDAO = new ProductDAO();
-					int prodCtgID = productDAO.selGetProdInfrom(prodID).getProdCtgID();
 					String prodName = productDAO.selGetProdInfrom(prodID).getProdName();
-					int price = productDAO.selGetProdInfrom(prodID).getProdPrice();
-					int stock = productDAO.selGetProdInfrom(prodID).getProdStock();
-					String detail = productDAO.selGetProdInfrom(prodID).getProdDetail();
-					String prodSize = productDAO.selGetProdInfrom(prodID).getProdSize();
-					String origin = productDAO.selGetProdInfrom(prodID).getProdOrigin();
-					String prodDate = productDAO.selGetProdInfrom(prodID).getProdDate();
-					
-					if(prodSize.equals("")){
-						prodSize="없음";
-					}
-					
 				%>
 
 				<div class="second_wrap">
@@ -70,8 +58,9 @@ request.setCharacterEncoding("UTF-8");
                <tr>
                   <td>
                   <div class="chgpw">
-                        <div class="ctg-info">카테고리</div>
-                        <select id="categorySelect" class="category-select" name="prodCtgID">
+                        <div class="chgpw-info">카테고리</div>
+                        <select id="categorySelect"
+							class="category-select" name="prodCtgID">
 							<option value="1">테이크아웃 용품</option>
 							<option value="2">커피/원두</option>
 							<option value="3">스무디/에이드/베이스</option>
@@ -81,41 +70,41 @@ request.setCharacterEncoding("UTF-8");
 						</select>
 						<!-- 선택된 카테고리 값을 hidden input 필드에 저장 -->
 						<input type="hidden" name="selectedCategory" value=1 id="selectedCategory">
-						<input type="hidden" name="currCategory" value=<%=prodCtgID%> >
+						<input type="hidden" name="currCategory" value=<%=productDAO.selGetProdInfrom(prodID).getProdCtgID()%> >
                      </div>
                      <div class="curpw">
-                        <div class="curpw-info">상품명</div>
-                         <input type="text" name="curtext" value="<%=prodName%>" readonly>
+                        <div class="curpw-info">상품이름</div>
+                         <input type="text" name="curtext" readonly>
                         <input type="text" name="curtext" placeholder="상품명 입력">
                      </div>
                      <div class="chkpw">
                         <div class="chkpw-info">가격</div>
-                        <input type="text" name="curtext" value="<%=price%>" readonly>
+                        <input type="text" name="curtext" readonly>
                         <input type="text" name="prodPrice" placeholder="가격 입력">
                      </div>
                      <div class="curpw">
                         <div class="curpw-info">재고</div>
-                        <input type="text" name="curtext" value="<%=stock%>" readonly>
+                        <input type="text" name="curtext" readonly>
                         <input type="text" name="cprodStock" placeholder="재고 입력">
                      </div>
                      <div class="curpw">
                         <div class="curpw-info">설명</div>
-                        <input type="text" name="curtext" value="<%=detail%>" readonly>
+                        <input type="text" name="curtext" readonly>
                         <input type="text" name="prodDetail" placeholder="설명 입력">
                      </div>
                      <div class="curpw">
                         <div class="curpw-info">사이즈</div>
-                        <input type="text" name="curtext" value="<%=prodSize%>" readonly>
+                        <input type="text" name="curtext" readonly>
                         <input type="text" name="prodSize" placeholder="사이즈 입력">
                      </div>
                      <div class="curpw">
                         <div class="curpw-info">원산지</div>
-                        <input type="text" name="curtext" value="<%=origin%>" readonly>
+                        <input type="text" name="curtext" readonly>
                         <input type="text" name="prodOrigin" placeholder="원산지 입력">
                      </div>
                      <div class="curpw">
                         <div class="curpw-info">제조일자</div>
-                        <input type="text" name="curtext" value="<%=prodDate%>" readonly>
+                        <input type="text" name="curtext" readonly>
                         <input type="text" name="prodDate" placeholder="제조일자 입력">
                      </div>
                   </td>

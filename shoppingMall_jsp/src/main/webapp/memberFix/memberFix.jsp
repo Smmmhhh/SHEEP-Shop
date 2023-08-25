@@ -5,8 +5,12 @@
     Time: 오후 6:47
  -->
 
+<%@page import="member.Member"%>
+<%@page import="member.MemberDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
    pageEncoding="UTF-8"%>
+   
+   
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,6 +23,15 @@
 </head>
 <body>
 
+<%
+	request.setCharacterEncoding("UTF-8");
+	String curAddress = "";
+	String curPhoneNo = "";
+	String memberID = (String) session.getAttribute("memberID");
+	
+	MemberDAO memberDAO = new MemberDAO();
+	Member member = memberDAO.selGetUserInfo(memberID);
+%>
    <!-- header -->
    <jsp:include page="../static/html/noSearchHeader.html" />
    <hr style="border: none; border-top: 1px solid #ccc;">
@@ -62,7 +75,7 @@
                   <td>
                      <div class="curadd">
                         <div class="curadd-info">현재 주소</div>
-                        <input type="text" name="curAddress" readonly>
+                        <input type="text" name="curAddress" value="<%= member.getMemberAddress() %>" readonly>
                      </div>
                      <div class="chgadd">
                         <div class="chgadd-info">변경 주소</div>
@@ -80,7 +93,7 @@
                   <td>
                      <div class="curphoneNo">
                         <div class="curphoneNo-info">현재 전화번호</div>
-                        <input type="text" name="curPhoneNo" readonly>
+                        <input type="text" name="curPhoneNo"  value="<%= member.getMemberPhoneNo() %>" readonly>
                      </div>
                      <div class="chgphoneNo">
                         <div class="chgphoneNo-info">변경 전화번호</div>
