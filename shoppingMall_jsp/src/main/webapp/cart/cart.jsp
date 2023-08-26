@@ -59,9 +59,6 @@
 				
 				int i=0;
 			%>
-			
-			
-
 
 			<!-- [4] 메인(cart_list) -->
 			<div class="cart_box">
