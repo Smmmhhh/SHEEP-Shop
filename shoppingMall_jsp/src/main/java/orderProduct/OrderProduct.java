@@ -15,6 +15,13 @@ public class OrderProduct {
 		this.orderProdValidity = orderProdValidity;
 	}
 	
+	public OrderProduct(int orderID, int prodID, int orderQuantity, int orderProdValidity) {
+		this.orderID = orderID;
+		this.prodID = prodID;
+		this.orderQuantity = orderQuantity;
+		this.orderProdValidity = orderProdValidity;
+	}
+	
 	public int getOrderProdID() {
 		return orderProdID;
 	}
