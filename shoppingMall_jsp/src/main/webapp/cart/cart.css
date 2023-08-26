@@ -181,7 +181,7 @@ th {
 	width: 30px;
 }
 
-#quantity_input {
+[id^="quantity_input"] {
    width: 30px;
    height: 30px;
    font-size: 14px;
