@@ -1,6 +1,3 @@
-
-<%@page import="product.ProductDAO"%>
-<%@page import="product.Product"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
@@ -30,31 +27,19 @@
          form.submit();
       }
    </script>
-	<%
-   String memberID = (String) session.getAttribute("memberID");
-
-   if (memberID == null) {
-      PrintWriter script = response.getWriter();
-      script.println("<script>");
-      script.println("location.href = '../login/login.jsp';");
-      script.println("</script>");
-   }
-	%>
 	
 	<%
-      List<Product> list = new ArrayList<>();
+	String memberID = (String) session.getAttribute("memberID");
 
-      ProductDAO productDAO = new ProductDAO();
-      list = productDAO.getProductList();
-   %>
+	if (memberID == null) {
+		PrintWriter script = response.getWriter();
+		script.println("<script>");
+		script.println("location.href = '../login/login.jsp';");
+		script.println("</script>");
+	}
+	%>
 
-	<!-- [1] header-->
-	<jsp:include page="../static/html/header.jsp" />
-	<hr style="border: none; border-top: 1px solid #ccc;">
-
-	<!-- [2] 페이지정보 -->
-	<div class="secondWrap">
-
+	<div class="second_wrap">
 		<div class="wrap">
 			<!-- [1] header-->
 			<jsp:include page="../static/html/header.jsp" />
@@ -100,10 +85,10 @@
 
 			cartList = compositionDAO.getCompositionList(memberID);
 
-			for (Composition e : cartList) {
-				System.out.println(e.getCart().getCartID());
-			}
 			%>
+			
+			
+
 
 
 			<!-- [4] 메인(cart_list) -->
@@ -111,31 +96,31 @@
 
 				<div class="catr_list">
 					<fieldset>
-							<legend>장바구니 목록</legend>
 
 						<form id="myForm" method="post">
 							<div class="option_box">
 								<div class="all_checkbox">
 									<input type="checkbox" class="selectAll">전체 선택
 								</div>
-							
+							</div>
 							<button type="button"
 								onclick="submitForm('cartDeleteAction.jsp')" name="deleteCart">삭제하기</button>
-							</div>
+
 							<!-- 장바구니 목록 동적 생성 -->
 
+							<legend>장바구니 목록</legend>
 							<div class="cart_table">
 								<table>
 									<%
 									for (int i = 0; i < cartList.size(); i++) {
 										int ctgID = cartList.get(i).getProduct().getProdCtgID();
 										int prodID = cartList.get(i).getProduct().getProdID();
-										int ProdPrice = cartList.get(i).getProduct().getProdPrice();
+										int prodPrice = cartList.get(i).getProduct().getProdPrice();
 										int cartQuantity = cartList.get(i).getCart().getCartQuantity();
 									%>
 									<tr>
 										<th><input type="checkbox" name="cartProduct"
-											value="<%=prodID%>" class="cartCheckbox" onclick="changeEvent()"></th>
+											value="<%=prodID%>" class="cartCheckbox"></th>
 										<td><img src="../image/<%=ctgID%>_<%=prodID%>.jpg"
 											alt="상품 이미지" width="100px" height="100px"></td>
 										<td>
@@ -145,17 +130,17 @@
 										<td>
 											<div class="cart_quantity">
 												<div>수량</div>
-												<button class="quantity_button" name="decrement-button">-</button>
+												<button type="button" class="quantity_button" name="decrement-button">-</button>
 												<input type="text" class="quantity_input" name="quantity"
 													value="<%=cartQuantity%>">
-												<button class="quantity_button" name="increment-button">+</button>
+												<button type="button" class="quantity_button" name="increment-button">+</button>
 											</div>
 											
 										</td>
 										<td>
 											<div class="cart_price">
 												<div>가격</div>
-												<div> class="priceID" <%=ProdPrice%></div>
+												<div><%=prodPrice%></div>
 											</div>
 										</td>
 									</tr>
@@ -183,14 +168,42 @@
 							</div>
 							<div class="total">
 								<h2>총 상품가격</h2>
-								<div id="totalPriceID" class="totalPrice"></div>
-						
-								<input type="hidden" name="buttonMethod" value="0">
-								<div class="buy_submit">
-									<button type="button"
-										onclick="submitForm('../payment/payment.jsp')" name="buy">구매하기
-									</button>
+								<div id="totalID" class="totalPrice">
+									
+									<script>
+									    function updateTotal(){
+									        const cartList = [
+									            <% for (Composition e : cartList) { %>
+									            {
+									                prodPrice: <%= e.getProduct().getProdPrice() %>,
+									                cartQuantity: <%= e.getCart().getCartQuantity() %>
+									            },
+									            <% } %>
+									        ];
+									        
+									        let total = 0;
+									        for (let i = 0; i < cartList.length; i++){
+									            let quantity = cartList[i].cartQuantity;
+									            let price = cartList[i].prodPrice; 
+									            total += quantity * price;
+									        }
+									        
+									        let totalElement = document.getElementById('totalID');
+									        totalElement.textContent = total + "원";
+									  }
+									    
+									    window.addEventListener("DOMContentLoaded", function() {
+									        updateTotal();
+									    });
+									</script>
 								</div>
+							</div>
+						
+							
+							<input type="hidden" name="buttonMethod" value="0">
+							<div class="buy_submit">
+								<button type="button"
+									onclick="submitForm('../payment/payment.jsp')" name="buy">구매하기</button>
 							</div>
 						</form>
 					</fieldset>
@@ -198,50 +211,15 @@
 			</div>
 		</div>
 	</div>
-	<div class="second_wrap">
-		<form action="../payment/payment.jsp" method="post">
-			<input type="submit" value="버튼">
-			<input type="hidden" name="buttonMethod" value="0">
-		</form>
-	</div>
-  
+
+
+
 	<!-- [5] 푸터  -->
 	<jsp:include page="../static/html/footer.html" />
 
+
 	<script>
-
-	// total 값을 계산하고 업데이트하는 함수
-	function updateTotal() {
-	    const cartList = <%=cartList%>; // JSP에서 받아온 cartList 값을 사용
-
-	    let total = 0;
-
-	    for (let i = 0; i < cartList.length; i++) {
-	        const quantity = parseInt(document.querySelectorAll(".quantity_input")[i].value);
-	        const price = parseInt(document.querySelectorAll(".priceID")[i].value);
-	        total += quantity * price;
-	    }
-
-	    const totalPriceElement = document.getElementById("totalPriceID");
-	    totalPriceElement.textContent = total.toLocaleString() + ' 원'; // 상품 가격을 금액 형식으로 표시
-	}
-
-	// 수량 변경 버튼들의 NodeList 가져오기
-	const quantityButtons = document.querySelectorAll(".quantity_button");
-
-	// 수량 변경 버튼 클릭 시 이벤트 처리
-	quantityButtons.forEach(function(button) {
-	    button.addEventListener("click", function() {
-	        updateTotal(); // 수량이 변경될 때마다 total 값을 업데이트
-	    });
-	});
-
-	// 페이지 로드 시 초기 total 값 계산 및 업데이트
-	window.addEventListener("DOMContentLoaded", function() {
-	    updateTotal();
-	});
-
-
+	
       // [2] 선택된 상품만 삭제하기
       const deleteButton = document.querySelector("#delete"); // 삭제 버튼 요소 가져오기
 
@@ -256,91 +234,55 @@
             }
          });
       });
-   
+   }
       // [3] quantity_button 클릭시 수량 변화
-      document.addEventListener("DOMContentLoaded",
-            function() {
-               // 페이지가 로드되면 실행되는 코드
+      document.addEventListener("DOMContentLoaded", function() {
+          // 페이지가 로드되면 실행되는 코드
 
-               // quantity_input 요소 가져오기
-               const quantityInput = document
-                     .getElementById("quantity_input");
+          // quantity_input 요소 가져오기
+          const quantityInput = getElementsByClassName("quantity_input");
 
-               // decrement-button, increment-button 요소 가져오기
-               const decrementButton = document
-                     .querySelector(".decrement-button");
-               const incrementButton = document
-                     .querySelector(".increment-button");
+          // decrement-button, increment-button 요소 가져오기
+          const decrementButton = document.querySelector(".decrement-button");
+          const incrementButton = document.querySelector(".increment-button");
 
-               // decrement-button 클릭 시
-               decrementButton.addEventListener("click", function() {
-                  updateQuantity(-1); // 수량을 -1로 업데이트
-               });
+          // decrement-button 클릭 시
+          decrementButton.addEventListener("click", function() {
+             updateQuantity(-1); // 수량을 -1로 업데이트
+          });
 
-               // increment-button 클릭 시
-               incrementButton.addEventListener("click", function() {
-                  updateQuantity(1); // 수량을 +1로 업데이트
-               });
+          // increment-button 클릭 시
+          incrementButton.addEventListener("click", function() {
+             updateQuantity(1); // 수량을 +1로 업데이트
+          });
 
-               // quantity_input 입력 시
-               quantityInput.addEventListener("input", function() {
-                  validateQuantityInput(); // 입력값을 유효성 검사하여 업데이트
-               });
+          // quantity_input 입력 시
+          quantityInput.addEventListener("input", function() {
+             validateQuantityInput(); // 입력값을 유효성 검사하여 업데이트
+          });
 
-               // 수량 업데이트 함수
-               function updateQuantity(change) {
-                  let currentQuantity = parseInt(quantityInput.value); // 현재 수량 가져오기
-                  currentQuantity += change; // 변경된 값만큼 추가
+          // 수량 업데이트 함수
+          function updateQuantity(change) {
+             var currentQuantity = parseInt(quantityInput.value); // 현재 수량 가져오기
+             currentQuantity += change; // 변경된 값만큼 추가
 
-                  if (currentQuantity < 1) {
-                     currentQuantity = 1; // 최소값보다 작으면 1로 설정
-                  }
+             if (currentQuantity < 1) {
+                currentQuantity = 1; // 최소값보다 작으면 1로 설정
+             }
 
-                  quantityInput.value = currentQuantity; // 변경된 수량을 입력란에 설정
-               }
+             quantityInput.value = currentQuantity; // 변경된 수량을 입력란에 설정
+          }
 
-               // 입력값 유효성 검사 함수
-               function validateQuantityInput() {
-                  let inputValue = quantityInput.value;
-                  inputValue = inputValue.replace(/\D/g, ''); // 숫자 이외의 문자 제거
-                  quantityInput.value = inputValue; // 유효성 검사된 값으로 입력란 업데이트
-               }
-            });
-
-      // total 값을 계산하고 업데이트하는 함수
-      function updateTotal() {
-         const cartList =
-   <%=cartList%>
-      ; // JSP에서 받아온 cartList 값을 사용
-
-         let total = 0;
-
-         for (let i = 0; i < cartList.length; i++) {
-            const quantity = parseInt(document
-                  .querySelectorAll(".quantity_input")[i].value);
-            const price = cartList[i].product.prodPrice;
-            total += quantity * price;
-         }
-
-         const totalPriceElement = document.getElementById("totalPrice");
-      }
-
-      // 수량 변경 버튼들의 NodeList 가져오기
-      const quantityButtons = document.querySelectorAll(".quantity_button");
-
-      // 수량 변경 버튼 클릭 시 이벤트 처리
-      quantityButtons.forEach(function(button) {
-         button.addEventListener("click", function() {
-            updateTotal(); // 수량이 변경될 때마다 total 값을 업데이트
-         });
-      });
-
-      // 페이지 로드 시 초기 total 값 계산 및 업데이트
-      window.addEventListener("DOMContentLoaded", function() {
-         renderCarts();
-         updateTotal();
-      });
+          // 입력값 유효성 검사 함수
+          function validateQuantityInput() {
+            var inputValue = quantityInput.value;
+             inputValue = inputValue.replace(/\D/g, ''); // 숫자 이외의 문자 제거
+             quantityInput.value = inputValue; // 유효성 검사된 값으로 입력란 업데이트
+          }
+       });
+      
    </script>
+
 
 </body>
 </html>
