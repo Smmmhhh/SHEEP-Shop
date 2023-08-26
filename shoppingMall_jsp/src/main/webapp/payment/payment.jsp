@@ -100,7 +100,7 @@
 		}
 
 		// 단일 상품일 때 고객의 선택한 상품만 불러오기(오버로딩으로 구현함 반환타입 Cart)
-		compList.add(compositionDAO.getCompositionList(memberID, prodID));	
+		compList.add(compositionDAO.getCompositionList(memberID, prodID));
 		
 		//System.out.println(compList.get(0).getProduct().getProdName());
 	}

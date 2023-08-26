@@ -20,9 +20,7 @@
 	CartDAO cartDAO = new CartDAO();
 
 	String[] products = request.getParameterValues("cartProduct");
-	
-	System.out.println("개수"+products.length);
-	
+		
 	if(!products.equals("")){
 		for(String product : products){
 			prodID = Integer.parseInt(product);
@@ -32,7 +30,7 @@
 			if(result == 1){
 				PrintWriter script = response.getWriter();
 				script.println("<script>");
-				script.println("location.href = 'cart.jsp';");
+				script.println("location.href = 'cart.jsp'w;");
 				script.println("</script>;");
 				script.close();
 				

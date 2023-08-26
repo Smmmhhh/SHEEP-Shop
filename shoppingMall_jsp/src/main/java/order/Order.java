@@ -2,35 +2,35 @@ package order;
 
 public class Order {
 
-	int oderID;
+	int orderID;
 	String memberID;
-	String odderAddress;
+	String orderAddress;
 	String orderPhoneNo;
 	int totalPrice;
-	String oderDate;
-	int oderValidity;
+	String orderDate;
+	int orderValidity;
 
-	public Order(int oderID, String memberID, String odderAddress, String orderPhoneNo, int totalPrice, String oderDate,
-			int oderValidity) {
-		this.oderID = oderID;
+	public Order(int orderID, String memberID, String orderAddress, String orderPhoneNo, int totalPrice, String orderDate,
+			int orderValidity) {
+		this.orderID = orderID;
 		this.memberID = memberID;
-		this.odderAddress = odderAddress;
+		this.orderAddress = orderAddress;
 		this.orderPhoneNo = orderPhoneNo;
 		this.totalPrice = totalPrice;
-		this.oderDate = oderDate;
-		this.oderValidity = oderValidity;
+		this.orderDate = orderDate;
+		this.orderValidity = orderValidity;
 	}
 	
-	public int getOderID() {
-		return oderID;
+	public int getOrderID() {
+		return orderID;
 	}
 
 	public String getMemberID() {
 		return memberID;
 	}
 
-	public String getOdderAddress() {
-		return odderAddress;
+	public String getOrderAddress() {
+		return orderAddress;
 	}
 
 	public String getOrderPhoneNo() {
@@ -41,12 +41,12 @@ public class Order {
 		return totalPrice;
 	}
 
-	public String getOderDate() {
-		return oderDate;
+	public String getOrderDate() {
+		return orderDate;
 	}
 
-	public int getOderValidity() {
-		return oderValidity;
+	public int getOrderValidity() {
+		return orderValidity;
 	}
 	
 
