@@ -109,6 +109,45 @@ public class OrderProductDAO {
 		
 		return -1;
 	}
+	
+	// 한 주문당 개수 가져오기
+	public int getOrderProductCount(int orderID) {
+		String SQL = "select count(*) as count from orderProducts where orderID = ?;";
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		
+		int count = 0;
+		
+		try {
+			conn = DatabaseUtil.getConnection();
+			pstmt = conn.prepareStatement(SQL);
+			pstmt.setInt(1, orderID);
+			ResultSet rs = pstmt.executeQuery();
+				
+			if(rs.next()) {
+				count=rs.getInt("count");
+			}
+			
+	        return count; // If there's a matching row, rs.next() will return true.
+		
+		} catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+	            if (pstmt != null) {
+	                pstmt.close();
+	            }
+	            if (conn != null) {
+	                conn.close();
+	            }
+	        } catch (SQLException se) {
+	            se.printStackTrace();
+	        }
+		}
+		
+		return count;
+	}
 }
 
 

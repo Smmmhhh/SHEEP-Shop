@@ -175,7 +175,7 @@
 					if (buttonMethod == 1) {
 						totalPrice += compList.get(i).getProduct().getProdPrice() * prodQuantity;
 					} else {
-						totalPrice += compList.get(i).getProduct().getProdPrice() * compList.get(i).getCart().getcartQuantity();
+						totalPrice += compList.get(i).getProduct().getProdPrice() * compList.get(i).getCart().getCartQuantity();
 					}
 				%>
 				<tr>
@@ -195,10 +195,10 @@
 					<%
 					} else {
 					%>
-					<td><%=compList.get(i).getCart().getcartQuantity()%></td>
+					<td><%=compList.get(i).getCart().getCartQuantity()%></td>
 					<td><%=new DecimalFormat().format(compList.get(i).getProduct().getProdPrice())%></td>
 					<td><%=new DecimalFormat()
-		.format(compList.get(i).getProduct().getProdPrice() * compList.get(i).getCart().getcartQuantity())%></td>
+		.format(compList.get(i).getProduct().getProdPrice() * compList.get(i).getCart().getCartQuantity())%></td>
 					<%
 					}
 					%>

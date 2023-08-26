@@ -1,6 +1,8 @@
 package composition;
 
 import cart.Cart;
+import order.Order;
+import orderProduct.OrderProduct;
 import product.Product;
 
 public class Composition {
@@ -8,6 +10,8 @@ public class Composition {
 	 // 모든 클래스를 Composition class의 member변수로 정의시킨다.
 	Cart cart;
 	Product product;
+	Order order;
+	OrderProduct orderProduct;
 	
 	Composition(){}
 	
@@ -17,11 +21,25 @@ public class Composition {
 		this.product = product;
 	}
 	
+	Composition(Order order, OrderProduct orderProduct, Product product){
+		this.order = order;
+		this.orderProduct = orderProduct;
+		this.product = product;
+	}
+
 	public Cart getCart() {
 		return cart;
 	}
 
 	public Product getProduct() {
 		return product;
+	}
+	
+	public Order getOrder() {
+		return order;
+	}
+
+	public OrderProduct getOrderProduct() {
+		return orderProduct;
 	}
 }

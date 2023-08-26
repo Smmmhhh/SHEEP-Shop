@@ -59,7 +59,7 @@ int result = 0;
 // 해당 고객 리스트 검사
 for(int i = 0; i < cartList.size(); i++){
 	if(cartList.get(i).getProdID() == ProdID){
-		beforeQuantity = cartList.get(i).getcartQuantity();
+		beforeQuantity = cartList.get(i).getCartQuantity();
 		inspection = true;
 		break;
 	}

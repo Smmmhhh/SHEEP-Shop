@@ -1,31 +1,135 @@
-.second_wrap {
+/* 
+   annotation Name : myPage css
+    User: KJS
+    Date: 2023-08-15
+    Time: 오후 6:45
+*/
+
+.secondWrap{
+   margin: 20px 0;
+   width: 100%;
+   padding:0;
    display: flex;
    justify-content: center;
 }
 
-.all_checkbox {
-   float: left;
-   margin-top: 50px 0;
-   padding: 0 1px;
+.wrap{
+   margin:0;
+    padding:0;
 }
 
-.cartBox {
-   text-align: center;
-   margin: 0;
+.myBox { 
    padding: 0;
+   text-align:center; 
 }
 
-div[class*="my_"] {
+.orderBox { line-height:40px; }
+
+/* 나의 정보(my info) */
+.myInfoBar{
+    display: flex;
+    height: 50px;
+    margin-top: 10px;
+}
+
+.myInfoBox{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 200px;
+    text-align: center;
+    border: 1px solid purple;
+    background-color: #E6E6FA;
+    margin-right: 10px;
+}
+
+.myPoint{
+    display: flex;
+    align-items: center;
+    width: 800px;
+    padding-left: 10px;
+    border: 1px solid purple;
+}
+
+/* mypage box div */
+
+.myBox {
+    text-align: center;   
+    width:200px;
+    height:490px;
+}
+
+.myMenu {
    height: 150px;
-   border: 1px solid purple;
-   margin-bottom: 20px;
 }
 
-a {
-   text-decoration: none;
-   color: black;
+#myShop{
+    height:150px;
+    border: 1px solid purple;
+    margin-bottom: 20px;
 }
 
+#myAct{
+    height:150px;
+    border: 1px solid purple;
+    margin-bottom: 20px;
+}
+
+#myInfo{
+    height:150px;
+    border: 1px solid purple;
+}
+
+.orderBox{
+    width: 800px;
+    text-align: left;
+    padding-left: 20px;
+}
+
+a{
+    text-decoration: none;
+    color: black;
+}
+
+/* 메인-order_search */
+
+h3{
+   padding: 0;
+    margin-top: 0px;
+    margin-bottom:0px;
+}
+
+.InfoTable {
+    border-collapse: collapse; /* 경계선이 겹치지 않도록 설정 */
+    width: 100%;
+    margin: 10px 0;
+}
+
+.InfoTable th,td {
+    border: 1px solid lightgray; /* 셀 경계선 스타일 지정 */
+    padding: 8px; /* 셀 안의 여백 설정 */
+    text-align: center;
+}
+
+.InfoTable th {
+    width: 15%;
+    text-align: center;
+}
+
+.returnButton {
+background-color: #E6E6FA;
+color: purple;
+border: none;
+padding: 10px 20px;
+border-radius: 5px;
+cursor: pointer;
+}
+
+.test {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
 /* 메인(cart_list) */
 .option_box, .total {
     display: flex;
@@ -39,13 +143,19 @@ a {
    margin: 10px;
 }
 
-.catr_list {
-   margin: 40px 10px;
+.cart_list {
+   margin-left: 50px;
 }
 
 .cart_box {
-   width: 1000px;
+   width: 700px;
    overflow: auto; /* 내용이 넘칠 경우 스크롤바 추가 */
+}
+
+.all_checkbox {
+   float: left;
+   margin-top: 50px 0;
+   padding: 0 1px;
 }
 
 table {
@@ -89,11 +199,7 @@ th {
 .buy_submit {
    display: flex;
    justify-content: center;
-}
-
-.buy_button {
-   display: flex;
-   justify-content: center;
+   align-items: center;
 }
 
 .cartProduct {
@@ -123,9 +229,9 @@ button {
 }
 
 .total {
+   margin: 0;
    width: 600px;
    text-align: right;
-   margin-top: 20px;
 }
 
 #orderButton {
@@ -134,3 +240,4 @@ button {
 	margin: 30px;
 	border: none;
 }
+
