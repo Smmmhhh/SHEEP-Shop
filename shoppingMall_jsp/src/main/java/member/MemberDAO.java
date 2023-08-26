@@ -120,8 +120,8 @@ public class MemberDAO {
 		return -1;
 	}
 	
-	//회원 정보 수정(포인트 충전)
-	public int updateMemberInfo(String memberID, int money) {
+	//회원 정보 수정(포인트 수정)
+	public int updateMemberInfo(String memberID, int point) {
 		String SQL = "update members set memberPoint = ? "
 				+ "where memberID = ? and memberValidity = 1";
 		
@@ -131,7 +131,7 @@ public class MemberDAO {
 		try {
 			conn = DatabaseUtil.getConnection();
 			pstmt = conn.prepareStatement(SQL);
-			pstmt.setInt(1, money);
+			pstmt.setInt(1, point);
 			pstmt.setString(2, memberID);
 
 			

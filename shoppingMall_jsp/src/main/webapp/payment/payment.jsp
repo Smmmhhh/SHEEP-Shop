@@ -172,7 +172,7 @@
 					if(buttonMethod == 1){
 						totalPrice += compList.get(i).getProduct().getProdPrice() * prodQuantity;
 					}else{
-						totalPrice += compList.get(i).getProduct().getProdPrice() * compList.get(i).getCart().getcartQuantity();
+						totalPrice += compList.get(i).getProduct().getProdPrice() * compList.get(i).getCart().getCartQuantity();
 					}
 			%>
 				<tr>
@@ -187,9 +187,9 @@
 					
 					<!-- 장바구니에서 결제하기 클릭 시 고객의 전체 구매 리스트 불러오기 -->
 					<%} else {%>
-					<td><%=compList.get(i).getCart().getcartQuantity()%></td>
+					<td><%=compList.get(i).getCart().getCartQuantity()%></td>
 						<td><%=new DecimalFormat().format(compList.get(i).getProduct().getProdPrice())%></td>
-					<td><%=new DecimalFormat().format(compList.get(i).getProduct().getProdPrice() * compList.get(i).getCart().getcartQuantity())%></td>
+					<td><%=new DecimalFormat().format(compList.get(i).getProduct().getProdPrice() * compList.get(i).getCart().getCartQuantity())%></td>
 					<%}%>
 				</tr>
 			
@@ -216,7 +216,7 @@
 
 				<tr>
 					<th>보유 포인트</th>
-					<td><%=memberPoint%></td>
+					<td><%=new DecimalFormat().format(memberPoint)%></td>
 				</tr>
 			</table>
 			<div class="buttonWrap">

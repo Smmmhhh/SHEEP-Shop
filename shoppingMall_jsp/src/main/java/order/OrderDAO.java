@@ -2,6 +2,7 @@ package order;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import util.DatabaseUtil;
@@ -15,18 +16,32 @@ public class OrderDAO {
 		PreparedStatement pstmt = null;
 		try {
 			conn = DatabaseUtil.getConnection();
-			pstmt = conn.prepareStatement(SQL);
+			pstmt = conn.prepareStatement(SQL, PreparedStatement.RETURN_GENERATED_KEYS);
 
 			pstmt.setString(1, null);
 			pstmt.setString(2, memberID);
 			pstmt.setString(3, orderAddress);
 			pstmt.setString(4, orderPhoneNo);
 			pstmt.setInt(5, totalPrice);
-			pstmt.setString(6, "now()");
+			//pstmt.setString(6, null);
+			pstmt.setTimestamp(6, new java.sql.Timestamp(System.currentTimeMillis()));
 			pstmt.setInt(7, 1);
 
-			return pstmt.executeUpdate();
-
+			int affectedRows = pstmt.executeUpdate();
+			
+	        if (affectedRows == 0) {
+	            throw new SQLException("Creating order failed, no rows affected.");
+	        }
+			//insert 후 PK값 가져오기
+	        try (ResultSet generatedKeys = pstmt.getGeneratedKeys()) {
+	            if (generatedKeys.next()) {
+	                int orderId = generatedKeys.getInt(1); // 가져온 auto-increment 값
+	                return orderId;
+	            } else {
+	                throw new SQLException("Creating order failed, no ID obtained.");
+	            }
+	        }
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 

@@ -1,5 +1,5 @@
 <!--   
-  annotation Name : paymentAction jsp
+  annotation Name : paymentConfirmAction jsp
   User: MHJ
   Date: 2023-08-17
   Time: 오후 3:06
@@ -132,7 +132,7 @@
 	<div class="buyTable">
 		<!-- 3-1 유저정보 테이블 -->
 
-		<form action="paymentAction.jsp" method="post">
+		<form action="paymentAction.jsp?&prodID=<%=prodID%>&prodQuantity=<%=prodQuantity%>&buttonMethod=<%=buttonMethod%>&phoneNo=<%=phoneNo%>&address=<%=address%>" method="post">
 			<div class="InfoTitle">구매자 정보</div>
 			<table class="InfoTable" id="userInfoTable">
 				<tr>
@@ -175,7 +175,7 @@
 					if (buttonMethod == 1) {
 						totalPrice += compList.get(i).getProduct().getProdPrice() * prodQuantity;
 					} else {
-						totalPrice += compList.get(i).getProduct().getProdPrice() * compList.get(i).getCart().getcartQuantity();
+						totalPrice += compList.get(i).getProduct().getProdPrice() * compList.get(i).getCart().getCartQuantity();
 					}
 				%>
 				<tr>
@@ -195,10 +195,10 @@
 					<%
 					} else {
 					%>
-					<td><%=compList.get(i).getCart().getcartQuantity()%></td>
+					<td><%=compList.get(i).getCart().getCartQuantity()%></td>
 					<td><%=new DecimalFormat().format(compList.get(i).getProduct().getProdPrice())%></td>
 					<td><%=new DecimalFormat()
-		.format(compList.get(i).getProduct().getProdPrice() * compList.get(i).getCart().getcartQuantity())%></td>
+		.format(compList.get(i).getProduct().getProdPrice() * compList.get(i).getCart().getCartQuantity())%></td>
 					<%
 					}
 					%>
@@ -227,11 +227,12 @@
 
 				<tr>
 					<th>보유 포인트</th>
-					<td><%=memberPoint%></td>
+					<td><%=new DecimalFormat().format(memberPoint)%></td>
 				</tr>
 			</table>
 			<div class="buttonWrap">
 				<input type="submit" id="payButton" value="결제하기">
+				<input type="hidden" name="totalPrice" value="<%=totalPrice%>">
 			</div>
 		</form>
 
@@ -250,7 +251,7 @@
 					<hr>
 				</div>
 				<form
-					action="pointChargeAction.jsp?&prodID=<%=prodID%>&prodQuantity=<%=prodQuantity%>&buttonMethod=<%=buttonMethod%>&phoneNo=<%=phoneNo%>&address=<%=address%>"
+					action="pointChargeAction.jsp?&prodID=<%=prodID%>&prodQuantity=<%=prodQuantity%>&buttonMethod=<%=buttonMethod%>&phoneNo=<%=phoneNo%>&address=<%=address%>&buttonMethod<%=buttonMethod%>"
 					class="fromSubmit" method="post">
 					<div>
 						<h3>충전금액을 입력해 주세요.</h3>
