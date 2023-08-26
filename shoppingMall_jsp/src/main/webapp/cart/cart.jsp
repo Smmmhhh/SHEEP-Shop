@@ -114,10 +114,8 @@
 										int cartQuantity = cartList.get(i).getCart().getCartQuantity();
 									%>
 									<tr>
-										<th><input type="checkbox" name="cartProduct"
-											value="<%=prodID%>" class="cartCheckbox"></th>
-										<td><img src="../image/<%=ctgID%>_<%=prodID%>.jpg"
-											alt="상품 이미지" width="100px" height="100px"></td>
+										<th><input type="checkbox" name="cartProduct" value="<%=prodID%>" class="cartCheckbox"></th>
+										<td><img src="../image/<%=ctgID%>_<%=prodID%>.jpg" alt="상품 이미지" width="100px" height="100px"></td>
 										<td>
 											<div>상품명</div>
 											<div><%=cartList.get(i).getProduct().getProdName()%></div>
@@ -126,12 +124,9 @@
 											<div class="cart_quantity">
 												<div class="cart_quantity">
 													<div>수량</div>
-													<button type=button class="quantity_button"
-														name="decrement-button" id="decButton">-</button>
-													<input type="text" class="quantity_input" id="quantityInput" name="quantity"
-														value="<%=cartQuantity%>">
-													<button type=button class="quantity_button"
-														name="increment-button" id="incButton">+</button>
+													<button type=button class="quantity_button" name="decrement-button" id="decButton<%=i%>">-</button>
+													<input type="text" class="quantity_input" name="quantity" value="<%=cartQuantity%>">
+													<button type=button class="quantity_button" name="increment-button" id="incButton<%=i%>">+</button>
 												</div>
 											</div>
 										</td>
@@ -232,45 +227,50 @@
       });
       
       <!-- [3] 버튼 증감 -->
-		const quantityInput = document.getElementById("#quantityInput");
-        const decrementButton = document.getElementById("#decButton");
-        const incrementButton = document.getElementById("#incButton");
+          document.addEventListener("DOMContentLoaded", function() {
+              const decrementButtons = document.querySelectorAll(".decrement-button");
+              const incrementButtons = document.querySelectorAll(".increment-button");
 
               // 감소 버튼 클릭 시
-              decrementButton.addEventListener("click", function() {
-            	  event.preventDefault(); // 기본 동작 방지
-						updateQuantity(-1);
-					});
+              decrementButtons.forEach(function(decrementButton) {
+                  decrementButton.addEventListener("click", function(event) {
+                      event.preventDefault(); // 기본 동작 방지
+                      const index = this.getAttribute("data-index");
+                      updateQuantity(index, -1); // 수량을 -1로 업데이트
+                  });
+              });
 
               // 증가 버튼 클릭 시
-              incrementButton.addEventListener("click", function() {
-            	  event.preventDefault(); // 기본 동작 방지
-						updateQuantity(1);
-					});
+              incrementButtons.forEach(function(incrementButton) {
+                  incrementButton.addEventListener("click", function(event) {
+                      event.preventDefault(); // 기본 동작 방지
+                      const index = this.getAttribute("data-index");
+                      updateQuantity(index, 1); // 수량을 +1로 업데이트
+                  });
+              });
 
               // 기능 함수 정의
-					function updateQuantity(change) {
-						const buttonProdQuantity = document
-								.getElementById("directProdQuantity");
-						const cartProdQuantity = document
-								.getElementById("cartButtonProdQuantity");
-						let currentQuantity = parseInt(quantityInput.value);
-						currentQuantity += change;
+              function updateQuantity(index, change) {
+                  const quantityInput = document.querySelector(".quantity_input[data-index='" + index + "']");
+                  var currentQuantity = parseInt(quantityInput.value); // 현재 수량 가져오기
+                  currentQuantity += change; // 변경된 값만큼 추가
 
-						if (currentQuantity < 1) {
-							currentQuantity = 1;
-						}
-						quantityInput.value = currentQuantity;
-					}
+                  if (currentQuantity < 1) {
+                      currentQuantity = 1; // 최소값보다 작으면 1로 설정
+                  }
+
+                  quantityInput.value = currentQuantity; // 변경된 수량을 입력란에 설정
+                  updateTotal(); // 총 상품가격 업데이트 호출
+              }
 
               function updateTotal() {
                   var cartList = [
-                      <%for (Composition e : cartList) {%>
+                      <% for (Composition e : cartList) { %>
                       {
-                          prodPrice: <%=e.getProduct().getProdPrice()%>,
-                          cartQuantity: <%=e.getCart().getCartQuantity()%>
+                          prodPrice: <%= e.getProduct().getProdPrice() %>,
+                          cartQuantity: <%= e.getCart().getCartQuantity() %>
                       },
-                      <%}%>
+                      <% } %>
                   ];
 
                   var total = 0;
@@ -285,6 +285,7 @@
               }
 
               updateTotal(); // 초기 총 상품가격 업데이트 호출
+          });
       
  </script>
 
