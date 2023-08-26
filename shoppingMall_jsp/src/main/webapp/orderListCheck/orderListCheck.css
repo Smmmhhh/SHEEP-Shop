@@ -26,7 +26,7 @@
 }
 
 /* orderBox 스타일 */
-.orderBox {
+.order_box {
 	border: none;
 	padding: 10px;
 	margin-left: 50px;
@@ -52,18 +52,12 @@
 	cursor: pointer;
 }
 
-/* InfoTable 스타일 */
-.InfoTable {
+table {
 	width: 100%;
 	border-collapse: collapse;
 }
 
-.InfoTable th, .InfoTable td {
-	padding: 10px;
-	border-bottom: 1px solid #ddd;
-}
-
-.InfoTable th img {
+th img {
 	max-width: 50px;
 	max-height: 50px;
 }
@@ -71,4 +65,28 @@
 .wrap {
 	display: flex;
 	flex-direction: column;
+}
+
+.order_div {
+	margin-left: 50px;
+	width: 700px;
+	
+}
+.order_table {
+	
+}
+
+.order_table td {
+	padding: 10px;
+	border-bottom: 1px solid #ddd;
+	text-align: center;
+}
+
+.orderInfo {
+	width: 100%;
+	margin: 10px;
+}
+
+.orderInfoBox {
+
 }

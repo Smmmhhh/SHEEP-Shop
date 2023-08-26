@@ -96,7 +96,8 @@ public class ProductDAO {
 		}
 		return productList;
 	}
-	//상품 정보 가져오기
+
+	// 상품 정보 가져오기
 	public Product selGetProdInfrom(int inputProdID) {
 
 		Connection conn = null;
@@ -120,11 +121,10 @@ public class ProductDAO {
 				String prodSize = rs.getString("prodSize");
 				String prodOrigin = rs.getString("prodOrigin");
 				String prodDate = rs.getString("prodDate");
-				
-				product = new Product(prodID, ctgID, prodName, price, stock, detail, 
-						prodSize, prodOrigin, prodDate, 1);
+
+				product = new Product(prodID, ctgID, prodName, price, stock, detail, prodSize, prodOrigin, prodDate, 1);
 			}
-			
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -143,7 +143,7 @@ public class ProductDAO {
 				se.printStackTrace();
 			}
 		}
-		
+
 		return product;
 
 	}
@@ -169,6 +169,44 @@ public class ProductDAO {
 			pstmt.setInt(9, prodID);
 
 			return pstmt.executeUpdate();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+
+		} finally {
+			try {
+				if (pstmt != null) {
+					pstmt.close();
+				}
+				if (conn != null) {
+					conn.close();
+				}
+			} catch (SQLException se) {
+				se.printStackTrace();
+			}
+		}
+		return -1;
+	}
+
+	// 수량변경
+	public int updateProductEdit(List<Product> list) {
+		String SQL = "UPDATE products SET stock = ? WHERE prodID = ?";
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		try {
+			conn = DatabaseUtil.getConnection();
+			pstmt = conn.prepareStatement(SQL);
+
+			for (int i = 0; i < list.size(); i++) {
+
+				pstmt.setInt(1, list.get(i).getProdStock());
+				pstmt.setInt(2, list.get(i).getProdID());
+
+				pstmt.addBatch();
+			}
+			
+			pstmt.executeBatch();
+			return 1;
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -246,7 +284,7 @@ public class ProductDAO {
 				String prodSize = rs.getString("prodSize");
 				String prodOrigin = rs.getString("prodOrigin");
 				String prodDate = rs.getString("prodDate");
-				
+
 				Product product = new Product(ProdID, prodCtgID, prodName, prodPrice, prodStock, prodDetail, prodSize,
 						prodOrigin, prodDate, 1);
 				productList.add(product);

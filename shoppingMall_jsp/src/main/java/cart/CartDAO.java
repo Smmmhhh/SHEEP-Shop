@@ -56,6 +56,51 @@ public class CartDAO {
 		return cartList;
 	}
 	
+	// 고객의 선택한 상품 정보 조회
+	public Cart getCartList(String cartMemberID, int cartProdID){
+		String SQL = "select * from carts where memberID = ? and prodID = ?";
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		Cart cart = null;
+
+		try {
+			conn = DatabaseUtil.getConnection();
+			pstmt = conn.prepareStatement(SQL);
+			pstmt.setString(1, cartMemberID);
+			pstmt.setInt(2, cartProdID);
+			rs = pstmt.executeQuery();
+			
+			if (rs.next()) {
+				int cartID = rs.getInt("cartID");
+				int prodID = rs.getInt("prodID");
+				String memberID = rs.getString("memberID");
+				int cartQuantity = rs.getInt("cartQuantity");
+			
+				cart = new Cart(cartID, prodID, memberID, cartQuantity);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			// Database와 연결 후 반드시 해제시켜주기
+			try {
+				if (rs != null) {
+					rs.close(); // ResultSet을 닫음
+				}
+				if (pstmt != null) {
+					pstmt.close();
+				}
+				if (conn != null) {
+					conn.close();
+				}
+			} catch (SQLException se) {
+				se.printStackTrace();
+			}
+		}
+		return cart;
+	}
+	
 	// 장바구니 상품 넣기
 	public int cartInsert(String memberID, int prodID, int Quantity) {
 		String SQL = "insert into carts values (?,?,?,?)";
@@ -91,8 +136,9 @@ public class CartDAO {
 		return -1;
 	}
 	
-	// 장바구니 수량 수정하기
-		public int updatecartQuantity(int cartQuantity, String memberID, int prodID) {
+
+	// 장바구니 수량 수정하기(단일품목)
+		public int updatecartProdEdit(int cartQuantity, String memberID, int prodID) {
 			String SQL = "update carts set cartQuantity = ? where memberID = ? and prodID = ?";
 
 			Connection conn = null;
@@ -124,6 +170,46 @@ public class CartDAO {
 			}
 			return -1;
 		}
+		
+		
+		// 결제시 장바구니 삭제하기
+		public int deleteCartProd(List<Cart> list) {
+			String SQL = "delete from carts where memberID = ? and prodID = ? ";
+
+			Connection conn = null;
+			PreparedStatement pstmt = null;
+			try {
+				conn = DatabaseUtil.getConnection();
+				pstmt = conn.prepareStatement(SQL);
+				
+				for(int i = 0; i < list.size(); i++) {
+					pstmt.setString(1, list.get(i).getUserID());
+					pstmt.setInt(2, list.get(i).getProdID());
+					
+					pstmt.addBatch();
+				}
+				pstmt.executeBatch();
+				return 1;
+
+			} catch (Exception e) {
+				e.printStackTrace();
+
+			} finally {
+				try {
+					if (pstmt != null) {
+						pstmt.close();
+					}
+					if (conn != null) {
+						conn.close();
+					}
+				} catch (SQLException se) {
+					se.printStackTrace();
+				}
+			}
+			return -1;
+		}
+		
+		
 	 
 		// 장바구니 상품 삭제하기
 		public int cartProductDelete(String memberID, int prodID) {

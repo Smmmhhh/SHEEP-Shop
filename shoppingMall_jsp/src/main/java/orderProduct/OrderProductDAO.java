@@ -4,28 +4,34 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
 
 import util.DatabaseUtil;
 
 public class OrderProductDAO {
 	
 	// 주문상품 추가
-	public int insertOrderProduct(int orderID, int prodID, int orderQuantity) {
-		String SQL = "insert into members values (?,?,?,?)";
-		
+	public int insertOrderProduct(List<OrderProduct> list) {
+		String SQL = "insert into orderProducts values (?,?,?,?,?)";
+
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		
 		try {
 			conn = DatabaseUtil.getConnection();
 			pstmt = conn.prepareStatement(SQL);
-			pstmt.setString(1, null);
-			pstmt.setInt(2, orderID);
-			pstmt.setInt(3, prodID);
-			pstmt.setInt(4, orderQuantity);
-			pstmt.setInt(5, 1);
-
-			return pstmt.executeUpdate();
+			
+			for(int i = 0; i < list.size(); i++) {
+				pstmt.setString(1, null);
+				pstmt.setInt(2, list.get(i).getOrderID());
+				pstmt.setInt(3, list.get(i).getProdID());
+				pstmt.setInt(4, list.get(i).getOrderQuantity());
+				pstmt.setInt(5, 1);
+				
+				pstmt.addBatch();
+			}
+			pstmt.executeBatch();
+			return 1;
 		
 		} catch( Exception e) {
 			e.printStackTrace();
@@ -108,6 +114,45 @@ public class OrderProductDAO {
 		}
 		
 		return -1;
+	}
+	
+	// 한 주문당 개수 가져오기
+	public int getOrderProductCount(int orderID) {
+		String SQL = "select count(*) as count from orderProducts where orderID = ?;";
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		
+		int count = 0;
+		
+		try {
+			conn = DatabaseUtil.getConnection();
+			pstmt = conn.prepareStatement(SQL);
+			pstmt.setInt(1, orderID);
+			ResultSet rs = pstmt.executeQuery();
+				
+			if(rs.next()) {
+				count=rs.getInt("count");
+			}
+			
+	        return count; // If there's a matching row, rs.next() will return true.
+		
+		} catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+	            if (pstmt != null) {
+	                pstmt.close();
+	            }
+	            if (conn != null) {
+	                conn.close();
+	            }
+	        } catch (SQLException se) {
+	            se.printStackTrace();
+	        }
+		}
+		
+		return count;
 	}
 }
 
