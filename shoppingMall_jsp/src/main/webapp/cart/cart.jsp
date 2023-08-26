@@ -37,6 +37,7 @@
          form.submit();
       }
    </script>
+  
 		<!-- [1] Header -->
 	<jsp:include page="../static/html/header.jsp" />
 	<hr style="border: none; border-top: 1px solid #ccc;">
@@ -58,6 +59,9 @@
 				
 				int i=0;
 			%>
+			
+			
+
 
 			<!-- [4] 메인(cart_list) -->
 			<div class="cart_box">
@@ -77,12 +81,14 @@
 							<div class="cart_table">
 								<table>
 									<%
+
 										int prodPrice=0;
 										for (i = 0; i < cartList.size(); i++) {
 											int ctgID = cartList.get(i).getProduct().getProdCtgID();
 											int prodID = cartList.get(i).getProduct().getProdID();
 											prodPrice = cartList.get(i).getProduct().getProdPrice();
 											int cartQuantity = cartList.get(i).getCart().getCartQuantity();
+
 									%>
 									<tr>
 										<th><input type="checkbox" name="cartProduct"
@@ -95,12 +101,14 @@
 										</td>
 										<td>
 											<div class="cart_quantity">
+
 			                                    <div>수량</div>
 			                                    <button type="button" onclick="updateQuantity(<%=i%>,-1)" class="quantity_button" id="decrement-button<%=i%>>">-</button>
 			                                    <input type="text" id="quantity_input<%=i%>" name="quantity"
 			                                       value="<%=cartQuantity%>">
 			                                    <button type="button" onclick="updateQuantity(<%=i%>,1)" class="quantity_button" id="increment-button<%=i%>">+</button>
 			                                 </div>
+
 										</td>
 										<td>
 											<div class="cart_price">
@@ -133,16 +141,39 @@
 							</div>
 							<div class="total">
 								<h2>총 상품가격</h2>
-								<div id="totalPriceID" class="totalPrice"></div>
-								<input type="hidden" name="buttonMethod" value="0">
-							</div>
-							<div class="buy_submit">
-								<button type="button" id="buy_button"
-									onclick="submitForm('cartUpdateAction.jsp')" name="buy">구매하기
-								</button>
-							</div>
 
-
+								<div id="totalID" class="totalPrice">
+									
+									<script>
+									    function updateTotal(){
+									        const cartList = [
+									            <% for (Composition e : cartList) { %>
+									            {
+									                prodPrice: <%= e.getProduct().getProdPrice() %>,
+									                cartQuantity: <%= e.getCart().getCartQuantity() %>
+									            },
+									            <% } %>
+									        ];
+									        
+									        let total = 0;
+									        for (let i = 0; i < cartList.length; i++){
+									            let quantity = cartList[i].cartQuantity;
+									            let price = cartList[i].prodPrice; 
+									            total += quantity * price;
+									        }
+									        
+									        let totalElement = document.getElementById('totalID');
+									        totalElement.textContent = total + "원";
+									  }
+									    
+									    window.addEventListener("DOMContentLoaded", function() {
+									        updateTotal();
+									    });
+									</script>
+								</div>
+							</div>
+						
+							
 							<input type="hidden" name="buttonMethod" value="0">
 							<div class="buy_submit">
 								<button type="button"
@@ -153,7 +184,7 @@
 			</div>
 		</div>
 	</div>
-  
+
 	<!-- [5] 푸터  -->
 	<jsp:include page="../static/html/footer.html" />
 
@@ -214,6 +245,7 @@
 	        quantityInput.value = inputValue;
 	    }
 	</script>
+
 
 </body>
 </html>
