@@ -170,14 +170,7 @@ cursor: pointer;
 }
 
 .test {
-<<<<<<< HEAD
-   display: flex;
-   justify-content: center;
-   align-items: center;
-}
-=======
 	display: flex;
 	justify-content: center;
 	align-items: center;
 }
->>>>>>> 93025e5bf47ad8b118d748aed56bbfcbfae7b327

@@ -17,7 +17,6 @@ public class Composition {
 	Order order;
 	OrderProduct orderProduct;
 	
-	
 	Composition(){}
 	
 	 // Table Join을 할 때 포함되는 class들의 생성자를 만들어준다.
@@ -26,6 +25,12 @@ public class Composition {
 		this.product = product;
 	}
 	
+	Composition(Order order, OrderProduct orderProduct, Product product){
+		this.order = order;
+		this.orderProduct = orderProduct;
+		this.product = product;
+	}
+
 	public Cart getCart() {
 		return cart;
 	}
@@ -49,5 +54,5 @@ public class Composition {
 	public OrderProduct getOrderProduct() {
 		return orderProduct;
 	}
-	
+
 }
