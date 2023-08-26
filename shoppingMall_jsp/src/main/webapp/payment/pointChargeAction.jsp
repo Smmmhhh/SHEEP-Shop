@@ -1,5 +1,5 @@
 <!-------------------------------
-  annotation Name : paymentAction jsp
+  annotation Name : paymentChargeAction jsp
   User: SMH
   Date: 2023-08-24
   Time: 오후 22:40

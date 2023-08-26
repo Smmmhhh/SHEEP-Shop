@@ -1,6 +1,8 @@
 package composition;
 
 import cart.Cart;
+import category.Category;
+import member.Member;
 import order.Order;
 import orderProduct.OrderProduct;
 import product.Product;
@@ -10,6 +12,8 @@ public class Composition {
 	 // 모든 클래스를 Composition class의 member변수로 정의시킨다.
 	Cart cart;
 	Product product;
+	Category category;
+	Member member;
 	Order order;
 	OrderProduct orderProduct;
 	
@@ -34,7 +38,15 @@ public class Composition {
 	public Product getProduct() {
 		return product;
 	}
-	
+
+	public Category getCategory() {
+		return category;
+	}
+
+	public Member getMember() {
+		return member;
+	}
+
 	public Order getOrder() {
 		return order;
 	}
@@ -42,4 +54,5 @@ public class Composition {
 	public OrderProduct getOrderProduct() {
 		return orderProduct;
 	}
+
 }

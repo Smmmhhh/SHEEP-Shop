@@ -216,7 +216,7 @@
 
 				<tr>
 					<th>보유 포인트</th>
-					<td><%=memberPoint%></td>
+					<td><%=new DecimalFormat().format(memberPoint)%></td>
 				</tr>
 			</table>
 			<div class="buttonWrap">

@@ -1,4 +1,3 @@
-
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
@@ -60,7 +59,6 @@
 				int i=0;
 			%>
 
-
 			<!-- [4] 메인(cart_list) -->
 			<div class="cart_box">
 
@@ -70,10 +68,10 @@
 								<div class="all_checkbox">
 									<input type="checkbox" class="selectAll">전체 선택
 								</div>
-							
+							</div>
 							<button type="button"
 								onclick="submitForm('cartDeleteAction.jsp')" name="deleteCart">삭제하기</button>
-							</div>
+
 							<!-- 장바구니 목록 동적 생성 -->
 
 							<div class="cart_table">
@@ -88,7 +86,7 @@
 									%>
 									<tr>
 										<th><input type="checkbox" name="cartProduct"
-											value="<%=prodID%>" class="cartCheckbox" onclick="changeEvent()"></th>
+											value="<%=prodID%>" class="cartCheckbox"></th>
 										<td><img src="../image/<%=ctgID%>_<%=prodID%>.jpg"
 											alt="상품 이미지" width="100px" height="100px"></td>
 										<td>
@@ -143,19 +141,25 @@
 									onclick="submitForm('cartUpdateAction.jsp')" name="buy">구매하기
 								</button>
 							</div>
+
+
+							<input type="hidden" name="buttonMethod" value="0">
+							<div class="buy_submit">
+								<button type="button"
+									onclick="submitForm('../payment/payment.jsp')" name="buy">구매하기</button>
+							</div>
 						</form>
 				</div>
 			</div>
 		</div>
 	</div>
-	
+  
 	<!-- [5] 푸터  -->
 	<jsp:include page="../static/html/footer.html" />
 
+
 	<script>
 	
-	<!-- ... 이전 코드 ... -->
-
 	    const deleteButton = document.querySelector("#delete"); // 삭제 버튼 요소 가져오기
 	
 	    const decrementButton = document.querySelector("#decrement-button"); // 감소 버튼 요소 가져오기

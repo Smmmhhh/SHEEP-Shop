@@ -131,16 +131,18 @@ cursor: pointer;
 	align-items: center;
 }
 /* 메인(cart_list) */
+
 .option_box, .total {
     display: flex;
     justify-content: space-between;
     margin: 10px;
+
 }
 
 .delete_submit {
-   display: flex;
-   justify-content: flex-end;
-   margin: 10px;
+	display: flex;
+	justify-content: flex-end;
+	margin: 10px;
 }
 
 .cart_list {
@@ -159,25 +161,24 @@ cursor: pointer;
 }
 
 table {
-   border-collapse: collapse;
-   border: none;
+	border-collapse: collapse;
+	border: none;
 }
 
 tr {
-   border-top: 1px solid lightgray;;
-   border-bottom: 1px solid lightgray;
-   width: 500px;
+	border-top: 1px solid lightgray;;
+	border-bottom: 1px solid lightgray;
+	width: 500px;
 }
 
 td {
-   width: 150px;
-   height: 110px;
-   border: none;
-   padding-left: 0;
+	width: 150px;
+	height: 110px;
+	border: none;
 }
 
 th {
-   width: 30px;
+	width: 30px;
 }
 
 #quantity_input {
@@ -188,12 +189,12 @@ th {
 }
 
 .quantity_button {
-   width: 35px;
-   height: 35px;
-   font-size: 14px;
-   background-color: #f0f0f0;
-   border: none;
-   cursor: pointer;
+	width: 35px;
+	height: 35px;
+	font-size: 14px;
+	background-color: #f0f0f0;
+	border: none;
+	cursor: pointer;
 }
 
 .buy_submit {
@@ -203,24 +204,24 @@ th {
 }
 
 .cartProduct {
-   margin-right: 20px;
+	margin-right: 20px;
 }
 
 .listBox {
-   margin: 0;
-   padding: 0;
+	margin: 0;
+	padding: 0;
 }
 
 .selectAll {
-   margin-right: 8px;
+	margin-right: 8px;
 }
 
 .wrapBox{
-   display: flex;
-   flex-direction: column;
-   justify-content: center;
-   align-items: center;
-   margin: 10px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	margin: 10px;
 }
 
 button {
@@ -240,4 +241,3 @@ button {
 	margin: 30px;
 	border: none;
 }
-
