@@ -58,6 +58,15 @@
 				cartList = compositionDAO.getCompositionList(memberID);
 				
 				int i=0;
+				
+				if(cartList.size()==0){
+				%>
+					<div id="emptyBox">
+						장바구니 비어있음
+					</div>	
+				<%
+				}
+				else{
 			%>
 
 			<!-- [4] 메인(cart_list) -->
@@ -98,7 +107,6 @@
 										</td>
 										<td>
 											<div class="cart_quantity">
-
 			                                    <div>수량</div>
 			                                    <button type="button" onclick="updateQuantity(<%=i%>,-1)" class="quantity_button" id="decrement-button<%=i%>>">-</button>
 			                                    <input type="text" id="quantity_input<%=i%>" name="quantity"
@@ -174,11 +182,14 @@
 							<input type="hidden" name="buttonMethod" value="0">
 							<div class="buy_submit">
 								<button type="button"
-									onclick="submitForm('../payment/payment.jsp')" name="buy">구매하기</button>
+									onclick="submitForm('cartUpdateAction.jsp')" name="buy">구매하기</button>
 							</div>
 						</form>
 				</div>
 			</div>
+			<% 
+				}
+			%>
 		</div>
 	</div>
 
@@ -242,7 +253,6 @@
 	        quantityInput.value = inputValue;
 	    }
 	</script>
-
 
 </body>
 </html>

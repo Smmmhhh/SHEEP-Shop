@@ -241,3 +241,14 @@ button {
 	margin: 30px;
 	border: none;
 }
+
+#emptyBox {
+	margin-left: 50px;
+	width: 800px;
+	height: 100%;
+	font-size: 25px;
+	color: #ddd;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
