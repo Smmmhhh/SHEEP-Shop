@@ -60,10 +60,10 @@
 		</div>
 		<!-- [3]-2 ProductList 생성 -->
 		<%
-		// 현재 카테고리 제품 리스트 가져오기
-		List<Product> productList = new ArrayList<>();
-		ProductDAO productDAO = new ProductDAO();
-		productList = productDAO.selectGetCtgProd(cthID);
+			// 현재 카테고리 제품 리스트 가져오기
+			List<Product> productList = new ArrayList<>();
+			ProductDAO productDAO = new ProductDAO();
+			productList = productDAO.selectGetCtgProd(cthID);
 		%>
 		<div class="products">
 			<%

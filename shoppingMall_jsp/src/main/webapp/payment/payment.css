@@ -26,6 +26,7 @@
 
 .InfoTable th {
 	width: 15%;
+	height: 10px;
 	text-align: center;
 }
 
@@ -39,19 +40,16 @@
 	padding: 10px;
 }
 
-#buyInfoTable tr {
+#buyInfoTable tr{
+	border-top: 1px solid lightgray;
+	border-bottom: 1px solid lightgray;
 	width: 150px;
 	height: 100px;
 }
 
-#buyInfoTable tr{
-	border-top: 1px solid lightgray;
-	border-bottom: 1px solid lightgray;
-	height: 150px;
-}
-
 #buyInfoTable td, #buyInfoTable th {
 	border: none;
+	text-align: center;
 }
 
 #buyInfoTable th {

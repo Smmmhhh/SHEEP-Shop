@@ -40,17 +40,17 @@
 				<jsp:include page="../static/html/myPageMenu.html" />
 
 				<!-- [4] 메인(order_box div-->
-				<div class="orderBox">
-					<!-- [4]-1 order_search -->
-					<h3 id = "orderListTitle">주문 목록</h3>
-					<div class="orderSearch">
-						<input type="text" class="orderSearchInput"
-							placeholder="주문한 상품을 검색하세요." required>
-						<button type="submit" class="orderSearchButton">검색</button>
-					</div>
-					<!-- [4]-2 order_list-->
+<!-- 				<div class="orderBox"> -->
+<!-- 					[4]-1 order_search -->
+<!-- 					<h3 id = "orderListTitle">주문 목록</h3> -->
+<!-- 					<div class="orderSearch"> -->
+<!-- 						<input type="text" class="orderSearchInput" -->
+<!-- 							placeholder="주문한 상품을 검색하세요." required> -->
+<!-- 						<button type="submit" class="orderSearchButton">검색</button> -->
+<!-- 					</div> -->
+<!-- 					[4]-2 order_list -->
 
-				</div>
+<!-- 				</div> -->
 			</div>
 	</div>
 

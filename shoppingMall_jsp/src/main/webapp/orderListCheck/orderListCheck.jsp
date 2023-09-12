@@ -100,13 +100,13 @@
 									<div class="orderInfo">전화번호 : <%=orderPhoneNo%></div>
 									<hr>
 								</div>
-							<table id="order_table" style="margin-bottom: 50px">
-								<tr>
-									<td>상품이미지</td>	
-									<td>상품명</td>
-									<td>가격</td>
-									<td>주문수량</td>					
-								</tr>
+								<table id="order_table">
+									<tr>
+										<td>상품이미지</td>	
+										<td>상품명</td>
+										<td>가격</td>
+										<td>주문수량</td>					
+									</tr>
 							<%
 								for(int j=i; j < i+count; j++){
 									

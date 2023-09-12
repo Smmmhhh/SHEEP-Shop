@@ -81,7 +81,7 @@
 }
 
 .orderBox{
-    width: 800px;
+    width: 900px;
     text-align: left;
     padding-left: 20px;
 }
@@ -132,7 +132,7 @@ cursor: pointer;
 }
 /* 메인(cart_list) */
 
-.option_box, .total {
+.option_box {
     display: flex;
     justify-content: space-between;
     margin: 10px;
@@ -150,7 +150,7 @@ cursor: pointer;
 }
 
 .cart_box {
-   width: 700px;
+   width: 800px;
    overflow: auto; /* 내용이 넘칠 경우 스크롤바 추가 */
 }
 
@@ -173,7 +173,6 @@ tr {
 
 td {
 	width: 150px;
-	height: 110px;
 	border: none;
 }
 
@@ -199,8 +198,9 @@ th {
 
 .buy_submit {
    display: flex;
-   justify-content: center;
+   justify-content: right;
    align-items: center;
+   padding-right: 30px;
 }
 
 .cartProduct {
@@ -231,8 +231,11 @@ button {
 
 .total {
    margin: 0;
-   width: 600px;
-   text-align: right;
+   width: 700px;
+   height: 50px;
+   text-align: center;
+   display: flex;
+   justify-content: center;
 }
 
 #orderButton {
@@ -251,4 +254,12 @@ button {
 	display: flex;
 	justify-content: center;
 	align-items: center;
+}
+
+#cartInfo {
+	height: 150px;
+}
+
+#cartTable {
+	margin-bottom: 20px;
 }

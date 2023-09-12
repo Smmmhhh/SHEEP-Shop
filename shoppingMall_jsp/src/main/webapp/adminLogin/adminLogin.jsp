@@ -15,7 +15,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>쉼 : Login</title>
+<title>쉼 : adminLogin</title>
 <link rel="stylesheet" href="adminLogin.css">
 <link rel="stylesheet" href="../index.css">
 
