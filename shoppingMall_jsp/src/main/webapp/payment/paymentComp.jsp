@@ -97,7 +97,7 @@ request.setCharacterEncoding("UTF-8");
 			<button class="custom-button"
 				onclick="redirectToPage('../shop_main/main.jsp')">메인화면</button>
 			<button class="custom-button"
-				onclick="redirectToPage('../buyCheck/buyCheck.jsp')">주문목록</button>
+				onclick="redirectToPage('../orderListCheck/orderListCheck.jsp')">주문목록</button>
 
 		</div>
 

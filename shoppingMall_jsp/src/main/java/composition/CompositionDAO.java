@@ -203,4 +203,75 @@ public class CompositionDAO {
 		}
 		return compositionList;
 	}
+	
+	
+	public List<Composition> getSalesByproduct(){
+	
+		String SQL = "select "
+				+ "P.*, "
+				+ "O.*, "
+				+ "ifnull(SUM(O.orderQuantity),0) AS '판매수량', "
+				+ "ifnull(SUM(O.orderQuantity) * P.price, 0) AS '상품별 매출액' "
+				+	"from products P "
+				+		"left outer join orderProducts O "
+				+			"on P.prodID = O.prodID "
+				+		"where P.prodValidity = 1 "
+				+ "group by P.prodID "
+				+ "order by P.prodID";
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+
+		List<Composition> compositionList = new ArrayList<>();
+		
+		try {
+			conn = DatabaseUtil.getConnection();
+			pstmt = conn.prepareStatement(SQL);
+			rs = pstmt.executeQuery();
+		
+			while (rs.next()) {
+				int orderID = rs.getInt("orderID");
+				int orderProdID = rs.getInt("orderProdID");
+				int prodID = rs.getInt("prodID");
+				int orderQuantity = rs.getInt("orderQuantity");
+				int prodCtgID = rs.getInt("ctgID");
+				String prodName = rs.getString("prodName");
+				int prodPrice = rs.getInt("price");
+				int prodStock = rs.getInt("stock");
+				String prodDetail = rs.getString("detail");
+				String prodSize = rs.getString("prodSize");
+				String prodOrigin = rs.getString("prodOrigin");
+				String prodDate = rs.getString("prodDate");
+				int salesQuantity = rs.getInt("판매수량");
+				int salesByProduct = rs.getInt("상품별 매출액");
+				
+				OrderProduct orderProduct = new OrderProduct(orderProdID,orderID, prodID, orderQuantity, 1);
+				
+				Product product = new Product(prodID, prodCtgID, prodName, prodPrice, prodStock, prodDetail, prodSize, prodOrigin, prodDate,1);
+				
+				Composition composition = new Composition(orderProduct, product, salesQuantity, salesByProduct);
+				
+				compositionList.add(composition);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			// Database와 연결 후 반드시 해제시켜주기
+			try {
+				if (rs != null) {
+					rs.close(); // ResultSet을 닫음
+				}
+				if (pstmt != null) {
+					pstmt.close();
+				}
+				if (conn != null) {
+					conn.close();
+				}
+			} catch (SQLException se) {
+				se.printStackTrace();
+			}
+		}
+		return compositionList;
+	}
 }

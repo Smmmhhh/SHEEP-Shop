@@ -37,7 +37,8 @@
                   <td>
                      <div class="curpw">
                         <div class="curpw-info">상품명</div>
-                        <input type="text" name="curtext" placeholder="상품명 입력">
+                        <input type="text" name="prodName" placeholder="상품명 입력" pattern="^[ㄱ-ㅎ가-힣]+$"
+								title="한글만 입력해주세요." required>
                      </div>
                      <div class="chgpw">
                         <div class="chgpw-info">카테고리</div>
@@ -56,11 +57,13 @@
                      </div>
                      <div class="chkpw">
                         <div class="chkpw-info">가격</div>
-                        <input type="text" name="confirmtext" placeholder="가격 입력">
+                        <input type="text" name="prodPrice" placeholder="가격 입력" pattern="^\d+$"
+                        title="숫자만 입력해주세요." required>
                      </div>
                      <div class="curpw">
                         <div class="curpw-info">재고</div>
-                        <input type="text" name="curtext" placeholder="재고 입력">
+                        <input type="text" name="prodStock" placeholder="재고 입력" pattern="^\d+$"
+                        title="숫자만 입력해주세요." required>
                      </div>
                      <div class="curpw">
                         <div class="curpw-info">설명</div>
@@ -76,7 +79,9 @@
                      </div>
                      <div class="curpw">
                         <div class="curpw-info">제조일자</div>
-                        <input type="text" name="curtext" placeholder="제조일자 입력">
+                        <input type="text" name="curtext" placeholder="제조일자 입력"
+                        pattern="^\d{4}-\d{2}-\d{2}-\d{2}-\d{2}$"
+                        title="년-월-일-시-분 입력" >
                      </div>
                   </td>
                </tr>
