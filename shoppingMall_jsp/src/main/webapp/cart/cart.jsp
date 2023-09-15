@@ -163,27 +163,35 @@
                          });
                   </script>
 							</div>
-<!-- 							<div class="total" style="font-size: 24px"> -->
-<!-- 								총 상품가격 :&nbsp;<div id="totalPrice"> -->
+							<div class="total" style="font-size: 24px">
+								총 상품가격 :&nbsp;<div id="totalPrice">
 									
 									<script>
 										function updateTotal(){
 											 const selectedPrices = []; // 선택된 체크박스의 가격을 저장할 배열
-
-											    itemCheckboxes.forEach(function(checkbox) {
-											        if (checkbox.checked) {
+												
+											// 전체 선택 체크박스 클릭 시 이벤트 처리
+					                         selectAllCheckbox.addEventListener( function(checkbox) {
+					                        	 	if (checkbox.checked) {
 											            const price = parseFloat(checkbox.getAttribute('data-price')); // 체크된 체크박스의 가격 가져오기
 											            selectedPrices.push(price); // 배열에 추가
 											        }
-											    });
+					                         });
+											 
+										    itemCheckboxes.forEach(function(checkbox) {
+										        if (checkbox.checked) {
+										            const price = parseFloat(checkbox.getAttribute('data-price')); // 체크된 체크박스의 가격 가져오기
+										            selectedPrices.push(price); // 배열에 추가
+										        }
+										    });
 
-											    // 선택된 체크박스의 가격 합계 계산
-											    const total = selectedPrices.reduce(function(sum, price) {
-											        return sum + price;
-											    }, 0);
+										    // 선택된 체크박스의 가격 합계 계산
+										    const total = selectedPrices.reduce(function(sum, price) {
+										        return sum + price;
+										    }, 0);
 
-											    let totalElement = document.getElementById('totalPrice');
-											    totalElement.textContent = total + "원";
+										    let totalElement = document.getElementById('totalPrice');
+										    totalElement.textContent = total + "원";
 										}
 										
 									    function getTotal(){
@@ -211,7 +219,7 @@
 									        getTotal();
 									    });
 									</script>
-<!-- 								</div> -->
+								</div>
 							</div>
 						
 							

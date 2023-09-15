@@ -39,7 +39,6 @@
    <form action="memberFixAction.jsp" method="post">
       <div class="second_wrap">
          <div class="wrap">
-   
             <!-- [2] pageBox -->
             <div class="pagebox">
                <h1>회원정보 수정</h1>
@@ -47,7 +46,7 @@
    
             <!-- [3] member_table -->
    
-            <!-- [3]-2 pw 수정 박스-->
+            <!-- [3]-1 pw 수정 박스-->
             <table class="InfoTable" id="pwTable">
                <tr>
                   <th>비밀번호</th>
@@ -68,7 +67,7 @@
                </tr>
             </table>
    
-            <!-- [3]-3 add 수정 박스-->
+            <!-- [3]-2 add 수정 박스-->
             <table class="InfoTable" id="addTable">
                <tr>
                   <th>주소</th>
@@ -86,7 +85,7 @@
                </tr>
             </table>
             
-            <!-- [3]-1 phoneNo 수정 박스-->
+            <!-- [3]-3 phoneNo 수정 박스-->
             <table class="InfoTable" id="phoneNoTable">
                <tr>
                   <th>전화번호</th>
