@@ -88,13 +88,9 @@
 								<input type="text" name="curAddress"
 									value="<%=member.getMemberAddress()%>" readonly>
 							</div>
-					
-
-					
 
 				<!-- [3]-3 add 수정 박스-->
 			
-						
 							<div class="chgadd">
 							<div class="curadd-info">변경 주소</div>
 								<input type="text" id="sample4_postcode" name="postalCode"
@@ -114,8 +110,6 @@
 
 					</tr>
 				</table>
-
-
 
 				<!-- [3]-1 phoneNo 수정 박스-->
 				<table class="InfoTable" id="phoneNoTable">

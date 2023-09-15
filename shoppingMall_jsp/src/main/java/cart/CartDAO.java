@@ -138,108 +138,108 @@ public class CartDAO {
 	
 
 	// 장바구니 수량 수정하기(단일품목)
-		public int updateCartProdEdit(int cartQuantity, String memberID, int prodID) {
-			String SQL = "update carts set cartQuantity = ? where memberID = ? and prodID = ?";
+  public int updateCartProdEdit(int cartQuantity, String memberID, int prodID) {
+    String SQL = "update carts set cartQuantity = ? where memberID = ? and prodID = ?";
+      
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		try {
+			conn = DatabaseUtil.getConnection();
+			pstmt = conn.prepareStatement(SQL);
+			
+			pstmt.setInt(1, cartQuantity);
+			pstmt.setString(2, memberID);
+			pstmt.setInt(3, prodID);
 
-			Connection conn = null;
-			PreparedStatement pstmt = null;
+			return pstmt.executeUpdate();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+
+		} finally {
 			try {
-				conn = DatabaseUtil.getConnection();
-				pstmt = conn.prepareStatement(SQL);
-				
-				pstmt.setInt(1, cartQuantity);
-				pstmt.setString(2, memberID);
-				pstmt.setInt(3, prodID);
-
-				return pstmt.executeUpdate();
-
-			} catch (Exception e) {
-				e.printStackTrace();
-
-			} finally {
-				try {
-					if (pstmt != null) {
-						pstmt.close();
-					}
-					if (conn != null) {
-						conn.close();
-					}
-				} catch (SQLException se) {
-					se.printStackTrace();
+				if (pstmt != null) {
+					pstmt.close();
 				}
+				if (conn != null) {
+					conn.close();
+				}
+			} catch (SQLException se) {
+				se.printStackTrace();
 			}
-			return -1;
 		}
+		return -1;
+	}
 		
 		
-		// 결제시 장바구니 삭제하기
-		public int deleteCartProd(List<Cart> list) {
-			String SQL = "delete from carts where memberID = ? and prodID = ? ";
+	// 결제시 장바구니 삭제하기
+	public int deleteCartProd(List<Cart> list) {
+		String SQL = "delete from carts where memberID = ? and prodID = ? ";
 
-			Connection conn = null;
-			PreparedStatement pstmt = null;
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		try {
+			conn = DatabaseUtil.getConnection();
+			pstmt = conn.prepareStatement(SQL);
+			
+			for(int i = 0; i < list.size(); i++) {
+				pstmt.setString(1, list.get(i).getUserID());
+				pstmt.setInt(2, list.get(i).getProdID());
+				
+				pstmt.addBatch();
+			}
+			pstmt.executeBatch();
+			return 1;
+
+		} catch (Exception e) {
+			e.printStackTrace();
+
+		} finally {
 			try {
-				conn = DatabaseUtil.getConnection();
-				pstmt = conn.prepareStatement(SQL);
-				
-				for(int i = 0; i < list.size(); i++) {
-					pstmt.setString(1, list.get(i).getUserID());
-					pstmt.setInt(2, list.get(i).getProdID());
-					
-					pstmt.addBatch();
+				if (pstmt != null) {
+					pstmt.close();
 				}
-				pstmt.executeBatch();
-				return 1;
-
-			} catch (Exception e) {
-				e.printStackTrace();
-
-			} finally {
-				try {
-					if (pstmt != null) {
-						pstmt.close();
-					}
-					if (conn != null) {
-						conn.close();
-					}
-				} catch (SQLException se) {
-					se.printStackTrace();
+				if (conn != null) {
+					conn.close();
 				}
+			} catch (SQLException se) {
+				se.printStackTrace();
 			}
-			return -1;
 		}
-		
+		return -1;
+	}
+	
 		
 	 
-		// 장바구니 상품 삭제하기
-		public int cartProductDelete(String memberID, int prodID) {
-			String SQL = "DELETE FROM carts WHERE memberID = ? AND prodID = ?";
-			Connection conn = null;
-			PreparedStatement pstmt = null;
+	// 장바구니 상품 삭제하기
+	public int cartProductDelete(String memberID, int prodID) {
+		String SQL = "DELETE FROM carts WHERE memberID = ? AND prodID = ?";
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		try {
+			conn = DatabaseUtil.getConnection();
+			pstmt = conn.prepareStatement(SQL);
+
+			pstmt.setString(1, memberID);
+			pstmt.setInt(2, prodID);
+			return pstmt.executeUpdate();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+
+		} finally {
 			try {
-				conn = DatabaseUtil.getConnection();
-				pstmt = conn.prepareStatement(SQL);
-
-				pstmt.setString(1, memberID);
-				pstmt.setInt(2, prodID);
-				return pstmt.executeUpdate();
-
-			} catch (Exception e) {
-				e.printStackTrace();
-
-			} finally {
-				try {
-					if (pstmt != null) {
-						pstmt.close();
-					}
-					if (conn != null) {
-						conn.close();
-					}
-				} catch (SQLException se) {
-					se.printStackTrace();
+				if (pstmt != null) {
+					pstmt.close();
 				}
+				if (conn != null) {
+					conn.close();
+				}
+			} catch (SQLException se) {
+				se.printStackTrace();
 			}
-			return -1;
 		}
-		
+		return -1;
+	}
+	
 }

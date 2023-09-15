@@ -140,7 +140,8 @@ public class CompositionDAO {
 		String SQL = "select * from orders O "
 				+ "inner join orderProducts OP on O.orderID = OP.orderID "
 				+ "inner join products P on OP.prodID = P.prodID "
-				+ "where O.memberID = ? and O.orderValidity = 1";
+				+ "where O.memberID = ? and O.orderValidity = 1 "
+				+ "order by O.orderDate desc";
 		
 		Connection conn = null;
 		PreparedStatement pstmt = null;

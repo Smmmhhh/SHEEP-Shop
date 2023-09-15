@@ -160,12 +160,12 @@
 			<div class="InfoTitle">구매품목</div>
 			<table class="InfoTable" id="buyInfoTable">
 			
-				<tr>
-					<td>이미지</td>
-					<td>상품명</td>
-					<td>수량</td>
-					<td>가격</td>
-					<td>총 가격</td>
+				<tr class="InfoBar" style="height:20px">
+					<th>이미지</th>
+					<th style="width:300px">상품명</th>
+					<th>수량</th>
+					<th>가격</th>
+					<th>총 가격</th>
 				</tr>
 			
 			<%
@@ -200,7 +200,6 @@
 			%>
 			
 			</table>
-
 
 			<!-- 3-3 결제정보 테이블 -->
 			<div class="InfoTitle">결제정보</div>

@@ -45,102 +45,110 @@
 	
 	<!-- [2] 나의 정보(my info) -->
 	<div class="secondWrap">
-			<!-- [3] myPage box div -->
-			<div class="secondWrap">
-			
-			<jsp:include page="../static/html/myPageMenu.html" />
+	<!-- [3] myPage box div -->
+	<div class="secondWrap">
+	
+	<jsp:include page="../static/html/myPageMenu.html" />
+	
+	<%
+		List<Composition> orderList = new ArrayList<>();
+		
+		CompositionDAO compositionDAO = new CompositionDAO();
 
-			<!-- [4] 메인(order_list) -->
-			<div class="order_box">
+		orderList = compositionDAO.getOrderList(memberID);
+												
+		int count=0;
+		
+		if(orderList.size()==0) {
+			%>	
+			<div id="emptyBox">
+				주문내역 없음
+			</div>
+			<%
+		}
+	%>
+	<!-- [4] 메인(order_list) -->
+	<div class="order_box">
 
-				<div class="order_list">
-							
-							<!-- 장바구니 목록 동적 생성 -->
-
-							<div class="order_div">
-								
-									<%
-										List<Composition> orderList = new ArrayList<>();
-										
-										CompositionDAO compositionDAO = new CompositionDAO();
-							
-										orderList = compositionDAO.getOrderList(memberID);
-																				
-										int count=0;
-										
-										for (int i = 0; i < orderList.size(); i+=count) {
-											Order order = orderList.get(i).getOrder();
-											
-											int orderID = order.getOrderID();
-											
-											String orderAddress = order.getOrderAddress();
-											String orderPhoneNo = order.getOrderPhoneNo();
-											int totalPrice = order.getTotalPrice();
-											String orderDate = order.getOrderDate();
-											
-											OrderProductDAO orderProductDAO = new OrderProductDAO();
-											
-											count = orderProductDAO.getOrderProductCount(orderID);
-											
-												%>	
-												<div id="orderInfoBox">
-													<div class="orderInfo">주문번호 : <%=orderID%></div>
-													<div class="orderInfo">주문날짜 : <%=orderDate%></div>
-												</div>
-												<div>	
-													<div class="orderInfo">배송지 : <%=orderAddress%></div>
-													<div class="orderInfo">전화번호 : <%=orderPhoneNo%></div>
-												</div>
-											<table id="order_table" style="margin-bottom: 50px">
-												<tr>
-													<td><div>상품이미지</div></td>	
-													<td><div>상품명</div></td>
-													<td><div>가격</div></td>
-													<td><div>주문수량</div></td>
-													
-												</tr>
-											<%
-											for(int j=i; j < i+count; j++){
-												
-												Product product = orderList.get(j).getProduct();
-												OrderProduct orderProduct = orderList.get(j).getOrderProduct();
-												
-												int prodID = product.getProdID();
-												int ctgID = product.getProdCtgID();
-												String prodName = product.getProdName();
-												int prodPrice = product.getProdPrice();
-												int orderQuantity = orderProduct.getOrderQuantity();
-												
-									%>
+		<div class="order_list">		
+			<!-- 장바구니 목록 동적 생성 -->
+			<div class="order_div">
 				
-										<tr>
-										<td>
-											<img src="../image/<%=ctgID%>_<%=prodID%>.jpg"
-											alt="상품 이미지" width="100px" height="100px">
-										</td>
-										<td>
-											<div><%=prodName%></div>
-										</td>
-										<td>
-											<div>
-												<div><%=new DecimalFormat().format(prodPrice)%></div>
-											</div>
-										</td>
-										<td>
-											<div>
-												<div><%=orderQuantity%></div>
-											</div>
-										</td>
+					<%
+						
+						for (int i = 0; i < orderList.size(); i+=count) {
+							Order order = orderList.get(i).getOrder();
+							
+							int orderID = order.getOrderID();	
+							String orderAddress = order.getOrderAddress();
+							String orderPhoneNo = order.getOrderPhoneNo();
+							int totalPrice = order.getTotalPrice();
+							String orderDate = order.getOrderDate();
+							
+							OrderProductDAO orderProductDAO = new OrderProductDAO();
+							
+							count = orderProductDAO.getOrderProductCount(orderID);
+														
+								%>	
+								<div id="orderInfoBox">
+									<div class="orderInfo">주문번호 : <%=orderID%></div>
+									<hr>
+									<div class="orderInfo">주문날짜 : <%=orderDate%></div>
+									<hr>	
+									<div class="orderInfo">배송지 : <%=orderAddress%></div>
+									<hr>
+									<div class="orderInfo">전화번호 : <%=orderPhoneNo%></div>
+									<hr>
+								</div>
+								<table id="order_table">
+									<tr>
+										<td>상품이미지</td>	
+										<td>상품명</td>
+										<td>가격</td>
+										<td>주문수량</td>					
+									</tr>
+							<%
+								for(int j=i; j < i+count; j++){
 									
-									<%
-										}
-									%>
+									Product product = orderList.get(j).getProduct();
+									OrderProduct orderProduct = orderList.get(j).getOrderProduct();
 									
-								</table>
-									<%		
-									}
-									%>
-							</div>
+									int prodID = product.getProdID();
+
+									int ctgID = product.getProdCtgID();
+									String prodName = product.getProdName();
+									int prodPrice = product.getProdPrice();
+									int orderQuantity = orderProduct.getOrderQuantity();	
+							%>
+		
+								<tr>
+								<td>
+									<img src="../image/<%=ctgID%>_<%=prodID%>.jpg"
+									alt="상품 이미지" width="100px" height="100px">
+								</td>
+								<td>
+									<div><%=prodName%></div>
+								</td>
+								<td>
+									<div>
+										<div><%=prodPrice%></div>
+									</div>
+								</td>
+								<td>
+									<div>
+										<div><%=orderQuantity%></div>
+									</div>
+								</td>
+							
+							<%
+								}
+							%>
+							
+						</table>
+							<%		
+							}
+							%>
+			</div>
 				</div>
 			</div>
 		</div>
@@ -148,7 +156,6 @@
 
 	<!-- [4] 푸터  -->
 	<jsp:include page="../static/html/footer.html" />
-
 
 </body>
 

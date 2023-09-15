@@ -33,10 +33,10 @@
 		for(int i=0; i<quantities.length;i++){
 			
 			int qty = Integer.parseInt(quantities[i]);
+			System.out.println(qty);
 			int prodID = cartList.get(i).getProdID();
 			
 			result = cartDAO.updateCartProdEdit(qty, memberID, prodID);
-			
 		}	
 		if(result == 1){
 			PrintWriter script = response.getWriter();
