@@ -138,7 +138,7 @@ public class CartDAO {
 	
 
 	// 장바구니 수량 수정하기(단일품목)
-		public int updatecartProdEdit(int cartQuantity, String memberID, int prodID) {
+		public int updateCartProdEdit(int cartQuantity, String memberID, int prodID) {
 			String SQL = "update carts set cartQuantity = ? where memberID = ? and prodID = ?";
 
 			Connection conn = null;

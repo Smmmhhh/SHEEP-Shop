@@ -258,7 +258,7 @@ public class ProductDAO {
 	}
 
 	// Category별 List Method
-	public List<Product> selectGetCtgProd(int cthID) {
+	public List<Product> selectGetCtgProd(int cthID, String sort) {
 
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -269,7 +269,7 @@ public class ProductDAO {
 		try {
 			conn = DatabaseUtil.getConnection();
 			String SQL = "select prodID, ctgID, prodName, price, stock, detail, prodSize, prodOrigin, prodDate \r\n"
-					+ "from products where ctgID = ? AND prodValidity = 1;";
+					+ "from products where ctgID = ? AND prodValidity = 1 "+ sort;
 			pstmt = conn.prepareStatement(SQL);
 			pstmt.setInt(1, cthID);
 			rs = pstmt.executeQuery();
@@ -310,7 +310,6 @@ public class ProductDAO {
 		}
 
 		return productList;
-
 	}
 
 }
