@@ -16,7 +16,6 @@
 <%@ page import="java.util.List"%>
 <%@ page import="java.text.DecimalFormat"%>
 
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,8 +24,6 @@
 <title>쉼 : 상품 리스트</title>
 <link rel="stylesheet" href="productList.css">
 <link rel="stylesheet" href="../shop_main/main.css">
-
-
 
 </head>
 
@@ -121,8 +118,6 @@
 	</div>
 	<!-- [4] 푸터  -->
 	<jsp:include page="../static/html/footer.html" />
-
-
-
+  
 </body>
 </html>

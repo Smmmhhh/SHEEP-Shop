@@ -40,35 +40,35 @@
 		//System.out.println(buttonMethod);
 	}
 
-// Abnormal 상황
-//
-// 1. history.back 으로 detail page로 돌아갔을 때 바로 장바구니 담기를 하면 
-// 수량이 1로 넘어온다.
-// 2. 모달창이 먼저 나타나는 현상 
-
-//CartDAO 객체생성
-CartDAO cartDAO = new CartDAO();
-
-// 추가하려는 상품이 기존에 있는 상품이라면 수량 수정해주기
-List<Cart> cartList = new ArrayList<>();
-cartList = cartDAO.getCartList(memberID);
-boolean inspection = false;
-int beforeQuantity = 0;
-int afterQuantity = 0;
-int result = 0;
-// 해당 고객 리스트 검사
-for(int i = 0; i < cartList.size(); i++){
-	if(cartList.get(i).getProdID() == ProdID){
-		beforeQuantity = cartList.get(i).getCartQuantity();
-		inspection = true;
-		break;
+	// Abnormal 상황
+	//
+	// 1. history.back 으로 detail page로 돌아갔을 때 바로 장바구니 담기를 하면 
+	// 수량이 1로 넘어온다.
+	// 2. 모달창이 먼저 나타나는 현상 
+	
+	//CartDAO 객체생성
+	CartDAO cartDAO = new CartDAO();
+	
+	// 추가하려는 상품이 기존에 있는 상품이라면 수량 수정해주기
+	List<Cart> cartList = new ArrayList<>();
+	cartList = cartDAO.getCartList(memberID);
+	boolean inspection = false;
+	int beforeQuantity = 0;
+	int afterQuantity = 0;
+	int result = 0;
+	// 해당 고객 리스트 검사
+	for(int i = 0; i < cartList.size(); i++){
+		if(cartList.get(i).getProdID() == ProdID){
+			beforeQuantity = cartList.get(i).getCartQuantity();
+			inspection = true;
+			break;
+		}
 	}
 }
 // 고객 리스트 검사 결과
 if(inspection) {
 	afterQuantity = beforeQuantity + ProdQuantity;
 	result = cartDAO.updateCartProdEdit(afterQuantity, memberID, ProdID);
-
 } else {
 	result = cartDAO.cartInsert(memberID, ProdID, ProdQuantity);
 }

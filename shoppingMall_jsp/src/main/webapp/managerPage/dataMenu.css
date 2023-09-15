@@ -39,7 +39,7 @@
 }
 
 .InfoTable th {
-      width: 100px;
+    width: 100px;
     text-align: center;
 }
 
@@ -105,9 +105,9 @@ div[class*="info"] {
 }
 /* 확인 */
 .confirmButton_div {
-   margin-bottom: 20px;
-    display: flex;
-    justify-content: center;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
 }
 
 #deleteButton {
@@ -119,9 +119,9 @@ div[class*="info"] {
 #categorySelect {
    width: 100%; /* 너비 조정 */
    height: 36.67px;
-    margin-left: 20px;
-    padding: 10px;
-    text-align: center;
+   margin-left: 20px;
+   padding: 10px;
+   text-align: center;
 }
 
 .mainCenter {

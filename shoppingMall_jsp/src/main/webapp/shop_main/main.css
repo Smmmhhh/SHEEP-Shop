@@ -133,14 +133,13 @@ nav .hr {
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 80vh;
     background-color: #f0f0f0;
 }
 
 .slider-container {
     position: relative;
     width: 1000px;
-    height: 660px;
+    height: 620px;
     overflow: hidden;
     border: 1px solid #ccc;
 }

@@ -30,7 +30,7 @@
 			if(result == 1){
 				PrintWriter script = response.getWriter();
 				script.println("<script>");
-				script.println("location.href = 'cart.jsp'w;");
+				script.println("location.href = 'cart.jsp'");
 				script.println("</script>;");
 				script.close();
 				

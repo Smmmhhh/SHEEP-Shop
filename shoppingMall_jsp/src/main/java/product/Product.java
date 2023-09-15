@@ -28,7 +28,7 @@ public class Product {
 	}
 	
 	// 제품id,제품 카테고리, 제품이름 생성자
-	Product(int ProdID, int prodCtgID, String prodName) {
+	public Product(int ProdID, int prodCtgID, String prodName) {
 		this.ProdID = ProdID;
 		this.prodCtgID = prodCtgID;
 		this.prodName = prodName;
@@ -71,7 +71,7 @@ public class Product {
 		return prodDate;
 	}
 	
-	public int prodValidity() {
+	public int getProdValidity() {
 		return prodValidity;
 	}
 
