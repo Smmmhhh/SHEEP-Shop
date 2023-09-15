@@ -67,7 +67,7 @@ for(int i = 0; i < cartList.size(); i++){
 // 고객 리스트 검사 결과
 if(inspection) {
 	afterQuantity = beforeQuantity + ProdQuantity;
-	result = cartDAO.updatecartProdEdit(afterQuantity, memberID, ProdID);
+	result = cartDAO.updateCartProdEdit(afterQuantity, memberID, ProdID);
 } else {
 	result = cartDAO.cartInsert(memberID, ProdID, ProdQuantity);
 }

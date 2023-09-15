@@ -163,7 +163,7 @@
 									        }
 									        
 									        let totalElement = document.getElementById('totalID');
-									        totalElement.textContent = total + "원";
+									        totalElement.textContent = total.toLocaleString() + "원";
 									  }
 									    
 									    window.addEventListener("DOMContentLoaded", function() {
