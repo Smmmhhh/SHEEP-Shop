@@ -14,6 +14,7 @@
 <%@page import="java.util.ArrayList"%>
 <%@page import="composition.Composition"%>
 <%@page import="java.util.List"%>
+<%@ page import="java.text.DecimalFormat"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -101,8 +102,8 @@
 											<%
 											for(int j=i; j < i+count; j++){
 												
-												Product product = orderList.get(i).getProduct();
-												OrderProduct orderProduct = orderList.get(i).getOrderProduct();
+												Product product = orderList.get(j).getProduct();
+												OrderProduct orderProduct = orderList.get(j).getOrderProduct();
 												
 												int prodID = product.getProdID();
 												int ctgID = product.getProdCtgID();
@@ -122,7 +123,7 @@
 										</td>
 										<td>
 											<div>
-												<div><%=prodPrice%></div>
+												<div><%=new DecimalFormat().format(prodPrice)%></div>
 											</div>
 										</td>
 										<td>

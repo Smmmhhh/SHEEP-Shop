@@ -68,6 +68,7 @@ for(int i = 0; i < cartList.size(); i++){
 if(inspection) {
 	afterQuantity = beforeQuantity + ProdQuantity;
 	result = cartDAO.updateCartProdEdit(afterQuantity, memberID, ProdID);
+
 } else {
 	result = cartDAO.cartInsert(memberID, ProdID, ProdQuantity);
 }

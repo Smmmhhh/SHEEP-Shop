@@ -135,7 +135,9 @@
 					<td>
 						<div class="inputBox" style="padding: 0;">
 							<input type="text" id="phoneNoText" value="<%=memberPhoneNo%>" readonly> 
-							<input type="text" id="phoneNoInput" placeholder="전화번호 입력" name="phoneNo"> 
+							<input type="text" id="phoneNoInput" placeholder="전화번호 입력" name="phoneNo"
+									pattern="^(\d{3}-\d{3,4}-\d{4}|\d{10})$"
+					 				title="010-0000-0000 형식으로 입력해주세요." required>
 							<input type="checkbox" id="samePhoneNo">주문자 전화 번호와 동일
 						</div>
 					</td>
@@ -146,7 +148,7 @@
 					<td>
 						<div class="inputBox" style="padding: 0;">
 							<input type="text" id="phoneNoText" value="<%=memberAddress%>" readonly> 
-							<input type="text" id="addressInput" placeholder="주소 입력" name="address"> 
+							<input type="text" id="addressInput" placeholder="주소 입력" name="address" required> 
 							<input type="checkbox" id="sameAddress">주문자 배송지와 동일
 						</div>
 					</td>

@@ -17,6 +17,9 @@ public class Composition {
 	Order order;
 	OrderProduct orderProduct;
 	
+	int salesQuantity;			//데이터 페이지 판매수량
+	int salesByProduct;			//데이터 페이지 상품별 매출금액
+	
 	Composition(){}
 	
 	 // Table Join을 할 때 포함되는 class들의 생성자를 만들어준다.
@@ -30,6 +33,16 @@ public class Composition {
 		this.orderProduct = orderProduct;
 		this.product = product;
 	}
+	
+	// 데이터 페이지 상품별 총 매출액 생성자
+	Composition(OrderProduct orderProduct, Product product, int salesQuantity, int salesByProduct){
+		this.orderProduct = orderProduct;
+		this.product = product;
+		this.salesQuantity = salesQuantity;
+		this.salesByProduct = salesByProduct;
+		
+	}
+	
 
 	public Cart getCart() {
 		return cart;
@@ -53,6 +66,14 @@ public class Composition {
 
 	public OrderProduct getOrderProduct() {
 		return orderProduct;
+	}
+	
+	public int getSalesQuantity() {
+		return salesQuantity;
+	}
+
+	public int getSalesByProduct() {
+		return salesByProduct;
 	}
 
 }
