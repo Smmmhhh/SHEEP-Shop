@@ -6,16 +6,16 @@
 */
 
 .second_wrap {
-   	padding: 0;
-   	margin: 0;
-   	display: flex;
-   	justify-content: center;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      justify-content: center;
 }
 
 .wrap{
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
 }
 
 /*  pagebox */
@@ -39,7 +39,7 @@
 }
 
 .InfoTable th {
-   	width: 100px;
+    width: 100px;
     text-align: center;
 }
 
@@ -49,23 +49,28 @@
 }
 
 .idField {
-	text-align: center;
-	width: 100px;
+   text-align: center;
+   width: 100px;
+}
+
+.nameField {
+   text-align: center;
+   width: 300px;
 }
 
 .priceField {
-	text-align: center;
-	width: 100px;
+   text-align: center;
+   width: 100px;
 }
 
 .stockField {
-	text-align: center;
-   	width: 100px;
+   text-align: center;
+      width: 100px;
 }
 
-.addressField {
-	text-align: center;
-   	width: 100px;
+.salesField {
+   text-align: center;
+      width: 100px;
 }
 
 .curpw, .chgpw, .chkpw, .curadd, .chgadd, .curphoneNo, .chgphoneNo{
@@ -100,45 +105,44 @@ div[class*="info"] {
 }
 /* 확인 */
 .confirmButton_div {
-	margin-bottom: 20px;
-    display: flex;
-    justify-content: center;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
 }
 
 #deleteButton {
-	width: 150px;
-	height: 40px;
-	margin-bottom: 20px;
+   width: 150px;
+   height: 40px;
+   margin-bottom: 20px;
 }
 
 #categorySelect {
-	width: 100%; /* 너비 조정 */
-	height: 36.67px;
-    margin-left: 20px;
-    padding: 10px;
-    text-align: center;
+   width: 100%; /* 너비 조정 */
+   height: 36.67px;
+   margin-left: 20px;
+   padding: 10px;
+   text-align: center;
 }
 
 .mainCenter {
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
 }
 
 .mainSide {
-	display: flex;
-	justify-content: center;
-	margin: 0;
+   display: flex;
+   justify-content: center;
+   margin: 0;
 }
 
 .managerEdit-item {
-	display: flex;
-	align-items: center;
-	font-size: 18px;
-	font-weight: bold;
-	color: grey;
-	text-decoration: none;
-	margin: 10px;
+   display: flex;
+   align-items: center;
+   font-size: 18px;
+   font-weight: bold;
+   color: grey;
+   text-decoration: none;
+   margin: 10px;
 }
-

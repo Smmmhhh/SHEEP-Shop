@@ -6,6 +6,7 @@
 <%@ page import="java.io.PrintWriter"%>
 <%@ page import="java.util.ArrayList"%>
 <%@ page import="java.util.List"%>
+<%@ page import="java.text.DecimalFormat"%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -130,7 +131,8 @@
 										</td>
 										<td>
 											<div class="cart_price">
-												<div><%=prodPrice%></div>
+												<div>가격</div>
+												<div><%=new DecimalFormat().format(prodPrice)%></div>
 											</div>
 										</td>
 									</tr>
@@ -212,7 +214,7 @@
 									        }
 									        
 									        let totalElement = document.getElementById('totalPrice');
-									        totalElement.textContent = total + "원";
+									        totalElement.textContent = total.toLocaleString() + "원";
 									  }
 									  
 									    window.addEventListener("DOMContentLoaded", function() {

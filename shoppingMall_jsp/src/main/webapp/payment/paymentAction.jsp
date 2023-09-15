@@ -163,7 +163,7 @@ request.setCharacterEncoding("UTF-8");
 		if(afterQuantity <= 0){	//장바구니 수량이 0이면 삭제
 			int cartDeleteResult = cartDAO.deleteCartProd(cartList);
 		}else {	//장바구니 수량이 0이 아니면 수량만 변경
-			int cartUpdateResult = cartDAO.updatecartProdEdit(afterQuantity, memberID, prodID);
+			int cartUpdateResult = cartDAO.updateCartProdEdit(afterPoint, memberID, prodID);
 		}
 	}
 	
@@ -205,18 +205,6 @@ request.setCharacterEncoding("UTF-8");
 		script.close();
 	}
 	%>
-
-
-
-
-
-
-
-
-
-
-
-
 
 </body>
 </html>

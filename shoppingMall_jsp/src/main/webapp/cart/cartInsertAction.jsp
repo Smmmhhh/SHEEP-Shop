@@ -64,33 +64,34 @@
 			break;
 		}
 	}
-	// 고객 리스트 검사 결과
-	if(inspection) {
-		afterQuantity = beforeQuantity + ProdQuantity;
-		result = cartDAO.updatecartProdEdit(afterQuantity, memberID, ProdID);
-	} else {
-		result = cartDAO.cartInsert(memberID, ProdID, ProdQuantity);
-	}
-	
-	// 쿼리문 실행결과
-	String redirectURL = null;
-	
-	if (result == 1 && buttonMethod == 0){			// 쿼리문 성공 && 장바구니 버튼일 때
-		PrintWriter script = response.getWriter();
-		script.println("<script>");
-		//script.println("alert('장바구니에 추가되었습니다.');");
-		script.println("history.back();");			// 이전 페이지 돌려주기
-		script.println("</script>");
-		script.close();
-	} else if(result == 1 && buttonMethod == 1){
-		redirectURL = "../payment/payment.jsp?prodID=" + ProdID + "&prodQuantity=" + ProdQuantity + "&buttonMethod=" + buttonMethod;
-		PrintWriter script = response.getWriter();
-		script.println("<script>");
-		script.println("location.href = '" + redirectURL + "';");
-		script.println("</script>");
-		script.close();
-	}
-	%>
+}
+// 고객 리스트 검사 결과
+if(inspection) {
+	afterQuantity = beforeQuantity + ProdQuantity;
+	result = cartDAO.updateCartProdEdit(afterQuantity, memberID, ProdID);
+} else {
+	result = cartDAO.cartInsert(memberID, ProdID, ProdQuantity);
+}
+
+// 쿼리문 실행결과
+String redirectURL = null;
+
+if (result == 1 && buttonMethod == 0){			// 쿼리문 성공 && 장바구니 버튼일 때
+	PrintWriter script = response.getWriter();
+	script.println("<script>");
+	//script.println("alert('장바구니에 추가되었습니다.');");
+	script.println("history.back();");			// 이전 페이지 돌려주기
+	script.println("</script>");
+	script.close();
+} else if(result == 1 && buttonMethod == 1){
+	redirectURL = "../payment/payment.jsp?prodID=" + ProdID + "&prodQuantity=" + ProdQuantity + "&buttonMethod=" + buttonMethod;
+	PrintWriter script = response.getWriter();
+	script.println("<script>");
+	script.println("location.href = '" + redirectURL + "';");
+	script.println("</script>");
+	script.close();
+}
+%>
 
 <!DOCTYPE html>
 <html>

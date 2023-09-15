@@ -10,7 +10,12 @@
 	String memberName = "";
 	String gender = "";
 	String phoneNo = "";
-	String memberAddress = "";
+	//주소 변수
+	String postalCode = "";
+	String roadNameAddress = "";
+	String addressNumber = "";
+	String detailedAddress = "";
+	String seeAlso = "";
 	
 	if(request.getParameter("memberID")!=""){
 		memberID = (String) request.getParameter("memberID");
@@ -27,11 +32,31 @@
 	if(request.getParameter("phoneNo")!=""){
 		phoneNo = (String) request.getParameter("phoneNo");
 	}
-	if(request.getParameter("memberAddress")!=""){
-		memberAddress = (String) request.getParameter("memberAddress");
+	
+	//주소 입력받기
+	if(request.getParameter("postalCode")!=""){
+		postalCode = (String) request.getParameter("postalCode");
 	}
+	if(request.getParameter("roadNameAddress")!=""){
+		roadNameAddress = (String) request.getParameter("roadNameAddress");
+	}
+	if(request.getParameter("addressNumber")!=""){
+		addressNumber = (String) request.getParameter("addressNumber");
+	}
+	if(request.getParameter("detailedAddress")!=""){
+		detailedAddress = (String) request.getParameter("detailedAddress");
+	}
+	if(request.getParameter("seeAlso")!=""){
+		seeAlso = (String) request.getParameter("seeAlso");
+	}
+	
+	// 주소 합치기
+	String memberAddress = roadNameAddress + addressNumber + detailedAddress + seeAlso + postalCode;
+	
 	if(memberID == "" || memberPW == "" || memberName == "" ||
-			gender == "" || phoneNo == "" || memberAddress == "" ){	
+			gender == "" || phoneNo == "" || postalCode == "" ||
+			roadNameAddress == "" || addressNumber == "" || detailedAddress == "" ||
+			seeAlso == ""){	
 		PrintWriter script = response.getWriter();
 		script.println("<script>");
 		script.println("alert('입력이 안 된 사항이 있습니다.');");

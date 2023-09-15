@@ -14,6 +14,7 @@
 <%@page import="java.util.ArrayList"%>
 <%@page import="composition.Composition"%>
 <%@page import="java.util.List"%>
+<%@ page import="java.text.DecimalFormat"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -78,8 +79,7 @@
 						for (int i = 0; i < orderList.size(); i+=count) {
 							Order order = orderList.get(i).getOrder();
 							
-							int orderID = order.getOrderID();
-							
+							int orderID = order.getOrderID();	
 							String orderAddress = order.getOrderAddress();
 							String orderPhoneNo = order.getOrderPhoneNo();
 							int totalPrice = order.getTotalPrice();
@@ -156,7 +156,6 @@
 
 	<!-- [4] 푸터  -->
 	<jsp:include page="../static/html/footer.html" />
-
 
 </body>
 

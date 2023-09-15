@@ -239,6 +239,9 @@
 	</div>
 
 	<!-- 3-4 알림창을 띄우는 버튼 -->
+	
+	
+	
 	<!-- 커스텀 알림창 모달 -->
 	<div id="pointChargeModal" class="modal">
 		<div id="wrapModal">
@@ -255,14 +258,16 @@
 					class="fromSubmit" method="post">
 					<div>
 						<h3>충전금액을 입력해 주세요.</h3>
-						<input type="text" name="money" placeholder="입력">
+						<input type="text" name="money" placeholder="입력" pattern="^\d+$" 
+						title="숫자만 입력해주세요." required>
 						<div class="lineModal">
 							<hr>
 						</div>
-						<!-- 카드번호 정규식 추가해야함 -->
 						<h3>결제카드</h3>
 						<input type="text" name="paymentCard" placeholder="카드번호를 입력하세요."
-							style="width: 300px">
+								pattern="^\d{4}-\d{4}-\d{4}-\d{4}$"
+								title="0000-0000-0000-0000 형식으로 입력해주세요."
+								style="width: 300px" required>
 					</div>
 					<div class="buttonWrap">
 						<input type="submit" name="charge" value="충전하기" id="finishButton">

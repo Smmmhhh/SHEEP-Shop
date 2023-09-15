@@ -43,9 +43,18 @@
 }
 
 .InfoTable th input {
-    display: flex;
-    justify-content: center;
+     display: flex; 
+     justify-content: center; 
 }
+
+/* .chgadd {
+	padding: 10px;
+    width: 800px;
+}
+
+.chgadd input[type="text"]{
+    width: 400px;
+} */
 
 .curpw, .chgpw, .chkpw, .curadd, .chgadd, .curphoneNo, .chgphoneNo{
     display: flex;

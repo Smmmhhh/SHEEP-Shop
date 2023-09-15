@@ -92,7 +92,7 @@
 			</div>
 
 			<h4 class="description"><%=product.getProdDetail()%></h4>
-
+			
 			<!-- [3]-2 결제버튼 -->
 			<div class="payButtonDiv">
 

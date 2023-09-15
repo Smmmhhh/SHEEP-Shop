@@ -16,7 +16,6 @@
 <%@ page import="java.util.List"%>
 <%@ page import="java.text.DecimalFormat"%>
 
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -38,6 +37,17 @@
 	// 	System.out.println(cthID);
 	// 	System.out.println(ctgName);
 	%>
+
+	<script>
+		function sortProduct(sortType) {
+			var currentURL = window.location.href;
+			var newURL = currentURL.split('&sortProduct=')[0] + '&sortProduct=' + sortType;
+
+			window.location.href = newURL;
+		}
+	</script>
+
+
 	<!-- [1] Header 추가 -->
 	<jsp:include page="../static/html/header.jsp" />
 	<!-- [2] nav 추가 -->
@@ -51,39 +61,63 @@
 			</div>
 			<div class="list">
 				<ul id="menu">
-					<li><a href="#"><b>낮은 가격순 &nbsp; | &nbsp;</b></a></li>
-					<li><a href="#"><b>높은 가격순 &nbsp; | &nbsp;</b></a></li>
-					<li><a href="#"><b>판매량순 &nbsp; | &nbsp;</b></a></li>
-					<li><a href="#"><b>최신순</b></a></li>
+					<li><a href="javascript:void(0);"
+						onclick="sortProduct('lowPrice')"><b>낮은 가격순 &nbsp; |
+								&nbsp;</b></a></li>
+					<li><a href="javascript:void(0);"
+						onclick="sortProduct('highPrice')"><b>높은 가격순 &nbsp; |
+								&nbsp;</b></a></li>
+					<li><a href="javascript:void(0);" onclick="sortProduct()"><b>판매량순
+								&nbsp; | &nbsp;</b></a></li>
+					<li><a href="javascript:void(0);"
+						onclick="sortProduct('latest')"><b>최신순</b></a></li>
 				</ul>
 			</div>
 		</div>
+
 		<!-- [3]-2 ProductList 생성 -->
 		<%
-			// 현재 카테고리 제품 리스트 가져오기
-			List<Product> productList = new ArrayList<>();
-			ProductDAO productDAO = new ProductDAO();
-			productList = productDAO.selectGetCtgProd(cthID);
+		String sort = "";
+		String sortproduct = request.getParameter("sortProduct");
+
+		if (sortproduct != null) {
+			if (sortproduct.equals("lowPrice")) {
+				sort = "ORDER BY price ASC";
+			} else if (sortproduct.equals("highPrice")) {
+				sort = "ORDER BY price DESC";
+			} else if (sortproduct.equals("latest")) {
+				sort = "ORDER BY prodID DESC";
+			}
+		}
+
+		// 현재 카테고리 제품 리스트 가져오기
+		List<Product> productList = new ArrayList<>();
+		ProductDAO productDAO = new ProductDAO();
+		productList = productDAO.selectGetCtgProd(cthID, sort);
 		%>
+
+
 		<div class="products">
 			<%
 			// 제품 리스트의 수량만큼 product 생성
 			for (int i = 0; i < productList.size(); i++) {
 			%>
-			<a href="../productDetail/productDetail.jsp?prodID=<%=productList.get(i).getProdID()%>" class="product"> 
-				<img src="../image/<%=productList.get(i).getProdCtgID()%>_<%=productList.get(i).getProdID()%>.jpg">
-			<div class="product-name"><%=productList.get(i).getProdName()%></div>
-				<div class="product-price"><%=new DecimalFormat().format(productList.get(i).getProdPrice())%></div>	
+			<a
+				href="../productDetail/productDetail.jsp?prodID=<%=productList.get(i).getProdID()%>"
+				class="product"> <img
+				src="../image/<%=productList.get(i).getProdCtgID()%>_<%=productList.get(i).getProdID()%>.jpg">
+				<div class="product-name"><%=productList.get(i).getProdName()%></div>
+				<div class="product-price"><%=new DecimalFormat().format(productList.get(i).getProdPrice())%></div>
 			</a>
-			
 			<%
 			}
 			%>
 
 		</div>
+
 	</div>
 	<!-- [4] 푸터  -->
 	<jsp:include page="../static/html/footer.html" />
-
+  
 </body>
 </html>

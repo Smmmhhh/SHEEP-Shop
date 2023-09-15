@@ -57,52 +57,12 @@
 	%>
 	
 	<%
-	int prodID = Integer.MIN_VALUE;
-	int prodQuantity = Integer.MIN_VALUE;
 	int pointCharge = Integer.MIN_VALUE;
-	String paymentCard = null;
-	int buttonMethod = Integer.MIN_VALUE;
-	String phoneNo = null;
-	String address = null;
-	
-	// 바로결제 시 상품번호 받아오기
-	
-	
-	if (request.getParameter("prodID") != null && !request.getParameter("prodID").isEmpty()) {
-		prodID = Integer.parseInt(request.getParameter("prodID"));
-		//System.out.println(ProdID);
-	}
-	// 바로 결제 시 상품 수량 받아오기
-	if (request.getParameter("prodQuantity") != null && !request.getParameter("prodQuantity").isEmpty()) {
-		prodQuantity = Integer.parseInt(request.getParameter("prodQuantity"));
-		//System.out.println(prodQuantity); 	
-	}
-	// 버튼 메소드 받아오기 (0 : 장바구니, 1: 바로결제)
-	if (request.getParameter("buttonMethod") != null && !request.getParameter("buttonMethod").isEmpty()) {
-		buttonMethod = Integer.parseInt(request.getParameter("buttonMethod"));
-		//System.out.println(buttonMethod);
-	}
 	
 	// 충전금액과 받아오기
 	if (request.getParameter("money") != null && !request.getParameter("money").isEmpty()) {
 		pointCharge = Integer.parseInt(request.getParameter("money"));
 		//System.out.println(money);
-	}
-	// 카드번호 받아오기 
-	if (request.getParameter("paymentCard") != null && !request.getParameter("paymentCard").isEmpty()){
-		paymentCard = request.getParameter("paymentCard");
-		//System.out.println(paymentCard);
-	}
-	
-	// 휴대폰 번호 받아오기
-	if (request.getParameter("phoneNo") != null && !request.getParameter("phoneNo").isEmpty()) {
-		phoneNo = request.getParameter("phoneNo");
-		//System.out.println(phoneNo);
-	}
-	// 주소 받아오기
-	if (request.getParameter("address") != null && !request.getParameter("address").isEmpty()) {
-		address = request.getParameter("address");
-		//System.out.println(address);
 	}
 	
 	int afterMoney = pointCharge + memberPoint;
@@ -112,8 +72,7 @@
 	if(result == 1){
 		PrintWriter script = response.getWriter();
 		// 버튼메소드 추가 
-		String redirectURL = "../payment/paymentConfirm.jsp?prodID=" + prodID + "&prodQuantity=" 
-		+ prodQuantity + "&buttonMethod=" + buttonMethod +"&phoneNo=" + phoneNo + "&address=" + address;
+		String redirectURL = "../pointCharge/pointCharge.jsp";
 		script.println("<script>");
 		script.println("alert('포인트가 충전되었습니다!');");
 		script.println("location.href = '" + redirectURL + "';");			// 이전 페이지 돌려주기
