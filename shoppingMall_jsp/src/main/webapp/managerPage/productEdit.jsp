@@ -28,8 +28,9 @@ request.setCharacterEncoding("UTF-8");
 		<!-- [3]-1 메인 사이드 -->
 		<div class="mainSide">
 			<a href="productInsert.jsp" class="managerEdit-item"> 상품등록 </a><br>
-			<a href="productEditSelect.jsp" class="managerEdit-item" style="font-size: 30px; color: black"> 상품수정 </a><br>
-			<a href="productDelete.jsp" class="managerEdit-item"> 상품삭제 </a><br>
+			<a href="productEditSelect.jsp" class="managerEdit-item"
+				style="font-size: 30px; color: black"> 상품수정 </a><br> <a
+				href="productDelete.jsp" class="managerEdit-item"> 상품삭제 </a><br>
 		</div>
 
 		<div class="mainCenter">
@@ -61,73 +62,79 @@ request.setCharacterEncoding("UTF-8");
 				%>
 
 				<div class="second_wrap">
-      
-         <div class="wrap">
-   
-            <!-- [2] pageBox -->
-      
-            <table class="InfoTable" id="pwTable">
-               <tr>
-                  <td>
-                  <div class="chgpw">
-                        <div class="ctg-info">카테고리</div>
-                        <select id="categorySelect" class="category-select" name="prodCtgID">
-							<option value="1">테이크아웃 용품</option>
-							<option value="2">커피/원두</option>
-							<option value="3">스무디/에이드/베이스</option>
-							<option value="4">시럽/소스/파우더</option>
-							<option value="5">우유/휘핑크림/탄산</option>
-							<option value="6">커피용품/머신</option>
-						</select>
-						<!-- 선택된 카테고리 값을 hidden input 필드에 저장 -->
-						<input type="hidden" name="selectedCategory" value=1 id="selectedCategory">
-						<input type="hidden" name="currCategory" value=<%=prodCtgID%> >
-                     </div>
-                     <div class="curpw">
-                        <div class="curpw-info">상품명</div>
-                         <input type="text" name="curtext" value="<%=prodName%>" readonly>
-                        <input type="text" name="curtext" placeholder="상품명 입력">
-                     </div>
-                     <div class="chkpw">
-                        <div class="chkpw-info">가격</div>
-                        <input type="text" name="curtext" value="<%=price%>" readonly>
-                        <input type="text" name="prodPrice" placeholder="가격 입력">
-                     </div>
-                     <div class="curpw">
-                        <div class="curpw-info">재고</div>
-                        <input type="text" name="curtext" value="<%=stock%>" readonly>
-                        <input type="text" name="cprodStock" placeholder="재고 입력">
-                     </div>
-                     <div class="curpw">
-                        <div class="curpw-info">설명</div>
-                        <input type="text" name="curtext" value="<%=detail%>" readonly>
-                        <input type="text" name="prodDetail" placeholder="설명 입력">
-                     </div>
-                     <div class="curpw">
-                        <div class="curpw-info">사이즈</div>
-                        <input type="text" name="curtext" value="<%=prodSize%>" readonly>
-                        <input type="text" name="prodSize" placeholder="사이즈 입력">
-                     </div>
-                     <div class="curpw">
-                        <div class="curpw-info">원산지</div>
-                        <input type="text" name="curtext" value="<%=origin%>" readonly>
-                        <input type="text" name="prodOrigin" placeholder="원산지 입력">
-                     </div>
-                     <div class="curpw">
-                        <div class="curpw-info">제조일자</div>
-                        <input type="text" name="curtext" value="<%=prodDate%>" readonly>
-                        <input type="text" name="prodDate" placeholder="제조일자 입력">
-                     </div>
-                  </td>
-               </tr>
-            </table>
-   
-            <!-- [4] 확인 -->
-            <div class="confirmButton_div">
-               <input type="submit" value="확인" id="editButton">
-            </div>
-         </div>
-      </div> 
+
+					<div class="wrap">
+
+						<!-- [2] pageBox -->
+
+						<table class="InfoTable" id="pwTable">
+							<tr>
+								<td>
+									<div class="chgpw">
+										<div class="ctg-info">카테고리</div>
+										<select id="categorySelect" class="category-select"
+											name="prodCtgID">
+											<option value="1">테이크아웃 용품</option>
+											<option value="2">커피/원두</option>
+											<option value="3">스무디/에이드/베이스</option>
+											<option value="4">시럽/소스/파우더</option>
+											<option value="5">우유/휘핑크림/탄산</option>
+											<option value="6">커피용품/머신</option>
+										</select>
+										<!-- 선택된 카테고리 값을 hidden input 필드에 저장 -->
+										<input type="hidden" name="selectedCategory" value=1
+											id="selectedCategory"> <input type="hidden"
+											name="currCategory" value=<%=prodCtgID%>>
+									</div>
+
+										<input type="hidden" name="prodID" value="<%=prodID%>">
+	
+									<div class="curpw">
+										<div class="curpw-info">상품명</div>
+										<input type="text" name="curtext" value="<%=prodName%>" readonly> 
+											<input type="text" name="prodName" placeholder="상품명 입력">
+									</div>
+									<div class="chkpw">
+										<div class="chkpw-info">가격</div>
+										<input type="text" name="curtext" value="<%=price%>" readonly>
+										<input type="text" name="prodPrice" placeholder="가격 입력">
+									</div>
+									<div class="curpw">
+										<div class="curpw-info">재고</div>
+										<input type="text" name="curtext" value="<%=stock%>" readonly>
+										<input type="text" name="prodStock" placeholder="재고 입력">
+									</div>
+									<div class="curpw">
+										<div class="curpw-info">설명</div>
+										<input type="text" name="curtext" value="<%=detail%>" readonly>
+										<input type="text" name="prodDetail" placeholder="설명 입력">
+									</div>
+									<div class="curpw">
+										<div class="curpw-info">사이즈</div>
+										<input type="text" name="curtext" value="<%=prodSize%>" readonly> 
+											<input type="text" name="prodSize" placeholder="사이즈 입력">
+									</div>
+									<div class="curpw">
+										<div class="curpw-info">원산지</div>
+										<input type="text" name="curtext" value="<%=origin%>" readonly>
+										<input type="text" name="prodOrigin" placeholder="원산지 입력">
+									</div>
+									<div class="curpw">
+										<div class="curpw-info">제조일자</div>
+										<input type="text" name="curtext" value="<%=prodDate%>"
+											readonly> <input type="text" name="prodDate"
+											placeholder="제조일자 입력">
+									</div>
+								</td>
+							</tr>
+						</table>
+
+						<!-- [4] 확인 -->
+						<div class="confirmButton_div">
+							<input type="submit" value="확인" id="editButton">
+						</div>
+					</div>
+				</div>
 			</form>
 		</div>
 	</div>
