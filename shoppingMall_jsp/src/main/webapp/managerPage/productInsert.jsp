@@ -80,8 +80,8 @@
                      <div class="curpw">
                         <div class="curpw-info">제조일자</div>
                         <input type="text" name="curtext" placeholder="제조일자 입력"
-                        pattern="^\d{4}-\d{2}-\d{2}-\d{2}-\d{2}$"
-                        title="년-월-일-시-분 입력" >
+                        pattern="^\d{4}-\d{2}-\d{2}$"
+                        title="년-월-일 입력" >
                      </div>
                   </td>
                </tr>

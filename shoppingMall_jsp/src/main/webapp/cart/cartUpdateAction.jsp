@@ -36,7 +36,7 @@
 			System.out.println(qty);
 			int prodID = cartList.get(i).getProdID();
 			
-			result = cartDAO.updatecartProdEdit(qty, memberID, prodID);
+			result = cartDAO.updateCartProdEdit(qty, memberID, prodID);
 		}	
 		if(result == 1){
 			PrintWriter script = response.getWriter();

@@ -80,15 +80,15 @@ if (result == 1) {
     File newFile = new File(newFilePath);
 
     // 파일 생성여부 확인
-/*     if (currentFile.exists()) {
-        if (currentFile.renameTo(newFile)) {
-            System.out.println("파일이름 변경성공");
-        } else {
-            System.out.println("파일이름 변경실패");
-        }
-    } else {
-        System.out.println("파일이 존재하지 않습니다.");
-    } */
+//      if (currentFile.exists()) {
+//         if (currentFile.renameTo(newFile)) {
+//             System.out.println("파일이름 변경성공");
+//         } else {
+//             System.out.println("파일이름 변경실패");
+//         }
+//     } else {
+//         System.out.println("파일이 존재하지 않습니다.");
+//     } 
 	
 	PrintWriter script = response.getWriter();
 	script.println("<script>");

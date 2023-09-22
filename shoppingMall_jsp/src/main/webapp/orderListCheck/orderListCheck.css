@@ -4,98 +4,99 @@
 /* buyBox 스타일 */
 
 .buyBox {
-	text-align: center;
-	margin: 0;
-	padding: 0;
+   text-align: center;
+   margin: 0;
+   padding: 0;
 }
 
 /* orderContainer 스타일 */
 .orderContainer {
-	display: flex;
-	align-items: flex-start;
-	justify-content: space-between;
-	margin-top: 20px;
+   display: flex;
+   align-items: flex-start;
+   justify-content: space-between;
+   margin-top: 20px;
 }
 
 /* myPageMenu 스타일 */
 .myPageMenu {
-	flex: 0 0 calc(33.33% - 20px);
-	border: 1px solid #ddd;
-	padding: 10px;
-	margin-right: 20px;
+   flex: 0 0 calc(33.33% - 20px);
+   border: 1px solid #ddd;
+   padding: 10px;
+   margin-right: 20px;
 }
 
 /* orderBox 스타일 */
 .order_box {
-	border: none;
-	padding: 10px;
-	margin-left: 50px;
+   border: none;
+   padding: 10px;
+   margin-left: 50px;
 }
 
 /* orderSearch 스타일 */
 .orderSearch {
-	display: flex;
-	align-items: center;
-	margin-bottom: 10px;
+   display: flex;
+   align-items: center;
+   margin-bottom: 10px;
 }
 
 .orderSearchInput {
-	padding: 2px;
-	margin-right: 10px;
+   padding: 2px;
+   margin-right: 10px;
 }
 
 .orderSearchButton {
-	padding: 5px 10px;
-	background-color: #333;
-	color: #fff;
-	border: none;
-	cursor: pointer;
+   padding: 5px 10px;
+   background-color: #333;
+   color: #fff;
+   border: none;
+   cursor: pointer;
 }
 
 #order_table {
-	width: 800px;
-	border-collapse: collapse;
+   width: 800px;
+   margin-bottom: 70px;
+   border-collapse: collapse;
 }
 
 th img {
-	max-width: 50px;
-	max-height: 50px;
+   max-width: 50px;
+   max-height: 50px;
 }
 
 .wrap {
-	display: flex;
-	flex-direction: column;
+   display: flex;
+   flex-direction: column;
 }
 
 .orderInfo {
-	width: 100%;
-	margin: 10px;
+   width: 100%;
+   margin: 10px;
 }
 
 
 #order_table td {
-	padding: 10px 30px;
-	border: none;
-	border-top: 1px solid #ddd;
-	border-bottom: 1px solid #ddd;
-	text-align: center;
+   padding: 10px 30px;
+   border: none;
+   border-top: 1px solid #ddd;
+   border-bottom: 1px solid #ddd;
+   text-align: center;
 }
 
 #orderInfoBox {
-	margin-bottom: 20px;
+   margin-bottom: 20px;
 }
 
 #orderInfoBox hr{
-	color: #ddd;
+   color: #ddd;
 }
 
 #emptyBox {
-	margin-left: 50px;
-	width: 800px;
-	height: 100%;
-	font-size: 25px;
-	color: #ddd;
-	display: flex;
-	justify-content: center;
-	align-items: center;
+   margin-left: 50px;
+   width: 800px;
+   height: 100%;
+   font-size: 25px;
+   color: #ddd;
+   display: flex;
+   justify-content: center;
+   align-items: center;
 }

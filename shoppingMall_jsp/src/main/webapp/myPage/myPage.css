@@ -81,7 +81,7 @@
 }
 
 .orderBox{
-    width: 800px;
+    width: 1000px;
     text-align: left;
     padding-left: 20px;
 }
@@ -170,9 +170,9 @@ cursor: pointer;
 }
 
 .orderBox {
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	text-align: left;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   text-align: left;
 }

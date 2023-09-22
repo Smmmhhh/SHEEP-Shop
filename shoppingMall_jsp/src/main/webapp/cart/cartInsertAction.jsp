@@ -64,7 +64,7 @@
 			break;
 		}
 	}
-}
+
 // 고객 리스트 검사 결과
 if(inspection) {
 	afterQuantity = beforeQuantity + ProdQuantity;
