@@ -1,5 +1,5 @@
 <!--
-	annotation Name : buyCheck jsp
+	annotation Name : orderListCheck jsp
     User: KJS
     Date: 2023-08-16
     Time: 오후 6:13

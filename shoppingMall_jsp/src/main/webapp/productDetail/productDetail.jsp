@@ -66,6 +66,7 @@
 	CategoryDAO CategoryDAO = new CategoryDAO();
 	String ctgName = CategoryDAO.selectCtgName(product.getProdCtgID());
 	%>
+	
 	<!-- [3]-1 상품 상세페이지 내용작성 -->
 	<div id="category">
 		<h3><%=ctgName%></h3>
